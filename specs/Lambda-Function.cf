@@ -1,0 +1,14 @@
+{
+  "Type" : "AWS::Lambda::Function",
+  "Properties" : {
+    "Code" : Code,
+    "Description" : String,
+    "FunctionName" : String,
+    "Handler" : String,
+    "MemorySize" : Integer,
+    "Role" : String,
+    "Runtime" : String,
+    "Timeout" : Integer,
+    "VpcConfig" : VPCConfig
+  }
+}

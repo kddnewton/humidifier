@@ -1,0 +1,13 @@
+{
+   "Type" : "AWS::EC2::NetworkAclEntry",
+   "Properties" : {
+      "CidrBlock" : String,
+      "Egress" : Boolean,
+      "Icmp" : EC2 ICMP,
+      "NetworkAclId" : String,
+      "PortRange" : EC2 PortRange,
+      "Protocol" : Integer,
+      "RuleAction" : String,
+      "RuleNumber" : Integer
+   }
+}

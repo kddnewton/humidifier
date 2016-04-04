@@ -1,0 +1,10 @@
+{
+  "Type" : "AWS::RDS::EventSubscription",
+  "Properties" : {
+    "Enabled" : Boolean,
+    "EventCategories" : [ String, ... ],
+    "SnsTopicArn" : String,
+    "SourceIds" : [ String, ... ],
+    "SourceType" : String
+  }
+}

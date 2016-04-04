@@ -1,0 +1,10 @@
+{
+   "Type" : "AWS::EC2::VPC",
+   "Properties" : {
+      "CidrBlock" : String,
+      "EnableDnsSupport" : Boolean,
+      "EnableDnsHostnames" : Boolean,
+      "InstanceTenancy" : String,
+      "Tags" : [ Resource Tag, ... ]
+   }
+}

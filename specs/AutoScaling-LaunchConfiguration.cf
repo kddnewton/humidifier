@@ -1,0 +1,22 @@
+{
+   "Type" : "AWS::AutoScaling::LaunchConfiguration",
+   "Properties" : {
+      "AssociatePublicIpAddress" : Boolean,
+      "BlockDeviceMappings" : [ BlockDeviceMapping, ... ],
+      "ClassicLinkVPCId" : String,
+      "ClassicLinkVPCSecurityGroups" : [ String, ... ],
+      "EbsOptimized" : Boolean,
+      "IamInstanceProfile" : String,
+      "ImageId" : String,
+      "InstanceId" : String,
+      "InstanceMonitoring" : Boolean,
+      "InstanceType" : String,
+      "KernelId" : String,
+      "KeyName" : String,
+      "PlacementTenancy" : String,
+      "RamDiskId" : String,
+      "SecurityGroups" : [ SecurityGroup, ... ],
+      "SpotPrice" : String,
+      "UserData" : String
+   }
+}

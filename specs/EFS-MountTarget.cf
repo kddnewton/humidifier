@@ -1,0 +1,9 @@
+{
+  "Type" : "AWS::EFS::MountTarget",
+  "Properties" : {
+    "FileSystemId" : String,
+    "IpAddress" : String,
+    "SecurityGroups" : [ String, ... ],
+    "SubnetId" : String
+  }
+}

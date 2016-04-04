@@ -1,0 +1,7 @@
+{
+  "Type": "AWS::Redshift::ClusterSubnetGroup",
+  "Properties": {
+    "Description" : String,
+    "SubnetIds" : [ String, ... ]
+  }
+}

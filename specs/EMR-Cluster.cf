@@ -1,0 +1,18 @@
+{
+  "Type" : "AWS::EMR::Cluster",
+  "Properties" : {
+    "AdditionalInfo" : JSON object,
+    "Applications" : [ Applications, ... ],
+    "BootstrapActions" [ Bootstrap Actions, ... ],
+    "Configurations" : [ Configurations, ... ],
+    "EbsConfiguration" : EBSConfiguration,
+    "Instances" : JobFlowInstancesConfig,
+    "JobFlowRole" : String,
+    "LogUri" : String,
+    "Name" : String,
+    "ReleaseLabel" : String,
+    "ServiceRole" : String,
+    "Tags" : [ Resource Tag, ... ],
+    "VisibleToAllUsers" : Boolean
+  }
+}

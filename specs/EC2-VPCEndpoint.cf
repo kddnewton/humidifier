@@ -1,0 +1,9 @@
+{
+  "Type" : "AWS::EC2::VPCEndpoint",
+  "Properties" : {
+    "PolicyDocument" : JSON object,
+    "RouteTableIds" : [ String, ... ],
+    "ServiceName" : String,
+    "VpcId" : String
+  }
+}

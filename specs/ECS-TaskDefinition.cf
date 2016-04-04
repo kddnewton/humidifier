@@ -1,0 +1,7 @@
+{
+  "Type" : "AWS::ECS::TaskDefinition",
+  "Properties" : {
+    "ContainerDefinitions" : [ Container Definition, ... ],
+    "Volumes" : [ Volume Definition, ... ]
+  }
+}

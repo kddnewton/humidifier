@@ -1,0 +1,12 @@
+{
+  "Type" : "AWS::AutoScaling::ScheduledAction",
+  "Properties" : {
+    "AutoScalingGroupName" : String,
+    "DesiredCapacity" : Integer,
+    "EndTime" : Time stamp,
+    "MaxSize" : Integer,
+    "MinSize" : Integer,
+    "Recurrence" : String,
+    "StartTime" : Time stamp
+  }
+}

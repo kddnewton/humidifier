@@ -1,0 +1,8 @@
+{
+  "Type" : "AWS::SNS::TopicPolicy",
+  "Properties" :
+    {
+      "PolicyDocument" : JSON,
+      "Topics" : [ List of SNS topic ARNs, ... ]
+    }
+}

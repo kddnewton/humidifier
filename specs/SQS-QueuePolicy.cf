@@ -1,0 +1,7 @@
+{
+   "Type" : "AWS::SQS::QueuePolicy",
+   "Properties" : {
+      "PolicyDocument" : JSON,
+      "Queues" : [ String, ... ]
+   }
+}

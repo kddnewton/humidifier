@@ -1,0 +1,12 @@
+{
+  "Type" : "AWS::DynamoDB::Table",
+  "Properties" : {
+    "AttributeDefinitions" : [ AttributeDefinitions, ... ],
+    "GlobalSecondaryIndexes" : [ GlobalSecondaryIndexes, ... ],
+    "KeySchema" : [ KeySchema, ... ],
+    "LocalSecondaryIndexes" : [ LocalSecondaryIndexes, ... ],
+    "ProvisionedThroughput" : ProvisionedThroughput,
+    "StreamSpecification" : StreamSpecification,
+    "TableName" : String
+  }
+}

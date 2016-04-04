@@ -1,0 +1,8 @@
+{
+  "Type" : "AWS::GameLift::Build",
+  "Properties" : {
+    "Name" : String,
+    "StorageLocation" : StorageLocation,
+    "Version" : String
+  }
+}

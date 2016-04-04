@@ -1,0 +1,9 @@
+{
+  "Type" : "AWS::ElastiCache::SecurityGroupIngress",
+  "Properties" :
+  {
+    "CacheSecurityGroupName" : String,
+    "EC2SecurityGroupName" : String,
+    "EC2SecurityGroupOwnerId" : String
+  }
+}

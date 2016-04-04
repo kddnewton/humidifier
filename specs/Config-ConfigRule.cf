@@ -1,0 +1,11 @@
+{
+  "Type" : "AWS::Config::ConfigRule",
+  "Properties" : {
+    "ConfigRuleName" : String,
+    "Description" : String,
+    "InputParameters" : { ParameterName : Value },
+    "MaximumExecutionFrequency" : String,
+    "Scope" : Scope,
+    "Source" : Source
+  }
+}

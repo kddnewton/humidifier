@@ -1,0 +1,9 @@
+{
+   "Type" : "AWS::EC2::NetworkInterfaceAttachment",
+   "Properties" : {
+      "DeleteOnTermination": Boolean,
+      "DeviceIndex": String,
+      "InstanceId": String,
+      "NetworkInterfaceId": String,
+   }
+}

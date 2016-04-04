@@ -1,0 +1,6 @@
+{
+  "Type" : "AWS::SSM::Document",
+  "Properties" : {
+    "Content" : JSON object
+  }
+}

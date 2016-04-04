@@ -1,0 +1,10 @@
+{
+  "Type" : "AWS::EC2::SecurityGroup",
+  "Properties" : {
+     "GroupDescription" : String,
+     "SecurityGroupEgress" : [ Security Group Rule, ... ],
+     "SecurityGroupIngress" : [ Security Group Rule, ... ],
+     "Tags" :  [ Resource Tag, ... ],
+     "VpcId" : String
+  }
+}

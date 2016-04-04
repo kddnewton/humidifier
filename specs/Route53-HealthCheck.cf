@@ -1,0 +1,7 @@
+{
+  "Type" : "AWS::Route53::HealthCheck",
+  "Properties" : {
+    "HealthCheckConfig" : { HealthCheckConfig },
+    "HealthCheckTags" : [ HealthCheckTags, ... ]
+  }
+}

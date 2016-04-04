@@ -1,0 +1,9 @@
+{
+   "Type" : "AWS::Route53::RecordSetGroup",
+   "Properties" : {
+      "Comment" : String,
+      "HostedZoneId" : String,
+      "HostedZoneName" : String,
+      "RecordSets" : [ RecordSet1, ... ]
+   }
+}

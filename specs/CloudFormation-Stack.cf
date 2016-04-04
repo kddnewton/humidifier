@@ -1,0 +1,10 @@
+{
+  "Type" : "AWS::CloudFormation::Stack",
+  "Properties" : {
+    "NotificationARNs" : [ String, ... ],
+    "Parameters" : { CloudFormation Stack Parameters Property Type },
+    "Tags" : [ Resource Tag, ... ],
+    "TemplateURL" : String,
+    "TimeoutInMinutes" : String
+  }
+}

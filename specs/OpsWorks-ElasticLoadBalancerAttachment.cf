@@ -1,0 +1,7 @@
+{
+  "Type": "AWS::OpsWorks::ElasticLoadBalancerAttachment",
+  "Properties": {
+    "ElasticLoadBalancerName" : String,
+    "LayerId" : String
+  }
+}

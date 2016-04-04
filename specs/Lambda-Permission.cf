@@ -1,0 +1,10 @@
+{
+  "Type" : "AWS::Lambda::Permission",
+  "Properties" : {
+    "Action" : String,
+    "FunctionName" : String,
+    "Principal" : String,
+    "SourceAccount" : String,
+    "SourceArn" : String
+  }
+}

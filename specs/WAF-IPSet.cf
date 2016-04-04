@@ -1,0 +1,7 @@
+{
+  "Type" : "AWS::WAF::IPSet",
+  "Properties" : {
+    "IPSetDescriptors" : [ IPSet descriptor, ... ],
+    "Name" : String
+  }
+}

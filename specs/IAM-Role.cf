@@ -1,0 +1,9 @@
+{
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+      "AssumeRolePolicyDocument": { JSON },
+      "ManagedPolicyArns": [ String, ... ],
+      "Path": String,
+      "Policies": [ Policies, ... ]
+   }
+}

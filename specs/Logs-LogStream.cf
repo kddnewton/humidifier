@@ -1,0 +1,7 @@
+{
+  "Type" : "AWS::Logs::LogStream",
+  "Properties" : {
+    "LogGroupName" : String,
+    "LogStreamName" : String
+  }
+}

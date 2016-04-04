@@ -1,0 +1,9 @@
+{
+  "Type" : "AWS::Logs::Destination",
+  "Properties" : {
+    "DestinationName" : String,
+    "DestinationPolicy" : String,
+    "RoleArn" : String,
+    "TargetArn" : String
+  }
+}

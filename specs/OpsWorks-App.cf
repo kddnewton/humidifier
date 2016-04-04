@@ -1,0 +1,16 @@
+{
+  "Type": "AWS::OpsWorks::App",
+  "Properties": {
+    "AppSource" : Source,
+    "Attributes" : { String:String, ... },
+    "Description" : String,
+    "Domains" :  [ String, ... ],
+    "EnableSsl" : Boolean,
+    "Environment" : [ Environment, ... ],
+    "Name" : String,
+    "Shortname" : String,
+    "SslConfiguration" : { SslConfiguration },
+    "StackId" : String,
+    "Type" : String
+  }
+}

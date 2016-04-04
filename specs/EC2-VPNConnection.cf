@@ -1,0 +1,10 @@
+{
+   "Type" : "AWS::EC2::VPNConnection",
+   "Properties" : {
+      "Type" : String,
+      "CustomerGatewayId" : GatewayID,
+      "StaticRoutesOnly" : Boolean,
+      "Tags" :  [ Resource Tag, ... ],
+      "VpnGatewayId" : GatewayID
+   }
+}

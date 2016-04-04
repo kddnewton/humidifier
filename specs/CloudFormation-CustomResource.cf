@@ -1,0 +1,8 @@
+{
+   "Type" : "AWS::CloudFormation::CustomResource",
+   "Version" : "1.0",
+   "Properties" : {
+      "ServiceToken" : String,
+      ... provider-defined properties ...
+   }
+}

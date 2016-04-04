@@ -1,0 +1,8 @@
+{
+  "Type" : "AWS::GameLift::Alias",
+  "Properties" : {
+    "Name" : String,
+    "Description" : String,
+    "RoutingStrategy" : RoutingStrategy
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "Type": "AWS::OpsWorks::Instance",
+  "Properties": {
+    "AmiId" : String,
+    "Architecture" : String,
+    "AutoScalingType" : String,
+    "AvailabilityZone" : String,
+    "EbsOptimized" : Boolean,
+    "InstallUpdatesOnBoot" : Boolean,
+    "InstanceType" : String,
+    "LayerIds" :  [ String, ... ],
+    "Os" : String,
+    "RootDeviceType" : String,
+    "SshKeyName" : String,
+    "StackId" : String,
+    "SubnetId" : String,
+    "TimeBasedAutoScaling" : { TimeBasedAutoScaling }
+  }
+}

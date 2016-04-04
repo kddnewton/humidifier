@@ -1,0 +1,11 @@
+{
+  "Type": "AWS::IAM::ManagedPolicy",
+  "Properties": {
+    "Description" : String,
+    "Groups" : [ String, ... ],
+    "Path" : String,
+    "PolicyDocument" : JSON object,
+    "Roles" : [ String, ... ],
+    "Users" : [ String, ... ]
+  }
+}

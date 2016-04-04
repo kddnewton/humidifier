@@ -1,0 +1,10 @@
+{
+   "Type" : "AWS::RDS::DBSecurityGroup",
+   "Properties" :
+   {
+      "EC2VpcId" : { "Ref" : "myVPC" },
+      "DBSecurityGroupIngress" : [ RDS Security Group Rule object 1, ... ],
+      "GroupDescription" : String,
+      "Tags" : [ Resource Tag, ... ]
+   }
+}

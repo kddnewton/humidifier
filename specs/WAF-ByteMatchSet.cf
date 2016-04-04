@@ -1,0 +1,7 @@
+{
+  "Type" : "AWS::WAF::ByteMatchSet",
+  "Properties" : {
+    "ByteMatchTuples" : [ Byte match tuple, ... ],
+    "Name" : String
+  }
+}

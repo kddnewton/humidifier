@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'aws_cf'
+
+require 'fileutils'
+require 'net/http'
+require 'nokogiri'
+require 'uri'
+
+def get_url(page)
+  base_url = 'http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/'
+  listing = Net::HTTP.get_response(URI.parse(base_url + page)).body
+end
+
+Nokogiri::HTML(get_url('aws-template-resource-type-ref.html')).css('.highlights ul li a').each do |link|
+  contents = Nokogiri::HTML(get_url(link['href'])).at_css('.programlisting').text.strip.split("\n")
+  next unless (type_line = contents.grep(/Type/).first) && contents.grep(/Properties/).first
+
+  File.open(File.join('specs', type_line.scan(/AWS::(.*?)::(.*?)\"/).first.join('-') + '.cf'), 'w') do |file|
+    file.write(contents.join("\n"))
+  end
+end
