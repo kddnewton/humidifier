@@ -1,0 +1,15 @@
+{
+   "Type" : "AWS::ElasticBeanstalk::Environment",
+   "Properties" : {
+      "ApplicationName" : String,
+      "CNAMEPrefix" : String,
+      "Description" :  String,
+      "EnvironmentName" :  String,
+      "OptionSettings" : [ OptionSettings, ... ],
+      "SolutionStackName" : String,
+      "Tags" : [ Resource Tag, ... ],
+      "TemplateName" : String,
+      "Tier" : Environment Tier,
+      "VersionLabel" : String
+   }
+}

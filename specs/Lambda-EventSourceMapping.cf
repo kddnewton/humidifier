@@ -1,0 +1,10 @@
+{
+  "Type" : "AWS::Lambda::EventSourceMapping",
+  "Properties" : {
+    "BatchSize" : Integer,
+    "Enabled" : Boolean,
+    "EventSourceArn" : String,
+    "FunctionName" : String,
+    "StartingPosition" : String
+  }
+}

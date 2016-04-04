@@ -1,0 +1,10 @@
+{
+  "Type" : "AWS::Config::DeliveryChannel",
+  "Properties" : {
+    "ConfigSnapshotDeliveryProperties" : Config snapshot delivery properties,
+    "Name" : String,
+    "S3BucketName" : String,
+    "S3KeyPrefix" : String,
+    "SnsTopicARN" : String
+  }
+}

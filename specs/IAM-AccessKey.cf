@@ -1,0 +1,8 @@
+{
+   "Type": "AWS::IAM::AccessKey",
+   "Properties": {
+      "Serial": Integer,
+      "Status": String,
+      "UserName": String
+   }
+}

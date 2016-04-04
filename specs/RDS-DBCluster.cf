@@ -1,0 +1,23 @@
+{
+  "Type" : "AWS::RDS::DBCluster",
+  "Properties" :
+  {
+    "AvailabilityZones" : [ String, ... ],
+    "BackupRetentionPeriod" : Integer,
+    "DatabaseName" : String,
+    "DBClusterParameterGroupName" : String,
+    "DBSubnetGroupName" : String,
+    "Engine" : String,
+    "EngineVersion" : String,
+    "KmsKeyId" : String,
+    "MasterUsername" : String,
+    "MasterUserPassword" : String,
+    "Port" : Integer,
+    "PreferredBackupWindow" : String,
+    "PreferredMaintenanceWindow" : String,
+    "SnapshotIdentifier" : String,
+    "StorageEncrypted" : Boolean,
+    "Tags" : [ Resource Tag, ... ],
+    "VpcSecurityGroupIds" : [ String, ... ]
+  }
+}

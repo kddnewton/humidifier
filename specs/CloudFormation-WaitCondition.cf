@@ -1,0 +1,8 @@
+{
+   "Type" : "AWS::CloudFormation::WaitCondition",
+   "Properties" : {
+      "Count" : String,
+      "Handle" : String,
+      "Timeout" : String
+   }
+}

@@ -1,0 +1,12 @@
+{
+  "Type" : "AWS::CodePipeline::CustomActionType",
+  "Properties" : {
+    "Category" : String,
+    "ConfigurationProperties" : [ ConfigurationProperties, ... ],
+    "InputArtifactDetails" : ArtifactDetails,
+    "OutputArtifactDetails" : ArtifactDetails,
+    "Provider" : String,
+    "Settings" : Settings,
+    "Version" : String
+  }
+}

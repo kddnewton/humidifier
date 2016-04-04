@@ -1,0 +1,12 @@
+{
+  "Type" : "AWS::Elasticsearch::Domain",
+  "Properties" : {
+    "AccessPolicies" : JSON object,
+    "AdvancedOptions" : Advanced Options,
+    "DomainName" : String,
+    "EBSOptions" : EBS Options,
+    "ElasticsearchClusterConfig" : Elasticsearch Cluster Config,
+    "SnapshotOptions" : Snaptshot Options,
+    "Tags" : [ Resource Tag, ... ]
+  }
+}

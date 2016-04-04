@@ -1,0 +1,30 @@
+{
+   "Type" : "AWS::EC2::Instance",
+   "Properties" : {
+      "AvailabilityZone" : String,
+      "BlockDeviceMappings" : [ EC2 Block Device Mapping, ... ],
+      "DisableApiTermination" : Boolean,
+      "EbsOptimized" : Boolean,
+      "IamInstanceProfile" : String,
+      "ImageId" : String,
+      "InstanceInitiatedShutdownBehavior" : String,
+      "InstanceType" : String,
+      "KernelId" : String,
+      "KeyName" : String,
+      "Monitoring" : Boolean,
+      "NetworkInterfaces" : [ EC2 Network Interface, ... ],
+      "PlacementGroupName" : String,
+      "PrivateIpAddress" : String,
+      "RamdiskId" : String,
+      "SecurityGroupIds" : [ String, ... ],
+      "SecurityGroups" : [ String, ... ],
+      "SourceDestCheck" : Boolean,
+      "SsmAssociations" : [ SSMAssociation, ... ]
+      "SubnetId" : String,
+      "Tags" : [ Resource Tag, ... ],
+      "Tenancy" : String,
+      "UserData" : String,
+      "Volumes" : [ EC2 MountPoint, ... ],
+      "AdditionalInfo" : String
+   }
+}

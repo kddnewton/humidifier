@@ -1,0 +1,12 @@
+{
+   "Type": "AWS::SQS::Queue",
+   "Properties": {
+      "DelaySeconds": Integer,
+      "MaximumMessageSize": Integer,
+      "MessageRetentionPeriod": Integer,
+      "QueueName": String,
+      "ReceiveMessageWaitTimeSeconds": Integer,
+      "RedrivePolicy": RedrivePolicy,
+      "VisibilityTimeout": Integer
+   }
+}

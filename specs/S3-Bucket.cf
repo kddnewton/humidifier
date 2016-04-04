@@ -1,0 +1,15 @@
+{
+  "Type" : "AWS::S3::Bucket",
+  "Properties" : {
+    "AccessControl" : String,
+    "BucketName" : String,
+    "CorsConfiguration" : CORS Configuration,
+    "LifecycleConfiguration" : Lifecycle Configuration,
+    "LoggingConfiguration" : Logging Configuration,
+    "NotificationConfiguration" : Notification Configuration,
+    "ReplicationConfiguration" : Replication Configuration,
+    "Tags" : [ Resource Tag, ... ],
+    "VersioningConfiguration" : Versioning Configuration,
+    "WebsiteConfiguration" : Website Configuration Type
+  }
+}

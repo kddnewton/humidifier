@@ -1,0 +1,11 @@
+{
+   "Type" : "AWS::EC2::DHCPOptions",
+   "Properties" : {
+      "DomainName" : String,
+      "DomainNameServers" : [ String, ... ],
+      "NetbiosNameServers" : [ String, ... ],
+      "NetbiosNodeType" : Number,
+      "NtpServers" : [ String, ... ],
+      "Tags" : [ Resource Tag, ... ]
+   }
+}

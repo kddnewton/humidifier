@@ -1,0 +1,9 @@
+{
+   "Type": "AWS::RDS::DBParameterGroup",
+   "Properties" : {
+      "Description" : String,
+      "Family" : String,
+      "Parameters" : DBParameters,
+      "Tags" : [ Resource Tag, ... ]
+   }
+}

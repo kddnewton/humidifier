@@ -1,0 +1,7 @@
+{
+  "Type" : "AWS::ECR::Repository",
+  "Properties" : {
+    "RepositoryName" : String,
+    "RepositoryPolicyText" : JSON object
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "Type" : "AWS::EFS::FileSystem",
+  "Properties" : {
+    "FileSystemTags" : [ FileSystemTags, ... ]
+  }
+}

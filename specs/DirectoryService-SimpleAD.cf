@@ -1,0 +1,13 @@
+{
+  "Type" : "AWS::DirectoryService::SimpleAD",
+  "Properties" : {
+    "CreateAlias" : Boolean,
+    "Description" : String,
+    "EnableSso" : Boolean,
+    "Name" : String,
+    "Password" : String,
+    "ShortName" : String,
+    "Size" : String,
+    "VpcSettings" : VpcSettings
+  }
+}

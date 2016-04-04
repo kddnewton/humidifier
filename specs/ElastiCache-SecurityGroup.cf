@@ -1,0 +1,7 @@
+{
+  "Type" : "AWS::ElastiCache::SecurityGroup",
+  "Properties" :
+  {
+    "Description" : String
+  }
+}

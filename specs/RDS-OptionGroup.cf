@@ -1,0 +1,10 @@
+{
+   "Type": "AWS::RDS::OptionGroup",
+   "Properties" : {
+      "EngineName" : String,
+      "MajorEngineVersion" : String,
+      "OptionGroupDescription" : String,
+      "OptionConfigurations" : [ OptionConfigurations, ... ],
+      "Tags" : [ Resource Tag, ... ]
+   }
+}

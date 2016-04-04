@@ -1,0 +1,10 @@
+{
+   "Type" : "AWS::EC2::Subnet",
+   "Properties" : {
+      "AvailabilityZone" : String,
+      "CidrBlock" : String,
+      "MapPublicIpOnLaunch" : Boolean,
+      "Tags" : [ Resource Tag, ... ],
+      "VpcId" : { "Ref" : String }
+   }
+}

@@ -1,0 +1,14 @@
+{
+  "Type" : "AWS::EMR::InstanceGroupConfig",
+  "Properties" : {
+    "BidPrice" : String,
+    "Configurations" : [ Configuration, ... ],
+    "EbsConfiguration" : EBSConfiguration,
+    "InstanceCount" : Integer,
+    "InstanceRole" : String,
+    "InstanceType" : String,
+    "JobFlowId": String,
+    "Market" : String,
+    "Name" : String
+  }
+}

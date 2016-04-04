@@ -1,0 +1,12 @@
+{
+  "Type" : "AWS::EC2::Route",
+  "Properties" : {
+    "DestinationCidrBlock" : String,
+    "GatewayId" : String,
+    "InstanceId" : String,
+    "NatGatewayId" : String,
+    "NetworkInterfaceId" : String,
+    "RouteTableId" : String,
+    "VpcPeeringConnectionId" : String
+  }
+}

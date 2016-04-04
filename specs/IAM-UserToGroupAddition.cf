@@ -1,0 +1,7 @@
+{
+   "Type": "AWS::IAM::UserToGroupAddition",
+   "Properties": {
+      "GroupName": String,
+      "Users": [ User1, ... ]
+   }
+}

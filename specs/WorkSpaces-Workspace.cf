@@ -1,0 +1,11 @@
+{
+  "Type" : "AWS::WorkSpaces::Workspace",
+  "Properties" : {
+    "BundleId" : String,
+    "DirectoryId" : String,
+    "UserName" : String,
+    "RootVolumeEncryptionEnabled" : Boolean,
+    "UserVolumeEncryptionEnabled" : Boolean,
+    "VolumeEncryptionKey" : String
+  }
+}

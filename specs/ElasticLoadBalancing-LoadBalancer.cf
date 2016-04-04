@@ -1,0 +1,21 @@
+{
+   "Type": "AWS::ElasticLoadBalancing::LoadBalancer",
+   "Properties": {
+      "AccessLoggingPolicy" : AccessLoggingPolicy,
+      "AppCookieStickinessPolicy" : [ AppCookieStickinessPolicy, ... ],
+      "AvailabilityZones" : [ String, ... ],
+      "ConnectionDrainingPolicy" : ConnectionDrainingPolicy,
+      "ConnectionSettings" : ConnectionSettings,
+      "CrossZone" : Boolean,
+      "HealthCheck" : HealthCheck,
+      "Instances" : [ String, ... ],
+      "LBCookieStickinessPolicy" : [ LBCookieStickinessPolicy, ... ],
+      "LoadBalancerName" : String,
+      "Listeners" : [ Listener, ... ],
+      "Policies" : [ ElasticLoadBalancing Policy, ... ],
+      "Scheme" : String,
+      "SecurityGroups" : [ Security Group, ... ],
+      "Subnets" : [ String, ... ],
+      "Tags" : [ Resource Tag, ... ]
+   }
+}

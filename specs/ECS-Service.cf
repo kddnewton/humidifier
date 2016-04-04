@@ -1,0 +1,10 @@
+{
+  "Type" : "AWS::ECS::Service",
+  "Properties" : {
+    "Cluster" : String,
+    "DesiredCount" : Integer,
+    "LoadBalancers" : [ Load Balancer Objects, ... ],
+    "Role" : String,
+    "TaskDefinition" : String
+  }
+}
