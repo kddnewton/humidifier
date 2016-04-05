@@ -20,7 +20,7 @@ module AwsCF
       end
     end
 
-    def respond_to_missing?(name, include_private = false)
+    def respond_to_missing?(name, *)
       sname = name.to_s
       (self.class.props.keys & [sname, sname[0..-2]]).any? || super
     end
