@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'aws_cf'
-
 require 'fileutils'
 require 'net/http'
 require 'nokogiri'
 require 'uri'
+
+FileUtils.rm(Dir.glob(File.join('specs', '*')))
 
 def get_url(page)
   base_url = 'http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/'
