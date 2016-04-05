@@ -3,8 +3,9 @@ module AwsCF
 
     attr_accessor :properties
 
-    def initialize
+    def initialize(properties = {})
       self.properties = {}
+      update(properties)
     end
 
     def method_missing(name, *args)
@@ -14,10 +15,8 @@ module AwsCF
         super
       elsif self.class.props.key?(sname)
         properties[sname]
-      elsif !self.class.props[sname[0..-2]].valid?(args.first)
-        fail ArgumentError, "Invalid value for #{sname[0..-2]}: #{args.first.inspect}"
       else
-        properties[sname[0..-2]] = args.first
+        update_property(sname[0..-2], args.first)
       end
     end
 
@@ -31,7 +30,18 @@ module AwsCF
         self.class.props[key].to_cf(value)
       end.to_h
 
-      JSON.pretty_generate({ 'Type' => self.class.aws_name, 'Properties' => props_cf })
+      { 'Type' => self.class.aws_name, 'Properties' => props_cf }
+    end
+
+    def update(properties)
+      properties.each { |property, value| update_property(property.to_s, value) }
+    end
+
+    def update_property(property, value)
+      unless self.class.props[property].valid?(value)
+        fail ArgumentError, "Invalid value for #{property}: #{value.inspect}"
+      end
+      properties[property] = value
     end
 
     class << self
