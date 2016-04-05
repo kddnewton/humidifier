@@ -13,9 +13,8 @@ module AwsCF
     end
 
     def to_cf
-      cf = { 'AWSTemplateFormatVersion' => '2010-09-09' }
-      cf['Description'] = description if description
       cf['Resources'] = resources.map { |name, resource| [name, resource.to_cf] }.to_h
+      cf['Description'] = description if description
       JSON.pretty_generate(cf)
     end
   end
