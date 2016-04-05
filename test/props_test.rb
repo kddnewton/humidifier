@@ -23,7 +23,6 @@ class PropsTest < Minitest::Test
   def test_array
     prop = AwsCF::Props.from('"ArrayKey" : [ String ]')
     assert_kind_of AwsCF::Props::ArrayProp, prop
-    assert_kind_of AwsCF::Props::StringProp, prop.sub_prop
     assert_equal 'ArrayKey', prop.key
   end
 

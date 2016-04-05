@@ -45,7 +45,7 @@ module AwsCF
     end
 
     class << self
-      attr_accessor :aws_name, :props
+      attr_accessor :aws_name, :props, :registry
 
       def register(group, resource, spec)
         parser = Parser.parse(spec)
@@ -53,10 +53,12 @@ module AwsCF
 
         resource_class = Class.new(Resource)
         resource_class.props = parser.props
-        resource_class.aws_name = "AWS::#{group}::#{resource}"
+        resource_class.aws_name = (aws_name = "AWS::#{group}::#{resource}")
 
         AwsCF.const_set(group, Module.new) unless AwsCF.const_defined?(group)
         AwsCF.const_get(group).const_set(resource, resource_class)
+
+        (self.registry ||= {})[aws_name] = resource_class
       end
     end
   end
