@@ -4,6 +4,7 @@ require 'pathname'
 require 'aws_cf/parser'
 require 'aws_cf/props'
 require 'aws_cf/resource'
+require 'aws_cf/stack'
 require 'aws_cf/version'
 
 Dir[File.expand_path(File.join('..', '..', 'specs', '*'), __FILE__)].each do |filepath|

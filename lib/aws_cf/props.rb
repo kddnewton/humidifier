@@ -13,9 +13,7 @@ module AwsCF
       when 'Integer' then IntegerProp.new(key: key)
       when 'String' then StringProp.new(key: key)
       when /\[ (.*?),.*?\]/ then ArrayProp.new(key: key, spec: $1)
-      else
-        StringProp.new(key: key)
-        #TODO fail ArgumentError, "Invalid spec: #{spec_line}"
+      else JSONProp.new(key: key)
       end
     end
   end
@@ -24,5 +22,6 @@ end
 require 'aws_cf/props/base'
 require 'aws_cf/props/array_prop'
 require 'aws_cf/props/boolean_prop'
+require 'aws_cf/props/json_prop'
 require 'aws_cf/props/integer_prop'
 require 'aws_cf/props/string_prop'
