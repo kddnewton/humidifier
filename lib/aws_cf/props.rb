@@ -12,7 +12,7 @@ module AwsCF
       when 'Boolean' then BooleanProp.new(key: key)
       when 'Integer' then IntegerProp.new(key: key)
       when 'String' then StringProp.new(key: key)
-      when /\[ (.*?),.*?\]/ then ArrayProp.new(key: key, spec: $1)
+      when /\[ (.*?)[, \.]+\]/ then ArrayProp.new(key: key, spec: $1)
       else JSONProp.new(key: key)
       end
     end
