@@ -14,7 +14,7 @@ module AwsCF
       end
 
       def to_cf(value)
-        [key, value]
+        [key, value.is_a?(Ref) ? value.to_cf : value]
       end
     end
 
@@ -44,7 +44,7 @@ module AwsCF
 
     class StringProp < Base
       def valid?(value)
-        value.is_a?(String)
+        value.is_a?(String) || value.is_a?(Ref)
       end
     end
 

@@ -7,6 +7,10 @@ module Props
       assert AwsCF::Props::StringProp.new.valid?('value')
     end
 
+    def test_takes_ref
+      assert AwsCF::Props::StringProp.new.valid?(AwsCF::Ref.new(Object.new))
+    end
+
     def test_rejects_other_values
       refute AwsCF::Props::StringProp.new.valid?(Object.new)
       refute AwsCF::Props::StringProp.new.valid?([])
