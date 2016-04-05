@@ -2,8 +2,8 @@ require 'test_helper'
 
 class ResourceTest < Minitest::Test
   AwsCF::Resource.props = {
-    'one' => AwsCF::Props::StringProp.new(key: 'One'),
-    'two' => AwsCF::Props::IntegerProp.new(key: 'Two')
+    'one' => AwsCF::Props::StringProp.new('One'),
+    'two' => AwsCF::Props::IntegerProp.new('Two')
   }
   AwsCF::Resource.aws_name = 'AWS::Resource'
 
