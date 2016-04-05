@@ -1,5 +1,7 @@
 # AwsCF
 
+[![Build Status](https://travis-ci.com/localytics/aws_cf.svg?token=kQUiABmGkzyHdJdMnCnv&branch=master)](https://travis-ci.com/localytics/aws_cf)
+
 Build CloudFormation templates programmatically
 
 ## Example
