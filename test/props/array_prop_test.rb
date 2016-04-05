@@ -9,7 +9,7 @@ module Props
 
     def test_rejects_other_values
       refute build.valid?(Object.new)
-      refute build.valid?(['one', 'two', 3])
+      refute build.valid?(1)
     end
 
     private
