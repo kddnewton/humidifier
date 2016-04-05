@@ -13,7 +13,7 @@ module AwsCF
     end
 
     def to_cf
-      cf['Resources'] = resources.map { |name, resource| [name, resource.to_cf] }.to_h
+      cf = { 'Resources' => resources.map { |name, resource| [name, resource.to_cf] }.to_h }
       cf['Description'] = description if description
       JSON.pretty_generate(cf)
     end
