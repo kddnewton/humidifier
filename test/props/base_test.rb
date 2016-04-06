@@ -13,10 +13,13 @@ module Props
       assert_equal ['MyTestKey', value], base.to_cf(value)
     end
 
-    def test_to_cf_ref
+    def test_to_cf_nested
       base = AwsCF::Props::Base.new('MyTestKey')
-      reference = Object.new
-      assert_equal ['MyTestKey', { 'Ref' => reference }], base.to_cf(AwsCF::Ref.new(reference))
+      reference1, reference2 = Object.new, Object.new
+      value = [{ 'Container' => AwsCF::Ref.new(reference1) }, AwsCF::Ref.new(reference2)]
+
+      expected = ['MyTestKey', [{ 'Container' => { 'Ref' => reference1 } }, { 'Ref' => reference2 }]]
+      assert_equal expected, base.to_cf(value)
     end
   end
 end
