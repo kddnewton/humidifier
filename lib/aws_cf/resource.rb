@@ -3,9 +3,9 @@ module AwsCF
 
     attr_accessor :properties
 
-    def initialize(properties = {})
+    def initialize(properties = {}, raw = false)
       self.properties = {}
-      update(properties)
+      update(properties, raw)
     end
 
     def method_missing(name, *args)
@@ -33,11 +33,12 @@ module AwsCF
       { 'Type' => self.class.aws_name, 'Properties' => props_cf }
     end
 
-    def update(properties)
-      properties.each { |property, value| update_property(property.to_s, value) }
+    def update(properties, raw = false)
+      properties.each { |property, value| update_property(property.to_s, value, raw) }
     end
 
-    def update_property(property, value)
+    def update_property(property, value, raw = false)
+      property = Props.convert(property) if raw
       unless self.class.props[property].valid?(value)
         fail ArgumentError, "Invalid value for #{property}: #{value.inspect}"
       end
