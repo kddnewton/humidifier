@@ -38,7 +38,11 @@ module AwsCF
     end
 
     def update_property(property, value, raw = false)
-      property = Props.convert(property) if raw
+      if raw
+        property = Props.convert(property)
+        value = self.class.props[property].convert(value) if self.class.props[property].convertable?
+      end
+
       unless self.class.props[property].valid?(value)
         fail ArgumentError, "Invalid value for #{property}: #{value.inspect}"
       end

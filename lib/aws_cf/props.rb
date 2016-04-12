@@ -9,6 +9,10 @@ module AwsCF
         self.key = key
       end
 
+      def convertable?
+        respond_to?(:convert)
+      end
+
       def name
         @name ||= Props.convert(key)
       end
@@ -36,6 +40,15 @@ module AwsCF
     end
 
     class BooleanProp < Base
+      def convert(value)
+        if %w[true false].include?(value)
+          puts "Property #{name} should be a boolean, not a string"
+          value == 'true'
+        else
+          value
+        end
+      end
+
       def valid?(value)
         value.is_a?(TrueClass) || value.is_a?(FalseClass)
       end
@@ -48,12 +61,22 @@ module AwsCF
     end
 
     class IntegerProp < Base
+      def convert(value)
+        puts "Property #{name} should be an integer" unless valid?(value)
+        value.to_i
+      end
+
       def valid?(value)
         value.is_a?(Fixnum)
       end
     end
 
     class StringProp < Base
+      def convert(value)
+        puts "Property #{name} should be a string" unless valid?(value)
+        value.is_a?(Ref) ? value : value.to_s
+      end
+
       def valid?(value)
         value.is_a?(String) || value.is_a?(Ref)
       end
