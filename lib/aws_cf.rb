@@ -12,6 +12,7 @@ require 'aws_cf/version'
 
 module AwsCF
   class << self
+    # convenience method for calling cloudformation functions
     def fn
       Fn
     end
