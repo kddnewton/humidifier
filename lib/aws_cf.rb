@@ -1,17 +1,25 @@
 require 'json'
 require 'pathname'
 
+require 'aws_cf/fn'
+require 'aws_cf/ref'
+
 require 'aws_cf/parser'
 require 'aws_cf/props'
-require 'aws_cf/ref'
 require 'aws_cf/resource'
 require 'aws_cf/stack'
 require 'aws_cf/version'
 
 module AwsCF
-  # convenience method for creating references
-  def self.ref(reference)
-    AwsCF::Ref.new(reference)
+  class << self
+    def fn
+      Fn
+    end
+
+    # convenience method for creating references
+    def ref(reference)
+      Ref.new(reference)
+    end
   end
 end
 
