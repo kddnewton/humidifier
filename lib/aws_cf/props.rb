@@ -27,7 +27,7 @@ module AwsCF
           case node
           when Hash then node.map { |key, value| [key, process(value)] }.to_h
           when Array then node.map { |value| process(value) }
-          when Ref then node.to_cf
+          when Ref, Fn then process(node.to_cf)
           else node
           end
         end

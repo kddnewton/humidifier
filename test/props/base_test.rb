@@ -16,9 +16,9 @@ module Props
     def test_to_cf_nested
       base = AwsCF::Props::Base.new('MyTestKey')
       reference1, reference2 = Object.new, Object.new
-      value = [{ 'Container' => AwsCF::Ref.new(reference1) }, AwsCF::Ref.new(reference2)]
+      value = [{ 'Container' => AwsCF.ref(reference1) }, AwsCF.fn.base64(AwsCF.ref(reference2))]
 
-      expected = ['MyTestKey', [{ 'Container' => { 'Ref' => reference1 } }, { 'Ref' => reference2 }]]
+      expected = ['MyTestKey', [{ 'Container' => { 'Ref' => reference1 } }, { 'Fn::Base64' => { 'Ref' => reference2 } }]]
       assert_equal expected, base.to_cf(value)
     end
   end
