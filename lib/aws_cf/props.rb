@@ -42,7 +42,7 @@ module AwsCF
     class BooleanProp < Base
       def convert(value)
         if %w[true false].include?(value)
-          puts "Property #{name} should be a boolean, not a string"
+          puts "WARNING: Property #{name} should be a boolean, not a string"
           value == 'true'
         else
           value
@@ -62,7 +62,7 @@ module AwsCF
 
     class IntegerProp < Base
       def convert(value)
-        puts "Property #{name} should be an integer" unless valid?(value)
+        puts "WARNING: Property #{name} should be an integer" unless valid?(value)
         value.to_i
       end
 
@@ -72,13 +72,15 @@ module AwsCF
     end
 
     class StringProp < Base
+      WHITELIST = [Ref, Fn]
+
       def convert(value)
-        puts "Property #{name} should be a string" unless valid?(value)
-        value.is_a?(Ref) ? value : value.to_s
+        puts "WARNING: Property #{name} should be a string" unless valid?(value)
+        WHITELIST.any? { |clazz| value.is_a?(clazz) } ? value : value.to_s
       end
 
       def valid?(value)
-        value.is_a?(String) || value.is_a?(Ref)
+        (WHITELIST + [String]).any? { |clazz| value.is_a?(clazz) }
       end
     end
 
