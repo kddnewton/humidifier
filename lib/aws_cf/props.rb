@@ -10,7 +10,7 @@ module AwsCF
       end
 
       def name
-        @name ||= key && key.gsub(/([A-Z]+)([A-Z]|\z)/) { "#{$1.capitalize}#{$2}" }.gsub(/(.)([A-Z])/, '\1_\2').downcase
+        @name ||= Props.convert(key)
       end
 
       def to_cf(value)
@@ -59,20 +59,26 @@ module AwsCF
       end
     end
 
-    def self.from(spec_line)
-      if spec_line.include?(':')
-        key, type = spec_line.strip.gsub(/,\z/, '').split(': ').map(&:strip)
-        key = key[1..-2]
-      else
-        key, type = nil, spec_line.strip
+    class << self
+      def convert(key)
+        key.gsub(/([A-Z]+)([A-Z]|\z)/) { "#{$1.capitalize}#{$2}" }.gsub(/(.)([A-Z])/, '\1_\2').downcase if key
       end
 
-      case type
-      when 'Boolean' then BooleanProp.new(key)
-      when 'Integer' then IntegerProp.new(key)
-      when 'String' then StringProp.new(key)
-      when /\[.*?\]/ then ArrayProp.new(key)
-      else JSONProp.new(key)
+      def from(spec_line)
+        if spec_line.include?(':')
+          key, type = spec_line.strip.gsub(/,\z/, '').split(': ').map(&:strip)
+          key = key[1..-2]
+        else
+          key, type = nil, spec_line.strip
+        end
+
+        case type
+        when 'Boolean' then BooleanProp.new(key)
+        when 'Integer' then IntegerProp.new(key)
+        when 'String' then StringProp.new(key)
+        when /\[.*?\]/ then ArrayProp.new(key)
+        else JSONProp.new(key)
+        end
       end
     end
   end
