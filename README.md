@@ -1,6 +1,7 @@
 # AwsCF
 
 [![Build Status](https://travis-ci.com/localytics/aws_cf.svg?token=kQUiABmGkzyHdJdMnCnv&branch=master)](https://travis-ci.com/localytics/aws_cf)
+[![Coverage Status](https://coveralls.io/repos/github/localytics/aws_cf/badge.svg?branch=master&t=xjMLdI)](https://coveralls.io/github/localytics/aws_cf?branch=master)
 
 Build CloudFormation templates programmatically
 
