@@ -1,4 +1,4 @@
-module AwsCF
+module Humidifier
   class Resource
 
     attr_accessor :properties
@@ -66,8 +66,8 @@ module AwsCF
         resource_class.props = parser.props
         resource_class.aws_name = (aws_name = "AWS::#{group}::#{resource}")
 
-        AwsCF.const_set(group, Module.new) unless AwsCF.const_defined?(group)
-        AwsCF.const_get(group).const_set(resource, resource_class)
+        Humidifier.const_set(group, Module.new) unless Humidifier.const_defined?(group)
+        Humidifier.const_get(group).const_set(resource, resource_class)
 
         (self.registry ||= {})[aws_name] = resource_class
       end

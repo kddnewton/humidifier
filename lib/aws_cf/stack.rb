@@ -1,4 +1,4 @@
-module AwsCF
+module Humidifier
   class Stack
 
     attr_accessor :description, :resources

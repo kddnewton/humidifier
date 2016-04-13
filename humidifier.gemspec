@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'aws_cf/version'
+require 'humidifier/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'aws_cf'
-  spec.version       = AwsCF::VERSION
+  spec.version       = Humidifier::VERSION
   spec.authors       = ['Localytics']
   spec.email         = ['techops@localytics.com']
 
   spec.summary       = 'Build CloudFormation templates programmatically'
-  spec.homepage      = 'https://github.com/localytics/aws_cf'
+  spec.homepage      = 'https://github.com/localytics/humidifier'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'

@@ -1,4 +1,4 @@
-module AwsCF
+module Humidifier
   module Props
     class Base
 

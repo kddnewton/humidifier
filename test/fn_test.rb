@@ -4,7 +4,7 @@ class FnTest < Minitest::Test
 
   def test_base64
     reference = Object.new
-    fn = AwsCF::Fn.base64(reference)
+    fn = Humidifier::Fn.base64(reference)
 
     assert_equal ({ 'Fn::Base64' => reference }), fn.to_cf
   end

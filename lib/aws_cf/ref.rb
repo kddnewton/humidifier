@@ -1,4 +1,4 @@
-module AwsCF
+module Humidifier
   class Ref
 
     attr_accessor :reference

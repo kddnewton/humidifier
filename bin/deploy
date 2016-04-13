@@ -11,14 +11,14 @@ ARTIFACTORY_PASSWORD=$2
 GEM_HOST=localytics.artifactoryonline.com/localytics/api/gems/ruby-gems-local
 
 function deploy {
-  gem build aws_cf.gemspec
+  gem build humidifier.gemspec
   gem source -a "https://${ARTIFACTORY_USERNAME}:${ARTIFACTORY_PASSWORD}@${GEM_HOST}/"
 
   curl "https://${GEM_HOST}/api/v1/api_key.yaml" -u "${ARTIFACTORY_USERNAME}:${ARTIFACTORY_PASSWORD}" > ~/.gem/credentials
   chmod 0600 ~/.gem/credentials
-  gem push aws_cf*.gem --host "https://${GEM_HOST}"
+  gem push humidifier*.gem --host "https://${GEM_HOST}"
 
-  gem_version=$(ruby -Ilib -e "require 'aws_cf/version'; puts AwsCF::VERSION")
+  gem_version=$(ruby -Ilib -e "require 'humidifier/version'; puts Humidifier::VERSION")
   git config --global user.email "techops-team+travis@localytics.com"
   git config --global user.name "Travis CI"
   git tag -a "$gem_version" -m "Version $gem_version"

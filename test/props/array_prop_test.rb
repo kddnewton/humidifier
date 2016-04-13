@@ -15,7 +15,7 @@ module Props
     private
 
       def build
-        AwsCF::Props::ArrayProp.new(key: 'MyTestKey', spec: 'String')
+        Humidifier::Props::ArrayProp.new(key: 'MyTestKey', spec: 'String')
       end
   end
 end

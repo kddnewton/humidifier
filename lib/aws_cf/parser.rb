@@ -1,4 +1,4 @@
-module AwsCF
+module Humidifier
   class Parser
 
     attr_accessor :props, :spec
