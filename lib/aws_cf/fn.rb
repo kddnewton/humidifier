@@ -1,4 +1,4 @@
-module AwsCF
+module Humidifier
   class Fn
 
     attr_accessor :name, :value

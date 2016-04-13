@@ -1,11 +1,11 @@
 require 'test_helper'
 
 class ResourceTest < Minitest::Test
-  AwsCF::Resource.props = {
-    'one' => AwsCF::Props::StringProp.new('One'),
-    'two' => AwsCF::Props::IntegerProp.new('Two')
+  Humidifier::Resource.props = {
+    'one' => Humidifier::Props::StringProp.new('One'),
+    'two' => Humidifier::Props::IntegerProp.new('Two')
   }
-  AwsCF::Resource.aws_name = 'AWS::Resource'
+  Humidifier::Resource.aws_name = 'AWS::Resource'
 
   def test_method_missing_reader
     resource = build
@@ -20,7 +20,7 @@ class ResourceTest < Minitest::Test
 
   def test_respond_to_missing?
     resource = build
-    AwsCF::Resource.props.keys.each do |key|
+    Humidifier::Resource.props.keys.each do |key|
       assert resource.respond_to?(key)
       assert resource.respond_to?("#{key}=")
     end
@@ -39,7 +39,7 @@ class ResourceTest < Minitest::Test
   end
 
   def test_initialize_raw
-    resource = AwsCF::Resource.new({ 'One' => 'one', 'Two' => 2 }, true)
+    resource = Humidifier::Resource.new({ 'One' => 'one', 'Two' => 2 }, true)
     assert_equal ({ 'one' => 'one', 'two' => 2 }), resource.properties
   end
 
@@ -80,13 +80,13 @@ class ResourceTest < Minitest::Test
   end
 
   def test_has_prop?
-    assert AwsCF::Resource.has_prop?('one')
-    refute AwsCF::Resource.has_prop?('three')
+    assert Humidifier::Resource.has_prop?('one')
+    refute Humidifier::Resource.has_prop?('three')
   end
 
   private
 
     def build
-      AwsCF::Resource.new(one: 'one', two: 2)
+      Humidifier::Resource.new(one: 'one', two: 2)
     end
 end

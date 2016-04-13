@@ -9,7 +9,7 @@ class ParserTest < Minitest::Test
   end
 
   def test_parse
-    parser = AwsCF::Parser.new(%w[one two three].join("\n"))
+    parser = Humidifier::Parser.new(%w[one two three].join("\n"))
     with_doubled_props do |double|
       assert_equal ({ 'Prop1' => double, 'Prop2' => double, 'Prop3' => double }), parser.parse
     end
@@ -17,7 +17,7 @@ class ParserTest < Minitest::Test
 
   def test_class_parse
     with_doubled_props do |double|
-      parser = AwsCF::Parser.parse('one')
+      parser = Humidifier::Parser.parse('one')
       assert_equal ({ 'Prop1' => double }), parser.props
     end
   end
@@ -26,7 +26,7 @@ class ParserTest < Minitest::Test
 
     def with_doubled_props
       double = PropDouble.new
-      AwsCF::Props.stub(:from, double) do
+      Humidifier::Props.stub(:from, double) do
         yield double
       end
     end
