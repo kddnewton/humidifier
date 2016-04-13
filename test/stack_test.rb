@@ -18,10 +18,12 @@ class StackTest < Minitest::Test
   end
 
   def test_to_cf
-    stack = Humidifier::Stack.new(resources: {
-      'One' => ResourceDouble.new('One'),
-      'Two' => ResourceDouble.new('Two')
-    })
+    stack = Humidifier::Stack.new(
+      resources: {
+        'One' => ResourceDouble.new('One'),
+        'Two' => ResourceDouble.new('Two')
+      }
+    )
 
     assert_equal ({ 'Resources' => { 'One' => 'One', 'Two' => 'Two' } }), JSON.parse(stack.to_cf)
   end

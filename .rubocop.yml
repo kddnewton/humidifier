@@ -1,0 +1,24 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+
+# Increase to github width
+Metrics/LineLength:
+  Max: 117
+
+# Ignore because whitespace is good
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+# Ignore because whitespace is good
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+# Useful and concise in gsub statements
+Style/PerlBackrefs:
+  Enabled: false
+
+# Prefer [] to () default
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%w': '[]'

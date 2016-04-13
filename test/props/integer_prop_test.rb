@@ -19,10 +19,10 @@ module Props
     end
 
     def test_convert_invalid
-      out, err = capture_io do
+      out, * = capture_io do
         assert_equal 6, Humidifier::Props::IntegerProp.new('Test').convert('6')
       end
-      assert_match /WARNING: Property test/, out
+      assert_match(/WARNING: Property test/, out)
     end
   end
 end

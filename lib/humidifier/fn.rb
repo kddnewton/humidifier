@@ -1,4 +1,6 @@
 module Humidifier
+
+  # Builds CFN function calls
   class Fn
 
     attr_accessor :name, :value

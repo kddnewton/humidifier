@@ -21,10 +21,10 @@ module Props
     end
 
     def test_convert_invalid
-      out, err = capture_io do
+      out, * = capture_io do
         assert_equal '5', Humidifier::Props::StringProp.new('Test').convert(5)
       end
-      assert_match /WARNING: Property test/, out
+      assert_match(/WARNING: Property test/, out)
     end
   end
 end

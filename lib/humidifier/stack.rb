@@ -1,4 +1,6 @@
 module Humidifier
+
+  # Represents a CFN stack
   class Stack
 
     attr_accessor :description, :resources

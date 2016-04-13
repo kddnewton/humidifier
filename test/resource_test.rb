@@ -79,14 +79,14 @@ class ResourceTest < Minitest::Test
     end
   end
 
-  def test_has_prop?
-    assert Humidifier::Resource.has_prop?('one')
-    refute Humidifier::Resource.has_prop?('three')
+  def test_prop?
+    assert Humidifier::Resource.prop?('one')
+    refute Humidifier::Resource.prop?('three')
   end
 
   private
 
-    def build
-      Humidifier::Resource.new(one: 'one', two: 2)
-    end
+  def build
+    Humidifier::Resource.new(one: 'one', two: 2)
+  end
 end

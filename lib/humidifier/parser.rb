@@ -1,4 +1,6 @@
 module Humidifier
+
+  # Parses CFN specs
   class Parser
 
     attr_accessor :props, :spec
