@@ -1,14 +1,14 @@
 require 'json'
 require 'pathname'
 
-require 'aws_cf/fn'
-require 'aws_cf/ref'
+require 'humidifier/fn'
+require 'humidifier/ref'
 
-require 'aws_cf/parser'
-require 'aws_cf/props'
-require 'aws_cf/resource'
-require 'aws_cf/stack'
-require 'aws_cf/version'
+require 'humidifier/parser'
+require 'humidifier/props'
+require 'humidifier/resource'
+require 'humidifier/stack'
+require 'humidifier/version'
 
 module Humidifier
   class << self

@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'humidifier/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'aws_cf'
+  spec.name          = 'humidifier'
   spec.version       = Humidifier::VERSION
   spec.authors       = ['Localytics']
   spec.email         = ['techops@localytics.com']
