@@ -17,5 +17,16 @@ module Props
       refute Humidifier::Props::BooleanProp.new.valid?({})
       refute Humidifier::Props::BooleanProp.new.valid?(1)
     end
+
+    def test_convert_valid
+      assert Humidifier::Props::BooleanProp.new.convert(true)
+    end
+
+    def test_convert_invalid
+      out, err = capture_io do
+        assert Humidifier::Props::BooleanProp.new('Test').convert('true')
+      end
+      assert_match /WARNING: Property test/, out
+    end
   end
 end

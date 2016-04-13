@@ -2,6 +2,9 @@ require 'test_helper'
 
 module Props
   class BaseTest < Minitest::Test
+    class TestProp < Humidifier::Props::Base
+      def convert; end
+    end
 
     def test_name_conversion
       base = Humidifier::Props::Base.new('MyTestKey')
@@ -20,6 +23,11 @@ module Props
 
       expected = ['MyTestKey', [{ 'Container' => { 'Ref' => reference1 } }, { 'Fn::Base64' => { 'Ref' => reference2 } }]]
       assert_equal expected, base.to_cf(value)
+    end
+
+    def test_convertable?
+      refute Humidifier::Props::Base.new.convertable?
+      assert TestProp.new.convertable?
     end
   end
 end
