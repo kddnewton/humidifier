@@ -24,10 +24,10 @@ class ParserTest < Minitest::Test
 
   private
 
-    def with_doubled_props
-      double = PropDouble.new
-      Humidifier::Props.stub(:from, double) do
-        yield double
-      end
+  def with_doubled_props
+    double = PropDouble.new
+    Humidifier::Props.stub(:from, double) do
+      yield double
     end
+  end
 end

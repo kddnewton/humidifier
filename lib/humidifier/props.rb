@@ -1,5 +1,9 @@
 module Humidifier
+
+  # Container for property of CFN resources
   module Props
+
+    # Superclass for all CFN properties
     class Base
 
       attr_accessor :key
@@ -23,22 +27,24 @@ module Humidifier
 
       private
 
-        def process(node)
-          case node
-          when Hash then node.map { |key, value| [key, process(value)] }.to_h
-          when Array then node.map { |value| process(value) }
-          when Ref, Fn then process(node.to_cf)
-          else node
-          end
+      def process(node)
+        case node
+        when Hash then node.map { |key, value| [key, process(value)] }.to_h
+        when Array then node.map { |value| process(value) }
+        when Ref, Fn then process(node.to_cf)
+        else node
         end
+      end
     end
 
+    # An array property
     class ArrayProp < Base
       def valid?(value)
         value.is_a?(Array)
       end
     end
 
+    # A boolean property
     class BooleanProp < Base
       def convert(value)
         if %w[true false].include?(value)
@@ -54,12 +60,14 @@ module Humidifier
       end
     end
 
+    # A JSON property (and the default)
     class JSONProp < Base
       def valid?(value)
         value.is_a?(Hash)
       end
     end
 
+    # An integer property
     class IntegerProp < Base
       def convert(value)
         puts "WARNING: Property #{name} should be an integer" unless valid?(value)
@@ -71,8 +79,9 @@ module Humidifier
       end
     end
 
+    # A string property
     class StringProp < Base
-      WHITELIST = [Ref, Fn]
+      WHITELIST = [Ref, Fn].freeze
 
       def convert(value)
         puts "WARNING: Property #{name} should be a string" unless valid?(value)
@@ -90,12 +99,7 @@ module Humidifier
       end
 
       def from(spec_line)
-        if spec_line.include?(':')
-          key, type = spec_line.strip.gsub(/,\z/, '').split(': ').map(&:strip)
-          key = key[1..-2]
-        else
-          key, type = nil, spec_line.strip
-        end
+        key, type = parse(spec_line)
 
         case type
         when 'Boolean' then BooleanProp.new(key)
@@ -103,6 +107,15 @@ module Humidifier
         when 'String' then StringProp.new(key)
         when /\[.*?\]/ then ArrayProp.new(key)
         else JSONProp.new(key)
+        end
+      end
+
+      def parse(spec_line)
+        if spec_line.include?(':')
+          key, type = spec_line.strip.gsub(/,\z/, '').split(': ').map(&:strip)
+          [key[1..-2], type]
+        else
+          [nil, spec_line.strip]
         end
       end
     end
