@@ -38,11 +38,13 @@ module AwsCF
     end
 
     def update_property(property, value, raw = false)
-      if raw
-        property = Props.convert(property)
-        value = self.class.props[property].convert(value) if self.class.props[property].convertable?
+      property = Props.convert(property) if raw
+
+      unless self.class.has_prop?(property)
+        fail ArgumentError, "Attempting to set invalid property for #{self.class.name}: #{property}"
       end
 
+      value = self.class.props[property].convert(value) if raw && self.class.props[property].convertable?
       unless self.class.props[property].valid?(value)
         fail ArgumentError, "Invalid value for #{property}: #{value.inspect}"
       end
@@ -51,6 +53,10 @@ module AwsCF
 
     class << self
       attr_accessor :aws_name, :props, :registry
+
+      def has_prop?(prop)
+        props.key?(prop)
+      end
 
       def register(group, resource, spec)
         parser = Parser.parse(spec)

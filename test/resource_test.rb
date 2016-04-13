@@ -65,11 +65,23 @@ class ResourceTest < Minitest::Test
     assert_equal ({ 'one' => 'three', 'two' => 2 }), resource.properties
   end
 
-  def test_update_property_invalid
+  def test_update_property_invalid_property
+    resource = build
+    assert_raises ArgumentError do
+      resource.update_property('three', 3)
+    end
+  end
+
+  def test_update_property_invalid_value
     resource = build
     assert_raises ArgumentError do
       resource.update_property('one', 1)
     end
+  end
+
+  def test_has_prop?
+    assert AwsCF::Resource.has_prop?('one')
+    refute AwsCF::Resource.has_prop?('three')
   end
 
   private
