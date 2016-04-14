@@ -3,6 +3,7 @@ module Humidifier
   # Superclass for all AWS resources
   class Resource
 
+    extend PropertyMethods
     attr_accessor :properties
 
     def initialize(properties = {}, raw = false)
@@ -11,14 +12,14 @@ module Humidifier
     end
 
     def method_missing(name, *args)
-      sname = name.to_s
-
       if !valid_accessor?(name)
         super
-      elsif self.class.props.key?(sname)
-        properties[sname]
+      elsif self.class.prop?(name.to_s)
+        self.class.build_property_reader(name)
+        send(name)
       else
-        update_property(sname[0..-2], args.first)
+        self.class.build_property_writer(name)
+        send(name, args.first)
       end
     end
 
