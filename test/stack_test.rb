@@ -27,4 +27,15 @@ class StackTest < Minitest::Test
 
     assert_equal ({ 'Resources' => { 'One' => 'One', 'Two' => 'Two' } }), JSON.parse(stack.to_cf)
   end
+
+  def test_valid?
+    stack = Humidifier::Stack.new
+    mock = Minitest::Mock.new
+    mock.expect(:call, nil, [stack])
+
+    Humidifier::AWSShim.stub(:validate_stack, mock) do
+      stack.valid?
+    end
+    mock.verify
+  end
 end

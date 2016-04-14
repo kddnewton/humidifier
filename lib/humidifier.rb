@@ -4,6 +4,7 @@ require 'pathname'
 require 'humidifier/fn'
 require 'humidifier/ref'
 
+require 'humidifier/aws_shim'
 require 'humidifier/parser'
 require 'humidifier/props'
 require 'humidifier/resource'

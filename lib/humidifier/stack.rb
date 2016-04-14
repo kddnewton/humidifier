@@ -19,5 +19,9 @@ module Humidifier
       cf['Description'] = description if description
       JSON.pretty_generate(cf)
     end
+
+    def valid?
+      AWSShim.validate_stack(self)
+    end
   end
 end
