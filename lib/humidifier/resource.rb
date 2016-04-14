@@ -87,10 +87,10 @@ module Humidifier
       def build_class(aws_name, spec)
         Class.new(self) do
           self.aws_name = aws_name
-          self.props = spec.split("\n").map do |spec_line|
+          self.props = spec.split("\n").each_with_object({}) do |spec_line, props|
             prop = Props.from(spec_line)
-            [prop.name, prop]
-          end.to_h
+            props[prop.name] = prop unless prop.name.nil?
+          end
         end
       end
     end

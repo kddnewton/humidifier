@@ -27,3 +27,7 @@ The default rake task runs the tests. Coverage is reported on the command line, 
 
     $ bundle exec rake
     $ bundle exec rubocop
+
+## API Reference
+
+For a list of resources and their properties, see the [API reference](docs/api.md).
