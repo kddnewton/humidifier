@@ -21,26 +21,3 @@ Nokogiri::HTML(get_url('aws-template-resource-type-ref.html')).css('.highlights 
     file.write(contents.join("\n"))
   end
 end
-
-require 'humidifier'
-
-File.open('docs/api.md', 'w') do |file|
-  file.write("# API Reference\n\n")
-
-  Humidifier::Resource.registry.keys.sort.group_by { |name| name.split('::')[1] }.each do |module_name, aws_names|
-    file.write("- #{module_name}\n")
-    aws_names.each do |aws_name|
-      file.write("  - [#{aws_name.split('::').last}](##{aws_name.delete(':').downcase})\n")
-    end
-  end
-  file.write("\n")
-
-  Humidifier::Resource.registry.sort.each do |aws_name, clazz|
-    file.write("### #{aws_name}\n\n")
-    clazz.props.sort.each do |name, prop|
-      prop_type = prop.class.name.split('::').last.gsub(/Prop\z/, '')
-      file.write("* #{name.gsub('_', '\_')} (#{prop.key}: #{prop_type})\n")
-    end
-    file.write("\n")
-  end
-end

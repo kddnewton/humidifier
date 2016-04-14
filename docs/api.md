@@ -171,7 +171,7 @@
 - WorkSpaces
   - [Workspace](#awsworkspacesworkspace)
 
-### AWS::AutoScaling::AutoScalingGroup
+### Humidifier::AutoScaling::AutoScalingGroup
 
 * availability\_zones (AvailabilityZones: Array)
 * cooldown (Cooldown: String)
@@ -190,7 +190,7 @@
 * termination\_policies (TerminationPolicies: Array)
 * vpc\_zone\_identifier (VPCZoneIdentifier: Array)
 
-### AWS::AutoScaling::LaunchConfiguration
+### Humidifier::AutoScaling::LaunchConfiguration
 
 * associate\_public\_ip\_address (AssociatePublicIpAddress: Boolean)
 * block\_device\_mappings (BlockDeviceMappings: Array)
@@ -210,7 +210,7 @@
 * spot\_price (SpotPrice: String)
 * user\_data (UserData: String)
 
-### AWS::AutoScaling::LifecycleHook
+### Humidifier::AutoScaling::LifecycleHook
 
 * auto\_scaling\_group\_name (AutoScalingGroupName: String)
 * default\_result (DefaultResult: String)
@@ -220,7 +220,7 @@
 * notification\_target\_arn (NotificationTargetARN: String)
 * role\_arn (RoleARN: String)
 
-### AWS::AutoScaling::ScalingPolicy
+### Humidifier::AutoScaling::ScalingPolicy
 
 * adjustment\_type (AdjustmentType: String)
 * auto\_scaling\_group\_name (AutoScalingGroupName: String)
@@ -232,7 +232,7 @@
 * scaling\_adjustment (ScalingAdjustment: Integer)
 * step\_adjustments (StepAdjustments: Array)
 
-### AWS::AutoScaling::ScheduledAction
+### Humidifier::AutoScaling::ScheduledAction
 
 * auto\_scaling\_group\_name (AutoScalingGroupName: String)
 * desired\_capacity (DesiredCapacity: Integer)
@@ -242,11 +242,11 @@
 * recurrence (Recurrence: String)
 * start\_time (StartTime: JSON)
 
-### AWS::CloudFormation::CustomResource
+### Humidifier::CloudFormation::CustomResource
 
 * service\_token (ServiceToken: String)
 
-### AWS::CloudFormation::Stack
+### Humidifier::CloudFormation::Stack
 
 * notification\_ar\_ns (NotificationARNs: Array)
 * parameters (Parameters: JSON)
@@ -254,20 +254,20 @@
 * template\_url (TemplateURL: String)
 * timeout\_in\_minutes (TimeoutInMinutes: String)
 
-### AWS::CloudFormation::WaitCondition
+### Humidifier::CloudFormation::WaitCondition
 
 * count (Count: String)
 * handle (Handle: String)
 * timeout (Timeout: String)
 
-### AWS::CloudFormation::WaitConditionHandle
+### Humidifier::CloudFormation::WaitConditionHandle
 
 
-### AWS::CloudFront::Distribution
+### Humidifier::CloudFront::Distribution
 
 * distribution\_config (DistributionConfig: JSON)
 
-### AWS::CloudTrail::Trail
+### Humidifier::CloudTrail::Trail
 
 * cloud\_watch\_logs\_log\_group\_arn (CloudWatchLogsLogGroupArn: String)
 * cloud\_watch\_logs\_role\_arn (CloudWatchLogsRoleArn: String)
@@ -281,7 +281,7 @@
 * sns\_topic\_name (SnsTopicName: String)
 * tags (Tags: Array)
 
-### AWS::CloudWatch::Alarm
+### Humidifier::CloudWatch::Alarm
 
 * actions\_enabled (ActionsEnabled: Boolean)
 * alarm\_actions (AlarmActions: Array)
@@ -299,16 +299,16 @@
 * threshold (Threshold: String)
 * unit (Unit: String)
 
-### AWS::CodeDeploy::Application
+### Humidifier::CodeDeploy::Application
 
 * application\_name (ApplicationName: String)
 
-### AWS::CodeDeploy::DeploymentConfig
+### Humidifier::CodeDeploy::DeploymentConfig
 
 * deployment\_config\_name (DeploymentConfigName: String)
 * minimum\_healthy\_hosts (MinimumHealthyHosts: JSON)
 
-### AWS::CodeDeploy::DeploymentGroup
+### Humidifier::CodeDeploy::DeploymentGroup
 
 * application\_name (ApplicationName: String)
 * auto\_scaling\_groups (AutoScalingGroups: Array)
@@ -319,12 +319,12 @@
 * on\_premises\_instance\_tag\_filters (OnPremisesInstanceTagFilters: Array)
 * service\_role\_arn (ServiceRoleArn: String)
 
-### AWS::CodePipeline::CustomActionType
+### Humidifier::CodePipeline::CustomActionType
 
 * category (Category: String)
 * configuration\_properties (ConfigurationProperties: Array)
 
-### AWS::CodePipeline::Pipeline
+### Humidifier::CodePipeline::Pipeline
 
 * artifact\_store (ArtifactStore: JSON)
 * disable\_inbound\_stage\_transitions (DisableInboundStageTransitions: Array)
@@ -333,7 +333,7 @@
 * role\_arn (RoleArn: String)
 * stages (Stages: Array)
 
-### AWS::Config::ConfigRule
+### Humidifier::Config::ConfigRule
 
 * config\_rule\_name (ConfigRuleName: String)
 * description (Description: String)
@@ -342,17 +342,17 @@
 * scope (Scope: JSON)
 * source (Source: JSON)
 
-### AWS::Config::ConfigurationRecorder
+### Humidifier::Config::ConfigurationRecorder
 
 * name (Name: String)
 * recording\_group (RecordingGroup: JSON)
 * role\_arn (RoleARN: String)
 
-### AWS::Config::DeliveryChannel
+### Humidifier::Config::DeliveryChannel
 
 * config\_snapshot\_delivery\_properties (ConfigSnapshotDeliveryProperties: JSON)
 
-### AWS::DataPipeline::Pipeline
+### Humidifier::DataPipeline::Pipeline
 
 * activate (Activate: Boolean)
 * description (Description: String)
@@ -362,7 +362,7 @@
 * pipeline\_objects (PipelineObjects: Array)
 * pipeline\_tags (PipelineTags: Array)
 
-### AWS::DirectoryService::MicrosoftAD
+### Humidifier::DirectoryService::MicrosoftAD
 
 * create\_alias (CreateAlias: Boolean)
 * enable\_sso (EnableSso: Boolean)
@@ -371,7 +371,7 @@
 * short\_name (ShortName: String)
 * vpc\_settings (VpcSettings: JSON)
 
-### AWS::DirectoryService::SimpleAD
+### Humidifier::DirectoryService::SimpleAD
 
 * create\_alias (CreateAlias: Boolean)
 * description (Description: String)
@@ -382,7 +382,7 @@
 * size (Size: String)
 * vpc\_settings (VpcSettings: JSON)
 
-### AWS::DynamoDB::Table
+### Humidifier::DynamoDB::Table
 
 * attribute\_definitions (AttributeDefinitions: Array)
 * global\_secondary\_indexes (GlobalSecondaryIndexes: Array)
@@ -392,14 +392,14 @@
 * stream\_specification (StreamSpecification: JSON)
 * table\_name (TableName: String)
 
-### AWS::EC2::CustomerGateway
+### Humidifier::EC2::CustomerGateway
 
 * bgp\_asn (BgpAsn: JSON)
 * ip\_address (IpAddress: String)
 * tags (Tags: Array)
 * type (Type: String)
 
-### AWS::EC2::DHCPOptions
+### Humidifier::EC2::DHCPOptions
 
 * domain\_name (DomainName: String)
 * domain\_name\_servers (DomainNameServers: Array)
@@ -408,12 +408,12 @@
 * ntp\_servers (NtpServers: Array)
 * tags (Tags: Array)
 
-### AWS::EC2::EIP
+### Humidifier::EC2::EIP
 
 * domain (Domain: String)
 * instance\_id (InstanceId: String)
 
-### AWS::EC2::EIPAssociation
+### Humidifier::EC2::EIPAssociation
 
 * allocation\_id (AllocationId: String)
 * eip (EIP: String)
@@ -421,7 +421,7 @@
 * network\_interface\_id (NetworkInterfaceId: String)
 * private\_ip\_address (PrivateIpAddress: String)
 
-### AWS::EC2::Instance
+### Humidifier::EC2::Instance
 
 * additional\_info (AdditionalInfo: String)
 * availability\_zone (AvailabilityZone: String)
@@ -449,21 +449,21 @@
 * user\_data (UserData: String)
 * volumes (Volumes: Array)
 
-### AWS::EC2::InternetGateway
+### Humidifier::EC2::InternetGateway
 
 * tags (Tags: Array)
 
-### AWS::EC2::NatGateway
+### Humidifier::EC2::NatGateway
 
 * allocation\_id (AllocationId: String)
 * subnet\_id (SubnetId: String)
 
-### AWS::EC2::NetworkAcl
+### Humidifier::EC2::NetworkAcl
 
 * tags (Tags: Array)
 * vpc\_id (VpcId: String)
 
-### AWS::EC2::NetworkAclEntry
+### Humidifier::EC2::NetworkAclEntry
 
 * cidr\_block (CidrBlock: String)
 * egress (Egress: Boolean)
@@ -474,7 +474,7 @@
 * rule\_action (RuleAction: String)
 * rule\_number (RuleNumber: Integer)
 
-### AWS::EC2::NetworkInterface
+### Humidifier::EC2::NetworkInterface
 
 * description (Description: String)
 * group\_set (GroupSet: Array)
@@ -485,18 +485,18 @@
 * subnet\_id (SubnetId: String)
 * tags (Tags: Array)
 
-### AWS::EC2::NetworkInterfaceAttachment
+### Humidifier::EC2::NetworkInterfaceAttachment
 
 * delete\_on\_termination (DeleteOnTermination: Boolean)
 * device\_index (DeviceIndex: String)
 * instance\_id (InstanceId: String)
 * network\_interface\_id (NetworkInterfaceId: String)
 
-### AWS::EC2::PlacementGroup
+### Humidifier::EC2::PlacementGroup
 
 * strategy (Strategy: String)
 
-### AWS::EC2::Route
+### Humidifier::EC2::Route
 
 * destination\_cidr\_block (DestinationCidrBlock: String)
 * gateway\_id (GatewayId: String)
@@ -506,12 +506,12 @@
 * route\_table\_id (RouteTableId: String)
 * vpc\_peering\_connection\_id (VpcPeeringConnectionId: String)
 
-### AWS::EC2::RouteTable
+### Humidifier::EC2::RouteTable
 
 * tags (Tags: Array)
 * vpc\_id (VpcId: String)
 
-### AWS::EC2::SecurityGroup
+### Humidifier::EC2::SecurityGroup
 
 * group\_description (GroupDescription: String)
 * security\_group\_egress (SecurityGroupEgress: Array)
@@ -519,11 +519,11 @@
 * tags (Tags: Array)
 * vpc\_id (VpcId: String)
 
-### AWS::EC2::SpotFleet
+### Humidifier::EC2::SpotFleet
 
 * spot\_fleet\_request\_config\_data (SpotFleetRequestConfigData: JSON)
 
-### AWS::EC2::Subnet
+### Humidifier::EC2::Subnet
 
 * availability\_zone (AvailabilityZone: String)
 * cidr\_block (CidrBlock: String)
@@ -531,17 +531,17 @@
 * tags (Tags: Array)
 * vpc\_id (VpcId: JSON)
 
-### AWS::EC2::SubnetNetworkAclAssociation
+### Humidifier::EC2::SubnetNetworkAclAssociation
 
 * network\_acl\_id (NetworkAclId: JSON)
 * subnet\_id (SubnetId: JSON)
 
-### AWS::EC2::SubnetRouteTableAssociation
+### Humidifier::EC2::SubnetRouteTableAssociation
 
 * route\_table\_id (RouteTableId: String)
 * subnet\_id (SubnetId: String)
 
-### AWS::EC2::VPC
+### Humidifier::EC2::VPC
 
 * cidr\_block (CidrBlock: String)
 * enable\_dns\_hostnames (EnableDnsHostnames: Boolean)
@@ -549,31 +549,31 @@
 * instance\_tenancy (InstanceTenancy: String)
 * tags (Tags: Array)
 
-### AWS::EC2::VPCDHCPOptionsAssociation
+### Humidifier::EC2::VPCDHCPOptionsAssociation
 
 * dhcp\_options\_id (DhcpOptionsId: String)
 * vpc\_id (VpcId: String)
 
-### AWS::EC2::VPCEndpoint
+### Humidifier::EC2::VPCEndpoint
 
 * policy\_document (PolicyDocument: JSON)
 * route\_table\_ids (RouteTableIds: Array)
 * service\_name (ServiceName: String)
 * vpc\_id (VpcId: String)
 
-### AWS::EC2::VPCGatewayAttachment
+### Humidifier::EC2::VPCGatewayAttachment
 
 * internet\_gateway\_id (InternetGatewayId: String)
 * vpc\_id (VpcId: String)
 * vpn\_gateway\_id (VpnGatewayId: String)
 
-### AWS::EC2::VPCPeeringConnection
+### Humidifier::EC2::VPCPeeringConnection
 
 * peer\_vpc\_id (PeerVpcId: String)
 * tags (Tags: Array)
 * vpc\_id (VpcId: String)
 
-### AWS::EC2::VPNConnection
+### Humidifier::EC2::VPNConnection
 
 * customer\_gateway\_id (CustomerGatewayId: JSON)
 * static\_routes\_only (StaticRoutesOnly: Boolean)
@@ -581,22 +581,22 @@
 * type (Type: String)
 * vpn\_gateway\_id (VpnGatewayId: JSON)
 
-### AWS::EC2::VPNConnectionRoute
+### Humidifier::EC2::VPNConnectionRoute
 
 * destination\_cidr\_block (DestinationCidrBlock: String)
 * vpn\_connection\_id (VpnConnectionId: String)
 
-### AWS::EC2::VPNGateway
+### Humidifier::EC2::VPNGateway
 
 * tags (Tags: Array)
 * type (Type: String)
 
-### AWS::EC2::VPNGatewayRoutePropagation
+### Humidifier::EC2::VPNGatewayRoutePropagation
 
 * route\_table\_ids (RouteTableIds: Array)
 * vpn\_gateway\_id (VpnGatewayId: String)
 
-### AWS::EC2::Volume
+### Humidifier::EC2::Volume
 
 * auto\_enable\_io (AutoEnableIO: Boolean)
 * availability\_zone (AvailabilityZone: String)
@@ -608,18 +608,18 @@
 * tags (Tags: Array)
 * volume\_type (VolumeType: String)
 
-### AWS::EC2::VolumeAttachment
+### Humidifier::EC2::VolumeAttachment
 
 * device (Device: String)
 * instance\_id (InstanceId: String)
 * volume\_id (VolumeId: String)
 
-### AWS::ECR::Repository
+### Humidifier::ECR::Repository
 
 * repository\_name (RepositoryName: String)
 * repository\_policy\_text (RepositoryPolicyText: JSON)
 
-### AWS::ECS::Service
+### Humidifier::ECS::Service
 
 * cluster (Cluster: String)
 * desired\_count (DesiredCount: Integer)
@@ -627,23 +627,23 @@
 * role (Role: String)
 * task\_definition (TaskDefinition: String)
 
-### AWS::ECS::TaskDefinition
+### Humidifier::ECS::TaskDefinition
 
 * container\_definitions (ContainerDefinitions: Array)
 * volumes (Volumes: Array)
 
-### AWS::EFS::FileSystem
+### Humidifier::EFS::FileSystem
 
 * file\_system\_tags (FileSystemTags: Array)
 
-### AWS::EFS::MountTarget
+### Humidifier::EFS::MountTarget
 
 * file\_system\_id (FileSystemId: String)
 * ip\_address (IpAddress: String)
 * security\_groups (SecurityGroups: Array)
 * subnet\_id (SubnetId: String)
 
-### AWS::EMR::Cluster
+### Humidifier::EMR::Cluster
 
 * additional\_info (AdditionalInfo: JSON)
 * applications (Applications: Array)
@@ -658,7 +658,7 @@
 * tags (Tags: Array)
 * visible\_to\_all\_users (VisibleToAllUsers: Boolean)
 
-### AWS::EMR::InstanceGroupConfig
+### Humidifier::EMR::InstanceGroupConfig
 
 * bid\_price (BidPrice: String)
 * configurations (Configurations: Array)
@@ -670,14 +670,14 @@
 * market (Market: String)
 * name (Name: String)
 
-### AWS::EMR::Step
+### Humidifier::EMR::Step
 
 * action\_on\_failure (ActionOnFailure: String)
 * hadoop\_jar\_step (HadoopJarStep: JSON)
 * job\_flow\_id (JobFlowId: String)
 * name (Name: String)
 
-### AWS::ElastiCache::CacheCluster
+### Humidifier::ElastiCache::CacheCluster
 
 * auto\_minor\_version\_upgrade (AutoMinorVersionUpgrade: Boolean)
 * az\_mode (AZMode: String)
@@ -701,13 +701,13 @@
 * tags (Tags: Array)
 * vpc\_security\_group\_ids (VpcSecurityGroupIds: Array)
 
-### AWS::ElastiCache::ParameterGroup
+### Humidifier::ElastiCache::ParameterGroup
 
 * cache\_parameter\_group\_family (CacheParameterGroupFamily: String)
 * description (Description: String)
 * properties (Properties: JSON)
 
-### AWS::ElastiCache::ReplicationGroup
+### Humidifier::ElastiCache::ReplicationGroup
 
 * auto\_minor\_version\_upgrade (AutoMinorVersionUpgrade: Boolean)
 * automatic\_failover\_enabled (AutomaticFailoverEnabled: Boolean)
@@ -728,33 +728,33 @@
 * snapshot\_retention\_limit (SnapshotRetentionLimit: Integer)
 * snapshot\_window (SnapshotWindow: String)
 
-### AWS::ElastiCache::SecurityGroup
+### Humidifier::ElastiCache::SecurityGroup
 
 * description (Description: String)
 
-### AWS::ElastiCache::SecurityGroupIngress
+### Humidifier::ElastiCache::SecurityGroupIngress
 
 * cache\_security\_group\_name (CacheSecurityGroupName: String)
 * ec2\_security\_group\_name (EC2SecurityGroupName: String)
 * ec2\_security\_group\_owner\_id (EC2SecurityGroupOwnerId: String)
 
-### AWS::ElastiCache::SubnetGroup
+### Humidifier::ElastiCache::SubnetGroup
 
 * description (Description: String)
 * subnet\_ids (SubnetIds: Array)
 
-### AWS::ElasticBeanstalk::Application
+### Humidifier::ElasticBeanstalk::Application
 
 * application\_name (ApplicationName: String)
 * description (Description: String)
 
-### AWS::ElasticBeanstalk::ApplicationVersion
+### Humidifier::ElasticBeanstalk::ApplicationVersion
 
 * application\_name (ApplicationName: String)
 * description (Description: String)
 * source\_bundle (SourceBundle: JSON)
 
-### AWS::ElasticBeanstalk::ConfigurationTemplate
+### Humidifier::ElasticBeanstalk::ConfigurationTemplate
 
 * application\_name (ApplicationName: String)
 * description (Description: String)
@@ -763,7 +763,7 @@
 * solution\_stack\_name (SolutionStackName: String)
 * source\_configuration (SourceConfiguration: JSON)
 
-### AWS::ElasticBeanstalk::Environment
+### Humidifier::ElasticBeanstalk::Environment
 
 * application\_name (ApplicationName: String)
 * cname\_prefix (CNAMEPrefix: String)
@@ -776,7 +776,7 @@
 * tier (Tier: JSON)
 * version\_label (VersionLabel: String)
 
-### AWS::ElasticLoadBalancing::LoadBalancer
+### Humidifier::ElasticLoadBalancing::LoadBalancer
 
 * access\_logging\_policy (AccessLoggingPolicy: JSON)
 * app\_cookie\_stickiness\_policy (AppCookieStickinessPolicy: Array)
@@ -795,7 +795,7 @@
 * subnets (Subnets: Array)
 * tags (Tags: Array)
 
-### AWS::Elasticsearch::Domain
+### Humidifier::Elasticsearch::Domain
 
 * access\_policies (AccessPolicies: JSON)
 * advanced\_options (AdvancedOptions: JSON)
@@ -805,19 +805,19 @@
 * snapshot\_options (SnapshotOptions: JSON)
 * tags (Tags: Array)
 
-### AWS::GameLift::Alias
+### Humidifier::GameLift::Alias
 
 * description (Description: String)
 * name (Name: String)
 * routing\_strategy (RoutingStrategy: JSON)
 
-### AWS::GameLift::Build
+### Humidifier::GameLift::Build
 
 * name (Name: String)
 * storage\_location (StorageLocation: JSON)
 * version (Version: String)
 
-### AWS::GameLift::Fleet
+### Humidifier::GameLift::Fleet
 
 * build\_id (BuildId: String)
 * description (Description: String)
@@ -829,24 +829,24 @@
 * server\_launch\_parameters (ServerLaunchParameters: String)
 * server\_launch\_path (ServerLaunchPath: String)
 
-### AWS::IAM::AccessKey
+### Humidifier::IAM::AccessKey
 
 * serial (Serial: Integer)
 * status (Status: String)
 * user\_name (UserName: String)
 
-### AWS::IAM::Group
+### Humidifier::IAM::Group
 
 * managed\_policy\_arns (ManagedPolicyArns: Array)
 * path (Path: String)
 * policies (Policies: Array)
 
-### AWS::IAM::InstanceProfile
+### Humidifier::IAM::InstanceProfile
 
 * path (Path: String)
 * roles (Roles: Array)
 
-### AWS::IAM::ManagedPolicy
+### Humidifier::IAM::ManagedPolicy
 
 * description (Description: String)
 * groups (Groups: Array)
@@ -855,7 +855,7 @@
 * roles (Roles: Array)
 * users (Users: Array)
 
-### AWS::IAM::Policy
+### Humidifier::IAM::Policy
 
 * groups (Groups: Array)
 * policy\_document (PolicyDocument: JSON)
@@ -863,14 +863,14 @@
 * roles (Roles: Array)
 * users (Users: Array)
 
-### AWS::IAM::Role
+### Humidifier::IAM::Role
 
 * assume\_role\_policy\_document (AssumeRolePolicyDocument: JSON)
 * managed\_policy\_arns (ManagedPolicyArns: Array)
 * path (Path: String)
 * policies (Policies: Array)
 
-### AWS::IAM::User
+### Humidifier::IAM::User
 
 * groups (Groups: Array)
 * login\_profile (LoginProfile: JSON)
@@ -878,31 +878,31 @@
 * path (Path: String)
 * policies (Policies: Array)
 
-### AWS::IAM::UserToGroupAddition
+### Humidifier::IAM::UserToGroupAddition
 
 * group\_name (GroupName: String)
 * users (Users: Array)
 
-### AWS::KMS::Key
+### Humidifier::KMS::Key
 
 * description (Description: String)
 * enable\_key\_rotation (EnableKeyRotation: Boolean)
 * enabled (Enabled: Boolean)
 * key\_policy (KeyPolicy: JSON)
 
-### AWS::Kinesis::Stream
+### Humidifier::Kinesis::Stream
 
 * shard\_count (ShardCount: Integer)
 * tags (Tags: Array)
 
-### AWS::Lambda::Alias
+### Humidifier::Lambda::Alias
 
 * description (Description: String)
 * function\_name (FunctionName: String)
 * function\_version (FunctionVersion: String)
 * name (Name: String)
 
-### AWS::Lambda::EventSourceMapping
+### Humidifier::Lambda::EventSourceMapping
 
 * batch\_size (BatchSize: Integer)
 * enabled (Enabled: Boolean)
@@ -910,7 +910,7 @@
 * function\_name (FunctionName: String)
 * starting\_position (StartingPosition: String)
 
-### AWS::Lambda::Function
+### Humidifier::Lambda::Function
 
 * code (Code: JSON)
 * description (Description: String)
@@ -922,7 +922,7 @@
 * timeout (Timeout: Integer)
 * vpc\_config (VpcConfig: JSON)
 
-### AWS::Lambda::Permission
+### Humidifier::Lambda::Permission
 
 * action (Action: String)
 * function\_name (FunctionName: String)
@@ -930,42 +930,42 @@
 * source\_account (SourceAccount: String)
 * source\_arn (SourceArn: String)
 
-### AWS::Lambda::Version
+### Humidifier::Lambda::Version
 
 * code\_sha256 (CodeSha256: String)
 * description (Description: String)
 * function\_name (FunctionName: String)
 
-### AWS::Logs::Destination
+### Humidifier::Logs::Destination
 
 * destination\_name (DestinationName: String)
 * destination\_policy (DestinationPolicy: String)
 * role\_arn (RoleArn: String)
 * target\_arn (TargetArn: String)
 
-### AWS::Logs::LogGroup
+### Humidifier::Logs::LogGroup
 
 * retention\_in\_days (RetentionInDays: Integer)
 
-### AWS::Logs::LogStream
+### Humidifier::Logs::LogStream
 
 * log\_group\_name (LogGroupName: String)
 * log\_stream\_name (LogStreamName: String)
 
-### AWS::Logs::MetricFilter
+### Humidifier::Logs::MetricFilter
 
 * filter\_pattern (FilterPattern: Array)
 * log\_group\_name (LogGroupName: String)
 * metric\_transformations (MetricTransformations: Array)
 
-### AWS::Logs::SubscriptionFilter
+### Humidifier::Logs::SubscriptionFilter
 
 * destination\_arn (DestinationArn: String)
 * filter\_pattern (FilterPattern: String)
 * log\_group\_name (LogGroupName: String)
 * role\_arn (RoleArn: String)
 
-### AWS::OpsWorks::App
+### Humidifier::OpsWorks::App
 
 * app\_source (AppSource: JSON)
 * attributes (Attributes: JSON)
@@ -979,12 +979,12 @@
 * stack\_id (StackId: String)
 * type (Type: String)
 
-### AWS::OpsWorks::ElasticLoadBalancerAttachment
+### Humidifier::OpsWorks::ElasticLoadBalancerAttachment
 
 * elastic\_load\_balancer\_name (ElasticLoadBalancerName: String)
 * layer\_id (LayerId: String)
 
-### AWS::OpsWorks::Instance
+### Humidifier::OpsWorks::Instance
 
 * ami\_id (AmiId: String)
 * architecture (Architecture: String)
@@ -1001,7 +1001,7 @@
 * subnet\_id (SubnetId: String)
 * time\_based\_auto\_scaling (TimeBasedAutoScaling: JSON)
 
-### AWS::OpsWorks::Layer
+### Humidifier::OpsWorks::Layer
 
 * attributes (Attributes: JSON)
 * auto\_assign\_elastic\_ips (AutoAssignElasticIps: Boolean)
@@ -1020,7 +1020,7 @@
 * type (Type: String)
 * volume\_configurations (VolumeConfigurations: Array)
 
-### AWS::OpsWorks::Stack
+### Humidifier::OpsWorks::Stack
 
 * agent\_version (AgentVersion: String)
 * attributes (Attributes: JSON)
@@ -1041,7 +1041,7 @@
 * use\_opsworks\_security\_groups (UseOpsworksSecurityGroups: Boolean)
 * vpc\_id (VpcId: String)
 
-### AWS::RDS::DBCluster
+### Humidifier::RDS::DBCluster
 
 * availability\_zones (AvailabilityZones: Array)
 * backup\_retention\_period (BackupRetentionPeriod: Integer)
@@ -1061,14 +1061,14 @@
 * tags (Tags: Array)
 * vpc\_security\_group\_ids (VpcSecurityGroupIds: Array)
 
-### AWS::RDS::DBClusterParameterGroup
+### Humidifier::RDS::DBClusterParameterGroup
 
 * description (Description: String)
 * family (Family: String)
 * parameters (Parameters: JSON)
 * tags (Tags: Array)
 
-### AWS::RDS::DBInstance
+### Humidifier::RDS::DBInstance
 
 * allocated\_storage (AllocatedStorage: String)
 * allow\_major\_version\_upgrade (AllowMajorVersionUpgrade: Boolean)
@@ -1103,27 +1103,27 @@
 * tags (Tags: Array)
 * vpc\_security\_groups (VPCSecurityGroups: Array)
 
-### AWS::RDS::DBParameterGroup
+### Humidifier::RDS::DBParameterGroup
 
 * description (Description: String)
 * family (Family: String)
 * parameters (Parameters: JSON)
 * tags (Tags: Array)
 
-### AWS::RDS::DBSecurityGroup
+### Humidifier::RDS::DBSecurityGroup
 
 * db\_security\_group\_ingress (DBSecurityGroupIngress: Array)
 * ec2\_vpc\_id (EC2VpcId: JSON)
 * group\_description (GroupDescription: String)
 * tags (Tags: Array)
 
-### AWS::RDS::DBSubnetGroup
+### Humidifier::RDS::DBSubnetGroup
 
 * db\_subnet\_group\_description (DBSubnetGroupDescription: String)
 * subnet\_ids (SubnetIds: Array)
 * tags (Tags: Array)
 
-### AWS::RDS::EventSubscription
+### Humidifier::RDS::EventSubscription
 
 * enabled (Enabled: Boolean)
 * event\_categories (EventCategories: Array)
@@ -1131,7 +1131,7 @@
 * source\_ids (SourceIds: Array)
 * source\_type (SourceType: String)
 
-### AWS::RDS::OptionGroup
+### Humidifier::RDS::OptionGroup
 
 * engine\_name (EngineName: String)
 * major\_engine\_version (MajorEngineVersion: String)
@@ -1139,7 +1139,7 @@
 * option\_group\_description (OptionGroupDescription: String)
 * tags (Tags: Array)
 
-### AWS::Redshift::Cluster
+### Humidifier::Redshift::Cluster
 
 * allow\_version\_upgrade (AllowVersionUpgrade: Boolean)
 * automated\_snapshot\_retention\_period (AutomatedSnapshotRetentionPeriod: Integer)
@@ -1167,41 +1167,41 @@
 * snapshot\_identifier (SnapshotIdentifier: String)
 * vpc\_security\_group\_ids (VpcSecurityGroupIds: Array)
 
-### AWS::Redshift::ClusterParameterGroup
+### Humidifier::Redshift::ClusterParameterGroup
 
 * description (Description: String)
 * parameter\_group\_family (ParameterGroupFamily: String)
 * parameters (Parameters: Array)
 
-### AWS::Redshift::ClusterSecurityGroup
+### Humidifier::Redshift::ClusterSecurityGroup
 
 * description (Description: String)
 
-### AWS::Redshift::ClusterSecurityGroupIngress
+### Humidifier::Redshift::ClusterSecurityGroupIngress
 
 * cidrip (CIDRIP: String)
 * cluster\_security\_group\_name (ClusterSecurityGroupName: String)
 * ec2\_security\_group\_name (EC2SecurityGroupName: String)
 * ec2\_security\_group\_owner\_id (EC2SecurityGroupOwnerId: String)
 
-### AWS::Redshift::ClusterSubnetGroup
+### Humidifier::Redshift::ClusterSubnetGroup
 
 * description (Description: String)
 * subnet\_ids (SubnetIds: Array)
 
-### AWS::Route53::HealthCheck
+### Humidifier::Route53::HealthCheck
 
 * health\_check\_config (HealthCheckConfig: JSON)
 * health\_check\_tags (HealthCheckTags: Array)
 
-### AWS::Route53::HostedZone
+### Humidifier::Route53::HostedZone
 
 * hosted\_zone\_config (HostedZoneConfig: JSON)
 * hosted\_zone\_tags (HostedZoneTags: Array)
 * name (Name: String)
 * vp\_cs (VPCs: Array)
 
-### AWS::Route53::RecordSet
+### Humidifier::Route53::RecordSet
 
 * alias\_target (AliasTarget: JSON)
 * comment (Comment: String)
@@ -1218,14 +1218,14 @@
 * type (Type: String)
 * weight (Weight: Integer)
 
-### AWS::Route53::RecordSetGroup
+### Humidifier::Route53::RecordSetGroup
 
 * comment (Comment: String)
 * hosted\_zone\_id (HostedZoneId: String)
 * hosted\_zone\_name (HostedZoneName: String)
 * record\_sets (RecordSets: Array)
 
-### AWS::S3::Bucket
+### Humidifier::S3::Bucket
 
 * access\_control (AccessControl: String)
 * bucket\_name (BucketName: String)
@@ -1238,27 +1238,27 @@
 * versioning\_configuration (VersioningConfiguration: JSON)
 * website\_configuration (WebsiteConfiguration: JSON)
 
-### AWS::S3::BucketPolicy
+### Humidifier::S3::BucketPolicy
 
 * bucket (Bucket: String)
 * policy\_document (PolicyDocument: JSON)
 
-### AWS::SDB::Domain
+### Humidifier::SDB::Domain
 
 * description (Description: JSON)
 
-### AWS::SNS::Topic
+### Humidifier::SNS::Topic
 
 * display\_name (DisplayName: String)
 * subscription (Subscription: Array)
 * topic\_name (TopicName: String)
 
-### AWS::SNS::TopicPolicy
+### Humidifier::SNS::TopicPolicy
 
 * policy\_document (PolicyDocument: JSON)
 * topics (Topics: Array)
 
-### AWS::SQS::Queue
+### Humidifier::SQS::Queue
 
 * delay\_seconds (DelaySeconds: Integer)
 * maximum\_message\_size (MaximumMessageSize: Integer)
@@ -1268,44 +1268,44 @@
 * redrive\_policy (RedrivePolicy: JSON)
 * visibility\_timeout (VisibilityTimeout: Integer)
 
-### AWS::SQS::QueuePolicy
+### Humidifier::SQS::QueuePolicy
 
 * policy\_document (PolicyDocument: JSON)
 * queues (Queues: Array)
 
-### AWS::SSM::Document
+### Humidifier::SSM::Document
 
 * content (Content: JSON)
 
-### AWS::WAF::ByteMatchSet
+### Humidifier::WAF::ByteMatchSet
 
 * byte\_match\_tuples (ByteMatchTuples: Array)
 * name (Name: String)
 
-### AWS::WAF::IPSet
+### Humidifier::WAF::IPSet
 
 * ip\_set\_descriptors (IPSetDescriptors: Array)
 * name (Name: String)
 
-### AWS::WAF::Rule
+### Humidifier::WAF::Rule
 
 * metric\_name (MetricName: String)
 * name (Name: String)
 * predicates (Predicates: Array)
 
-### AWS::WAF::SqlInjectionMatchSet
+### Humidifier::WAF::SqlInjectionMatchSet
 
 * name (Name: String)
 * sql\_injection\_match\_tuples (SqlInjectionMatchTuples: Array)
 
-### AWS::WAF::WebACL
+### Humidifier::WAF::WebACL
 
 * default\_action (DefaultAction: JSON)
 * metric\_name (MetricName: String)
 * name (Name: String)
 * rules (Rules: Array)
 
-### AWS::WorkSpaces::Workspace
+### Humidifier::WorkSpaces::Workspace
 
 * bundle\_id (BundleId: String)
 * directory\_id (DirectoryId: String)
