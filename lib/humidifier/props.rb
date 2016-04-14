@@ -81,7 +81,8 @@ module Humidifier
 
     # A string property
     class StringProp < Base
-      WHITELIST = [Ref, Fn].freeze
+      # allowing WHITELIST to be modified so Ref and Fn can register themselves
+      WHITELIST = [] # rubocop:disable MutableConstant
 
       def convert(value)
         puts "WARNING: Property #{name} should be a string" unless valid?(value)

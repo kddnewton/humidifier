@@ -3,6 +3,7 @@ module Humidifier
   # Builds CFN function calls
   class Fn
 
+    FUNCTIONS = %w[And Base64 Equals FindInMap GetAtt GetAZs If Join Not Or Select].freeze
     attr_accessor :name, :value
 
     def initialize(name, value)
@@ -15,9 +16,13 @@ module Humidifier
     end
 
     class << self
-      def base64(value)
-        new('Base64', value)
+      FUNCTIONS.each do |function|
+        define_method(Props.convert(function)) do |value|
+          new(function, value)
+        end
       end
     end
   end
+
+  Props::StringProp::WHITELIST << Fn
 end

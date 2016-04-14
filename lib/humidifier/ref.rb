@@ -13,4 +13,6 @@ module Humidifier
       { 'Ref' => reference }
     end
   end
+
+  Props::StringProp::WHITELIST << Ref
 end
