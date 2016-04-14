@@ -1,12 +1,11 @@
 require 'json'
 require 'pathname'
 
+require 'humidifier/props'
 require 'humidifier/fn'
 require 'humidifier/ref'
 
 require 'humidifier/aws_shim'
-require 'humidifier/parser'
-require 'humidifier/props'
 require 'humidifier/resource'
 require 'humidifier/stack'
 require 'humidifier/version'
@@ -26,6 +25,7 @@ module Humidifier
   end
 end
 
+# loop through the specs and register each class
 Dir[File.expand_path(File.join('..', '..', 'specs', '*'), __FILE__)].each do |filepath|
   group, resource = Pathname.new(filepath).basename('.cf').to_s.split('-')
   spec = File.readlines(filepath).slice_after { |line| line.include?('Properties') }.to_a[1]

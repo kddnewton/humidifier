@@ -74,17 +74,24 @@ module Humidifier
       end
 
       def register(group, resource, spec)
-        parser = Parser.parse(spec)
-        self.props = parser.props
-
-        resource_class = Class.new(Resource)
-        resource_class.props = parser.props
-        resource_class.aws_name = (aws_name = "AWS::#{group}::#{resource}")
+        aws_name = "AWS::#{group}::#{resource}"
+        resource_class = build_class(aws_name, spec)
 
         Humidifier.const_set(group, Module.new) unless Humidifier.const_defined?(group)
         Humidifier.const_get(group).const_set(resource, resource_class)
-
         (self.registry ||= {})[aws_name] = resource_class
+      end
+
+      private
+
+      def build_class(aws_name, spec)
+        Class.new(self) do
+          self.aws_name = aws_name
+          self.props = spec.split("\n").map do |spec_line|
+            prop = Props.from(spec_line)
+            [prop.name, prop]
+          end.to_h
+        end
       end
     end
   end
