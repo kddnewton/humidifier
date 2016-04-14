@@ -4,16 +4,20 @@
 [![Coverage Status](https://coveralls.io/repos/github/localytics/humidifier/badge.svg?branch=master&t=52zybb)](https://coveralls.io/github/localytics/humidifier?branch=master)
 [![Gem Version](http://artifactory-badge.gw.localytics.com/humidifier)](https://localytics.artifactoryonline.com/localytics/webapp/#/artifacts/browse/tree/General/ruby-gems-virtual/gems)
 
-Humidifier is a small ruby gem that allows you to build AWS CloudFormation (CFN) templates programmatically.
+Humidifier is a small ruby gem that allows you to build AWS CloudFormation (CFN) templates programmatically. Every CFN resource is represented as a ruby object that has accessors to read and write properties that can then be uploaded to CFN. Each resource and the stack have `to_cf` methods that allow you to quickly inspect what will be uploaded.
 
 ## Example
 
+In the following example we build a load balancer object, set the scheme, at it to a stack, and output the CFN template.
+
 ```ruby
 stack = Humidifier::Stack.new
-stack.add('LoadBalancer', Humidifier::ElasticLoadBalancing::LoadBalancer.new(
-  scheme: 'internal',
+load_balancer = Humidifier::ElasticLoadBalancing::LoadBalancer.new(
   listeners: [{ 'Port' => 80, 'Protocol' => 'http', 'InstancePort' => 80, 'InstanceProtocol' => 'http' }]
-))
+)
+load_balancer.scheme = 'internal'
+
+stack.add('LoadBalancer', load_balancer)
 puts stack.to_cf
 ```
 
