@@ -21,6 +21,29 @@ stack.add('LoadBalancer', load_balancer)
 puts stack.to_cf
 ```
 
+The above code will output:
+
+```json
+{
+  "Resources": {
+    "LoadBalancer": {
+      "Type": "AWS::ElasticLoadBalancing::LoadBalancer",
+      "Properties": {
+        "Listeners": [
+          {
+            "Port": 80,
+            "Protocol": "http",
+            "InstancePort": 80,
+            "InstanceProtocol": "http"
+          }
+        ],
+        "Scheme": "internal"
+      }
+    }
+  }
+}
+```
+
 ## Development
 
 The specs pulled from the CFN docs live under `/specs`. You can update them by running `bin/get-docs`. This script will scrape the docs by going to the [listings page](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html), finding the list of CFN resources, and then downloading the spec for each resource by going to the individual page.
