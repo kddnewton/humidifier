@@ -735,8 +735,8 @@
 ### AWS::ElastiCache::SecurityGroupIngress
 
 * cache\_security\_group\_name (CacheSecurityGroupName: String)
-* e\_c2\_security\_group\_name (EC2SecurityGroupName: String)
-* e\_c2\_security\_group\_owner\_id (EC2SecurityGroupOwnerId: String)
+* ec2\_security\_group\_name (EC2SecurityGroupName: String)
+* ec2\_security\_group\_owner\_id (EC2SecurityGroupOwnerId: String)
 
 ### AWS::ElastiCache::SubnetGroup
 
@@ -822,8 +822,8 @@
 * build\_id (BuildId: String)
 * description (Description: String)
 * desired\_ec2\_instances (DesiredEC2Instances: Integer)
-* e\_c2\_inbound\_permissions (EC2InboundPermissions: Array)
-* e\_c2\_instance\_type (EC2InstanceType: String)
+* ec2\_inbound\_permissions (EC2InboundPermissions: Array)
+* ec2\_instance\_type (EC2InstanceType: String)
 * log\_paths (LogPaths: Array)
 * name (Name: String)
 * server\_launch\_parameters (ServerLaunchParameters: String)
@@ -1113,7 +1113,7 @@
 ### AWS::RDS::DBSecurityGroup
 
 * db\_security\_group\_ingress (DBSecurityGroupIngress: Array)
-* e\_c2\_vpc\_id (EC2VpcId: JSON)
+* ec2\_vpc\_id (EC2VpcId: JSON)
 * group\_description (GroupDescription: String)
 * tags (Tags: Array)
 
@@ -1181,8 +1181,8 @@
 
 * cidrip (CIDRIP: String)
 * cluster\_security\_group\_name (ClusterSecurityGroupName: String)
-* e\_c2\_security\_group\_name (EC2SecurityGroupName: String)
-* e\_c2\_security\_group\_owner\_id (EC2SecurityGroupOwnerId: String)
+* ec2\_security\_group\_name (EC2SecurityGroupName: String)
+* ec2\_security\_group\_owner\_id (EC2SecurityGroupOwnerId: String)
 
 ### AWS::Redshift::ClusterSubnetGroup
 

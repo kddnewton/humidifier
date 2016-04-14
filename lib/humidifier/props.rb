@@ -96,7 +96,7 @@ module Humidifier
 
     class << self
       def convert(key)
-        key.gsub(/([A-Z]+)([A-Z]|\z)/) { "#{$1.capitalize}#{$2}" }.gsub(/(.)([A-Z])/, '\1_\2').downcase if key
+        key.gsub(/([A-Z]+)([0-9]|[A-Z]|\z)/) { "#{$1.capitalize}#{$2}" }.gsub(/(.)([A-Z])/, '\1_\2').downcase if key
       end
 
       def from(spec_line)
