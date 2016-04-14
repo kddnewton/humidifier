@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/localytics/humidifier.svg?token=kQUiABmGkzyHdJdMnCnv&branch=master)](https://travis-ci.com/localytics/humidifier)
 [![Coverage Status](https://coveralls.io/repos/github/localytics/humidifier/badge.svg?branch=master&t=52zybb)](https://coveralls.io/github/localytics/humidifier?branch=master)
-[![Gem Version](http://artifactory-badge.gw.localytics.com/humidifier?bust=1)](https://localytics.artifactoryonline.com/localytics/webapp/#/artifacts/browse/tree/General/ruby-gems-virtual/gems)
+[![Gem Version](http://artifactory-badge.gw.localytics.com/gem/humidifier)](https://localytics.artifactoryonline.com/localytics/webapp/#/artifacts/browse/tree/General/ruby-gems-virtual/gems)
 
 Humidifier is a small ruby gem that allows you to build AWS CloudFormation (CFN) templates programmatically. Every CFN resource is represented as a ruby object that has accessors to read and write properties that can then be uploaded to CFN. Each resource and the stack have `to_cf` methods that allow you to quickly inspect what will be uploaded.
 
