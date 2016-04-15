@@ -11,4 +11,19 @@ class HumidifierTest < Minitest::Test
     assert_kind_of Humidifier::Ref, Humidifier.ref(reference)
     assert_equal reference, Humidifier.ref(reference).reference
   end
+
+  def test_brackets
+    with_fake_registry do
+      assert_equal 'bar', Humidifier[:foo]
+    end
+  end
+
+  private
+
+  def with_fake_registry
+    old_registry = Humidifier::Resource.registry
+    Humidifier::Resource.registry = { foo: 'bar' }
+    yield
+    Humidifier::Resource.registry = old_registry
+  end
 end
