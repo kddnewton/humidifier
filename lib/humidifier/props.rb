@@ -22,18 +22,7 @@ module Humidifier
       end
 
       def to_cf(value)
-        [key, process(value)]
-      end
-
-      private
-
-      def process(node)
-        case node
-        when Hash then node.map { |key, value| [key, process(value)] }.to_h
-        when Array then node.map { |value| process(value) }
-        when Ref, Fn then process(node.to_cf)
-        else node
-        end
+        [key, Serializer.dump(value)]
       end
     end
 
