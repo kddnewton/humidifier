@@ -23,6 +23,11 @@ module Humidifier
     def ref(reference)
       Ref.new(reference)
     end
+
+    # convenience method for finding classes by AWS name
+    def [](aws_name)
+      Resource.registry[aws_name]
+    end
   end
 end
 
