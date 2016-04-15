@@ -17,15 +17,30 @@ class StackTest < Minitest::Test
     assert_equal ({ 'MyResource' => resource }), stack.resources
   end
 
+  def test_add_output
+    stack = Humidifier::Stack.new
+    stack.add_output('foo', value: 'bar')
+
+    assert_equal 'foo', stack.outputs.keys.first
+    assert_equal 'bar', stack.outputs.values.first.value
+  end
+
   def test_to_cf
     stack = Humidifier::Stack.new(
       resources: {
         'One' => ResourceDouble.new('One'),
         'Two' => ResourceDouble.new('Two')
+      },
+      outputs: {
+        'Three' => ResourceDouble.new('Three')
       }
     )
 
-    assert_equal ({ 'Resources' => { 'One' => 'One', 'Two' => 'Two' } }), JSON.parse(stack.to_cf)
+    expected = {
+      'Resources' => { 'One' => 'One', 'Two' => 'Two' },
+      'Outputs' => { 'Three' => 'Three' }
+    }
+    assert_equal expected, JSON.parse(stack.to_cf)
   end
 
   def test_valid?
