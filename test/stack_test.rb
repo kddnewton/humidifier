@@ -26,21 +26,11 @@ class StackTest < Minitest::Test
   end
 
   def test_to_cf
-    stack = Humidifier::Stack.new(
-      resources: {
-        'One' => ResourceDouble.new('One'),
-        'Two' => ResourceDouble.new('Two')
-      },
-      outputs: {
-        'Three' => ResourceDouble.new('Three')
-      }
-    )
-
     expected = {
       'Resources' => { 'One' => 'One', 'Two' => 'Two' },
       'Outputs' => { 'Three' => 'Three' }
     }
-    assert_equal expected, JSON.parse(stack.to_cf)
+    assert_equal expected, JSON.parse(build.to_cf)
   end
 
   def test_valid?
@@ -52,5 +42,19 @@ class StackTest < Minitest::Test
       stack.valid?
     end
     mock.verify
+  end
+
+  private
+
+  def build
+    Humidifier::Stack.new(
+      resources: {
+        'One' => ResourceDouble.new('One'),
+        'Two' => ResourceDouble.new('Two')
+      },
+      outputs: {
+        'Three' => ResourceDouble.new('Three')
+      }
+    )
   end
 end
