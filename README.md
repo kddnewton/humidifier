@@ -17,6 +17,8 @@ The default rake task runs the tests. Coverage is reported on the command line, 
     $ bundle exec rake
     $ bundle exec rubocop
 
+Humidifier is tested to work with ruby 2.0 and higher.
+
 ## Example
 
 In the following example we build a load balancer object, set the scheme, at it to a stack, and output the CFN template.

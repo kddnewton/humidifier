@@ -4,8 +4,8 @@ module AWS
       def initialize(*)
       end
 
-      def validate_template(template_body:)
-        raise Errors::ValidationError, 'fake' unless template_body
+      def validate_template(opts = {})
+        raise Errors::ValidationError, 'fake' unless opts[:template_body]
       end
     end
 
