@@ -20,9 +20,9 @@ module Humidifier
     end
 
     def to_cf
-      cf = { 'Resources' => resources.map { |name, resource| [name, resource.to_cf] }.to_h }
+      cf = { 'Resources' => Serializer.enumerable_to_h(resources) { |name, resource| [name, resource.to_cf] } }
       cf['Description'] = description if description
-      cf['Outputs']     = outputs.map { |name, output| [name, output.to_cf] }.to_h if outputs.any?
+      cf['Outputs']     = Serializer.enumerable_to_h(outputs) { |name, output| [name, output.to_cf] } if outputs.any?
       JSON.pretty_generate(cf)
     end
 

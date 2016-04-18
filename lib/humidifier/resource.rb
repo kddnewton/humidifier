@@ -28,10 +28,7 @@ module Humidifier
     end
 
     def to_cf
-      props_cf = properties.map do |key, value|
-        self.class.props[key].to_cf(value)
-      end.to_h
-
+      props_cf = Serializer.enumerable_to_h(properties) { |(key, value)| self.class.props[key].to_cf(value) }
       { 'Type' => self.class.aws_name, 'Properties' => props_cf }
     end
 
@@ -88,7 +85,7 @@ module Humidifier
       def build_class(aws_name, spec)
         Class.new(self) do
           self.aws_name = aws_name
-          self.props = spec.split("\n").each_with_object({}) do |spec_line, props|
+          self.props = spec.each_with_object({}) do |spec_line, props|
             prop = Props.from(spec_line)
             props[prop.name] = prop unless prop.name.nil?
           end

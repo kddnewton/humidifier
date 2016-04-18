@@ -1,12 +1,15 @@
 language: ruby
 rvm:
-- 2.2.2
+- 2.0.0-p648
+- 2.1.8
+- 2.2.4
+- 2.3.0
 cache: bundler
 script:
 - bundle exec rake
 - bundle exec rubocop
 after_success:
-- bash bin/deploy ${ARTIFACTORY_USERNAME} ${ARTIFACTORY_PASSWORD}
+- bash bin/deploy $ARTIFACTORY_USERNAME $ARTIFACTORY_PASSWORD
 env:
   global:
   - secure: H+dXDCUZ3+yK823uzdnrb3tQNtk9PoBJEx9Gbr2pv3VSJtzWyVwDhap1eT1Mk91Aj+y7H4I/DBG78nncC5EbfzBzNJr69ulRZ2eDfL6d5z5YthDJBZcESYt6rKss0I7Vnh9GbrM5+KfhcxKdIt0jeCagc2LffCaAlUv8jeRgewejgLPX7hYZBglFgATud6sI5crOtqzqR8U13lJFrboNYP0rmtX2P2JaNu0x7IXnLt8UmREyxUwFGwS1zdcNto6YNpLLqLptkIfK9vY3+2ceIUOlLTYyJFlJVIS/Dgg4TM5E+N12NwSPca6EEBR5LInwSJjTHSshLSndEChw23FFAqhcGgGon1G7BeyRNp0Eh3QQKowu0SVTtaD85Ud8QKEsuAivb+xrrhp05UG2QhblQ97e0VkgT8KuC2LKI436cFH90uW1HZt+5EF2Fwezp1R3z9d0z/KnW7LL+5DaNU06Bqk0grTot5hwex2qB+2AjjHIb9DuJ83kdgjXouo972u+AQgTXOFRqyJ4+Q1MtgyC7JxMjm6SMBPaz2H2cCT5Urr4Izp2bAri55AQI33IHHcYpgLQUnk2aeg374LR6u6gb3Aeq0Xw9GvbqjxDQaZsRd7OVxbQCRqsBSi5DXxOemVVaSwnB9s5jDRfew015XnoTeu7UJB7MNsQ1+MiLNVofgg=
