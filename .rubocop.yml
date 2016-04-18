@@ -19,6 +19,10 @@ Style/EmptyLinesAroundClassBody:
 Style/EmptyLinesAroundModuleBody:
   Enabled: false
 
+# Very convenient for parsing the configs
+Style/FlipFlop:
+  Enabled: false
+
 # Useful and concise in gsub statements
 Style/PerlBackrefs:
   Enabled: false
