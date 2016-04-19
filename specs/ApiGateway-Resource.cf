@@ -1,0 +1,8 @@
+{
+  "Type" : "AWS::ApiGateway::Resource",
+  "Properties" : {
+    "ParentId" : String,
+    "PathPart" : String,
+    "RestApiId" : String
+  }
+}

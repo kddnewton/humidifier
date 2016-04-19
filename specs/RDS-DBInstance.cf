@@ -23,7 +23,6 @@
     "LicenseModel" : String,
     "MasterUsername" : String,
     "MasterUserPassword" : String,
-    
     "MultiAZ" : Boolean,
     "OptionGroupName" : String,
     "Port" : String,

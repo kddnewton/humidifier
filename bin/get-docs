@@ -14,10 +14,20 @@ def get_url(page)
 end
 
 Nokogiri::HTML(get_url('aws-template-resource-type-ref.html')).css('.highlights ul li a').each do |link|
-  contents = Nokogiri::HTML(get_url(link['href'])).at_css('.programlisting').text.strip.split("\n")
-  next unless (type_line = contents.grep(/Type/).first) && contents.grep(/Properties/).first
+  page_contents = Nokogiri::HTML(get_url(link['href']))
+  specs = page_contents.at_css('.programlisting').text.strip.split("\n")
 
-  File.open(File.join('specs', type_line.scan(/AWS::(.*?)::(.*?)\"/).first.join('-') + '.cf'), 'w') do |file|
-    file.write(contents.join("\n"))
+  if (aws_name = specs.grep(/Type/).first) && specs.grep(/Properties/).first
+    specs = specs.join("\n")
+  else
+    aws_name = page_contents.at_css('.topictitle').text.strip
+    specs = <<-CF
+{
+  "Type": "#{aws_name}",
+  "Properties" : #{specs.join("\n")}
+}
+    CF
   end
+
+  File.write(File.join('specs', aws_name.scan(/AWS::(.*?)::(.*?)(?:\z|")/).first.join('-') + '.cf'), specs)
 end

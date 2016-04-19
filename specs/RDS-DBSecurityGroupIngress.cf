@@ -1,0 +1,10 @@
+{
+    "Type": "AWS::RDS::DBSecurityGroupIngress",
+    "Properties" : {
+   "CIDRIP": String,
+   "DBSecurityGroupName": String,
+   "EC2SecurityGroupId": String,
+   "EC2SecurityGroupName": String,
+   "EC2SecurityGroupOwnerId": String
+}
+}

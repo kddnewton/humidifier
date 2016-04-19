@@ -1,0 +1,15 @@
+{
+  "Type" : "AWS::ApiGateway::Method",
+  "Properties" : {
+    "ApiKeyRequired" : Boolean,
+    "AuthorizationType" : String,
+    "AuthorizerId" : String,
+    "HttpMethod" : String,
+    "Integration" : Integration,
+    "MethodResponses" : [ MethodResponse, ... ],
+    "RequestModels" : { String:String, ... },
+    "RequestParameters" : { String:Boolean, ... },
+    "ResourceId" : String,
+    "RestApiId" : String
+  }
+}

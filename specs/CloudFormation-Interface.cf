@@ -1,0 +1,9 @@
+{
+    "Type": "AWS::CloudFormation::Interface",
+    "Properties" : "Metadata" : {
+  "AWS::CloudFormation::Interface" : {
+    "ParameterGroups" : [ ParameterGroup, ... ],
+    "ParameterLabels" : ParameterLabel
+  }
+}
+}

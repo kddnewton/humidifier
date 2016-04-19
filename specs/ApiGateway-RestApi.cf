@@ -1,0 +1,12 @@
+{
+  "Type" : "AWS::ApiGateway::RestApi",
+  "Properties" : {
+    "Body" : String,
+    "BodyS3Location" : S3Location,
+    "CloneFrom" : String,
+    "Description" : String,
+    "FailOnWarnings" : Boolean,
+    "Name" : String,
+    "Parameters" : [ String, ... ]
+  }
+}

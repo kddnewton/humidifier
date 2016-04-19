@@ -1,0 +1,12 @@
+{
+  "Type" : "AWS::Events::Rule",
+  "Properties" : {
+    "Description" : String,
+    "EventPattern" : JSON object,
+    "Name" : String,
+    "RoleArn" : String,
+    "ScheduleExpression" : String,
+    "State" : String,
+    "Targets" : [ Target, ... ]
+  }
+}
