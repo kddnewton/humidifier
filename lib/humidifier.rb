@@ -7,6 +7,7 @@ require 'humidifier/ref'
 require 'humidifier/property_methods'
 
 require 'humidifier/aws_shim'
+require 'humidifier/mapping'
 require 'humidifier/output'
 require 'humidifier/parameter'
 require 'humidifier/resource'
