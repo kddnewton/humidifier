@@ -28,18 +28,24 @@ module Humidifier
       cf = { 'Resources' => Serializer.enumerable_to_h(resources) { |name, resource| [name, resource.to_cf] } }
       cf['Description'] = description if description
       cf['Outputs']     = Serializer.enumerable_to_h(outputs) { |name, output| [name, output.to_cf] } if outputs.any?
-
-      if parameters.any?
-        cf['Parameters']  = Serializer.enumerable_to_h(parameters) do |name, parameter|
-          [name, parameter.to_cf]
-        end
-      end
+      cf = add_parameters(cf)
 
       JSON.pretty_generate(cf)
     end
 
     def valid?
       AWSShim.validate_stack(self)
+    end
+
+    private
+
+    def add_parameters(cf)
+      if parameters.any?
+        cf['Parameters'] = Serializer.enumerable_to_h(parameters) do |name, parameter|
+          [name, parameter.to_cf]
+        end
+      end
+      cf
     end
   end
 end

@@ -61,12 +61,8 @@ class StackTest < Minitest::Test
         'One' => ResourceDouble.new('One'),
         'Two' => ResourceDouble.new('Two')
       },
-      outputs: {
-        'Three' => ResourceDouble.new('Three')
-      },
-      parameters: {
-        'Four' => ResourceDouble.new('Four')
-      }
+      outputs: { 'Three' => ResourceDouble.new('Three') },
+      parameters: { 'Four' => ResourceDouble.new('Four') }
     )
   end
 end
