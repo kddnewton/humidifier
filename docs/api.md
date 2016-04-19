@@ -1,5 +1,17 @@
 # API Reference
 
+- ApiGateway
+  - [Account](#humidifierapigatewayaccount)
+  - [ApiKey](#humidifierapigatewayapikey)
+  - [Authorizer](#humidifierapigatewayauthorizer)
+  - [BasePathMapping](#humidifierapigatewaybasepathmapping)
+  - [ClientCertificate](#humidifierapigatewayclientcertificate)
+  - [Deployment](#humidifierapigatewaydeployment)
+  - [Method](#humidifierapigatewaymethod)
+  - [Model](#humidifierapigatewaymodel)
+  - [Resource](#humidifierapigatewayresource)
+  - [RestApi](#humidifierapigatewayrestapi)
+  - [Stage](#humidifierapigatewaystage)
 - AutoScaling
   - [AutoScalingGroup](#humidifierautoscalingautoscalinggroup)
   - [LaunchConfiguration](#humidifierautoscalinglaunchconfiguration)
@@ -7,7 +19,9 @@
   - [ScalingPolicy](#humidifierautoscalingscalingpolicy)
   - [ScheduledAction](#humidifierautoscalingscheduledaction)
 - CloudFormation
+  - [Authentication](#humidifiercloudformationauthentication)
   - [CustomResource](#humidifiercloudformationcustomresource)
+  - [Interface](#humidifiercloudformationinterface)
   - [Stack](#humidifiercloudformationstack)
   - [WaitCondition](#humidifiercloudformationwaitcondition)
   - [WaitConditionHandle](#humidifiercloudformationwaitconditionhandle)
@@ -51,6 +65,8 @@
   - [Route](#humidifierec2route)
   - [RouteTable](#humidifierec2routetable)
   - [SecurityGroup](#humidifierec2securitygroup)
+  - [SecurityGroupEgress](#humidifierec2securitygroupegress)
+  - [SecurityGroupIngress](#humidifierec2securitygroupingress)
   - [SpotFleet](#humidifierec2spotfleet)
   - [Subnet](#humidifierec2subnet)
   - [SubnetNetworkAclAssociation](#humidifierec2subnetnetworkaclassociation)
@@ -69,6 +85,7 @@
 - ECR
   - [Repository](#humidifierecrrepository)
 - ECS
+  - [Cluster](#humidifierecscluster)
   - [Service](#humidifierecsservice)
   - [TaskDefinition](#humidifierecstaskdefinition)
 - EFS
@@ -94,6 +111,8 @@
   - [LoadBalancer](#humidifierelasticloadbalancingloadbalancer)
 - Elasticsearch
   - [Domain](#humidifierelasticsearchdomain)
+- Events
+  - [Rule](#humidifiereventsrule)
 - GameLift
   - [Alias](#humidifiergameliftalias)
   - [Build](#humidifiergameliftbuild)
@@ -135,6 +154,7 @@
   - [DBInstance](#humidifierrdsdbinstance)
   - [DBParameterGroup](#humidifierrdsdbparametergroup)
   - [DBSecurityGroup](#humidifierrdsdbsecuritygroup)
+  - [DBSecurityGroupIngress](#humidifierrdsdbsecuritygroupingress)
   - [DBSubnetGroup](#humidifierrdsdbsubnetgroup)
   - [EventSubscription](#humidifierrdseventsubscription)
   - [OptionGroup](#humidifierrdsoptiongroup)
@@ -166,10 +186,101 @@
   - [ByteMatchSet](#humidifierwafbytematchset)
   - [IPSet](#humidifierwafipset)
   - [Rule](#humidifierwafrule)
+  - [SizeConstraintSet](#humidifierwafsizeconstraintset)
   - [SqlInjectionMatchSet](#humidifierwafsqlinjectionmatchset)
   - [WebACL](#humidifierwafwebacl)
+  - [XssMatchSet](#humidifierwafxssmatchset)
 - WorkSpaces
   - [Workspace](#humidifierworkspacesworkspace)
+
+### Humidifier::ApiGateway::Account
+
+* cloud\_watch\_role\_arn (CloudWatchRoleArn: String)
+
+### Humidifier::ApiGateway::ApiKey
+
+* description (Description: String)
+* enabled (Enabled: Boolean)
+* name (Name: String)
+* stage\_keys (StageKeys: Array)
+
+### Humidifier::ApiGateway::Authorizer
+
+* authorizer\_credentials (AuthorizerCredentials: String)
+* authorizer\_result\_ttl\_in\_seconds (AuthorizerResultTtlInSeconds: Integer)
+* authorizer\_uri (AuthorizerUri: String)
+* identity\_source (IdentitySource: String)
+* identity\_validation\_expression (IdentityValidationExpression: String)
+* name (Name: String)
+* rest\_api\_id (RestApiId: String)
+* type (Type: String)
+
+### Humidifier::ApiGateway::BasePathMapping
+
+* base\_path (BasePath: String)
+* domain\_name (DomainName: String)
+* rest\_api\_id (RestApiId: String)
+* stage (Stage: String)
+
+### Humidifier::ApiGateway::ClientCertificate
+
+* description (Description: String)
+
+### Humidifier::ApiGateway::Deployment
+
+* description (Description: String)
+* rest\_api\_id (RestApiId: String)
+* stage\_description (StageDescription: JSON)
+* stage\_name (StageName: String)
+
+### Humidifier::ApiGateway::Method
+
+* api\_key\_required (ApiKeyRequired: Boolean)
+* authorization\_type (AuthorizationType: String)
+* authorizer\_id (AuthorizerId: String)
+* http\_method (HttpMethod: String)
+* integration (Integration: JSON)
+* method\_responses (MethodResponses: Array)
+* request\_models (RequestModels: JSON)
+* request\_parameters (RequestParameters: JSON)
+* resource\_id (ResourceId: String)
+* rest\_api\_id (RestApiId: String)
+
+### Humidifier::ApiGateway::Model
+
+* content\_type (ContentType: String)
+* description (Description: String)
+* name (Name: String)
+* rest\_api\_id (RestApiId: String)
+* schema (Schema: String)
+
+### Humidifier::ApiGateway::Resource
+
+* parent\_id (ParentId: String)
+* path\_part (PathPart: String)
+* rest\_api\_id (RestApiId: String)
+
+### Humidifier::ApiGateway::RestApi
+
+* body (Body: String)
+* body\_s3\_location (BodyS3Location: JSON)
+* clone\_from (CloneFrom: String)
+* description (Description: String)
+* fail\_on\_warnings (FailOnWarnings: Boolean)
+* name (Name: String)
+* parameters (Parameters: Array)
+
+### Humidifier::ApiGateway::Stage
+
+* cache\_cluster\_enabled (CacheClusterEnabled: Boolean)
+* cache\_cluster\_size (CacheClusterSize: String)
+* client\_certificate\_id (ClientCertificateId: String)
+* deployment\_id (DeploymentId: String)
+* description (Description: String)
+* method\_settings (MethodSettings: Array)
+* rest\_api\_id (RestApiId: String)
+* stage\_name (StageName: String)
+* variables (Variables: JSON)
 
 ### Humidifier::AutoScaling::AutoScalingGroup
 
@@ -242,9 +353,27 @@
 * recurrence (Recurrence: String)
 * start\_time (StartTime: JSON)
 
+### Humidifier::CloudFormation::Authentication
+
+* access\_key\_id (accessKeyId: String)
+* buckets (buckets: Array)
+* password (password: String)
+* role\_name (roleName: String)
+* secret\_key (secretKey: String)
+* string (String: JSON)
+* type (type: String)
+* uris (uris: Array)
+* username (username: String)
+
 ### Humidifier::CloudFormation::CustomResource
 
 * service\_token (ServiceToken: String)
+
+### Humidifier::CloudFormation::Interface
+
+* aw\_s::\_cloud\_formation::\_interface (AWS::CloudFormation::Interface: JSON)
+* parameter\_groups (ParameterGroups: Array)
+* parameter\_labels (ParameterLabels: JSON)
 
 ### Humidifier::CloudFormation::Stack
 
@@ -323,6 +452,11 @@
 
 * category (Category: String)
 * configuration\_properties (ConfigurationProperties: Array)
+* input\_artifact\_details (InputArtifactDetails: JSON)
+* output\_artifact\_details (OutputArtifactDetails: JSON)
+* provider (Provider: String)
+* settings (Settings: JSON)
+* version (Version: String)
 
 ### Humidifier::CodePipeline::Pipeline
 
@@ -351,6 +485,10 @@
 ### Humidifier::Config::DeliveryChannel
 
 * config\_snapshot\_delivery\_properties (ConfigSnapshotDeliveryProperties: JSON)
+* name (Name: String)
+* s3\_bucket\_name (S3BucketName: String)
+* s3\_key\_prefix (S3KeyPrefix: String)
+* sns\_topic\_arn (SnsTopicARN: String)
 
 ### Humidifier::DataPipeline::Pipeline
 
@@ -519,6 +657,27 @@
 * tags (Tags: Array)
 * vpc\_id (VpcId: String)
 
+### Humidifier::EC2::SecurityGroupEgress
+
+* cidr\_ip (CidrIp: String)
+* destination\_security\_group\_id (DestinationSecurityGroupId: String)
+* from\_port (FromPort: Integer)
+* group\_id (GroupId: String)
+* ip\_protocol (IpProtocol: String)
+* to\_port (ToPort: Integer)
+
+### Humidifier::EC2::SecurityGroupIngress
+
+* cidr\_ip (CidrIp: String)
+* from\_port (FromPort: Integer)
+* group\_id (GroupId: String)
+* group\_name (GroupName: String)
+* ip\_protocol (IpProtocol: String)
+* source\_security\_group\_id (SourceSecurityGroupId: String)
+* source\_security\_group\_name (SourceSecurityGroupName: String)
+* source\_security\_group\_owner\_id (SourceSecurityGroupOwnerId: String)
+* to\_port (ToPort: Integer)
+
 ### Humidifier::EC2::SpotFleet
 
 * spot\_fleet\_request\_config\_data (SpotFleetRequestConfigData: JSON)
@@ -618,6 +777,10 @@
 
 * repository\_name (RepositoryName: String)
 * repository\_policy\_text (RepositoryPolicyText: JSON)
+
+### Humidifier::ECS::Cluster
+
+* type (Type: JSON)
 
 ### Humidifier::ECS::Service
 
@@ -804,6 +967,16 @@
 * elasticsearch\_cluster\_config (ElasticsearchClusterConfig: JSON)
 * snapshot\_options (SnapshotOptions: JSON)
 * tags (Tags: Array)
+
+### Humidifier::Events::Rule
+
+* description (Description: String)
+* event\_pattern (EventPattern: JSON)
+* name (Name: String)
+* role\_arn (RoleArn: String)
+* schedule\_expression (ScheduleExpression: String)
+* state (State: String)
+* targets (Targets: Array)
 
 ### Humidifier::GameLift::Alias
 
@@ -1117,6 +1290,14 @@
 * group\_description (GroupDescription: String)
 * tags (Tags: Array)
 
+### Humidifier::RDS::DBSecurityGroupIngress
+
+* cidrip (CIDRIP: String)
+* db\_security\_group\_name (DBSecurityGroupName: String)
+* ec2\_security\_group\_id (EC2SecurityGroupId: String)
+* ec2\_security\_group\_name (EC2SecurityGroupName: String)
+* ec2\_security\_group\_owner\_id (EC2SecurityGroupOwnerId: String)
+
 ### Humidifier::RDS::DBSubnetGroup
 
 * db\_subnet\_group\_description (DBSubnetGroupDescription: String)
@@ -1293,6 +1474,11 @@
 * name (Name: String)
 * predicates (Predicates: Array)
 
+### Humidifier::WAF::SizeConstraintSet
+
+* name (Name: String)
+* size\_constraints (SizeConstraints: Array)
+
 ### Humidifier::WAF::SqlInjectionMatchSet
 
 * name (Name: String)
@@ -1304,6 +1490,11 @@
 * metric\_name (MetricName: String)
 * name (Name: String)
 * rules (Rules: Array)
+
+### Humidifier::WAF::XssMatchSet
+
+* name (Name: String)
+* xss\_match\_tuples (XssMatchTuples: Array)
 
 ### Humidifier::WorkSpaces::Workspace
 

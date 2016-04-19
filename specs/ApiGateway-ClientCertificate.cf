@@ -1,0 +1,6 @@
+{
+  "Type" : "AWS::ApiGateway::ClientCertificate",
+  "Properties" : {
+    "Description" : String
+  }
+}

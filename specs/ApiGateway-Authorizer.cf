@@ -1,0 +1,13 @@
+{
+  "Type" : "AWS::ApiGateway::Authorizer",
+  "Properties" : {
+    "AuthorizerCredentials" : String,
+    "AuthorizerResultTtlInSeconds" : Integer,
+    "AuthorizerUri" : String,
+    "IdentitySource" : String,
+    "IdentityValidationExpression" : String,
+    "Name" : String,
+    "RestApiId" : String,
+    "Type" : String
+  }
+}

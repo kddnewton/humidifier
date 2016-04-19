@@ -1,0 +1,14 @@
+{
+    "Type": "AWS::EC2::SecurityGroupIngress",
+    "Properties" : {
+   "CidrIp" : String,
+   "FromPort" : Integer,
+   "GroupId" : String,
+   "GroupName" : String,
+   "IpProtocol" : String,
+   "SourceSecurityGroupName" : String,
+   "SourceSecurityGroupId" : String,
+   "SourceSecurityGroupOwnerId" : String,
+   "ToPort" : Integer
+}
+}

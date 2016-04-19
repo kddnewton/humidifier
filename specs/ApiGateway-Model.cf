@@ -1,0 +1,10 @@
+{
+  "Type" : "AWS::ApiGateway::Model",
+  "Properties" : {
+    "ContentType" : String,
+    "Description" : String,
+    "Name" : String,
+    "RestApiId" : String,
+    "Schema" : String
+  }
+}
