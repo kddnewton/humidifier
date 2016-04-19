@@ -14,7 +14,7 @@ require 'humidifier'
 require 'fileutils'
 require 'minitest/autorun'
 
-Minitest::Test.include(Module.new do
+Minitest::Test.send(:include, Module.new do
   def with_mocked_serializer(value)
     mock = Minitest::Mock.new
     mock.expect(:call, value, [value])
