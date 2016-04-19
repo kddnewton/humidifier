@@ -25,10 +25,19 @@ class StackTest < Minitest::Test
     assert_equal 'bar', stack.outputs.values.first.value
   end
 
+  def test_add_parameter
+    stack = Humidifier::Stack.new
+    stack.add_parameter('foo', type: 'bar')
+
+    assert_equal 'foo', stack.parameters.keys.first
+    assert_equal 'bar', stack.parameters.values.first.type
+  end
+
   def test_to_cf
     expected = {
       'Resources' => { 'One' => 'One', 'Two' => 'Two' },
-      'Outputs' => { 'Three' => 'Three' }
+      'Outputs' => { 'Three' => 'Three' },
+      'Parameters' => { 'Four' => 'Four' }
     }
     assert_equal expected, JSON.parse(build.to_cf)
   end
@@ -52,9 +61,8 @@ class StackTest < Minitest::Test
         'One' => ResourceDouble.new('One'),
         'Two' => ResourceDouble.new('Two')
       },
-      outputs: {
-        'Three' => ResourceDouble.new('Three')
-      }
+      outputs: { 'Three' => ResourceDouble.new('Three') },
+      parameters: { 'Four' => ResourceDouble.new('Four') }
     )
   end
 end

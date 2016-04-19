@@ -8,6 +8,7 @@ require 'humidifier/property_methods'
 
 require 'humidifier/aws_shim'
 require 'humidifier/output'
+require 'humidifier/parameter'
 require 'humidifier/resource'
 require 'humidifier/serializer'
 require 'humidifier/stack'
