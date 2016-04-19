@@ -31,3 +31,4 @@ Style/PerlBackrefs:
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%w': '[]'
+    '%i': '[]'

@@ -14,16 +14,4 @@ class OutputTest < Minitest::Test
       assert_equal ({ 'Value' => value, 'Description' => 'foobar' }), output.to_cf
     end
   end
-
-  private
-
-  def with_mocked_serializer(value)
-    mock = Minitest::Mock.new
-    mock.expect(:call, value, [value])
-
-    Humidifier::Serializer.stub(:dump, mock) do
-      yield value
-    end
-    mock.verify
-  end
 end
