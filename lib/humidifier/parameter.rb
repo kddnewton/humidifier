@@ -17,7 +17,7 @@ module Humidifier
       cf = { 'Type' => type }
       PROPERTIES.each do |prop|
         val = send(prop)
-        cf[Humidifier::Utils.camelize(prop)] = Serializer.dump(val) if val
+        cf[Utils.camelize(prop)] = Serializer.dump(val) if val
       end
       cf
     end

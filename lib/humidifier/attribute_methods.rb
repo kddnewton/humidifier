@@ -10,7 +10,7 @@ module Humidifier
 
     def common_attributes
       ATTRIBUTES.each_with_object({}) do |att, attributes|
-        attributes[Humidifier::Utils.camelize(att)] = send(att) if send(att)
+        attributes[Utils.camelize(att)] = send(att) if send(att)
       end
     end
   end

@@ -20,7 +20,7 @@ module Humidifier
       end
 
       def name
-        @name ||= Props.convert(key)
+        @name ||= Utils.underscore(key)
       end
 
       def to_cf(value)
@@ -87,10 +87,6 @@ module Humidifier
     end
 
     class << self
-      def convert(key)
-        key.gsub(/([A-Z]+)([0-9]|[A-Z]|\z)/) { "#{$1.capitalize}#{$2}" }.gsub(/(.)([A-Z])/, '\1_\2').downcase if key
-      end
-
       def from(spec_line)
         key, type = parse(spec_line)
 

@@ -1,6 +1,7 @@
 require 'json'
 require 'pathname'
 
+require 'humidifier/utils'
 require 'humidifier/props'
 require 'humidifier/fn'
 require 'humidifier/ref'
@@ -14,7 +15,6 @@ require 'humidifier/parameter'
 require 'humidifier/resource'
 require 'humidifier/serializer'
 require 'humidifier/stack'
-require 'humidifier/utils'
 require 'humidifier/version'
 
 # container module for all gem classes
