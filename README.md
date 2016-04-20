@@ -24,7 +24,10 @@ Humidifier is tested to work with ruby 2.0 and higher.
 In the following example we build a load balancer object, set the scheme, at it to a stack, and output the CFN template.
 
 ```ruby
-stack = Humidifier::Stack.new
+stack = Humidifier::Stack.new(
+  aws_template_format_version: '2010-09-09'
+  description: 'Example stack'
+)
 
 load_balancer = Humidifier::ElasticLoadBalancing::LoadBalancer.new(
   listeners: [{ 'Port' => 80, 'Protocol' => 'http', 'InstancePort' => 80, 'InstanceProtocol' => 'http' }]
@@ -46,6 +49,8 @@ The above code will output:
 
 ```json
 {
+  "AwsTemplateFormatVersion": "2010-09-09",
+  "Description": "Example stack",
   "Resources": {
     "LoadBalancer": {
       "Type": "AWS::ElasticLoadBalancing::LoadBalancer",
