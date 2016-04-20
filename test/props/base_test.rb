@@ -28,5 +28,17 @@ module Props
       refute Humidifier::Props::Base.new.convertable?
       assert TestProp.new.convertable?
     end
+
+    def test_whitelisted_value?
+      suppress_warnings do
+        base = Humidifier::Props::Base.new
+        original_whitelist = Humidifier::Props::Base::WHITELIST
+        Humidifier::Props::Base.const_set(:WHITELIST, [])
+        refute base.whitelisted_value?('test')
+        Humidifier::Props::Base::WHITELIST << String
+        assert base.whitelisted_value?('test')
+        Humidifier::Props::Base.const_set(:WHITELIST, original_whitelist)
+      end
+    end
   end
 end
