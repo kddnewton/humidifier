@@ -14,5 +14,5 @@ module Humidifier
     end
   end
 
-  Props::StringProp::WHITELIST << Ref
+  Props::Base::WHITELIST << Ref
 end

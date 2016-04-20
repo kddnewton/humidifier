@@ -3,8 +3,10 @@ require 'test_helper'
 module Props
   class IntegerPropTest < Minitest::Test
 
-    def test_takes_fixnum
+    def test_valid?
       assert Humidifier::Props::IntegerProp.new.valid?(1)
+      assert Humidifier::Props::StringProp.new.valid?(Humidifier.ref(Object.new))
+      assert Humidifier::Props::StringProp.new.valid?(Humidifier.fn.base64(Object.new))
     end
 
     def test_rejects_other_values

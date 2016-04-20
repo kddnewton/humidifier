@@ -17,12 +17,12 @@ module Humidifier
 
     class << self
       FUNCTIONS.each do |function|
-        define_method(Props.convert(function)) do |value|
+        define_method(Utils.underscore(function)) do |value|
           new(function, value)
         end
       end
     end
   end
 
-  Props::StringProp::WHITELIST << Fn
+  Props::Base::WHITELIST << Fn
 end

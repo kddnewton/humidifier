@@ -24,4 +24,11 @@ Minitest::Test.send(:include, Module.new do
     end
     mock.verify
   end
+
+  def suppress_warnings
+    warn_level = $VERBOSE
+    $VERBOSE = nil
+    yield
+    $VERBOSE = warn_level
+  end
 end)

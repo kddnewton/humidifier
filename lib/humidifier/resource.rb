@@ -3,6 +3,7 @@ module Humidifier
   # Superclass for all AWS resources
   class Resource
 
+    include AttributeMethods
     extend PropertyMethods
     attr_accessor :properties
 
@@ -29,14 +30,15 @@ module Humidifier
 
     def to_cf
       props_cf = Serializer.enumerable_to_h(properties) { |(key, value)| self.class.props[key].to_cf(value) }
-      { 'Type' => self.class.aws_name, 'Properties' => props_cf }
+      { 'Type' => self.class.aws_name, 'Properties' => props_cf }.merge(common_attributes)
     end
 
     def update(properties, raw = false)
-      properties.each { |property, value| update_property(property.to_s, value, raw) }
+      properties.each { |property, value| update_property(property, value, raw) }
     end
 
     def update_property(property, value, raw = false)
+      property = property.to_s
       property = validate_property(property, raw)
       value = validate_value(property, value, raw)
       properties[property] = value
@@ -49,7 +51,7 @@ module Humidifier
     end
 
     def validate_property(property, raw)
-      property = Props.convert(property) if raw
+      property = Utils.underscore(property) if raw
       unless self.class.prop?(property)
         raise ArgumentError, "Attempting to set invalid property for #{self.class.name}: #{property}"
       end

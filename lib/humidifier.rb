@@ -1,9 +1,11 @@
 require 'json'
 require 'pathname'
 
+require 'humidifier/utils'
 require 'humidifier/props'
 require 'humidifier/fn'
 require 'humidifier/ref'
+require 'humidifier/attribute_methods'
 require 'humidifier/property_methods'
 
 require 'humidifier/aws_shim'

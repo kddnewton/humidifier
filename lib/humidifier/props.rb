@@ -5,6 +5,8 @@ module Humidifier
 
     # Superclass for all CFN properties
     class Base
+      # allowing WHITELIST to be modified so Ref and Fn can register themselves
+      WHITELIST = [] # rubocop:disable MutableConstant
 
       attr_accessor :key
       attr_reader :value
@@ -18,11 +20,15 @@ module Humidifier
       end
 
       def name
-        @name ||= Props.convert(key)
+        @name ||= Utils.underscore(key)
       end
 
       def to_cf(value)
         [key, Serializer.dump(value)]
+      end
+
+      def whitelisted_value?(value)
+        WHITELIST.any? { |clazz| value.is_a?(clazz) }
       end
     end
 
@@ -52,7 +58,7 @@ module Humidifier
     # A JSON property (and the default)
     class JSONProp < Base
       def valid?(value)
-        value.is_a?(Hash)
+        whitelisted_value?(value) || value.is_a?(Hash)
       end
     end
 
@@ -64,30 +70,23 @@ module Humidifier
       end
 
       def valid?(value)
-        value.is_a?(Fixnum)
+        whitelisted_value?(value) || value.is_a?(Fixnum)
       end
     end
 
     # A string property
     class StringProp < Base
-      # allowing WHITELIST to be modified so Ref and Fn can register themselves
-      WHITELIST = [] # rubocop:disable MutableConstant
-
       def convert(value)
         puts "WARNING: Property #{name} should be a string" unless valid?(value)
-        WHITELIST.any? { |clazz| value.is_a?(clazz) } ? value : value.to_s
+        whitelisted_value?(value) ? value : value.to_s
       end
 
       def valid?(value)
-        (WHITELIST + [String]).any? { |clazz| value.is_a?(clazz) }
+        whitelisted_value?(value) || value.is_a?(String)
       end
     end
 
     class << self
-      def convert(key)
-        key.gsub(/([A-Z]+)([0-9]|[A-Z]|\z)/) { "#{$1.capitalize}#{$2}" }.gsub(/(.)([A-Z])/, '\1_\2').downcase if key
-      end
-
       def from(spec_line)
         key, type = parse(spec_line)
 
