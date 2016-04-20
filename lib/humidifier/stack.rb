@@ -3,11 +3,18 @@ module Humidifier
   # Represents a CFN stack
   class Stack
 
-    attr_accessor :description, :mappings, :outputs, :parameters, :resources
+    STATIC_RESOURCES     = %i[aws_template_format_version description metadata].freeze
+    ENUMERABLE_RESOURCES = %i[mappings outputs parameters resources].freeze
+    private_constant :STATIC_RESOURCES, :ENUMERABLE_RESOURCES
+
+    attr_accessor(*STATIC_RESOURCES)
+    attr_accessor(*ENUMERABLE_RESOURCES)
 
     def initialize(opts = {})
-      self.description = opts[:description]
-      %i[mappings outputs parameters resources].each do |resource_type|
+      STATIC_RESOURCES.each do |resource_type|
+        send(:"#{resource_type}=", opts[resource_type])
+      end
+      ENUMERABLE_RESOURCES.each do |resource_type|
         send(:"#{resource_type}=", opts.fetch(resource_type, {}))
       end
     end
@@ -24,8 +31,10 @@ module Humidifier
 
     def to_cf
       cf = {}
-      cf = add_description(cf)
-      %i[mappings outputs parameters resources].each do |resource_type|
+      STATIC_RESOURCES.each do |resource_type|
+        cf = add_static_resource(cf, resource_type)
+      end
+      ENUMERABLE_RESOURCES.each do |resource_type|
         cf = add_enumerable_resources(cf, resource_type)
       end
 
@@ -38,14 +47,15 @@ module Humidifier
 
     private
 
-    def add_description(cf)
-      cf['Description'] = description if description
+    def add_static_resource(cf, resource_type)
+      cf[Humidifier::Utils.camelize(resource_type)] = send(resource_type) if send(resource_type)
       cf
     end
 
     def add_enumerable_resources(cf, resource_type)
       if send(resource_type).any?
-        cf[resource_type.capitalize.to_s] = Serializer.enumerable_to_h(send(resource_type)) do |name, resource|
+        key = Humidifier::Utils.camelize(resource_type)
+        cf[key] = Serializer.enumerable_to_h(send(resource_type)) do |name, resource|
           [name, resource.to_cf]
         end
       end

@@ -14,6 +14,7 @@ require 'humidifier/parameter'
 require 'humidifier/resource'
 require 'humidifier/serializer'
 require 'humidifier/stack'
+require 'humidifier/utils'
 require 'humidifier/version'
 
 # container module for all gem classes

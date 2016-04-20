@@ -5,8 +5,12 @@ class StackTest < Minitest::Test
 
   def test_defaults
     stack = Humidifier::Stack.new
-    assert_equal nil, stack.description
-    assert_equal ({}), stack.resources
+    Humidifier::Stack.const_get(:STATIC_RESOURCES).each do |resource_type|
+      assert_equal nil, stack.send(resource_type)
+    end
+    Humidifier::Stack.const_get(:ENUMERABLE_RESOURCES).each do |resource_type|
+      assert_equal ({}), stack.send(resource_type)
+    end
   end
 
   def test_add
@@ -43,6 +47,9 @@ class StackTest < Minitest::Test
 
   def test_to_cf
     expected = {
+      'AwsTemplateFormatVersion' => 'foo',
+      'Description' => 'bar',
+      'Metadata' => 'baz',
       'Resources' => { 'One' => 'One', 'Two' => 'Two' },
       'Mappings' => { 'Three' => 'Three' },
       'Outputs' => { 'Four' => 'Four' },
@@ -65,7 +72,19 @@ class StackTest < Minitest::Test
   private
 
   def build
-    Humidifier::Stack.new(
+    Humidifier::Stack.new(static_resources.merge(enumerable_resources))
+  end
+
+  def static_resources
+    {
+      aws_template_format_version: 'foo',
+      description: 'bar',
+      metadata: 'baz'
+    }
+  end
+
+  def enumerable_resources
+    {
       resources: {
         'One' => ResourceDouble.new('One'),
         'Two' => ResourceDouble.new('Two')
@@ -73,6 +92,6 @@ class StackTest < Minitest::Test
       mappings: { 'Three' => ResourceDouble.new('Three') },
       outputs: { 'Four' => ResourceDouble.new('Four') },
       parameters: { 'Five' => ResourceDouble.new('Five') }
-    )
+    }
   end
 end
