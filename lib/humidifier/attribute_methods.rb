@@ -10,14 +10,8 @@ module Humidifier
 
     def common_attributes
       ATTRIBUTES.each_with_object({}) do |att, attributes|
-        attributes[attr_to_camel(att)] = send(att) if send(att)
+        attributes[Humidifier::Utils.camelize(att)] = send(att) if send(att)
       end
-    end
-
-    private
-
-    def attr_to_camel(att)
-      att.to_s.capitalize.gsub(/_([a-z])/) { $1.upcase }
     end
   end
 end

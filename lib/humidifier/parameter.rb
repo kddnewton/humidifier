@@ -17,15 +17,9 @@ module Humidifier
       cf = { 'Type' => type }
       PROPERTIES.each do |prop|
         val = send(prop)
-        cf[prop_to_camel(prop)] = Serializer.dump(val) if val
+        cf[Humidifier::Utils.camelize(prop)] = Serializer.dump(val) if val
       end
       cf
-    end
-
-    private
-
-    def prop_to_camel(prop)
-      prop.to_s.capitalize.gsub(/_([a-z])/) { $1.upcase }
     end
   end
 end

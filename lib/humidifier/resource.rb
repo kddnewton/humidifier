@@ -34,10 +34,11 @@ module Humidifier
     end
 
     def update(properties, raw = false)
-      properties.each { |property, value| update_property(property.to_s, value, raw) }
+      properties.each { |property, value| update_property(property, value, raw) }
     end
 
     def update_property(property, value, raw = false)
+      property = property.to_s
       property = validate_property(property, raw)
       value = validate_value(property, value, raw)
       properties[property] = value
