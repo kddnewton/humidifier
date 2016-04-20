@@ -47,7 +47,7 @@ class StackTest < Minitest::Test
 
   def test_to_cf
     expected = {
-      'AwsTemplateFormatVersion' => 'foo',
+      'AWSTemplateFormatVersion' => 'foo',
       'Description' => 'bar',
       'Metadata' => 'baz',
       'Resources' => { 'One' => 'One', 'Two' => 'Two' },
