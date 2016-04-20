@@ -3,6 +3,7 @@ module Humidifier
   # Superclass for all AWS resources
   class Resource
 
+    include AttributeMethods
     extend PropertyMethods
     attr_accessor :properties
 
@@ -29,7 +30,7 @@ module Humidifier
 
     def to_cf
       props_cf = Serializer.enumerable_to_h(properties) { |(key, value)| self.class.props[key].to_cf(value) }
-      { 'Type' => self.class.aws_name, 'Properties' => props_cf }
+      { 'Type' => self.class.aws_name, 'Properties' => props_cf }.merge(common_attributes)
     end
 
     def update(properties, raw = false)
