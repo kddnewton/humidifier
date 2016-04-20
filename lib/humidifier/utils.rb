@@ -2,7 +2,7 @@ module Humidifier
   class Utils
     class << self
       def camelize(str)
-        str.to_s.capitalize.gsub(/_([a-z])/) { $1.upcase }
+        str.to_s.capitalize.gsub(/_([a-z])/) { $1.upcase }.gsub(/aws/i, 'AWS')
       end
 
       def underscore(str)

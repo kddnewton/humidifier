@@ -49,7 +49,7 @@ The above code will output:
 
 ```json
 {
-  "AwsTemplateFormatVersion": "2010-09-09",
+  "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "Example stack",
   "Resources": {
     "LoadBalancer": {
