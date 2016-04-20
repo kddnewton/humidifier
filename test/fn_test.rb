@@ -5,7 +5,7 @@ class FnTest < Minitest::Test
   Humidifier::Fn::FUNCTIONS.each do |function|
     define_method(:"test_#{function}") do
       reference = Object.new
-      fn = Humidifier::Fn.send(Humidifier::Props.convert(function), reference)
+      fn = Humidifier::Fn.send(Humidifier::Utils.underscore(function), reference)
       assert_equal ({ "Fn::#{function}" => reference }), fn.to_cf
     end
   end

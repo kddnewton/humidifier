@@ -51,7 +51,7 @@ module Humidifier
     end
 
     def validate_property(property, raw)
-      property = Props.convert(property) if raw
+      property = Utils.underscore(property) if raw
       unless self.class.prop?(property)
         raise ArgumentError, "Attempting to set invalid property for #{self.class.name}: #{property}"
       end
