@@ -25,7 +25,7 @@ In the following example we build a load balancer object, set the scheme, at it 
 
 ```ruby
 stack = Humidifier::Stack.new(
-  aws_template_format_version: '2010-09-09'
+  aws_template_format_version: '2010-09-09',
   description: 'Example stack'
 )
 
