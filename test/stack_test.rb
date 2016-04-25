@@ -23,10 +23,11 @@ class StackTest < Minitest::Test
 
   def test_add_condition
     stack = Humidifier::Stack.new
-    stack.add_condition('foo', 'bar' => 'baz')
+    stack.add_condition('foo', Humidifier::Fn.new('If', 'Bar'))
 
     assert_equal 'foo', stack.conditions.keys.first
-    assert_equal 'baz', stack.conditions.values.first.opts.values.first
+    assert_equal 'Fn::If', stack.conditions.values.first.opts.name
+    assert_equal 'Bar', stack.conditions.values.first.opts.value
   end
 
   def test_add_mapping
