@@ -4,7 +4,7 @@ module Humidifier
   class Stack
 
     STATIC_RESOURCES     = %i[aws_template_format_version description metadata].freeze
-    ENUMERABLE_RESOURCES = %i[mappings outputs parameters resources].freeze
+    ENUMERABLE_RESOURCES = %i[conditions mappings outputs parameters resources].freeze
     private_constant :STATIC_RESOURCES, :ENUMERABLE_RESOURCES
 
     attr_accessor(*STATIC_RESOURCES)
@@ -23,7 +23,7 @@ module Humidifier
       resources[name] = resource
     end
 
-    %i[mapping output parameter].each do |resource_type|
+    %i[condition mapping output parameter].each do |resource_type|
       define_method(:"add_#{resource_type}") do |name, opts = {}|
         send(:"#{resource_type}s")[name] = Humidifier.const_get(resource_type.capitalize).new(opts)
       end

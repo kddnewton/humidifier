@@ -21,6 +21,14 @@ class StackTest < Minitest::Test
     assert_equal ({ 'MyResource' => resource }), stack.resources
   end
 
+  def test_add_condition
+    stack = Humidifier::Stack.new
+    stack.add_condition('foo', 'bar' => 'baz')
+
+    assert_equal 'foo', stack.conditions.keys.first
+    assert_equal 'baz', stack.conditions.values.first.opts.values.first
+  end
+
   def test_add_mapping
     stack = Humidifier::Stack.new
     stack.add_mapping('foo', 'bar' => 'baz')
@@ -53,7 +61,8 @@ class StackTest < Minitest::Test
       'Resources' => { 'One' => 'One', 'Two' => 'Two' },
       'Mappings' => { 'Three' => 'Three' },
       'Outputs' => { 'Four' => 'Four' },
-      'Parameters' => { 'Five' => 'Five' }
+      'Parameters' => { 'Five' => 'Five' },
+      'Conditions' => { 'Six' => 'Six' }
     }
     assert_equal expected, JSON.parse(build.to_cf)
   end
@@ -91,7 +100,8 @@ class StackTest < Minitest::Test
       },
       mappings: { 'Three' => ResourceDouble.new('Three') },
       outputs: { 'Four' => ResourceDouble.new('Four') },
-      parameters: { 'Five' => ResourceDouble.new('Five') }
+      parameters: { 'Five' => ResourceDouble.new('Five') },
+      conditions: { 'Six' => ResourceDouble.new('Six') }
     }
   end
 end

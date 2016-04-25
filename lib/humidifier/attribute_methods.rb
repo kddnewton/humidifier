@@ -1,7 +1,7 @@
 module Humidifier
   module AttributeMethods
 
-    ATTRIBUTES = %i[creation_policy deletion_policy depends_on metadata update_policy].freeze
+    ATTRIBUTES = %i[condition creation_policy deletion_policy depends_on metadata update_policy].freeze
     private_constant :ATTRIBUTES
 
     def self.included(base)

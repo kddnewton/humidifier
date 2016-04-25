@@ -9,6 +9,7 @@ require 'humidifier/attribute_methods'
 require 'humidifier/property_methods'
 
 require 'humidifier/aws_shim'
+require 'humidifier/condition'
 require 'humidifier/mapping'
 require 'humidifier/output'
 require 'humidifier/parameter'

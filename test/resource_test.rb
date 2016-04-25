@@ -84,6 +84,12 @@ class ResourceTest < Minitest::Test
     refute Humidifier::Resource.prop?('three')
   end
 
+  def test_condition
+    resource = build
+    resource.condition = 'Bar'
+    assert resource.to_cf['Condition'] = 'Bar'
+  end
+
   private
 
   def build
