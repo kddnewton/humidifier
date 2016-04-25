@@ -22,12 +22,12 @@ class StackTest < Minitest::Test
   end
 
   def test_add_condition
-    stack = Humidifier::Stack.new
-    stack.add_condition('foo', Humidifier::Fn.new('If', 'Bar'))
-
+    stack = build_stack_with_condition
     assert_equal 'foo', stack.conditions.keys.first
-    assert_equal 'Fn::If', stack.conditions.values.first.opts.name
-    assert_equal 'Bar', stack.conditions.values.first.opts.value
+
+    condition = stack.conditions.values.first
+    assert_equal 'Fn::If', condition.opts.name
+    assert_equal 'Bar', condition.opts.value
   end
 
   def test_add_mapping
@@ -54,18 +54,19 @@ class StackTest < Minitest::Test
     assert_equal 'bar', stack.parameters.values.first.type
   end
 
+  EXPECTED_CF = {
+    'AWSTemplateFormatVersion' => 'foo',
+    'Description' => 'bar',
+    'Metadata' => 'baz',
+    'Resources' => { 'One' => 'One', 'Two' => 'Two' },
+    'Mappings' => { 'Three' => 'Three' },
+    'Outputs' => { 'Four' => 'Four' },
+    'Parameters' => { 'Five' => 'Five' },
+    'Conditions' => { 'Six' => 'Six' }
+  }.freeze
+
   def test_to_cf
-    expected = {
-      'AWSTemplateFormatVersion' => 'foo',
-      'Description' => 'bar',
-      'Metadata' => 'baz',
-      'Resources' => { 'One' => 'One', 'Two' => 'Two' },
-      'Mappings' => { 'Three' => 'Three' },
-      'Outputs' => { 'Four' => 'Four' },
-      'Parameters' => { 'Five' => 'Five' },
-      'Conditions' => { 'Six' => 'Six' }
-    }
-    assert_equal expected, JSON.parse(build.to_cf)
+    assert_equal EXPECTED_CF, JSON.parse(build.to_cf)
   end
 
   def test_valid?
@@ -105,4 +106,11 @@ class StackTest < Minitest::Test
       conditions: { 'Six' => ResourceDouble.new('Six') }
     }
   end
+
+  def build_stack_with_condition
+    stack = Humidifier::Stack.new
+    stack.add_condition('foo', Humidifier::Fn.new('If', 'Bar'))
+    stack
+  end
+
 end
