@@ -1,10 +1,27 @@
 module TestHelpers
+  module AwsDouble
+    module CloudFormation
+      module Errors
+        class ValidationError < StandardError; end
+      end
+
+      class Client
+        def initialize(*)
+        end
+
+        def method_missing(_, *, **kwargs)
+          raise Errors::ValidationError, 'fake' if kwargs.any? { |_, value| !value }
+        end
+      end
+    end
+  end
+
   StackDouble = Struct.new(:name, :to_cf)
 
   private
 
-  def stack_double(to_cf)
-    StackDouble.new('test-stack', to_cf)
+  def stack_double(name: 'test-stack', to_cf: true)
+    StackDouble.new(name, to_cf)
   end
 
   def suppress_warnings
@@ -25,13 +42,13 @@ module TestHelpers
   end
 
   def with_sdk_v1_loaded
-    load 'support/aws_sdk_v1.rb'
+    Object.const_set(:AWS, AwsDouble)
     yield
     Object.send(:remove_const, :AWS)
   end
 
   def with_sdk_v2_loaded
-    load 'support/aws_sdk_v2.rb'
+    Object.const_set(:Aws, AwsDouble)
     yield
     Object.send(:remove_const, :Aws)
   end
