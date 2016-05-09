@@ -42,7 +42,7 @@ module Humidifier
     end
 
     def valid?
-      AWSShim.validate_stack(self)
+      AwsShim.validate_stack(self)
     end
 
     private

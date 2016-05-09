@@ -63,7 +63,7 @@ class StackTest < Minitest::Test
     mock = Minitest::Mock.new
     mock.expect(:call, nil, [stack])
 
-    Humidifier::AWSShim.stub(:validate_stack, mock) do
+    Humidifier::AwsShim.stub(:validate_stack, mock) do
       stack.valid?
     end
     mock.verify
