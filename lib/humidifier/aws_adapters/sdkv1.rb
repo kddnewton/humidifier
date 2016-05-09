@@ -4,7 +4,12 @@ module Humidifier
     # Validate using v1 of the aws-sdk
     class SDKV1
       def create_stack(stack)
-        try_valid { client.create_template(stack_name: stack.name, template_body: stack.to_cf) }
+        try_valid { client.create_stack(stack_name: stack.name, template_body: stack.to_cf) }
+      end
+
+      def delete_stack(stack)
+        client.delete_stack(stack_name: stack.name)
+        true
       end
 
       def validate_stack(stack)

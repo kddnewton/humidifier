@@ -24,16 +24,6 @@ module Humidifier
       resources[name] = resource
     end
 
-    def create
-      AwsShim.create_stack(self)
-    end
-
-    %i[mapping output parameter].each do |resource_type|
-      define_method(:"add_#{resource_type}") do |name, opts = {}|
-        send(:"#{resource_type}s")[name] = Humidifier.const_get(resource_type.capitalize).new(opts)
-      end
-    end
-
     def to_cf
       cf = {}
       STATIC_RESOURCES.each do |resource_type|
@@ -46,8 +36,14 @@ module Humidifier
       JSON.pretty_generate(cf)
     end
 
-    def valid?
-      AwsShim.validate_stack(self)
+    %i[mapping output parameter].each do |resource_type|
+      define_method(:"add_#{resource_type}") do |name, opts = {}|
+        send(:"#{resource_type}s")[name] = Humidifier.const_get(resource_type.capitalize).new(opts)
+      end
+    end
+
+    { create: :create_stack, delete: :delete_stack, valid?: :validate_stack }.each do |stack_method, shim_method|
+      define_method(stack_method) { AwsShim.send(shim_method, self) }
     end
 
     private

@@ -22,7 +22,7 @@ module Humidifier
 
     class << self
       extend Forwardable
-      def_delegators :shim, :create_stack, :validate_stack
+      def_delegators :shim, :create_stack, :delete_stack, :validate_stack
 
       def instance
         @instance ||= new

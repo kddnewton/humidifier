@@ -43,13 +43,19 @@ module TestHelpers
 
   def with_sdk_v1_loaded
     Object.const_set(:AWS, AwsDouble)
-    yield
-    Object.send(:remove_const, :AWS)
+    begin
+      capture_io { yield }
+    ensure
+      Object.send(:remove_const, :AWS)
+    end
   end
 
   def with_sdk_v2_loaded
     Object.const_set(:Aws, AwsDouble)
-    yield
-    Object.send(:remove_const, :Aws)
+    begin
+      capture_io { yield }
+    ensure
+      Object.send(:remove_const, :Aws)
+    end
   end
 end

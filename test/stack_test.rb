@@ -58,7 +58,7 @@ class StackTest < Minitest::Test
     assert_equal expected, JSON.parse(build.to_cf)
   end
 
-  [[:create_stack, :create], [:validate_stack, :valid?]].each do |shim_method, stack_method|
+  { create: :create_stack, delete: :delete_stack, valid?: :validate_stack }.each do |stack_method, shim_method|
     define_method(:"test_#{stack_method}") do
       with_mocked_aws_shim(shim_method) { |stack| stack.send(stack_method) }
     end

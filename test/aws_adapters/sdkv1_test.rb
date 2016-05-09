@@ -9,6 +9,12 @@ class SDKV1Test < Minitest::Test
     end
   end
 
+  def test_delete_stack
+    with_sdk_v1_loaded do
+      assert sdk.delete_stack(stack_double)
+    end
+  end
+
   def test_validate_stack
     with_sdk_v1_loaded do
       assert sdk.validate_stack(stack_double(to_cf: true))
