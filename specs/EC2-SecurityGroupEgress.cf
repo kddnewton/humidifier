@@ -1,6 +1,6 @@
 {
-    "Type": "AWS::EC2::SecurityGroupEgress",
-    "Properties" : {
+  "Type": "AWS::EC2::SecurityGroupEgress",
+  "Properties" : {
    "CidrIp" : String,
    "DestinationSecurityGroupId" : String,
    "FromPort" : Integer,

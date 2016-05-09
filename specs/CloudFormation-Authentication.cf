@@ -1,6 +1,6 @@
 {
-    "Type": "AWS::CloudFormation::Authentication",
-    "Properties" : {
+  "Type": "AWS::CloudFormation::Authentication",
+  "Properties" : {
    "Type" : "AWS::CloudFormation::Authentication" {
       "String" : {
          "accessKeyId" : String,

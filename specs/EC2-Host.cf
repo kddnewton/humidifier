@@ -1,0 +1,8 @@
+{
+  "Type" : "AWS::EC2::Host",
+  "Properties" : {
+    "AutoPlacement" : String,
+    "AvailabilityZone" : String,
+    "InstanceType" : String
+  }
+}

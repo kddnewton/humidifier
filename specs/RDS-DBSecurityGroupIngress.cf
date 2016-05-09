@@ -1,6 +1,6 @@
 {
-    "Type": "AWS::RDS::DBSecurityGroupIngress",
-    "Properties" : {
+  "Type": "AWS::RDS::DBSecurityGroupIngress",
+  "Properties" : {
    "CIDRIP": String,
    "DBSecurityGroupName": String,
    "EC2SecurityGroupId": String,
