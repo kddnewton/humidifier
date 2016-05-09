@@ -12,6 +12,10 @@ module Humidifier
         true
       end
 
+      def stack_exists?(stack)
+        AWS::CloudFormation.stacks[stack.name].exists?
+      end
+
       def update_stack(stack)
         try_valid { client.update_stack(stack_name: stack.name, template_body: stack.to_cf) }
       end
@@ -29,7 +33,9 @@ module Humidifier
       def try_valid
         yield
         true
-      rescue AWS::CloudFormation::Errors::ValidationError
+      rescue AWS::CloudFormation::Errors::ValidationError => error
+        $stderr.puts error.message
+        $stderr.puts error.backtrace
         false
       end
     end

@@ -13,6 +13,16 @@ module TestHelpers
           raise Errors::ValidationError, 'fake' if kwargs.any? { |_, value| !value }
         end
       end
+
+      class << self
+        def exists?
+          true
+        end
+
+        def stacks
+          { 'test-stack' => self }
+        end
+      end
     end
   end
 

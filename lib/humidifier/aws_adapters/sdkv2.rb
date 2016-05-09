@@ -12,6 +12,10 @@ module Humidifier
         true
       end
 
+      def stack_exists?(stack)
+        Aws::CloudFormation.stacks[stack.name].exists?
+      end
+
       def update_stack(stack)
         try_valid { client.update_stack(stack_name: stack.name, template_body: stack.to_cf) }
       end

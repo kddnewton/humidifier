@@ -15,6 +15,15 @@ class SDKV2Test < Minitest::Test
     end
   end
 
+  def test_stack_exists?
+    with_sdk_v2_loaded do
+      assert sdk.stack_exists?(stack_double)
+      Aws::CloudFormation.stub(:exists?, false) do
+        refute sdk.stack_exists?(stack_double)
+      end
+    end
+  end
+
   def test_update_stack
     with_sdk_v2_loaded do
       assert sdk.update_stack(stack_double(to_cf: true))
