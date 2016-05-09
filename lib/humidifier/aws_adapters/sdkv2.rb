@@ -3,8 +3,22 @@ module Humidifier
 
     # Validate using v2 of the aws-sdk
     class SDKV2
+      def create_stack(stack)
+        try { client.create_template(stack_name: stack.name, template_body: stack.to_cf) }
+      end
+
       def validate_stack(stack)
-        Aws::CloudFormation::Client.new(region: AwsShim::REGION).validate_template(template_body: stack.to_cf)
+        try { client.validate_template(template_body: stack.to_cf) }
+      end
+
+      private
+
+      def client
+        @client ||= Aws::CloudFormation::Client.new(region: AwsShim::REGION)
+      end
+
+      def try
+        yield
         true
       rescue Aws::CloudFormation::Errors::ValidationError
         false

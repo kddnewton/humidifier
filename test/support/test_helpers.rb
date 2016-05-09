@@ -1,11 +1,10 @@
 module TestHelpers
+  StackDouble = Struct.new(:name, :to_cf)
 
   private
 
   def stack_double(to_cf)
-    stack = Object.new
-    stack.singleton_class.send(:define_method, :to_cf) { to_cf }
-    stack
+    StackDouble.new('test-stack', to_cf)
   end
 
   def suppress_warnings

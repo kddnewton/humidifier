@@ -2,11 +2,23 @@ require 'test_helper'
 
 class SDKV1Test < Minitest::Test
 
-  def test_sdk_v1
-    sdk_v1 = Humidifier::AwsAdapters::SDKV1.new
+  def test_create_stack
     with_sdk_v1_loaded do
-      assert sdk_v1.validate_stack(stack_double(true))
-      refute sdk_v1.validate_stack(stack_double(false))
+      assert sdk.create_stack(stack_double(true))
+      refute sdk.create_stack(stack_double(false))
     end
+  end
+
+  def test_validate_stack
+    with_sdk_v1_loaded do
+      assert sdk.validate_stack(stack_double(true))
+      refute sdk.validate_stack(stack_double(false))
+    end
+  end
+
+  private
+
+  def sdk
+    Humidifier::AwsAdapters::SDKV1.new
   end
 end

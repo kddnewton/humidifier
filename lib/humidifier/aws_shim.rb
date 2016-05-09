@@ -21,12 +21,15 @@ module Humidifier
     end
 
     class << self
+      extend Forwardable
+      def_delegators :shim, :create_stack, :validate_stack
+
       def instance
         @instance ||= new
       end
 
-      def validate_stack(stack)
-        instance.shim.validate_stack(stack)
+      def shim
+        instance.shim
       end
     end
   end

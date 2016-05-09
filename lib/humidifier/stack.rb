@@ -7,10 +7,11 @@ module Humidifier
     ENUMERABLE_RESOURCES = %i[mappings outputs parameters resources].freeze
     private_constant :STATIC_RESOURCES, :ENUMERABLE_RESOURCES
 
-    attr_accessor(*STATIC_RESOURCES)
-    attr_accessor(*ENUMERABLE_RESOURCES)
+    attr_accessor :name, *STATIC_RESOURCES, *ENUMERABLE_RESOURCES
 
     def initialize(opts = {})
+      self.name = opts[:name]
+
       STATIC_RESOURCES.each do |resource_type|
         send(:"#{resource_type}=", opts[resource_type])
       end
@@ -21,6 +22,10 @@ module Humidifier
 
     def add(name, resource)
       resources[name] = resource
+    end
+
+    def create
+      AwsShim.create_stack(self)
     end
 
     %i[mapping output parameter].each do |resource_type|

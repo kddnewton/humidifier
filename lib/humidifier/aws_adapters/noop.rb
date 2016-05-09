@@ -4,8 +4,8 @@ module Humidifier
     # Doesn't do anything
     class Noop
       def method_missing(method, *)
-        if method == :validate_stack
-          puts 'WARNING: Not validating because aws-sdk not loaded.'
+        if %i[create_stack validate_stack].include?(method)
+          puts "WARNING: Cannot run #{method} because aws-sdk not loaded."
           false
         else
           super
