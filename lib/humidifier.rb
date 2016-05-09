@@ -1,6 +1,8 @@
 require 'json'
 require 'pathname'
 
+require 'humidifier/humidifier'
+
 require 'humidifier/utils'
 require 'humidifier/props'
 require 'humidifier/fn'
