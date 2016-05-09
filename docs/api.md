@@ -54,6 +54,7 @@
   - [DHCPOptions](#humidifierec2dhcpoptions)
   - [EIP](#humidifierec2eip)
   - [EIPAssociation](#humidifierec2eipassociation)
+  - [Host](#humidifierec2host)
   - [Instance](#humidifierec2instance)
   - [InternetGateway](#humidifierec2internetgateway)
   - [NatGateway](#humidifierec2natgateway)
@@ -559,13 +560,21 @@
 * network\_interface\_id (NetworkInterfaceId: String)
 * private\_ip\_address (PrivateIpAddress: String)
 
+### Humidifier::EC2::Host
+
+* auto\_placement (AutoPlacement: String)
+* availability\_zone (AvailabilityZone: String)
+* instance\_type (InstanceType: String)
+
 ### Humidifier::EC2::Instance
 
 * additional\_info (AdditionalInfo: String)
+* affinity (Affinity: String)
 * availability\_zone (AvailabilityZone: String)
 * block\_device\_mappings (BlockDeviceMappings: Array)
 * disable\_api\_termination (DisableApiTermination: Boolean)
 * ebs\_optimized (EbsOptimized: Boolean)
+* host\_id (HostId: String)
 * iam\_instance\_profile (IamInstanceProfile: String)
 * image\_id (ImageId: String)
 * instance\_initiated\_shutdown\_behavior (InstanceInitiatedShutdownBehavior: String)
@@ -785,6 +794,7 @@
 ### Humidifier::ECS::Service
 
 * cluster (Cluster: String)
+* deployment\_configuration (DeploymentConfiguration: JSON)
 * desired\_count (DesiredCount: Integer)
 * load\_balancers (LoadBalancers: Array)
 * role (Role: String)
@@ -998,6 +1008,8 @@
 * ec2\_inbound\_permissions (EC2InboundPermissions: Array)
 * ec2\_instance\_type (EC2InstanceType: String)
 * log\_paths (LogPaths: Array)
+* max\_size (MaxSize: Integer)
+* min\_size (MinSize: Integer)
 * name (Name: String)
 * server\_launch\_parameters (ServerLaunchParameters: String)
 * server\_launch\_path (ServerLaunchPath: String)
