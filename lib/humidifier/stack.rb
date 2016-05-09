@@ -42,7 +42,7 @@ module Humidifier
       end
     end
 
-    { create: :create_stack, delete: :delete_stack, valid?: :validate_stack }.each do |stack_method, shim_method|
+    AwsShim::STACK_METHODS.each do |stack_method, shim_method|
       define_method(stack_method) { AwsShim.send(shim_method, self) }
     end
 

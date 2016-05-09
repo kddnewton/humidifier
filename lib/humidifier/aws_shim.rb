@@ -6,7 +6,14 @@ module Humidifier
 
   # Optionally provides aws-sdk functionality if the gem is loaded
   class AwsShim
+
     REGION = ENV['AWS_REGION'] || 'us-east-1'
+    STACK_METHODS = {
+      create: :create_stack,
+      delete: :delete_stack,
+      update: :update_stack,
+      valid?: :validate_stack
+    }.freeze
 
     attr_accessor :shim
 
@@ -22,7 +29,7 @@ module Humidifier
 
     class << self
       extend Forwardable
-      def_delegators :shim, :create_stack, :delete_stack, :validate_stack
+      def_delegators :shim, *STACK_METHODS.values
 
       def instance
         @instance ||= new

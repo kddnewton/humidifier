@@ -15,6 +15,13 @@ class SDKV2Test < Minitest::Test
     end
   end
 
+  def test_update_stack
+    with_sdk_v2_loaded do
+      assert sdk.update_stack(stack_double(to_cf: true))
+      refute sdk.update_stack(stack_double(to_cf: false))
+    end
+  end
+
   def test_validate_stack
     with_sdk_v2_loaded do
       assert sdk.validate_stack(stack_double(to_cf: true))
