@@ -1,5 +1,4 @@
 #include <humidifier.h>
-#include <stdio.h>
 
 static VALUE camelize(VALUE self, VALUE str)
 {
