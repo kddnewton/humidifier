@@ -54,18 +54,6 @@ module TestHelpers
     $VERBOSE = warn_level
   end
 
-  # sorry
-  def with_faked_sdk_require
-    filepath = File.expand_path(File.join('..', '..', 'aws-sdk.rb'), __FILE__)
-    begin
-      FileUtils.touch(filepath)
-      yield
-    ensure
-      FileUtils.rm(filepath)
-      $LOADED_FEATURES.reject! { |feature| feature.match(/aws-sdk/) }
-    end
-  end
-
   def with_mocked_serializer(value)
     mock = Minitest::Mock.new
     mock.expect(:call, value, [value])

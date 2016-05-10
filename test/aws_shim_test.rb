@@ -18,18 +18,14 @@ class AwsShimTest < Minitest::Test
   end
 
   def test_initialize_sdk_v1
-    with_faked_sdk_require do
-      with_sdk_v1_loaded do
-        assert_kind_of Humidifier::AwsAdapters::SDKV1, Humidifier::AwsShim.new.shim
-      end
+    with_sdk_v1_loaded do
+      assert_kind_of Humidifier::AwsAdapters::SDKV1, Humidifier::AwsShim.new.shim
     end
   end
 
   def test_initialize_sdk_v2
-    with_faked_sdk_require do
-      with_sdk_v2_loaded do
-        assert_kind_of Humidifier::AwsAdapters::SDKV2, Humidifier::AwsShim.new.shim
-      end
+    with_sdk_v2_loaded do
+      assert_kind_of Humidifier::AwsAdapters::SDKV2, Humidifier::AwsShim.new.shim
     end
   end
 
