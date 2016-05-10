@@ -1,10 +1,12 @@
 {
    "Type" : "AWS::EC2::Instance",
    "Properties" : {
+      "Affinity" : String,
       "AvailabilityZone" : String,
       "BlockDeviceMappings" : [ EC2 Block Device Mapping, ... ],
       "DisableApiTermination" : Boolean,
       "EbsOptimized" : Boolean,
+      "HostId" : String,
       "IamInstanceProfile" : String,
       "ImageId" : String,
       "InstanceInitiatedShutdownBehavior" : String,

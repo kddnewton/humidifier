@@ -2,7 +2,8 @@ require 'forwardable'
 require 'json'
 require 'pathname'
 
-require 'humidifier/utils'
+require 'humidifier/humidifier'
+
 require 'humidifier/props'
 require 'humidifier/fn'
 require 'humidifier/ref'
