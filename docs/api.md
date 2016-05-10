@@ -372,7 +372,7 @@
 
 ### Humidifier::CloudFormation::Interface
 
-* aw\_s::\_cloud\_formation::\_interface (AWS::CloudFormation::Interface: JSON)
+* aws::\_cloud\_formation::\_interface (AWS::CloudFormation::Interface: JSON)
 * parameter\_groups (ParameterGroups: Array)
 * parameter\_labels (ParameterLabels: JSON)
 
@@ -893,7 +893,7 @@
 * notification\_topic\_arn (NotificationTopicArn: String)
 * num\_cache\_clusters (NumCacheClusters: Integer)
 * port (Port: Integer)
-* preferred\_cache\_cluster\_azs (PreferredCacheClusterAZs: Array)
+* preferred\_cache\_cluster\_a\_zs (PreferredCacheClusterAZs: Array)
 * preferred\_maintenance\_window (PreferredMaintenanceWindow: String)
 * replication\_group\_description (ReplicationGroupDescription: String)
 * security\_group\_ids (SecurityGroupIds: Array)
