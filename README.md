@@ -85,6 +85,10 @@ The above code will output:
 }
 ```
 
+## Extensions
+
+Two string utility methods (`camelize` and `underscore`) do a lot of the heavy lifting of changing AWS property names over to ruby method names. As such, they've been extracted to a native extension to increase speed and efficiency. To compile them locally run `rake compile`.
+
 ## API Reference
 
 For a list of resources and their properties, see the [API reference](docs/api.md).
