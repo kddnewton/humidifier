@@ -41,16 +41,4 @@ class AwsShimTest < Minitest::Test
     yield
     Humidifier::AwsShim.instance.shim = old_shim
   end
-
-  # sorry
-  def with_faked_sdk_require
-    filepath = File.expand_path(File.join('..', 'aws-sdk.rb'), __FILE__)
-    begin
-      FileUtils.touch(filepath)
-      yield
-    ensure
-      FileUtils.rm(filepath)
-      $LOADED_FEATURES.reject! { |feature| feature.match(/aws-sdk/) }
-    end
-  end
 end
