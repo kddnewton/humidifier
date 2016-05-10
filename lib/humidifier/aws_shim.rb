@@ -21,13 +21,17 @@ module Humidifier
     attr_accessor :shim
 
     def initialize
-      self.shim = begin
-        require 'aws-sdk'
-        nil
-      rescue LoadError
-        AwsAdapters::Noop.new
-      end
-      self.shim ||= AwsAdapters.const_get(Object.const_defined?(:AWS) ? :SDKV1 : :SDKV2).new
+      try_require_sdk('aws-sdk-v1')
+      try_require_sdk('aws-sdk')
+
+      self.shim =
+        if Object.const_defined?(:AWS)
+          AwsAdapters::SDKV1.new
+        elsif Object.const_defined?(:Aws)
+          AwsAdapters::SDKV2.new
+        else
+          AwsAdapters::Noop.new
+        end
     end
 
     class << self
@@ -41,6 +45,13 @@ module Humidifier
       def shim
         instance.shim
       end
+    end
+
+    private
+
+    def try_require_sdk(name)
+      require name
+    rescue LoadError # rubocop:disable Lint/HandleExceptions
     end
   end
 end
