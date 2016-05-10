@@ -7,10 +7,11 @@ module Humidifier
     ENUMERABLE_RESOURCES = %i[mappings outputs parameters resources].freeze
     private_constant :STATIC_RESOURCES, :ENUMERABLE_RESOURCES
 
-    attr_accessor(*STATIC_RESOURCES)
-    attr_accessor(*ENUMERABLE_RESOURCES)
+    attr_accessor :name, *STATIC_RESOURCES, *ENUMERABLE_RESOURCES
 
     def initialize(opts = {})
+      self.name = opts[:name]
+
       STATIC_RESOURCES.each do |resource_type|
         send(:"#{resource_type}=", opts[resource_type])
       end
@@ -21,12 +22,6 @@ module Humidifier
 
     def add(name, resource)
       resources[name] = resource
-    end
-
-    %i[mapping output parameter].each do |resource_type|
-      define_method(:"add_#{resource_type}") do |name, opts = {}|
-        send(:"#{resource_type}s")[name] = Humidifier.const_get(resource_type.capitalize).new(opts)
-      end
     end
 
     def to_cf
@@ -41,8 +36,14 @@ module Humidifier
       JSON.pretty_generate(cf)
     end
 
-    def valid?
-      AWSShim.validate_stack(self)
+    %i[mapping output parameter].each do |resource_type|
+      define_method(:"add_#{resource_type}") do |name, opts = {}|
+        send(:"#{resource_type}s")[name] = Humidifier.const_get(resource_type.capitalize).new(opts)
+      end
+    end
+
+    AwsShim::STACK_METHODS.each do |stack_method, shim_method|
+      define_method(stack_method) { AwsShim.send(shim_method, self) }
     end
 
     private
