@@ -2,29 +2,29 @@ module Humidifier
   module AwsAdapters
     class Base
 
-      def create_stack(stack)
-        try_valid { client.create_stack(stack_name: stack.name, template_body: stack.to_cf) }
+      def create_stack(stack, options = {})
+        try_valid { client.create_stack({ stack_name: stack.name, template_body: stack.to_cf }.merge(options)) }
       end
 
-      def delete_stack(stack)
-        client.delete_stack(stack_name: stack.name)
+      def delete_stack(stack, options = {})
+        client.delete_stack({ stack_name: stack.name }.merge(options))
         true
       end
 
-      def deploy_stack(stack)
-        stack_exists?(stack) ? update_stack(stack) : create_stack(stack)
+      def deploy_stack(stack, options = {})
+        stack_exists?(stack) ? update_stack(stack, options) : create_stack(stack, options)
       end
 
-      def stack_exists?(stack)
+      def stack_exists?(stack, _ = {})
         base_module::CloudFormation::Stack.new(name: stack.name).exists?
       end
 
-      def update_stack(stack)
-        try_valid { client.update_stack(stack_name: stack.name, template_body: stack.to_cf) }
+      def update_stack(stack, options = {})
+        try_valid { client.update_stack({ stack_name: stack.name, template_body: stack.to_cf }.merge(options)) }
       end
 
-      def validate_stack(stack)
-        try_valid { client.validate_template(template_body: stack.to_cf) }
+      def validate_stack(stack, options = {})
+        try_valid { client.validate_template({ template_body: stack.to_cf }.merge(options)) }
       end
 
       private
