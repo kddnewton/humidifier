@@ -12,6 +12,19 @@ module TestHelpers
         def method_missing(_, *, **kwargs)
           raise Errors::ValidationError, 'fake' if kwargs.any? { |_, value| !value }
         end
+
+        def stacks
+          CloudFormation.stacks
+        end
+      end
+
+      class Stack
+        def initialize(*)
+        end
+
+        def exists?
+          CloudFormation.exists?
+        end
       end
 
       class << self
