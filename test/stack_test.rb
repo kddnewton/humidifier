@@ -58,15 +58,10 @@ class StackTest < Minitest::Test
     assert_equal expected, JSON.parse(build.to_cf)
   end
 
-  def test_valid?
-    stack = Humidifier::Stack.new
-    mock = Minitest::Mock.new
-    mock.expect(:call, nil, [stack])
-
-    Humidifier::AWSShim.stub(:validate_stack, mock) do
-      stack.valid?
+  Humidifier::AwsShim::STACK_METHODS.each do |stack_method, shim_method|
+    define_method(:"test_#{stack_method}") do
+      with_mocked_aws_shim(shim_method) { |stack| stack.send(stack_method) }
     end
-    mock.verify
   end
 
   private
@@ -93,5 +88,16 @@ class StackTest < Minitest::Test
       outputs: { 'Four' => ResourceDouble.new('Four') },
       parameters: { 'Five' => ResourceDouble.new('Five') }
     }
+  end
+
+  def with_mocked_aws_shim(method)
+    stack = Humidifier::Stack.new(name: 'test-stack')
+    mock = Minitest::Mock.new
+    mock.expect(:call, nil, [stack])
+
+    Humidifier::AwsShim.stub(method, mock) do
+      yield stack
+    end
+    mock.verify
   end
 end

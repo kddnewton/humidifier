@@ -14,21 +14,5 @@ require 'humidifier'
 require 'fileutils'
 require 'minitest/autorun'
 
-Minitest::Test.send(:include, Module.new do
-  def with_mocked_serializer(value)
-    mock = Minitest::Mock.new
-    mock.expect(:call, value, [value])
-
-    Humidifier::Serializer.stub(:dump, mock) do
-      yield value
-    end
-    mock.verify
-  end
-
-  def suppress_warnings
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    yield
-    $VERBOSE = warn_level
-  end
-end)
+require 'support/test_helpers'
+Minitest::Test.send(:include, TestHelpers)
