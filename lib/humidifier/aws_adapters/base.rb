@@ -16,7 +16,7 @@ module Humidifier
       end
 
       def stack_exists?(stack, _ = {})
-        base_module::CloudFormation::Stack.new(name: stack.name).exists?
+        base_module::CloudFormation::Stack.new(stack_name: stack.name).exists?
       end
 
       def update_stack(stack, options = {})
