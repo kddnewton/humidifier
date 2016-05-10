@@ -15,8 +15,8 @@ module Humidifier
         stack_exists?(stack) ? update_stack(stack) : create_stack(stack)
       end
 
-      def stack_exists?(*)
-        raise NotImplementedError, 'Implemented in subclass'
+      def stack_exists?(stack)
+        base_module::CloudFormation::Stack.new(name: stack.name).exists?
       end
 
       def update_stack(stack)

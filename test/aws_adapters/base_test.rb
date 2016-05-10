@@ -26,12 +26,6 @@ class BaseTest < Minitest::Test
     end
   end
 
-  def test_stack_exists?
-    assert_raises NotImplementedError do
-      Humidifier::AwsAdapters::Base.new.stack_exists?(nil)
-    end
-  end
-
   private
 
   def with_stubbed_client(adapter, client, stack_exists: true)
