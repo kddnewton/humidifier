@@ -15,10 +15,6 @@ module Humidifier
         stack_exists?(stack) ? update_stack(stack, options) : create_stack(stack, options)
       end
 
-      def stack_exists?(stack, _ = {})
-        base_module::CloudFormation::Stack.new(stack_name: stack.name).exists?
-      end
-
       def update_stack(stack, options = {})
         try_valid { client.update_stack({ stack_name: stack.name, template_body: stack.to_cf }.merge(options)) }
       end
