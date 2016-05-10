@@ -12,6 +12,7 @@ module Humidifier
     STACK_METHODS = {
       create: :create_stack,
       delete: :delete_stack,
+      deploy: :deploy_stack,
       exists?: :stack_exists?,
       update: :update_stack,
       valid?: :validate_stack
