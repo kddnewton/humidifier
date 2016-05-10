@@ -1,2 +1,2 @@
 require 'mkmf'
-create_makefile 'humidifier'
+create_makefile 'humidifier/humidifier'

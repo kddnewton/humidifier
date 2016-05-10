@@ -3,7 +3,7 @@ require 'rake/extensiontask'
 require 'rake/testtask'
 
 Rake::ExtensionTask.new('humidifier') do |ext|
-  ext.lib_dir = 'lib/humidifier'
+  ext.lib_dir = File.join('lib', 'humidifier')
 end
 
 Rake::TestTask.new(:test) do |t|
