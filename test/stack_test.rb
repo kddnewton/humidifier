@@ -21,6 +21,16 @@ class StackTest < Minitest::Test
     assert_equal ({ 'MyResource' => resource }), stack.resources
   end
 
+  def test_identifier
+    stack = Humidifier::Stack.new(id: 'foo', name: 'bar')
+    assert_equal 'foo', stack.identifier
+  end
+
+  def test_identifier_no_id
+    stack = Humidifier::Stack.new(name: 'foobar')
+    assert_equal 'foobar', stack.identifier
+  end
+
   def test_add_mapping
     stack = Humidifier::Stack.new
     stack.add_mapping('foo', 'bar' => 'baz')
