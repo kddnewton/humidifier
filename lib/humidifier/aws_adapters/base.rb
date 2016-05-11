@@ -7,7 +7,7 @@ module Humidifier
       end
 
       def delete_stack(stack, options = {})
-        client.delete_stack({ stack_name: stack.name }.merge(options))
+        client.delete_stack({ stack_name: stack.identifier }.merge(options))
         true
       end
 
@@ -16,7 +16,9 @@ module Humidifier
       end
 
       def update_stack(stack, options = {})
-        try_valid { client.update_stack({ stack_name: stack.name, template_body: stack.to_cf }.merge(options)) }
+        try_valid do
+          client.update_stack({ stack_name: stack.identifier, template_body: stack.to_cf }.merge(options))
+        end
       end
 
       def validate_stack(stack, options = {})

@@ -39,7 +39,9 @@ module TestHelpers
     end
   end
 
-  StackDouble = Struct.new(:name, :to_cf)
+  StackDouble = Struct.new(:name, :to_cf) do
+    alias_method :identifier, :name
+  end
 
   private
 

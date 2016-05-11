@@ -3,7 +3,7 @@ module Humidifier
     class SDKV1 < Base
 
       def stack_exists?(stack, _ = {})
-        base_module::CloudFormation::Stack.new(stack.name).exists?
+        base_module::CloudFormation::Stack.new(stack.identifier).exists?
       end
 
       private
