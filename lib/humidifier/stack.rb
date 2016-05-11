@@ -7,10 +7,11 @@ module Humidifier
     ENUMERABLE_RESOURCES = %i[mappings outputs parameters resources].freeze
     private_constant :STATIC_RESOURCES, :ENUMERABLE_RESOURCES
 
-    attr_accessor :name, *STATIC_RESOURCES, *ENUMERABLE_RESOURCES
+    attr_accessor :id, :name, *STATIC_RESOURCES, *ENUMERABLE_RESOURCES
 
     def initialize(opts = {})
       self.name = opts[:name]
+      self.id   = opts[:id]
 
       STATIC_RESOURCES.each do |resource_type|
         send(:"#{resource_type}=", opts[resource_type])
@@ -22,6 +23,10 @@ module Humidifier
 
     def add(name, resource)
       resources[name] = resource
+    end
+
+    def identifier
+      id || name
     end
 
     def to_cf
