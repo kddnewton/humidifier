@@ -21,7 +21,7 @@ module Humidifier
       # This craziness because AWS has a "Config" module and Humidifier::Resource.register dynamically looks
       # up the module to see whether or not it exists, which before ruby 2.2 would result in the warning:
       #   `const_defined?': Use RbConfig instead of obsolete and deprecated Config.
-      # If this is being run with RUBY_VERSION > 2.2.0 this is effectively a noop.
+      # If this is being run with RUBY_VERSION >= 2.2.0 this is effectively a noop.
       def silence_warnings
         old_verbose = $VERBOSE
         begin
