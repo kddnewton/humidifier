@@ -5,18 +5,21 @@ module Humidifier
       # loop through the specs and register each class
       def load
         silence_warnings do
-          Dir[File.expand_path(File.join('..', '..', '..', 'specs', '*'), __FILE__)].each do |filepath|
-            group, resource = Pathname.new(filepath).basename('.cf').to_s.split('-')
-            spec = File.readlines(filepath).select do |line|
-              # flipflop operator (http://stackoverflow.com/questions/14456634)
-              true if line.include?('Properties')...(line.strip == '}')
-            end
-            Humidifier::Resource.register(group, resource, spec[1..-2])
-          end
+          spec_directory = File.expand_path(File.join('..', '..', '..', 'specs', '*'), __FILE__)
+          Dir[spec_directory].each { |filepath| load_from(filepath) }
         end
       end
 
       private
+
+      def load_from(filepath)
+        group, resource = Pathname.new(filepath).basename('.cf').to_s.split('-')
+        spec = File.readlines(filepath).select do |line|
+          # flipflop operator (http://stackoverflow.com/questions/14456634)
+          true if line.include?('Properties')...(line.strip == '}')
+        end
+        Humidifier::Resource.register(group, resource, spec[1..-2])
+      end
 
       # This craziness because AWS has a "Config" module and Humidifier::Resource.register dynamically looks
       # up the module to see whether or not it exists, which before ruby 2.2 would result in the warning:
