@@ -11,6 +11,7 @@ require 'humidifier/attribute_methods'
 require 'humidifier/property_methods'
 
 require 'humidifier/aws_shim'
+require 'humidifier/loader'
 require 'humidifier/mapping'
 require 'humidifier/output'
 require 'humidifier/parameter'
@@ -39,12 +40,4 @@ module Humidifier
   end
 end
 
-# loop through the specs and register each class
-Dir[File.expand_path(File.join('..', '..', 'specs', '*'), __FILE__)].each do |filepath|
-  group, resource = Pathname.new(filepath).basename('.cf').to_s.split('-')
-  spec = File.readlines(filepath).select do |line|
-    # flipflop operator (http://stackoverflow.com/questions/14456634)
-    true if line.include?('Properties')...(line.strip == '}')
-  end
-  Humidifier::Resource.register(group, resource, spec[1..-2])
-end
+Humidifier::Loader.load
