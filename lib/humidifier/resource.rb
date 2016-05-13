@@ -72,27 +72,6 @@ module Humidifier
       def prop?(prop)
         props.key?(prop)
       end
-
-      def register(group, resource, spec)
-        aws_name = "AWS::#{group}::#{resource}"
-        resource_class = build_class(aws_name, spec)
-
-        Humidifier.const_set(group, Module.new) unless Humidifier.const_defined?(group)
-        Humidifier.const_get(group).const_set(resource, resource_class)
-        (self.registry ||= {})[aws_name] = resource_class
-      end
-
-      private
-
-      def build_class(aws_name, spec)
-        Class.new(self) do
-          self.aws_name = aws_name
-          self.props = spec.each_with_object({}) do |spec_line, props|
-            prop = Props.from(spec_line)
-            props[prop.name] = prop unless prop.name.nil?
-          end
-        end
-      end
     end
   end
 end
