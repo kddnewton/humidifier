@@ -5,8 +5,7 @@ module Humidifier
 
     # Superclass for all CFN properties
     class Base
-      # allowing WHITELIST to be modified so Ref and Fn can register themselves
-      WHITELIST = [] # rubocop:disable MutableConstant
+      WHITELIST = [Fn, Ref].freeze
 
       attr_accessor :key
       attr_reader :value
@@ -100,11 +99,13 @@ module Humidifier
       end
 
       def parse(spec_line)
+        spec_line.strip!
+
         if spec_line.include?(':')
-          key, type = spec_line.strip.gsub(/,\z/, '').split(': ').map(&:strip)
+          key, type = spec_line.gsub(/,\z/, '').split(': ').map(&:strip)
           [key[1..-2], type]
         else
-          [nil, spec_line.strip]
+          [nil, spec_line]
         end
       end
     end

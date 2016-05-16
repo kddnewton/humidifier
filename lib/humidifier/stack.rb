@@ -54,14 +54,16 @@ module Humidifier
     private
 
     def add_static_resource(cf, resource_type)
-      cf[Utils.camelize(resource_type)] = send(resource_type) if send(resource_type)
+      resource = send(resource_type)
+      cf[Utils.camelize(resource_type)] = resource if resource
       cf
     end
 
     def add_enumerable_resources(cf, resource_type)
-      if send(resource_type).any?
+      resources = send(resource_type)
+      if resources.any?
         key = Utils.camelize(resource_type)
-        cf[key] = Serializer.enumerable_to_h(send(resource_type)) do |name, resource|
+        cf[key] = Serializer.enumerable_to_h(resources) do |name, resource|
           [name, resource.to_cf]
         end
       end

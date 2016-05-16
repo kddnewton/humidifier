@@ -44,7 +44,7 @@ module Humidifier
 
       Humidifier.const_set(group, Module.new) unless Humidifier.const_defined?(group)
       Humidifier.const_get(group).const_set(resource, resource_class)
-      (Resource.registry ||= {})[aws_name] = resource_class
+      Humidifier.registry[aws_name] = resource_class
     end
   end
 end

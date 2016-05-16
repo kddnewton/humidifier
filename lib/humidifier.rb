@@ -4,10 +4,9 @@ require 'pathname'
 
 require 'humidifier/humidifier'
 
-require 'humidifier/props'
 require 'humidifier/fn'
 require 'humidifier/ref'
-require 'humidifier/attribute_methods'
+require 'humidifier/props'
 require 'humidifier/property_methods'
 
 require 'humidifier/aws_shim'
@@ -33,9 +32,14 @@ module Humidifier
       Ref.new(reference)
     end
 
+    # the list of all registered resources
+    def registry
+      @registry ||= {}
+    end
+
     # convenience method for finding classes by AWS name
     def [](aws_name)
-      Resource.registry[aws_name]
+      registry[aws_name]
     end
   end
 end
