@@ -13,6 +13,4 @@ module Humidifier
       { 'Ref' => reference }
     end
   end
-
-  Props::Base::WHITELIST << Ref
 end
