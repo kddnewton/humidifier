@@ -3,7 +3,11 @@ module Humidifier
     class Base
 
       def create_stack(stack, options = {})
-        try_valid { client.create_stack({ stack_name: stack.name, template_body: stack.to_cf }.merge(options)) }
+        try_valid do
+          response = client.create_stack({ stack_name: stack.name, template_body: stack.to_cf }.merge(options))
+          stack.id = response.stack_id
+          response
+        end
       end
 
       def delete_stack(stack, options = {})
