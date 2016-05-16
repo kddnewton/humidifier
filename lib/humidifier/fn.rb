@@ -23,6 +23,4 @@ module Humidifier
       end
     end
   end
-
-  Props::Base::WHITELIST << Fn
 end

@@ -3,9 +3,12 @@ module Humidifier
   # Superclass for all AWS resources
   class Resource
 
-    include AttributeMethods
     extend PropertyMethods
-    attr_accessor :properties
+
+    COMMON_ATTRIBUTES = %i[creation_policy deletion_policy depends_on metadata update_policy].freeze
+    private_constant :COMMON_ATTRIBUTES
+
+    attr_accessor :properties, *COMMON_ATTRIBUTES
 
     def initialize(properties = {}, raw = false)
       self.properties = {}
@@ -46,6 +49,13 @@ module Humidifier
 
     private
 
+    def common_attributes
+      COMMON_ATTRIBUTES.each_with_object({}) do |attribute, result|
+        value = send(attribute)
+        result[Utils.camelize(attribute)] = value if value
+      end
+    end
+
     def valid_accessor?(method)
       (self.class.props.keys & [method.to_s, method.to_s[0..-2]]).any?
     end
@@ -59,15 +69,16 @@ module Humidifier
     end
 
     def validate_value(property, value, raw)
-      value = self.class.props[property].convert(value) if raw && self.class.props[property].convertable?
-      unless self.class.props[property].valid?(value)
+      prop = self.class.props[property]
+      value = prop.convert(value) if raw && prop.convertable?
+      unless prop.valid?(value)
         raise ArgumentError, "Invalid value for #{property}: #{value.inspect}"
       end
       value
     end
 
     class << self
-      attr_accessor :aws_name, :props, :registry
+      attr_accessor :aws_name, :props
 
       def prop?(prop)
         props.key?(prop)
