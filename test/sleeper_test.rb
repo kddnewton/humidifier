@@ -3,20 +3,20 @@ require 'test_helper'
 class SleeperTest < Minitest::Test
   module Ticker
     def self.tick
-      @tick ||= 2
+      @tick ||= 10
       @tick -= 1
       @tick <= 0
     end
   end
 
-  def test_zero_attempts
+  def test_timeout
     assert_raises RuntimeError do
-      Humidifier::Sleeper.new(0) {}
+      Humidifier::Sleeper.new(10) { false }
     end
   end
 
   def test_ticking
-    Humidifier::Sleeper.new(5) { Ticker.tick }
+    Humidifier::Sleeper.new(10) { Ticker.tick }
     assert Ticker.tick
   end
 end
