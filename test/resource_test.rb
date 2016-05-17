@@ -84,6 +84,15 @@ class ResourceTest < Minitest::Test
     refute Humidifier::Resource.prop?('three')
   end
 
+  def test_common_attributes
+    resource = build
+    resource.depends_on = 'foo'
+    resource.metadata = 'bar'
+
+    expected = { 'DependsOn' => 'foo', 'Metadata' => 'bar' }
+    assert_equal expected, resource.to_cf.reject { |key| %w[Type Properties].include?(key) }
+  end
+
   private
 
   def build
