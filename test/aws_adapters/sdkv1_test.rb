@@ -36,6 +36,10 @@ class SDKV1Test < Minitest::Test
     refute sdk.valid?(payload_double(to_cf: false))
   end
 
+  def test_create_and_wait
+    assert sdk.create_and_wait(payload_double)
+  end
+
   private
 
   def sdk

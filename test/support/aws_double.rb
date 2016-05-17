@@ -1,5 +1,6 @@
 module AwsDouble
-  Response = Struct.new(:stack_id)
+  Response = Struct.new(:stack_id, :stacks)
+  StackResponse = Struct.new(:stack_status)
 
   module CloudFormation
     module Errors
@@ -12,7 +13,7 @@ module AwsDouble
 
       def method_missing(_, *, **kwargs)
         raise Errors::ValidationError, 'fake' if kwargs.any? { |_, value| !value }
-        Response.new(5)
+        Response.new(5, [StackResponse.new('CREATE_COMPLETE')])
       end
 
       def stacks
