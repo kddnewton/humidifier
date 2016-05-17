@@ -103,7 +103,7 @@ class StackTest < Minitest::Test
   def with_mocked_aws_shim(method)
     stack = Humidifier::Stack.new(name: 'test-stack')
     mock = Minitest::Mock.new
-    mock.expect(:call, nil, [stack, {}])
+    mock.expect(:call, nil, [Humidifier::SdkPayload.new(stack, {})])
 
     Humidifier::AwsShim.stub(method, mock) do
       yield stack

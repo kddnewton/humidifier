@@ -49,8 +49,8 @@ module TestHelpers
 
   private
 
-  def stack_double(name: 'test-stack', to_cf: true)
-    StackDouble.new(name, to_cf)
+  def payload_double(name: 'test-stack', to_cf: true)
+    Humidifier::SdkPayload.new(StackDouble.new(name, to_cf), {})
   end
 
   def suppress_warnings

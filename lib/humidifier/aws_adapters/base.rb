@@ -8,7 +8,7 @@ module Humidifier
         try_valid do
           params = { stack_name: payload.name, template_body: payload.to_cf }.merge(payload.options)
           response = client.create_stack(params)
-          stack.id = response.stack_id
+          payload.id = response.stack_id
           response
         end
       end
