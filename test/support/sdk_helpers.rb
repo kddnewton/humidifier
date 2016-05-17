@@ -35,10 +35,15 @@ module SdkHelpers
     show_stderr
   end
 
+  def unset_shim
+    Humidifier::AwsShim.instance_variable_set(:@instance, nil)
+  end
+
   def with_sdk_v1_loaded
     load_sdk_v1
     begin
-      yield
+      unset_shim
+      yield Humidifier::AwsShim.shim
     ensure
       unload_sdk_v1
     end
@@ -47,7 +52,8 @@ module SdkHelpers
   def with_sdk_v2_loaded
     load_sdk_v2
     begin
-      yield
+      unset_shim
+      yield Humidifier::AwsShim.shim
     ensure
       unload_sdk_v2
     end
