@@ -16,6 +16,7 @@ require 'humidifier/output'
 require 'humidifier/parameter'
 require 'humidifier/resource'
 require 'humidifier/serializer'
+require 'humidifier/sleeper'
 require 'humidifier/stack'
 require 'humidifier/version'
 

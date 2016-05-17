@@ -1,5 +1,7 @@
 module TestHelpers
   module AwsDouble
+    Response = Struct.new(:stack_id)
+
     module CloudFormation
       module Errors
         class ValidationError < StandardError; end
@@ -11,6 +13,7 @@ module TestHelpers
 
         def method_missing(_, *, **kwargs)
           raise Errors::ValidationError, 'fake' if kwargs.any? { |_, value| !value }
+          Response.new(5)
         end
 
         def stacks
@@ -40,6 +43,7 @@ module TestHelpers
   end
 
   StackDouble = Struct.new(:name, :to_cf) do
+    attr_accessor :id
     alias_method :identifier, :name
   end
 

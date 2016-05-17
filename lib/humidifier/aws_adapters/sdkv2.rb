@@ -2,7 +2,7 @@ module Humidifier
   module AwsAdapters
     class SDKV2 < Base
 
-      def stack_exists?(stack, _ = {})
+      def exists?(stack, _ = {})
         base_module::CloudFormation::Stack.new(name: stack.identifier).exists?
       end
 

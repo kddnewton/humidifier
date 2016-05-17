@@ -47,8 +47,8 @@ module Humidifier
       end
     end
 
-    AwsShim::STACK_METHODS.each do |stack_method, shim_method|
-      define_method(stack_method) { |opts = {}| AwsShim.send(shim_method, self, opts) }
+    AwsShim::STACK_METHODS.each do |method|
+      define_method(method) { |opts = {}| AwsShim.send(method, self, opts) }
     end
 
     private

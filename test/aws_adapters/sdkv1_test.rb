@@ -2,39 +2,39 @@ require 'test_helper'
 
 class SDKV1Test < Minitest::Test
 
-  def test_create_stack
+  def test_create
     with_sdk_v1_loaded do
-      assert sdk.create_stack(stack_double)
-      refute sdk.create_stack(stack_double(to_cf: false))
+      assert sdk.create(stack_double)
+      refute sdk.create(stack_double(to_cf: false))
     end
   end
 
-  def test_delete_stack
+  def test_delete
     with_sdk_v1_loaded do
-      assert sdk.delete_stack(stack_double)
+      assert sdk.delete(stack_double)
     end
   end
 
-  def test_stack_exists?
+  def test_exists?
     with_sdk_v1_loaded do
-      assert sdk.stack_exists?(stack_double)
+      assert sdk.exists?(stack_double)
       AWS::CloudFormation.stub(:exists?, false) do
-        refute sdk.stack_exists?(stack_double)
+        refute sdk.exists?(stack_double)
       end
     end
   end
 
-  def test_update_stack
+  def test_update
     with_sdk_v1_loaded do
-      assert sdk.update_stack(stack_double)
-      refute sdk.update_stack(stack_double(to_cf: false))
+      assert sdk.update(stack_double)
+      refute sdk.update(stack_double(to_cf: false))
     end
   end
 
-  def test_validate_stack
+  def test_valid?
     with_sdk_v1_loaded do
-      assert sdk.validate_stack(stack_double)
-      refute sdk.validate_stack(stack_double(to_cf: false))
+      assert sdk.valid?(stack_double)
+      refute sdk.valid?(stack_double(to_cf: false))
     end
   end
 

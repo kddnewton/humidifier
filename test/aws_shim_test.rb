@@ -2,13 +2,13 @@ require 'test_helper'
 
 class AwsShimTest < Minitest::Test
 
-  def test_validate_stack
+  def test_forwarding
     stack = Object.new
     mock = Minitest::Mock.new
-    mock.expect(:validate_stack, nil, [stack])
+    mock.expect(:valid?, nil, [stack])
 
-    proxy_shim(mock) do
-      Humidifier::AwsShim.validate_stack(stack)
+    Humidifier::AwsShim.stub(:shim, mock) do
+      Humidifier::AwsShim.valid?(stack)
     end
     mock.verify
   end
@@ -27,14 +27,5 @@ class AwsShimTest < Minitest::Test
     with_sdk_v2_loaded do
       assert_kind_of Humidifier::AwsAdapters::SDKV2, Humidifier::AwsShim.new.shim
     end
-  end
-
-  private
-
-  def proxy_shim(shim)
-    old_shim = Humidifier::AwsShim.instance.shim
-    Humidifier::AwsShim.instance.shim = shim
-    yield
-    Humidifier::AwsShim.instance.shim = old_shim
   end
 end

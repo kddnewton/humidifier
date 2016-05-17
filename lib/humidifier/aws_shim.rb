@@ -9,14 +9,7 @@ module Humidifier
   class AwsShim
 
     REGION = ENV['AWS_REGION'] || 'us-east-1'
-    STACK_METHODS = {
-      create: :create_stack,
-      delete: :delete_stack,
-      deploy: :deploy_stack,
-      exists?: :stack_exists?,
-      update: :update_stack,
-      valid?: :validate_stack
-    }.freeze
+    STACK_METHODS = %i[create create_and_wait delete deploy exists? update valid? wait].freeze
 
     attr_accessor :shim
 
@@ -36,7 +29,7 @@ module Humidifier
 
     class << self
       extend Forwardable
-      def_delegators :shim, *STACK_METHODS.values
+      def_delegators :shim, *STACK_METHODS
 
       def instance
         @instance ||= new
