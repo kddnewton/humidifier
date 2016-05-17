@@ -2,8 +2,6 @@ module Humidifier
   module AwsAdapters
     class Base
 
-      MAX_WAIT = 180
-
       def create(payload)
         try_valid do
           params = { stack_name: payload.name, template_body: payload.to_cf }.merge(payload.options)

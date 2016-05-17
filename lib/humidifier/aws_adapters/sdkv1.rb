@@ -25,7 +25,7 @@ module Humidifier
         response = public_send(method, payload)
 
         aws_stack = nil
-        Sleeper.new(MAX_WAIT) do
+        Sleeper.new(payload.max_wait) do
           aws_stack = client.describe_stacks(stack_name: payload.identifier).stacks.first
           !aws_stack.stack_status.end_with?('IN_PROGRESS')
         end

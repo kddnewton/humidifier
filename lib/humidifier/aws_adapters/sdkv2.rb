@@ -17,7 +17,7 @@ module Humidifier
         response = public_send(method, payload)
 
         client.wait_until(:"stack_#{method}_complete", stack_name: payload.identifier) do |waiter|
-          waiter.max_attempts = MAX_WAIT / 5
+          waiter.max_attempts = payload.max_wait / 5
           waiter.delay = 5
         end
 
