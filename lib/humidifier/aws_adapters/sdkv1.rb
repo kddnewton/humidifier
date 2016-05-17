@@ -2,8 +2,8 @@ module Humidifier
   module AwsAdapters
     class SDKV1 < Base
 
-      def exists?(stack, _ = {})
-        base_module::CloudFormation::Stack.new(stack.identifier).exists?
+      def exists?(payload)
+        base_module::CloudFormation::Stack.new(payload.identifier).exists?
       end
 
       private
@@ -12,25 +12,25 @@ module Humidifier
         AWS
       end
 
-      def fail!(stack)
+      def fail!(payload)
         reasons = []
-        client.describe_stack_events(stack_name: stack.identifier).stack_events.each do |event|
+        client.describe_stack_events(stack_name: payload.identifier).stack_events.each do |event|
           next unless event.resource_status.include?('FAILED') && event.key?(:resource_status_reason)
           reasons.unshift(event.resource_status_reason)
         end
-        raise "#{stack.name} stack failed:\n#{reasons.join("\n")}"
+        raise "#{payload.name} stack failed:\n#{reasons.join("\n")}"
       end
 
-      def perform_and_wait(method, stack, options = {})
-        response = public_send(method, stack, options)
+      def perform_and_wait(method, payload)
+        response = public_send(method, payload)
 
         aws_stack = nil
         Sleeper.new(MAX_WAIT) do
-          aws_stack = client.describe_stacks(stack_name: stack.identifier).stacks.first
+          aws_stack = client.describe_stacks(stack_name: payload.identifier).stacks.first
           !aws_stack.stack_status.end_with?('IN_PROGRESS')
         end
 
-        fail!(stack) if aws_stack.stack_status =~ /(FAILED|ROLLBACK)/
+        fail!(payload) if aws_stack.stack_status =~ /(FAILED|ROLLBACK)/
         response
       end
     end

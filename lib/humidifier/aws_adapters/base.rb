@@ -4,36 +4,38 @@ module Humidifier
 
       MAX_WAIT = 180
 
-      def create(stack, options = {})
+      def create(payload)
         try_valid do
-          response = client.create_stack({ stack_name: stack.name, template_body: stack.to_cf }.merge(options))
+          params = { stack_name: payload.name, template_body: payload.to_cf }.merge(payload.options)
+          response = client.create_stack(params)
           stack.id = response.stack_id
           response
         end
       end
 
-      def delete(stack, options = {})
-        client.delete_stack({ stack_name: stack.identifier }.merge(options))
+      def delete(payload)
+        client.delete_stack({ stack_name: payload.identifier }.merge(payload.options))
         true
       end
 
-      def deploy(stack, options = {})
-        exists?(stack) ? update(stack, options) : create(stack, options)
+      def deploy(payload)
+        exists?(payload) ? update(payload) : create(payload)
       end
 
-      def update(stack, options = {})
+      def update(payload)
         try_valid do
-          client.update_stack({ stack_name: stack.identifier, template_body: stack.to_cf }.merge(options))
+          params = { stack_name: payload.identifier, template_body: payload.to_cf }.merge(payload.options)
+          client.update_stack(params)
         end
       end
 
-      def valid?(stack, options = {})
-        try_valid { client.validate_template({ template_body: stack.to_cf }.merge(options)) }
+      def valid?(payload)
+        try_valid { client.validate_template({ template_body: payload.to_cf }.merge(payload.options)) }
       end
 
       %i[create delete deploy update].each do |method|
-        define_method(:"#{method}_and_wait") do |stack, options = {}|
-          perform_and_wait(method, stack, options)
+        define_method(:"#{method}_and_wait") do |payload|
+          perform_and_wait(method, payload)
         end
       end
 
