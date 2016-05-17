@@ -12,7 +12,7 @@ module Humidifier
         AWS
       end
 
-      def fail!(payload)
+      def handle_failure(payload)
         reasons = []
         client.describe_stack_events(stack_name: payload.identifier).stack_events.each do |event|
           next unless event.resource_status.include?('FAILED') && event.key?(:resource_status_reason)
@@ -30,7 +30,7 @@ module Humidifier
           !aws_stack.stack_status.end_with?('IN_PROGRESS')
         end
 
-        fail!(payload) if aws_stack.stack_status =~ /(FAILED|ROLLBACK)/
+        handle_failure(payload) if aws_stack.stack_status =~ /(FAILED|ROLLBACK)/
         response
       end
     end
