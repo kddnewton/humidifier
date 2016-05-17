@@ -6,16 +6,6 @@ module Humidifier
         base_module::CloudFormation::Stack.new(stack.identifier).exists?
       end
 
-      def wait(stack, _ = {})
-        aws_stack = nil
-        Sleeper.new(MAX_WAIT) do
-          aws_stack = client.describe_stacks(stack_name: stack.identifier).stacks.first
-          !aws_stack.stack_status.end_with?('IN_PROGRESS')
-        end
-
-        fail!(stack) if aws_stack.stack_status =~ /(FAILED|ROLLBACK)/
-      end
-
       private
 
       def base_module
@@ -29,6 +19,19 @@ module Humidifier
           reasons.unshift(event.resource_status_reason)
         end
         raise "#{stack.name} stack failed:\n#{reasons.join("\n")}"
+      end
+
+      def perform_and_wait(method, stack, options = {})
+        response = public_send(method, stack, options)
+
+        aws_stack = nil
+        Sleeper.new(MAX_WAIT) do
+          aws_stack = client.describe_stacks(stack_name: stack.identifier).stacks.first
+          !aws_stack.stack_status.end_with?('IN_PROGRESS')
+        end
+
+        fail!(stack) if aws_stack.stack_status =~ /(FAILED|ROLLBACK)/
+        response
       end
     end
   end

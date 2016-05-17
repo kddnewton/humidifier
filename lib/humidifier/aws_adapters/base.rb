@@ -31,6 +31,12 @@ module Humidifier
         try_valid { client.validate_template({ template_body: stack.to_cf }.merge(options)) }
       end
 
+      %i[create delete deploy update].each do |method|
+        define_method(:"#{method}_and_wait") do |stack, options = {}|
+          perform_and_wait(method, stack, options)
+        end
+      end
+
       private
 
       def client

@@ -9,7 +9,10 @@ module Humidifier
   class AwsShim
 
     REGION = ENV['AWS_REGION'] || 'us-east-1'
-    STACK_METHODS = %i[create create_and_wait delete deploy exists? update valid? wait].freeze
+    STACK_METHODS = %i[
+      create delete deploy exists? update valid?
+      create_and_wait delete_and_wait deploy_and_wait update_and_wait
+    ].freeze
 
     attr_accessor :shim
 
