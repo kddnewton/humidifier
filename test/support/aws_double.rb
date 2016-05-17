@@ -13,6 +13,7 @@ module AwsDouble
 
       def method_missing(_, *, **kwargs)
         raise Errors::ValidationError, 'fake' if kwargs.any? { |_, value| !value }
+        yield self if block_given?
         Response.new(5, [StackResponse.new('CREATE_COMPLETE')])
       end
 

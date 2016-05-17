@@ -17,6 +17,10 @@ class SDKV2Test < Minitest::Test
     end
   end
 
+  def test_create_and_wait
+    assert sdk.create_and_wait(payload_double)
+  end
+
   private
 
   def sdk
