@@ -14,5 +14,9 @@ require 'humidifier'
 require 'fileutils'
 require 'minitest/autorun'
 
+require 'support/aws_double'
+require 'support/sdk_helpers'
 require 'support/test_helpers'
+
+Minitest::Test.send(:include, SdkHelpers)
 Minitest::Test.send(:include, TestHelpers)

@@ -2,40 +2,38 @@ require 'test_helper'
 
 class SDKV1Test < Minitest::Test
 
+  def setup
+    load_sdk_v1
+  end
+
+  def teardown
+    unload_sdk_v1
+  end
+
   def test_create
-    with_sdk_v1_loaded do
-      assert sdk.create(payload_double)
-      refute sdk.create(payload_double(to_cf: false))
-    end
+    assert sdk.create(payload_double)
+    refute sdk.create(payload_double(to_cf: false))
   end
 
   def test_delete
-    with_sdk_v1_loaded do
-      assert sdk.delete(payload_double)
-    end
+    assert sdk.delete(payload_double)
   end
 
   def test_exists?
-    with_sdk_v1_loaded do
-      assert sdk.exists?(payload_double)
-      AWS::CloudFormation.stub(:exists?, false) do
-        refute sdk.exists?(payload_double)
-      end
+    assert sdk.exists?(payload_double)
+    AWS::CloudFormation.stub(:exists?, false) do
+      refute sdk.exists?(payload_double)
     end
   end
 
   def test_update
-    with_sdk_v1_loaded do
-      assert sdk.update(payload_double)
-      refute sdk.update(payload_double(to_cf: false))
-    end
+    assert sdk.update(payload_double)
+    refute sdk.update(payload_double(to_cf: false))
   end
 
   def test_valid?
-    with_sdk_v1_loaded do
-      assert sdk.valid?(payload_double)
-      refute sdk.valid?(payload_double(to_cf: false))
-    end
+    assert sdk.valid?(payload_double)
+    refute sdk.valid?(payload_double(to_cf: false))
   end
 
   private
