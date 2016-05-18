@@ -14,9 +14,20 @@ require 'humidifier'
 require 'fileutils'
 require 'minitest/autorun'
 
-require 'support/sdk_helpers'
-require 'support/sdk_stubber'
-Minitest::Test.send(:include, SdkHelpers)
+# load the sdk helper files used for stubbing sdk responses/calls
+module SdkSupport
+  class << self
+    extend Forwardable
+    def_delegators :tracker, :call, :expect, :verify
+
+    def tracker
+      @tracker ||= Tracker.new
+    end
+  end
+end
+
+Dir[File.expand_path('../sdk_support/*.rb', __FILE__)].each { |file| require file }
+Minitest::Test.send(:include, SdkSupport::Helpers)
 
 # include the ability to mock the serializer in tests
 Minitest::Test.send(:include, Module.new do
@@ -24,9 +35,7 @@ Minitest::Test.send(:include, Module.new do
     mock = Minitest::Mock.new
     mock.expect(:call, value, [value])
 
-    Humidifier::Serializer.stub(:dump, mock) do
-      yield value
-    end
+    Humidifier::Serializer.stub(:dump, mock) { yield value }
     mock.verify
   end
 end)
