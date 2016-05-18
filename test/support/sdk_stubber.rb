@@ -9,8 +9,8 @@ module SdkStubber
         def initialize(*)
         end
 
-        def method_missing(method, *args)
-          SdkStubber.call(method, args)
+        def method_missing(method, *args, &block)
+          SdkStubber.call(method, args, &block)
         end
       end
 
@@ -30,7 +30,7 @@ module SdkStubber
 
     def initialize(opts = {})
       self.identifier = opts[:identifier]
-      self.max_wait   = opts.fetch(:max_wait, 180)
+      self.max_wait   = opts[:max_wait]
       self.name       = opts[:name]
       self.options    = opts.fetch(:options, {})
       self.to_cf      = opts[:to_cf]
@@ -47,6 +47,10 @@ module SdkStubber
     def method_missing(method, *)
       struct.key?(method) ? struct[method] : super
     end
+
+    def key?(key)
+      struct.key?(key)
+    end
   end
 
   class Tracker
@@ -60,6 +64,8 @@ module SdkStubber
       found = find_stub(method, args)
       stubs[method].delete(found)
       stubs.delete(method) if stubs[method].empty?
+
+      yield AwsDouble::CloudFormation::Client.new if block_given?
       found[1]
     end
 

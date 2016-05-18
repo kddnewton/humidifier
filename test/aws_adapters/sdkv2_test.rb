@@ -20,10 +20,12 @@ class SDKV2Test < Minitest::Test
 
   def test_create_and_wait
     with_sdk_v2_loaded do |sdk|
-      create_payload = payload(name: 'name', to_cf: 'body', identifier: 'test-id')
+      create_payload = payload(name: 'name', to_cf: 'body', identifier: 'test-id', max_wait: 10)
 
       SdkStubber.expect(:create_stack, [{ stack_name: 'name', template_body: 'body' }], stub(stack_id: 'test-id'))
       SdkStubber.expect(:wait_until, [:stack_create_complete, stack_name: 'test-id'])
+      SdkStubber.expect(:max_attempts=, [2])
+      SdkStubber.expect(:delay=, [5])
 
       sdk.create_and_wait(create_payload)
       SdkStubber.verify
