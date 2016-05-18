@@ -2,53 +2,72 @@ require 'test_helper'
 
 class BaseTest < Minitest::Test
 
+  def test_validation_error
+    create_payload = Object.new
+    def create_payload.name
+      raise SdkStubber::AwsDouble::CloudFormation::Errors::ValidationError, 'test-error'
+    end
+
+    with_both_sdks do |sdk|
+      _, stderr = capture_io { refute sdk.create(create_payload) }
+      assert_equal 'test-error', stderr.split.first
+    end
+  end
+
   def test_create
     with_both_sdks do |sdk|
-      assert sdk.create(payload_double)
-      refute sdk.create(payload_double(to_cf: false))
+      create_payload = payload(name: 'name', to_cf: 'body')
+      SdkStubber.expect(:create_stack, [{ stack_name: 'name', template_body: 'body' }], stub(stack_id: 'test-id'))
+
+      sdk.create(create_payload)
+      assert_equal 'test-id', create_payload.id
+      SdkStubber.verify
     end
   end
 
   def test_delete
     with_both_sdks do |sdk|
-      assert sdk.delete(payload_double)
+      SdkStubber.expect(:delete_stack, [{ stack_name: 'identifier' }])
+      sdk.delete(payload(identifier: 'identifier'))
+      SdkStubber.verify
     end
   end
 
   def test_deploy_exists
     with_both_sdks do |sdk|
-      mock = Minitest::Mock.new
-      mock.expect(:update_stack, true, [stack_name: 'test-stack', template_body: payload_double.to_cf])
+      SdkStubber.expect(:exists?, [], true)
+      SdkStubber.expect(:update_stack, [{ stack_name: 'name', template_body: 'body' }])
 
-      with_stubbed_client(sdk, mock, true) do
-        assert sdk.deploy(payload_double)
-      end
+      sdk.deploy(payload(identifier: 'name', to_cf: 'body'))
+      SdkStubber.verify
     end
   end
 
   def test_deploy_does_not_exist
     with_both_sdks do |sdk|
-      response = AwsDouble::Response.new(5)
-      mock = Minitest::Mock.new
-      mock.expect(:create_stack, response, [stack_name: 'test-stack', template_body: payload_double.to_cf])
+      deploy_payload = payload(name: 'name', to_cf: 'body')
+      SdkStubber.expect(:exists?, [], false)
+      SdkStubber.expect(:create_stack, [{ stack_name: 'name', template_body: 'body' }], stub(stack_id: 'test-id'))
 
-      with_stubbed_client(sdk, mock, false) do
-        assert sdk.deploy(payload_double)
-      end
+      sdk.deploy(deploy_payload)
+      assert_equal 'test-id', deploy_payload.id
+      SdkStubber.verify
     end
   end
 
   def test_update
     with_both_sdks do |sdk|
-      assert sdk.update(payload_double)
-      refute sdk.update(payload_double(to_cf: false))
+      SdkStubber.expect(:update_stack, [{ stack_name: 'name', template_body: 'body' }])
+      sdk.update(payload(identifier: 'name', to_cf: 'body'))
+      SdkStubber.verify
     end
   end
 
   def test_valid?
     with_both_sdks do |sdk|
-      assert sdk.valid?(payload_double)
-      refute sdk.valid?(payload_double(to_cf: false))
+      SdkStubber.expect(:validate_template, [{ template_body: 'body' }])
+      sdk.valid?(payload(to_cf: 'body'))
+      SdkStubber.verify
     end
   end
 
@@ -57,13 +76,5 @@ class BaseTest < Minitest::Test
   def with_both_sdks(&block)
     with_sdk_v1_loaded(&block)
     with_sdk_v2_loaded(&block)
-  end
-
-  def with_stubbed_client(sdk, mock, stack_exists)
-    AwsDouble::CloudFormation.stub(:exists?, stack_exists) do
-      sdk.instance_variable_set(:@client, mock)
-      yield
-      mock.verify
-    end
   end
 end
