@@ -3,5 +3,11 @@
 require 'bundler/setup'
 require 'humidifier'
 
+if ENV['TEST']
+  require 'aws-sdk'
+  security_group = Humidifier::EC2::SecurityGroup.new(group_description: 'Test')
+  @stack = Humidifier::Stack.new(name: 'Test-Stack', resources: { 'SecurityGroup' => security_group })
+end
+
 require 'irb'
 IRB.start

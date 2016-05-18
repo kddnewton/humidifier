@@ -68,9 +68,9 @@ class StackTest < Minitest::Test
     assert_equal expected, JSON.parse(build.to_cf)
   end
 
-  Humidifier::AwsShim::STACK_METHODS.each do |stack_method, shim_method|
-    define_method(:"test_#{stack_method}") do
-      with_mocked_aws_shim(shim_method) { |stack| stack.send(stack_method) }
+  Humidifier::AwsShim::STACK_METHODS.each do |method|
+    define_method(:"test_#{method}") do
+      with_mocked_aws_shim(method) { |stack| stack.send(method) }
     end
   end
 
@@ -103,7 +103,7 @@ class StackTest < Minitest::Test
   def with_mocked_aws_shim(method)
     stack = Humidifier::Stack.new(name: 'test-stack')
     mock = Minitest::Mock.new
-    mock.expect(:call, nil, [stack, {}])
+    mock.expect(:call, nil, [Humidifier::SdkPayload.new(stack, {})])
 
     Humidifier::AwsShim.stub(method, mock) do
       yield stack

@@ -4,7 +4,7 @@ module Humidifier
     # Doesn't do anything
     class Noop
       def method_missing(method, *)
-        if AwsShim::STACK_METHODS.value?(method)
+        if AwsShim::STACK_METHODS.include?(method)
           puts "WARNING: Cannot run #{method} because aws-sdk not loaded."
           false
         else

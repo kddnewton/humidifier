@@ -14,5 +14,15 @@ require 'humidifier'
 require 'fileutils'
 require 'minitest/autorun'
 
+require 'support/aws_double'
+require 'support/sdk_helpers'
 require 'support/test_helpers'
+
+Minitest::Test.send(:include, SdkHelpers)
 Minitest::Test.send(:include, TestHelpers)
+
+# stub the sleep method so that the tests can run faster
+Humidifier::Sleeper.send(:prepend, Module.new do
+  def sleep(count)
+  end
+end)
