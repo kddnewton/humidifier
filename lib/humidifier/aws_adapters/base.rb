@@ -2,27 +2,39 @@ module Humidifier
   module AwsAdapters
     class Base
 
-      def create_stack(stack, options = {})
-        try_valid { client.create_stack({ stack_name: stack.name, template_body: stack.to_cf }.merge(options)) }
-      end
-
-      def delete_stack(stack, options = {})
-        client.delete_stack({ stack_name: stack.identifier }.merge(options))
-        true
-      end
-
-      def deploy_stack(stack, options = {})
-        stack_exists?(stack) ? update_stack(stack, options) : create_stack(stack, options)
-      end
-
-      def update_stack(stack, options = {})
+      def create(payload)
         try_valid do
-          client.update_stack({ stack_name: stack.identifier, template_body: stack.to_cf }.merge(options))
+          params = { stack_name: payload.name, template_body: payload.to_cf }.merge(payload.options)
+          response = client.create_stack(params)
+          payload.id = response.stack_id
+          response
         end
       end
 
-      def validate_stack(stack, options = {})
-        try_valid { client.validate_template({ template_body: stack.to_cf }.merge(options)) }
+      def delete(payload)
+        client.delete_stack({ stack_name: payload.identifier }.merge(payload.options))
+        true
+      end
+
+      def deploy(payload)
+        exists?(payload) ? update(payload) : create(payload)
+      end
+
+      def update(payload)
+        try_valid do
+          params = { stack_name: payload.identifier, template_body: payload.to_cf }.merge(payload.options)
+          client.update_stack(params)
+        end
+      end
+
+      def valid?(payload)
+        try_valid { client.validate_template({ template_body: payload.to_cf }.merge(payload.options)) }
+      end
+
+      %i[create delete deploy update].each do |method|
+        define_method(:"#{method}_and_wait") do |payload|
+          perform_and_wait(method, payload)
+        end
       end
 
       private

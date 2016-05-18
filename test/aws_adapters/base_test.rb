@@ -2,37 +2,68 @@ require 'test_helper'
 
 class BaseTest < Minitest::Test
 
-  def test_deploy_stack_exists
-    mock = Minitest::Mock.new
-    mock.expect(:update_stack, true, [stack_name: 'test-stack', template_body: stack_double.to_cf])
+  def test_create
+    with_both_sdks do |sdk|
+      assert sdk.create(payload_double)
+      refute sdk.create(payload_double(to_cf: false))
+    end
+  end
 
-    with_sdk_v2_loaded do
-      with_stubbed_client(Humidifier::AwsAdapters::SDKV2.new, mock, stack_exists: true) do |adapter|
-        assert adapter.deploy_stack(stack_double)
-        mock.verify
+  def test_delete
+    with_both_sdks do |sdk|
+      assert sdk.delete(payload_double)
+    end
+  end
+
+  def test_deploy_exists
+    with_both_sdks do |sdk|
+      mock = Minitest::Mock.new
+      mock.expect(:update_stack, true, [stack_name: 'test-stack', template_body: payload_double.to_cf])
+
+      with_stubbed_client(sdk, mock, true) do
+        assert sdk.deploy(payload_double)
       end
     end
   end
 
-  def test_deploy_stack_does_not_exist
-    mock = Minitest::Mock.new
-    mock.expect(:create_stack, true, [stack_name: 'test-stack', template_body: stack_double.to_cf])
+  def test_deploy_does_not_exist
+    with_both_sdks do |sdk|
+      response = AwsDouble::Response.new(5)
+      mock = Minitest::Mock.new
+      mock.expect(:create_stack, response, [stack_name: 'test-stack', template_body: payload_double.to_cf])
 
-    with_sdk_v2_loaded do
-      with_stubbed_client(Humidifier::AwsAdapters::SDKV2.new, mock, stack_exists: false) do |adapter|
-        assert adapter.deploy_stack(stack_double)
-        mock.verify
+      with_stubbed_client(sdk, mock, false) do
+        assert sdk.deploy(payload_double)
       end
+    end
+  end
+
+  def test_update
+    with_both_sdks do |sdk|
+      assert sdk.update(payload_double)
+      refute sdk.update(payload_double(to_cf: false))
+    end
+  end
+
+  def test_valid?
+    with_both_sdks do |sdk|
+      assert sdk.valid?(payload_double)
+      refute sdk.valid?(payload_double(to_cf: false))
     end
   end
 
   private
 
-  def with_stubbed_client(adapter, client, stack_exists: true)
+  def with_both_sdks(&block)
+    with_sdk_v1_loaded(&block)
+    with_sdk_v2_loaded(&block)
+  end
+
+  def with_stubbed_client(sdk, mock, stack_exists)
     AwsDouble::CloudFormation.stub(:exists?, stack_exists) do
-      adapter.instance_variable_set(:@client, client)
-      yield adapter
-      client.verify
+      sdk.instance_variable_set(:@client, mock)
+      yield
+      mock.verify
     end
   end
 end
