@@ -1,5 +1,4 @@
 #include <humidifier.h>
-#include <stdio.h>
 
 static VALUE camelize(VALUE self, VALUE str)
 {
@@ -44,7 +43,6 @@ static void underscore_format(char* substr, const int substr_idx, const int capi
       substr[idx] = tolower(substr[idx]);
     }
   }
-  substr[substr_idx] = '\0';
 }
 
 // finds occurences of EC2Thing or AWSThing and makes them into Ec2Thing and AwsThing so that underscore can be
