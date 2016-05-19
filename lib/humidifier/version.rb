@@ -1,3 +1,3 @@
 module Humidifier
-  VERSION = '0.0.41'.freeze
+  VERSION = '0.0.42'.freeze
 end

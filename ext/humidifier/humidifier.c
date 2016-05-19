@@ -81,6 +81,7 @@ static VALUE underscore(VALUE self, VALUE str)
 
   strcpy(orig_str, str_value);
   underscore_preprocess(orig_str);
+  orig_str[strlen(str_value)] = '\0';
 
   char new_str[strlen(orig_str) * 2];
   char prev;
