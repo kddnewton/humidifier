@@ -44,6 +44,7 @@ static void underscore_format(char* substr, const int substr_idx, const int capi
       substr[idx] = tolower(substr[idx]);
     }
   }
+  substr[substr_idx] = '\0';
 }
 
 // finds occurences of EC2Thing or AWSThing and makes them into Ec2Thing and AwsThing so that underscore can be
@@ -59,13 +60,15 @@ static void underscore_preprocess(char* str)
 
       if (str[idx + 1] == '\0') {
         underscore_format(substr, substr_idx, 0);
-        printf("COPYING ONTO %s AT %d VALUE %s FOR LENGTH %d\n", str, (idx - substr_idx) + 1, substr, substr_idx);
+        // printf("COPYING ONTO %s AT %d VALUE %s FOR LENGTH %d\n", str, (idx - substr_idx) + 1, substr, substr_idx);
         strncpy(str + (idx - substr_idx) + 1, substr, substr_idx);
       }
     }
     else if (isdigit(str[idx]) || (substr_idx != 0)) {
       underscore_format(substr, substr_idx, islower(str[idx]));
-      strncpy(str + (idx - substr_idx), substr, substr_idx);
+      if (substr_idx != 1) {
+        strncpy(str + (idx - substr_idx), substr, substr_idx);
+      }
       substr_idx = 0;
     }
   }
