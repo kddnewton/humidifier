@@ -59,6 +59,7 @@ static void underscore_preprocess(char* str)
 
       if (str[idx + 1] == '\0') {
         underscore_format(substr, substr_idx, 0);
+        printf("COPYING ONTO %s AT %d VALUE %s FOR LENGTH %d\n", str, (idx - substr_idx) + 1, substr, substr_idx);
         strncpy(str + (idx - substr_idx) + 1, substr, substr_idx);
       }
     }
@@ -78,11 +79,9 @@ static VALUE underscore(VALUE self, VALUE str)
   char orig_str[strlen(str_value)];
 
   strcpy(orig_str, str_value);
-
-  puts(orig_str);
+  printf("BEFORE: %s\n", orig_str);
   underscore_preprocess(orig_str);
-
-  puts(orig_str);
+  printf("AFTER: %s\n", orig_str);
 
   char new_str[strlen(orig_str) * 2];
   char prev;
