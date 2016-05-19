@@ -78,6 +78,8 @@ static VALUE underscore(VALUE self, VALUE str)
   char orig_str[strlen(str_value)];
 
   strcpy(orig_str, str_value);
+
+  puts(orig_str);
   underscore_preprocess(orig_str);
 
   puts(orig_str);
