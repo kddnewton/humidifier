@@ -60,14 +60,13 @@ static void underscore_preprocess(char* str)
 
       if (str[idx + 1] == '\0') {
         underscore_format(substr, substr_idx, 0);
-        // printf("COPYING ONTO %s AT %d VALUE %s FOR LENGTH %d\n", str, (idx - substr_idx) + 1, substr, substr_idx);
-        strncpy(str + (idx - substr_idx) + 1, substr, substr_idx);
+        memcpy(str + (idx - substr_idx) + 1, substr, substr_idx);
       }
     }
     else if (isdigit(str[idx]) || (substr_idx != 0)) {
-      underscore_format(substr, substr_idx, islower(str[idx]));
       if (substr_idx != 1) {
-        strncpy(str + (idx - substr_idx), substr, substr_idx);
+        underscore_format(substr, substr_idx, islower(str[idx]));
+        memcpy(str + (idx - substr_idx), substr, substr_idx);
       }
       substr_idx = 0;
     }
@@ -82,9 +81,7 @@ static VALUE underscore(VALUE self, VALUE str)
   char orig_str[strlen(str_value)];
 
   strcpy(orig_str, str_value);
-  printf("BEFORE: %s\n", orig_str);
   underscore_preprocess(orig_str);
-  printf("AFTER: %s\n", orig_str);
 
   char new_str[strlen(orig_str) * 2];
   char prev;
