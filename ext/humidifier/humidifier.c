@@ -91,6 +91,7 @@ static VALUE underscore(VALUE self, VALUE str)
     prev = tolower(orig_str[orig_idx]);
   }
 
+  new_str[new_idx] = '\0';
   return rb_str_new(new_str, new_idx);
 }
 
