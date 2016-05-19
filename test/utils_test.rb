@@ -12,5 +12,6 @@ class UtilsTest < Minitest::Test
     # assert_equal 'foo_bar',     Humidifier::Utils.underscore('FooBar')
     # assert_equal 'foo_bar_baz', Humidifier::Utils.underscore('FooBarBaz')
     assert_equal 'heartbeat_monitor', Humidifier::Utils.underscore('HeartbeatMonitor')
+    assert_equal 'heartbeat_monitor_heartbeat_monitor', Humidifier::Utils.underscore('HeartbeatMonitorHeartbeatMonitor')
   end
 end
