@@ -1,4 +1,5 @@
 #include <humidifier.h>
+#include <stdio.h>
 
 static VALUE camelize(VALUE self, VALUE str)
 {
@@ -79,6 +80,8 @@ static VALUE underscore(VALUE self, VALUE str)
   strcpy(orig_str, str_value);
   underscore_preprocess(orig_str);
 
+  puts(orig_str);
+
   char new_str[strlen(orig_str) * 2];
   char prev;
   int orig_idx, new_idx;
@@ -91,7 +94,6 @@ static VALUE underscore(VALUE self, VALUE str)
     prev = tolower(orig_str[orig_idx]);
   }
 
-  new_str[new_idx] = '\0';
   return rb_str_new(new_str, new_idx);
 }
 
