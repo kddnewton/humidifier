@@ -46,7 +46,8 @@ static void underscore_format(char* substr, const int substr_idx, const int capi
 }
 
 // finds occurences of EC2Thing or AWSThing and makes them into Ec2Thing and AwsThing so that underscore can be
-// simpler and just look for capitals
+// simpler and just look for capitals - note: using memcpy instead of strncpy because for some reason on Fedora
+// things break for strings with length % 16 == 0
 static void underscore_preprocess(char* str)
 {
   char substr[strlen(str)];
