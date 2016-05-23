@@ -11,7 +11,6 @@ module Props
 
     def test_rejects_other_values
       refute Humidifier::Props::JSONProp.new.valid?(Object.new)
-      refute Humidifier::Props::JSONProp.new.valid?([])
       refute Humidifier::Props::JSONProp.new.valid?('{}')
       refute Humidifier::Props::JSONProp.new.valid?(1)
     end
