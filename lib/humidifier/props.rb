@@ -57,7 +57,7 @@ module Humidifier
     # A JSON property (and the default)
     class JSONProp < Base
       def valid?(value)
-        whitelisted_value?(value) || value.is_a?(Hash)
+        whitelisted_value?(value) || value.is_a?(Hash) || value.is_a?(Array)
       end
     end
 
