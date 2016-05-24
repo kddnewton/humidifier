@@ -7,10 +7,6 @@ AllCops:
 Metrics/LineLength:
   Max: 117
 
-# Too many false positives
-Style/Documentation:
-  Enabled: false
-
 # Ignore because whitespace is good
 Style/EmptyLinesAroundClassBody:
   Enabled: false
