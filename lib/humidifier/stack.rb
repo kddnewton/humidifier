@@ -3,22 +3,17 @@ module Humidifier
   # Represents a CFN stack
   class Stack
 
-    STATIC_RESOURCES     = %i[aws_template_format_version description metadata].freeze
-    ENUMERABLE_RESOURCES = %i[mappings outputs parameters resources].freeze
-    private_constant :STATIC_RESOURCES, :ENUMERABLE_RESOURCES
+    ENUMERABLE_RESOURCES = Utils.underscored(%w[Mappings Outputs Parameters Resources])
+    STATIC_RESOURCES     = Utils.underscored(%w[AWSTemplateFormatVersion Description Metadata])
 
-    attr_accessor :id, :name, *STATIC_RESOURCES, *ENUMERABLE_RESOURCES
+    attr_accessor :id, :name, *ENUMERABLE_RESOURCES.values, *STATIC_RESOURCES.values
 
     def initialize(opts = {})
       self.name = opts[:name]
       self.id   = opts[:id]
 
-      STATIC_RESOURCES.each do |resource_type|
-        send(:"#{resource_type}=", opts[resource_type])
-      end
-      ENUMERABLE_RESOURCES.each do |resource_type|
-        send(:"#{resource_type}=", opts.fetch(resource_type, {}))
-      end
+      ENUMERABLE_RESOURCES.values.each { |prop| send(:"#{prop}=", opts.fetch(prop, {})) }
+      STATIC_RESOURCES.values.each { |prop| send(:"#{prop}=", opts[prop]) }
     end
 
     def add(name, resource)
@@ -30,15 +25,7 @@ module Humidifier
     end
 
     def to_cf
-      cf = {}
-      STATIC_RESOURCES.each do |resource_type|
-        cf = add_static_resource(cf, resource_type)
-      end
-      ENUMERABLE_RESOURCES.each do |resource_type|
-        cf = add_enumerable_resources(cf, resource_type)
-      end
-
-      JSON.pretty_generate(cf)
+      JSON.pretty_generate(enumerable_resources.merge(static_resources))
     end
 
     %i[mapping output parameter].each do |resource_type|
@@ -53,21 +40,21 @@ module Humidifier
 
     private
 
-    def add_static_resource(cf, resource_type)
-      resource = send(resource_type)
-      cf[Utils.camelize(resource_type)] = resource if resource
-      cf
-    end
-
-    def add_enumerable_resources(cf, resource_type)
-      resources = send(resource_type)
-      if resources.any?
-        key = Utils.camelize(resource_type)
-        cf[key] = Serializer.enumerable_to_h(resources) do |name, resource|
-          [name, resource.to_cf]
+    def enumerable_resources
+      ENUMERABLE_RESOURCES.each_with_object({}) do |(name, prop), list|
+        resources = send(prop)
+        next if resources.empty?
+        list[name] = Utils.enumerable_to_h(resources) do |resource_name, resource|
+          [resource_name, resource.to_cf]
         end
       end
-      cf
+    end
+
+    def static_resources
+      STATIC_RESOURCES.each_with_object({}) do |(name, prop), list|
+        resource = send(prop)
+        list[name] = resource if resource
+      end
     end
   end
 end
