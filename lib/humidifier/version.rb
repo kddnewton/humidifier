@@ -1,4 +1,4 @@
 module Humidifier
-  # Current gem version
+  # Gem version
   VERSION = '0.0.44'.freeze
 end

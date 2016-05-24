@@ -42,6 +42,7 @@ static void underscore_preprocess(char* str)
   }
 }
 
+// takes a string and returns a downcased version where capitals are now separated by underscores
 static VALUE underscore(VALUE self, VALUE str)
 {
   if (TYPE(str) == T_NIL) return Qnil;
