@@ -4,23 +4,23 @@ module Humidifier
   class Parameter
 
     # The allowed properties of all stack parameters
-    PROPERTIES = %i[allowed_pattern allowed_values constraint_description default description max_length max_value
-                    min_length min_value no_echo].freeze
+    PROPERTIES = Utils.underscored(%w[AllowedPattern AllowedValues ConstraintDescription Default Description
+                                      MaxLength MaxValue MinLength MinValue NoEcho])
 
-    attr_accessor :type, *PROPERTIES
+    attr_accessor :type, *PROPERTIES.values
 
     # Store any optional opts, defaulting 'Type' to String
     def initialize(opts = {})
-      PROPERTIES.each { |prop| send(:"#{prop}=", opts[prop]) }
+      PROPERTIES.values.each { |prop| send(:"#{prop}=", opts[prop]) }
       self.type = opts.fetch(:type, 'String')
     end
 
     # CFN stack syntax
     def to_cf
       cf = { 'Type' => type }
-      PROPERTIES.each do |prop|
+      PROPERTIES.each do |name, prop|
         val = send(prop)
-        cf[Utils.camelize(prop)] = Serializer.dump(val) if val
+        cf[name] = Serializer.dump(val) if val
       end
       cf
     end

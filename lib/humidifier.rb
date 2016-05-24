@@ -3,6 +3,7 @@ require 'json'
 require 'pathname'
 
 require 'humidifier/humidifier'
+require 'humidifier/utils'
 
 require 'humidifier/fn'
 require 'humidifier/ref'

@@ -9,6 +9,7 @@ module Humidifier
       self.opts = opts
     end
 
+    # CFN stack syntax
     def to_cf
       Serializer.dump(opts)
     end

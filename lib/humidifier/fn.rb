@@ -14,6 +14,7 @@ module Humidifier
       self.value = value
     end
 
+    # CFN stack syntax
     def to_cf
       { name => value }
     end

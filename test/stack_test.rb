@@ -5,11 +5,11 @@ class StackTest < Minitest::Test
 
   def test_defaults
     stack = Humidifier::Stack.new
-    Humidifier::Stack.const_get(:STATIC_RESOURCES).each do |resource_type|
-      assert_equal nil, stack.send(resource_type)
+    Humidifier::Stack::STATIC_RESOURCES.values.each do |prop|
+      assert_equal nil, stack.send(prop)
     end
-    Humidifier::Stack.const_get(:ENUMERABLE_RESOURCES).each do |resource_type|
-      assert_equal ({}), stack.send(resource_type)
+    Humidifier::Stack::ENUMERABLE_RESOURCES.values.each do |prop|
+      assert_equal ({}), stack.send(prop)
     end
   end
 
