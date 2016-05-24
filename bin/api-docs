@@ -3,16 +3,8 @@
 require 'bundler/setup'
 require 'humidifier'
 
-File.open('docs/api.md', 'w') do |file|
+File.open('API.md', 'w') do |file|
   file.write("# API Reference\n\n")
-
-  Humidifier.registry.keys.sort.group_by { |name| name.split('::')[1] }.each do |module_name, aws_names|
-    file.write("- #{module_name}\n")
-    aws_names.each do |aws_name|
-      file.write("  - [#{aws_name.split('::').last}](##{aws_name.gsub('AWS', 'Humidifier').delete(':').downcase})\n")
-    end
-  end
-  file.write("\n")
 
   Humidifier.registry.sort.each do |aws_name, clazz|
     file.write("### #{aws_name.gsub('AWS', 'Humidifier')}\n\n")
