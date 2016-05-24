@@ -11,7 +11,6 @@ module Humidifier
     extend Forwardable
     def_delegators :stack, :id=, :identifier, :name, :to_cf
 
-    # Store the given options
     def initialize(stack, options)
       self.stack    = stack
       self.options  = options

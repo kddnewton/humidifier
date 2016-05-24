@@ -8,7 +8,6 @@ module Humidifier
 
     attr_accessor :properties, *COMMON_ATTRIBUTES.values
 
-    # Store the optional given properties
     def initialize(properties = {}, raw = false)
       self.properties = {}
       update(properties, raw)
