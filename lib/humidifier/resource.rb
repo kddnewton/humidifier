@@ -55,14 +55,14 @@ module Humidifier
     class << self
       attr_accessor :aws_name, :props
 
-      # :nodoc:
+      # @private builds a cached method for a property reader
       def build_property_reader(name)
         define_method(name) do
           properties[name.to_s]
         end
       end
 
-      # :nodoc:
+      # @private builds a cached method for a property writer
       def build_property_writer(name)
         define_method(name) do |value|
           update_property(name.to_s[0..-2], value)
