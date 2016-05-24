@@ -9,7 +9,6 @@ module Humidifier
 
     attr_accessor :type, *PROPERTIES.values
 
-    # Store any optional opts, defaulting 'Type' to String
     def initialize(opts = {})
       PROPERTIES.values.each { |prop| send(:"#{prop}=", opts[prop]) }
       self.type = opts.fetch(:type, 'String')

@@ -12,7 +12,6 @@ module Humidifier
       attr_accessor :key
       attr_reader :value
 
-      # stores the given key
       def initialize(key = nil)
         self.key = key
       end

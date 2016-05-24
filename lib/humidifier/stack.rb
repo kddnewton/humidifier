@@ -11,7 +11,6 @@ module Humidifier
 
     attr_accessor :id, :name, *ENUMERABLE_RESOURCES.values, *STATIC_RESOURCES.values
 
-    # Configure settings based on given opts
     def initialize(opts = {})
       self.name = opts[:name]
       self.id   = opts[:id]
