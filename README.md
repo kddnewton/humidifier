@@ -88,7 +88,3 @@ The above code will output:
 ## Extension
 
 The `underscore` string utility method does a lot of the heavy lifting of changing AWS property names over to ruby method names. As such, it's been extracted to a native extension to increase speed and efficiency. To compile it locally run `rake compile`.
-
-## API Reference
-
-For a list of resources and their properties, see the [API reference](docs/api.md).
