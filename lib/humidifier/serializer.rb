@@ -4,6 +4,7 @@ module Humidifier
   class Serializer
 
     class << self
+      # dumps the given object out to CFN syntax recursively
       def dump(node)
         case node
         when Hash then enumerable_to_h(node) { |(key, value)| [key, dump(value)] }
@@ -13,7 +14,7 @@ module Humidifier
         end
       end
 
-      # back-supporting ruby 2.0's lack of #to_h
+      # back-supporting ruby 2.0's lack of Enumerable#to_h
       def enumerable_to_h(enumerable)
         enumerable.each_with_object({}) do |item, result|
           key, value = yield item
