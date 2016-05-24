@@ -6,9 +6,9 @@ module Humidifier
     extend PropertyMethods
 
     # Attributes that are available to every stack
-    COMMON_ATTRIBUTES = %i[creation_policy deletion_policy depends_on metadata update_policy].freeze
+    COMMON_ATTRIBUTES = Utils.underscored(%w[CreationPolicy DeletionPolicy DependsOn Metadata UpdatePolicy])
 
-    attr_accessor :properties, *COMMON_ATTRIBUTES
+    attr_accessor :properties, *COMMON_ATTRIBUTES.values
 
     # Store the optional given properties
     def initialize(properties = {}, raw = false)
@@ -37,7 +37,7 @@ module Humidifier
 
     # A hash representing the CFN syntax for this resource
     def to_cf
-      props_cf = Serializer.enumerable_to_h(properties) { |(key, value)| self.class.props[key].to_cf(value) }
+      props_cf = Utils.enumerable_to_h(properties) { |(key, value)| self.class.props[key].to_cf(value) }
       { 'Type' => self.class.aws_name, 'Properties' => props_cf }.merge(common_attributes)
     end
 
@@ -57,9 +57,9 @@ module Humidifier
     private
 
     def common_attributes
-      COMMON_ATTRIBUTES.each_with_object({}) do |attribute, result|
-        value = send(attribute)
-        result[Utils.camelize(attribute)] = value if value
+      COMMON_ATTRIBUTES.each_with_object({}) do |(name, prop), result|
+        value = send(prop)
+        result[name] = value if value
       end
     end
 

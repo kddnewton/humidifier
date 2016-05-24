@@ -40,9 +40,4 @@ class SerializerTest < Minitest::Test
     ]
     assert_equal expected, Humidifier::Serializer.dump(value)
   end
-
-  def test_enumerable_to_h
-    actual = Humidifier::Serializer.enumerable_to_h(%w[a b c d]) { |item| [item.to_sym, item.ord] }
-    assert_equal ({ a: 97, b: 98, c: 99, d: 100 }), actual
-  end
 end
