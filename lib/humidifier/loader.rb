@@ -14,6 +14,7 @@ module Humidifier
       Dir[spec_directory].each { |filepath| load_from(filepath) }
     end
 
+    # convenience class method to build a new loader and call load
     def self.load
       new.load
     end

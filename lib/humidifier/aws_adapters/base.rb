@@ -1,4 +1,6 @@
 module Humidifier
+
+  # A container module for all adapters for the SDK
   module AwsAdapters
 
     # The parent class for the adapters for both versions of the SDK

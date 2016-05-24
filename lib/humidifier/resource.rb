@@ -3,8 +3,6 @@ module Humidifier
   # Superclass for all AWS resources
   class Resource
 
-    extend PropertyMethods
-
     # Attributes that are available to every stack
     COMMON_ATTRIBUTES = Utils.underscored(%w[CreationPolicy DeletionPolicy DependsOn Metadata UpdatePolicy])
 
@@ -54,6 +52,29 @@ module Humidifier
       properties[property] = value
     end
 
+    class << self
+      attr_accessor :aws_name, :props
+
+      # :nodoc:
+      def build_property_reader(name)
+        define_method(name) do
+          properties[name.to_s]
+        end
+      end
+
+      # :nodoc:
+      def build_property_writer(name)
+        define_method(name) do |value|
+          update_property(name.to_s[0..-2], value)
+        end
+      end
+
+      # true if this resource has the given property
+      def prop?(prop)
+        props.key?(prop)
+      end
+    end
+
     private
 
     def common_attributes
@@ -82,14 +103,6 @@ module Humidifier
         raise ArgumentError, "Invalid value for #{property}: #{value.inspect}"
       end
       value
-    end
-
-    class << self
-      attr_accessor :aws_name, :props
-
-      def prop?(prop)
-        props.key?(prop)
-      end
     end
   end
 end
