@@ -1,0 +1,54 @@
+#!/usr/bin/env ruby
+
+# Humidifier defines all of its classes that represent CFN resources dynamically, so YARD has a hard time documenting
+# them because it can't find them. As such, this script loops through the registry of resources and builds a ruby
+# file called "magic.rb" that YARD will find. The file contains only comments and takes advantage of the fact that
+# YARD will parse a block of comments as code if it has the @!parse directive.
+
+require 'bundler/setup'
+require 'humidifier'
+
+filepath = File.join('lib', 'humidifier', 'magic.rb')
+
+File.open(filepath, 'w') do |file|
+  Humidifier.registry.sort.each do |aws_name, clazz|
+    _, mod_name, class_name = aws_name.split('::')
+    method_definitions =
+      clazz.props.sort.flat_map do |name, prop|
+        prop_type = prop.class.name.split('::').last.gsub(/Prop\z/, '')
+
+        <<-DOC.split("\n")
+
+# returns the #{name} property
+def #{name}
+  properties['#{name}']
+end
+
+# sets the #{name} #{prop_type} property
+def #{name}=(value)
+  update_property('#{name}', value)
+end
+DOC
+      end
+
+    method_definitions = method_definitions.map { |line| "#         #{line}" }.join("\n")
+    method_definitions = method_definitions.strip.empty? ? '' : "\n#{method_definitions}"
+
+    file.write <<-DOC
+# @!parse
+#
+#   module Humidifier
+#     # A container module for the AWS #{mod_name} service
+#     module #{mod_name}
+#       # A dynamically-defined class that represents an #{aws_name} resource
+#       class #{class_name} < Humidifier::Resource#{method_definitions}
+#       end
+#     end
+#   end
+
+DOC
+  end
+end
+
+`yardoc --no-private`
+at_exit { `rm #{filepath}` }
