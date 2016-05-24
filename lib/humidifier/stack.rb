@@ -3,12 +3,15 @@ module Humidifier
   # Represents a CFN stack
   class Stack
 
+    # Single settings on the stack
     STATIC_RESOURCES     = %i[aws_template_format_version description metadata].freeze
+
+    # Lists of objects linked to the stack
     ENUMERABLE_RESOURCES = %i[mappings outputs parameters resources].freeze
-    private_constant :STATIC_RESOURCES, :ENUMERABLE_RESOURCES
 
     attr_accessor :id, :name, *STATIC_RESOURCES, *ENUMERABLE_RESOURCES
 
+    # Configure settings based on given opts
     def initialize(opts = {})
       self.name = opts[:name]
       self.id   = opts[:id]
@@ -21,14 +24,17 @@ module Humidifier
       end
     end
 
+    # Add a resource to the stack
     def add(name, resource)
       resources[name] = resource
     end
 
+    # The identifier used by the shim to find the stack in CFN, prefers id to name
     def identifier
       id || name
     end
 
+    # A string representation of the stack that's valid for CFN
     def to_cf
       cf = {}
       STATIC_RESOURCES.each do |resource_type|

@@ -5,16 +5,19 @@ module Humidifier
 
     extend PropertyMethods
 
+    # Attributes that are available to every stack
     COMMON_ATTRIBUTES = %i[creation_policy deletion_policy depends_on metadata update_policy].freeze
-    private_constant :COMMON_ATTRIBUTES
 
     attr_accessor :properties, *COMMON_ATTRIBUTES
 
+    # Store the optional given properties
     def initialize(properties = {}, raw = false)
       self.properties = {}
       update(properties, raw)
     end
 
+    # Patches method_missing to include property accessors
+    # After the first method call, builds the accessor methods to get a speed boost
     def method_missing(name, *args)
       if !valid_accessor?(name)
         super
@@ -27,19 +30,23 @@ module Humidifier
       end
     end
 
+    # Patches respond_to_missing? to include property accessors
     def respond_to_missing?(name, *)
       valid_accessor?(name) || super
     end
 
+    # A hash representing the CFN syntax for this resource
     def to_cf
       props_cf = Serializer.enumerable_to_h(properties) { |(key, value)| self.class.props[key].to_cf(value) }
       { 'Type' => self.class.aws_name, 'Properties' => props_cf }.merge(common_attributes)
     end
 
+    # Update a set of properties defined by the given properties hash
     def update(properties, raw = false)
       properties.each { |property, value| update_property(property, value, raw) }
     end
 
+    # Update an individual property on this resource
     def update_property(property, value, raw = false)
       property = property.to_s
       property = validate_property(property, raw)

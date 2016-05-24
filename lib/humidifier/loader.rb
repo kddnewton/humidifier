@@ -5,6 +5,7 @@ module Humidifier
   module Config
   end
 
+  # Reads each of the files under /specs/ and loads them each as a class
   class Loader
 
     # loop through the specs and register each class
