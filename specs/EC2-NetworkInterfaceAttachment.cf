@@ -4,6 +4,6 @@
       "DeleteOnTermination": Boolean,
       "DeviceIndex": String,
       "InstanceId": String,
-      "NetworkInterfaceId": String,
+      "NetworkInterfaceId": String
    }
 }

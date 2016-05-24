@@ -10,12 +10,6 @@ class ApiDocsTest < Minitest::Test
   EXPECTED_MAIN = <<EXP.chomp
 # API Reference
 
-- ModA
-  - [Instance](#humidifiermodainstance)
-- ModB
-  - [NetworkAcl](#humidifiermodbnetworkacl)
-  - [SecurityGroup](#humidifiermodbsecuritygroup)
-
 ### Humidifier::ModA::Instance
 
 * One (one: Fake)
