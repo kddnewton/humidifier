@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Build CloudFormation templates programmatically'
   spec.homepage      = 'https://github.com/localytics/humidifier'
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(docs|test)/}) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^test/}) }
   spec.require_paths = ['lib']
   spec.extensions    = ['ext/humidifier/extconf.rb']
 
