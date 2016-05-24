@@ -10,7 +10,7 @@ module Humidifier
     end
 
     def to_cf
-      Utils.dump(opts)
+      Serializer.dump(opts)
     end
   end
 end

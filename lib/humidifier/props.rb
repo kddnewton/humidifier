@@ -23,7 +23,7 @@ module Humidifier
       end
 
       def to_cf(value)
-        [key, Utils.dump(value)]
+        [key, Serializer.dump(value)]
       end
 
       def whitelisted_value?(value)

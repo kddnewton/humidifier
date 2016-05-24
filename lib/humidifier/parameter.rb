@@ -17,7 +17,7 @@ module Humidifier
       cf = { 'Type' => type }
       PROPERTIES.each do |name, prop|
         val = send(prop)
-        cf[name] = Utils.dump(val) if val
+        cf[name] = Serializer.dump(val) if val
       end
       cf
     end
