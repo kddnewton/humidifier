@@ -18,7 +18,7 @@ module Props
       mock = Minitest::Mock.new
       mock.expect(:call, value, [value])
 
-      Humidifier::Serializer.stub(:dump, mock) do
+      Humidifier::Utils.stub(:dump, mock) do
         assert_equal ['MyTestKey', value], base.to_cf(value)
       end
       mock.verify

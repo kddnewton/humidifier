@@ -35,7 +35,7 @@ Minitest::Test.send(:include, Module.new do
     mock = Minitest::Mock.new
     mock.expect(:call, value, [value])
 
-    Humidifier::Serializer.stub(:dump, mock) { yield value }
+    Humidifier::Utils.stub(:dump, mock) { yield value }
     mock.verify
   end
 end)

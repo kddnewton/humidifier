@@ -11,7 +11,7 @@ module Humidifier
     end
 
     def to_cf
-      cf = { 'Value' => Serializer.dump(value) }
+      cf = { 'Value' => Utils.dump(value) }
       cf['Description'] = description if description
       cf
     end

@@ -1,7 +1,7 @@
 module Humidifier
 
   # Dumps an object to CFN syntax
-  class Serializer
+  module Utils
 
     class << self
       def dump(node)
@@ -19,6 +19,11 @@ module Humidifier
           key, value = yield item
           result[key] = value
         end
+      end
+
+      # a frozen hash of the given names mapped to their underscored version
+      def underscored(names)
+        names.each_with_object({}) { |name, map| map[name] = underscore(name).to_sym }.freeze
       end
     end
   end
