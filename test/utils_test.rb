@@ -13,4 +13,14 @@ class UtilsTest < Minitest::Test
     assert_equal 'foo_bar_baz',       Humidifier::Utils.underscore('FooBarBaz')
     assert_equal 'foofoofoofoo_baar', Humidifier::Utils.underscore('FoofoofoofooBaar')
   end
+
+  def test_underscored_empty
+    assert_equal ({}), Humidifier::Utils.underscored({})
+  end
+
+  def test_underscored
+    response = Humidifier::Utils.underscored(%w[TestA TestB])
+    assert_equal ({ 'TestA' => :test_a, 'TestB' => :test_b }), response
+    assert response.frozen?
+  end
 end
