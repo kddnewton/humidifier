@@ -1,5 +1,4 @@
 #include <humidifier.h>
-#include <stdio.h>
 
 // copies from the source string to the destination string after passing through a character whitelist filter
 // note that this is exclusively built for AWS::CloudFormation::Interface, so if AWS ever fixes their docs this can
@@ -63,11 +62,9 @@ static VALUE underscore(VALUE self, VALUE str)
   if (TYPE(str) == T_NIL) return Qnil;
 
   char *str_value = rb_string_value_cstr(&str);
-  char unfiltered[strlen(str_value)];
-  char orig_str[strlen(str_value)];
+  char orig_str[strlen(str_value) + 1];
 
-  filter(unfiltered, str_value);
-  strcpy(orig_str, unfiltered);
+  filter(orig_str, str_value);
   preprocess(orig_str);
 
   // manually null-terminating the string because on Fedora for strings of length 16 this breaks otherwise
