@@ -31,6 +31,7 @@ auto_scaling_group.update(
 
 stack.add('LoadBalancer', load_balancer)
 stack.add('AutoScalingGroup', auto_scaling_group)
+stack.deploy_and_wait
 ```
 
 ## Interfacing with AWS
