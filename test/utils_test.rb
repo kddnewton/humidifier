@@ -7,13 +7,6 @@ class UtilsTest < Minitest::Test
     assert_equal ({ a: 97, b: 98, c: 99, d: 100 }), actual
   end
 
-  def test_underscore
-    assert_equal 'foo',               Humidifier::Utils.underscore('Foo')
-    assert_equal 'foo_bar',           Humidifier::Utils.underscore('FooBar')
-    assert_equal 'foo_bar_baz',       Humidifier::Utils.underscore('FooBarBaz')
-    assert_equal 'foofoofoofoo_baar', Humidifier::Utils.underscore('FoofoofoofooBaar')
-  end
-
   def test_underscored_empty
     assert_equal ({}), Humidifier::Utils.underscored({})
   end
