@@ -19,12 +19,12 @@ File.open(filepath, 'w') do |file|
 
         <<-DOC.split("\n")
 
-# returns the #{name} property
+# returns the #{prop.key} property
 def #{name}
   properties['#{name}']
 end
 
-# sets the #{name} #{prop_type} property
+# sets the #{prop.key} #{prop_type} property
 def #{name}=(value)
   update_property('#{name}', value)
 end
@@ -50,5 +50,5 @@ DOC
   end
 end
 
-`yardoc --no-private`
+puts `yardoc --no-private`
 at_exit { `rm #{filepath}` }

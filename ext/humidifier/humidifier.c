@@ -1,7 +1,23 @@
 #include <humidifier.h>
+#include <stdio.h>
+
+// copies from the source string to the destination string after passing through a character whitelist filter
+// note that this is exclusively built for AWS::CloudFormation::Interface, so if AWS ever fixes their docs this can
+// be replaced by strcpy
+static void filter(char* dest, const char* source)
+{
+  int source_idx, dest_idx;
+
+  for (source_idx = 0, dest_idx = 0; source[source_idx] != '\0'; source_idx++) {
+    if (source[source_idx] != ':') {
+      dest[dest_idx++] = source[source_idx];
+    }
+  }
+  dest[dest_idx] = '\0';
+}
 
 // takes a substring from underscore_preprocess like EC2T or AWST and converts it to Ec2T or AwsT
-static void underscore_format(char* substr, const int substr_idx, const int capitalize)
+static void format_substring(char* substr, const int substr_idx, const int capitalize)
 {
   int idx;
 
@@ -16,9 +32,8 @@ static void underscore_format(char* substr, const int substr_idx, const int capi
 }
 
 // finds occurences of EC2Thing or AWSThing and makes them into Ec2Thing and AwsThing so that underscore can be
-// simpler and just look for capitals - note: using memcpy instead of strncpy because for some reason on Fedora
-// things break for strings with length % 16 == 0
-static void underscore_preprocess(char* str)
+// simpler and just look for capitals
+static void preprocess(char* str)
 {
   char substr[strlen(str)];
   int idx, substr_idx;
@@ -28,13 +43,13 @@ static void underscore_preprocess(char* str)
       substr[substr_idx++] = str[idx];
 
       if (str[idx + 1] == '\0') {
-        underscore_format(substr, substr_idx, 0);
+        format_substring(substr, substr_idx, 0);
         memcpy(str + (idx - substr_idx) + 1, substr, substr_idx);
       }
     }
     else if (isdigit(str[idx]) || (substr_idx != 0)) {
       if (substr_idx != 1) {
-        underscore_format(substr, substr_idx, islower(str[idx]));
+        format_substring(substr, substr_idx, islower(str[idx]));
         memcpy(str + (idx - substr_idx), substr, substr_idx);
       }
       substr_idx = 0;
@@ -48,10 +63,14 @@ static VALUE underscore(VALUE self, VALUE str)
   if (TYPE(str) == T_NIL) return Qnil;
 
   char *str_value = rb_string_value_cstr(&str);
+  char unfiltered[strlen(str_value)];
   char orig_str[strlen(str_value)];
 
-  strcpy(orig_str, str_value);
-  underscore_preprocess(orig_str);
+  filter(unfiltered, str_value);
+  strcpy(orig_str, unfiltered);
+  preprocess(orig_str);
+
+  // manually null-terminating the string because on Fedora for strings of length 16 this breaks otherwise
   orig_str[strlen(str_value)] = '\0';
 
   char new_str[strlen(orig_str) * 2];
