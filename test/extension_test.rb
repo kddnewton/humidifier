@@ -9,7 +9,7 @@ class ExtensionTest < Minitest::Test
     assert_equal 'foofoofoofoo_baar', Humidifier::Utils.underscore('FoofoofoofooBaar')
   end
 
-  Humidifier.registry.each do |name, clazz|
+  Humidifier.registry.each do |_, clazz|
     clazz.props.each do |name, prop|
       define_method(:"test_#{name}") do
         assert_equal expected_for(prop.key), name
@@ -22,7 +22,7 @@ class ExtensionTest < Minitest::Test
   def expected_for(str)
     response = str.delete(':').gsub(/([A-Z]+)([0-9]|[A-Z]|\z)/) { "#{$1.capitalize}#{$2}" }
     response[0] = response[0].downcase
-    response = response.sub(/(.)([A-Z])/) { |match| "#{$1}_#{$2.downcase}" } while /[A-Z]/ === response
+    response = response.sub(/(.)([A-Z])/) { "#{$1}_#{$2.downcase}" } while response =~ /[A-Z]/
     response.downcase
   end
 end
