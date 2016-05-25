@@ -5,6 +5,9 @@
 # file called "magic.rb" that YARD will find. The file contains only comments and takes advantage of the fact that
 # YARD will parse a block of comments as code if it has the @!parse directive.
 
+# Once the docs are built, you can push them to the gh-pages subtree by running:
+# $ git subtree push --prefix doc origin gh-pages
+
 require 'bundler/setup'
 require 'humidifier'
 
@@ -50,5 +53,5 @@ DOC
   end
 end
 
-puts `yardoc --no-private`
+puts `yardoc --no-private --template-path ./yard-templates - Development.md`
 at_exit { `rm #{filepath}` }
