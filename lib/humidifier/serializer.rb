@@ -4,6 +4,7 @@ module Humidifier
   class Serializer
 
     class << self
+      # dumps the given object out to CFN syntax recursively
       def dump(node)
         case node
         when Hash then Utils.enumerable_to_h(node) { |(key, value)| [key, dump(value)] }

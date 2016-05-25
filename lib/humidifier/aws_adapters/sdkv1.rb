@@ -1,7 +1,10 @@
 module Humidifier
   module AwsAdapters
+
+    # The adapter for v1 of aws-sdk
     class SDKV1 < Base
 
+      # True if the stack exists in CFN
       def exists?(payload)
         base_module::CloudFormation::Stack.new(payload.identifier).exists?
       end

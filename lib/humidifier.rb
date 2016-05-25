@@ -8,7 +8,6 @@ require 'humidifier/utils'
 require 'humidifier/fn'
 require 'humidifier/ref'
 require 'humidifier/props'
-require 'humidifier/property_methods'
 
 require 'humidifier/aws_shim'
 require 'humidifier/loader'

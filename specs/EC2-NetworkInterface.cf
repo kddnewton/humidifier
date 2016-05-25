@@ -8,6 +8,6 @@
       "SecondaryPrivateIpAddressCount" : Integer,
       "SourceDestCheck" : Boolean,
       "SubnetId" : String,
-      "Tags" : [ Resource Tag, ... ],
+      "Tags" : [ Resource Tag, ... ]
    }
 }

@@ -3,8 +3,7 @@ module Humidifier
   # Superclass for all AWS resources
   class Resource
 
-    extend PropertyMethods
-
+    # Attributes that are available to every stack
     COMMON_ATTRIBUTES = Utils.underscored(%w[CreationPolicy DeletionPolicy DependsOn Metadata UpdatePolicy])
 
     attr_accessor :properties, *COMMON_ATTRIBUTES.values
@@ -14,6 +13,8 @@ module Humidifier
       update(properties, raw)
     end
 
+    # Patches method_missing to include property accessors
+    # After the first method call, builds the accessor methods to get a speed boost
     def method_missing(name, *args)
       if !valid_accessor?(name)
         super
@@ -26,24 +27,51 @@ module Humidifier
       end
     end
 
+    # Patches respond_to_missing? to include property accessors
     def respond_to_missing?(name, *)
       valid_accessor?(name) || super
     end
 
+    # CFN stack syntax
     def to_cf
       props_cf = Utils.enumerable_to_h(properties) { |(key, value)| self.class.props[key].to_cf(value) }
       { 'Type' => self.class.aws_name, 'Properties' => props_cf }.merge(common_attributes)
     end
 
+    # Update a set of properties defined by the given properties hash
     def update(properties, raw = false)
       properties.each { |property, value| update_property(property, value, raw) }
     end
 
+    # Update an individual property on this resource
     def update_property(property, value, raw = false)
       property = property.to_s
       property = validate_property(property, raw)
       value = validate_value(property, value, raw)
       properties[property] = value
+    end
+
+    class << self
+      attr_accessor :aws_name, :props
+
+      # @private builds a cached method for a property reader
+      def build_property_reader(name)
+        define_method(name) do
+          properties[name.to_s]
+        end
+      end
+
+      # @private builds a cached method for a property writer
+      def build_property_writer(name)
+        define_method(name) do |value|
+          update_property(name.to_s[0..-2], value)
+        end
+      end
+
+      # true if this resource has the given property
+      def prop?(prop)
+        props.key?(prop)
+      end
     end
 
     private
@@ -74,14 +102,6 @@ module Humidifier
         raise ArgumentError, "Invalid value for #{property}: #{value.inspect}"
       end
       value
-    end
-
-    class << self
-      attr_accessor :aws_name, :props
-
-      def prop?(prop)
-        props.key?(prop)
-      end
     end
   end
 end

@@ -3,8 +3,11 @@ module Humidifier
   # Represents a CFN stack
   class Stack
 
-    ENUMERABLE_RESOURCES = Utils.underscored(%w[Mappings Outputs Parameters Resources])
+    # Single settings on the stack
     STATIC_RESOURCES     = Utils.underscored(%w[AWSTemplateFormatVersion Description Metadata])
+
+    # Lists of objects linked to the stack
+    ENUMERABLE_RESOURCES = Utils.underscored(%w[Mappings Outputs Parameters Resources])
 
     attr_accessor :id, :name, *ENUMERABLE_RESOURCES.values, *STATIC_RESOURCES.values
 
@@ -16,14 +19,17 @@ module Humidifier
       STATIC_RESOURCES.values.each { |prop| send(:"#{prop}=", opts[prop]) }
     end
 
+    # Add a resource to the stack
     def add(name, resource)
       resources[name] = resource
     end
 
+    # The identifier used by the shim to find the stack in CFN, prefers id to name
     def identifier
       id || name
     end
 
+    # CFN stack syntax
     def to_cf
       JSON.pretty_generate(enumerable_resources.merge(static_resources))
     end

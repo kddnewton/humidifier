@@ -9,6 +9,7 @@ module Humidifier
       self.reference = reference
     end
 
+    # Builds CFN syntax
     def to_cf
       { 'Ref' => reference }
     end

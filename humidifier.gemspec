@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Build CloudFormation templates programmatically'
   spec.homepage      = 'https://github.com/localytics/humidifier'
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(docs|test)/}) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^test/}) }
   spec.require_paths = ['lib']
   spec.extensions    = ['ext/humidifier/extconf.rb']
 
@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 0.39'
   spec.add_development_dependency 'rake-compiler', '~> 0.9.8'
   spec.add_development_dependency 'benchmark-ips', '~> 2.6.1'
+  spec.add_development_dependency 'yard', '~> 0.8'
 end
