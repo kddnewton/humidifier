@@ -53,5 +53,5 @@ DOC
   end
 end
 
-puts `yardoc --no-private`
+puts `yardoc --no-private --template-path ./yard-templates`
 at_exit { `rm #{filepath}` }
