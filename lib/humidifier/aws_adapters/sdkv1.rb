@@ -6,8 +6,12 @@ module Humidifier
 
       # Cannot create change sets in V1
       def create_change_set(*)
-        puts 'WARNING: Cannot create change set because that functionality is not supported in V1 of aws-sdk.'
-        false
+        unsupported('create change set')
+      end
+
+      # Cannot deploy change sets in V1
+      def deploy_change_set(*)
+        unsupported('deploy change set')
       end
 
       # True if the stack exists in CFN
@@ -41,6 +45,11 @@ module Humidifier
 
         handle_failure(payload) if aws_stack.stack_status =~ /(FAILED|ROLLBACK)/
         response
+      end
+
+      def unsupported(method)
+        puts "WARNING: Cannot #{method} because that functionality is not supported in V1 of aws-sdk."
+        false
       end
     end
   end

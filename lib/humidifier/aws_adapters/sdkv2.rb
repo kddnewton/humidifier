@@ -11,6 +11,11 @@ module Humidifier
         try_valid { client.create_change_set(params) }
       end
 
+      # Create a change set if the stack exists, otherwise create the stack
+      def deploy_change_set(payload)
+        exists?(payload) ? create_change_set(payload) : create(payload)
+      end
+
       # True if the stack exists in CFN
       def exists?(payload)
         base_module::CloudFormation::Stack.new(name: payload.identifier).exists?

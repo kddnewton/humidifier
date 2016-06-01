@@ -9,6 +9,13 @@ class SDKV1Test < Minitest::Test
     end
   end
 
+  def test_deploy_change_set
+    with_sdk_v1_loaded do |sdk|
+      out, * = capture_io { refute sdk.deploy_change_set }
+      assert_match(/WARNING/, out)
+    end
+  end
+
   def test_exists?
     with_sdk_v1_loaded do |sdk|
       SdkSupport.expect(:exists?, [], true)
