@@ -15,6 +15,7 @@ module Humidifier
     STACK_METHODS = %i[
       create delete deploy exists? update valid?
       create_and_wait delete_and_wait deploy_and_wait update_and_wait
+      create_change_set deploy_change_set
     ].freeze
 
     attr_accessor :shim

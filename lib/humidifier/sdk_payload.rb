@@ -21,5 +21,10 @@ module Humidifier
     def ==(other)
       stack == other.stack && options == other.options
     end
+
+    # Merge in options
+    def merge(new_options)
+      self.options = new_options.merge(options)
+    end
   end
 end
