@@ -4,6 +4,12 @@ module Humidifier
     # The adapter for v1 of aws-sdk
     class SDKV1 < Base
 
+      # Cannot create change sets in V1
+      def create_change_set(*)
+        puts 'WARNING: Cannot create change set because that functionality is not supported in V1 of aws-sdk.'
+        false
+      end
+
       # True if the stack exists in CFN
       def exists?(payload)
         base_module::CloudFormation::Stack.new(payload.identifier).exists?
