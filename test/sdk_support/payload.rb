@@ -10,5 +10,9 @@ module SdkSupport
       self.options    = opts.fetch(:options, {})
       self.to_cf      = opts[:to_cf]
     end
+
+    def merge(new_options)
+      self.options = new_options.merge(options)
+    end
   end
 end

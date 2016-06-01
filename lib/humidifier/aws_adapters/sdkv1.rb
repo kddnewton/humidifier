@@ -4,6 +4,16 @@ module Humidifier
     # The adapter for v1 of aws-sdk
     class SDKV1 < Base
 
+      # Cannot create change sets in V1
+      def create_change_set(*)
+        unsupported('create change set')
+      end
+
+      # Cannot deploy change sets in V1
+      def deploy_change_set(*)
+        unsupported('deploy change set')
+      end
+
       # True if the stack exists in CFN
       def exists?(payload)
         base_module::CloudFormation::Stack.new(payload.identifier).exists?
@@ -35,6 +45,11 @@ module Humidifier
 
         handle_failure(payload) if aws_stack.stack_status =~ /(FAILED|ROLLBACK)/
         response
+      end
+
+      def unsupported(method)
+        puts "WARNING: Cannot #{method} because that functionality is not supported in V1 of aws-sdk."
+        false
       end
     end
   end
