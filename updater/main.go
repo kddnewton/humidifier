@@ -20,11 +20,13 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Running")
 	})
-	http.HandleFunc("/check", check)
+	http.HandleFunc("/check", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, check())
+	})
 	http.ListenAndServe(":"+port, nil)
 }
 
-func check(w http.ResponseWriter, r *http.Request) {
+func check() string {
 	runCommand("git", "clone", "https://"+os.Getenv("GITHUB_TOKEN")+"@github.com/localytics/humidifier.git")
 	defer os.RemoveAll("./humidifier")
 
@@ -36,17 +38,21 @@ func check(w http.ResponseWriter, r *http.Request) {
 
 	if out != "" {
 		timestamp := time.Now().Format("2006-01-02")
-		var branchName = "updating-specs-to-" + timestamp
+		branchName := "updating-specs-to-" + timestamp
+		commitMessage := "Updating specs to " + timestamp
 
-		commitAndPush(branchName, timestamp)
-		openPR(branchName, timestamp)
+		commitAndPush(branchName, commitMessage)
+		openPR(branchName, commitMessage)
+		return "Opened PR for " + branchName
 	}
+
+	return "No changes"
 }
 
-func commitAndPush(branchName string, timestamp string) {
+func commitAndPush(branchName string, commitMessage string) {
 	runCommand("git", "checkout", "-b", branchName)
 	runCommand("git", "add", ".")
-	runCommand("git", "commit", "-m", "Updating specs to "+timestamp)
+	runCommand("git", "commit", "-m", commitMessage)
 	runCommand("git", "push", "origin", branchName)
 }
 
@@ -57,8 +63,8 @@ func githubClient() *github.Client {
 	return github.NewClient(oauth2.NewClient(oauth2.NoContext, ts))
 }
 
-func openPR(branchName string, timestamp string) {
-	newPR := github.NewPullRequest{Title: github.String("Updating specs to " + timestamp), Head: &branchName, Base: github.String("master")}
+func openPR(branchName string, commitMessage string) {
+	newPR := github.NewPullRequest{Title: &commitMessage, Head: &branchName, Base: github.String("master")}
 	_, _, err := githubClient().PullRequests.Create("localytics", "humidifier", &newPR)
 	if err != nil {
 		panic(err)
@@ -68,6 +74,7 @@ func openPR(branchName string, timestamp string) {
 func runCommand(name string, arg ...string) string {
 	out, err := exec.Command(name, arg...).Output()
 	if err != nil {
+		fmt.Printf("Failing because of " + name + " command")
 		panic(err)
 	}
 	return string(out)
