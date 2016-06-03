@@ -13,6 +13,20 @@ class SdkPayloadTest < Minitest::Test
     assert_equal ({ foo: 'bar' }), build.options
   end
 
+  def test_merge
+    payload = build
+    payload.merge(bar: 'foo')
+
+    assert_equal 'foo', payload.options[:bar]
+  end
+
+  def test_merge_no_overwrite
+    payload = build
+    payload.merge(foo: 'foo')
+
+    assert_equal 'bar', payload.options[:foo]
+  end
+
   private
 
   def build

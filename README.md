@@ -36,11 +36,19 @@ stack.deploy_and_wait
 
 ## Interfacing with AWS
 
-Once stacks have the appropriate resources, you can query AWS to handle all stack CRUD operations. The operations themselves are intuitively named (i.e. `create`, `update`, `delete`). There are also convenience methods for validating a stack body (`valid?`), checking the existance of a stack (`exists?`), and creating or updating based on existance (`deploy`). The `create`, `update`, `delete`, and `deploy` methods all have `_and_wait` corrolaries that will cause the main ruby thread to sleep until the operation is complete.
+Once stacks have the appropriate resources, you can query AWS to handle all stack CRUD operations. The operations themselves are intuitively named (i.e. `create`, `update`, `delete`). There are also convenience methods for validating a stack body (`valid?`), checking the existance of a stack (`exists?`), and creating or updating based on existance (`deploy`). The `create`, `update`, `delete`, and `deploy` methods all have `_and_wait` corollaries that will cause the main ruby thread to sleep until the operation is complete.
+
+### SDK version
 
 Humidifier assumes you have an `aws-sdk` gem installed when you call these operations. It detects the version of the gem you have installed and uses the appropriate API depending on what is available. If Humidifier cannot find any way to use the AWS SDK, it will warn you on every API call and simply return false.
 
+### CloudFormation functions
+
 You can use CFN intrinsic functions and references using `Humidifier.fn.[name]` and `Humidifier.ref`. Those will build appropriate structures that know how to be dumped to CFN syntax appropriately.
+
+### Change Sets
+
+Instead of immediately pushing your changes to CloudFormation, Humidifier also supports change sets. Change sets are a powerful feature that allow you to see the changes that will be made before you make them. To read more about change sets see the [announcement article](https://aws.amazon.com/blogs/aws/new-change-sets-for-aws-cloudformation/). To use them in Humidifier, `Stack` has the `create_change_set` and `deploy_change_set` methods. The `create_change_set` method will create a change set on the stack. The `deploy_change_set` method will create a change set if the stack currently exists, and otherwise will create the stack.
 
 ## Introspection
 
