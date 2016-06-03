@@ -39,7 +39,7 @@ func check(w http.ResponseWriter, r *http.Request) {
 
 func commitAndPush() {
 	timestamp := time.Now().Format("2006-01-02")
-	var branchName string = "updating-specs-to-" + timestamp
+	var branchName = "updating-specs-to-" + timestamp
 
 	runCommand("git", "checkout", "-b", branchName)
 	runCommand("git", "add", ".")
