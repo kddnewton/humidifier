@@ -73,18 +73,19 @@ src="https://coveralls.io/repos/github/localytics/humidifier/badge.svg?branch=ma
 href="https://localytics.artifactoryonline.com/localytics/webapp/#/artifacts/browse/tree/General/ruby-gems-virtual/gems"><img
 src="http://artifactory-badge.gw.localytics.com/gem/humidifier"></a></p>
 
-<p>Humidifier is a small ruby gem that allows you to build AWS CloudFormation
-(CFN) templates programmatically. Every CFN resource is represented as a
-ruby object that has accessors to read and write properties that can then
-be uploaded to CFN. Each resource and the stack have <code>to_cf</code>
-methods that allow you to quickly inspect what will be uploaded. Humidifier
-is tested to work with ruby 2.0 and higher.</p>
+<p>Humidifier allows you to build AWS CloudFormation (CFN) templates
+programmatically. CFN stacks and resources are represented as Ruby objects
+with accessors for all their supported properties. Stacks and resources
+have <code>to_cf</code> methods that allow you to quickly inspect what will
+be uploaded.</p>
 
 <p>For the full docs, go to <a
 href="http://localytics.github.io/humidifier/">localytics.github.io/humidifier/</a>.
 For local development instructions, see the <a
 href="http://localytics.github.io/humidifier/file.Development.html">Development</a>
 page.</p>
+
+<p>Humidifier is tested with Ruby 2.0 and higher.</p>
 
 <h2 id="label-Building+stacks+and+resources">Building stacks and resources</h2>
 
@@ -125,8 +126,8 @@ JSON attribute. Each attribute can also be set through the
 stack CRUD operations. The operations themselves are intuitively named
 (i.e. <code>create</code>, <code>update</code>, <code>delete</code>). There
 are also convenience methods for validating a stack body
-(<code>valid?</code>), checking the existance of a stack
-(<code>exists?</code>), and creating or updating based on existance
+(<code>valid?</code>), checking the existence of a stack
+(<code>exists?</code>), and creating or updating based on existence
 (<code>deploy</code>). The <code>create</code>, <code>update</code>,
 <code>delete</code>, and <code>deploy</code> methods all have
 <code>_and_wait</code> corollaries that will cause the main ruby thread to
@@ -161,21 +162,20 @@ stack. The <code>deploy_change_set</code> method will create a change set
 if the stack currently exists, and otherwise will create the stack.</p>
 
 <h2 id="label-Introspection">Introspection</h2>
-<ul><li>
+
 <p>To see the template body, you can check the <code>to_cf</code> method on
 stacks, resources, fns, and refs. All of them will output a hash of what
 will be uploaded (except the stack, which will output a string
 representation).</p>
-</li><li>
+
 <p>Humidifier itself contains a registry of all possible resources that it
 supports. You can access it with <code>Humidifier.registry</code> which is
 a hash of AWS resource name pointing to the class.</p>
-</li><li>
+
 <p>Resources have an <code>aws_name</code> method to see how AWS references
 them. They also contain a <code>props</code> method that contains a hash of
 the name that Humidifier uses to reference the prop pointing to the
 appropriate prop object.</p>
-</li></ul>
 </div></div>
 
     <div id="footer">
