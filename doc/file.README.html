@@ -77,11 +77,14 @@ src="http://artifactory-badge.gw.localytics.com/gem/humidifier"></a></p>
 (CFN) templates programmatically. Every CFN resource is represented as a
 ruby object that has accessors to read and write properties that can then
 be uploaded to CFN. Each resource and the stack have <code>to_cf</code>
-methods that allow you to quickly inspect what will be uploaded.</p>
+methods that allow you to quickly inspect what will be uploaded. Humidifier
+is tested to work with ruby 2.0 and higher.</p>
 
-<p>Humidifier is tested to work with ruby 2.0 and higher. For local
-development instructions, see the <a
-href="http://localytics.github.io/humidifier/">Development</a> page.</p>
+<p>For the full docs, go to <a
+href="http://localytics.github.io/humidifier/">localytics.github.io/humidifier/</a>.
+For local development instructions, see the <a
+href="http://localytics.github.io/humidifier/file.Development.html">Development</a>
+page.</p>
 
 <h2 id="label-Building+stacks+and+resources">Building stacks and resources</h2>
 
@@ -113,6 +116,7 @@ JSON attribute. Each attribute can also be set through the
 
 <span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>LoadBalancer</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_load_balancer'>load_balancer</span><span class='rparen'>)</span>
 <span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>AutoScalingGroup</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_auto_scaling_group'>auto_scaling_group</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_deploy_and_wait'>deploy_and_wait</span>
 </code></pre>
 
 <h2 id="label-Interfacing+with+AWS">Interfacing with AWS</h2>
@@ -125,8 +129,10 @@ are also convenience methods for validating a stack body
 (<code>exists?</code>), and creating or updating based on existance
 (<code>deploy</code>). The <code>create</code>, <code>update</code>,
 <code>delete</code>, and <code>deploy</code> methods all have
-<code>_and_wait</code> corrolaries that will cause the main ruby thread to
+<code>_and_wait</code> corollaries that will cause the main ruby thread to
 sleep until the operation is complete.</p>
+
+<h3 id="label-SDK+version">SDK version</h3>
 
 <p>Humidifier assumes you have an <code>aws-sdk</code> gem installed when you
 call these operations. It detects the version of the gem you have installed
@@ -134,10 +140,25 @@ and uses the appropriate API depending on what is available. If Humidifier
 cannot find any way to use the AWS SDK, it will warn you on every API call
 and simply return false.</p>
 
+<h3 id="label-CloudFormation+functions">CloudFormation functions</h3>
+
 <p>You can use CFN intrinsic functions and references using
 <code>Humidifier.fn.[name]</code> and <code>Humidifier.ref</code>. Those
 will build appropriate structures that know how to be dumped to CFN syntax
 appropriately.</p>
+
+<h3 id="label-Change+Sets">Change Sets</h3>
+
+<p>Instead of immediately pushing your changes to CloudFormation, Humidifier
+also supports change sets. Change sets are a powerful feature that allow
+you to see the changes that will be made before you make them. To read more
+about change sets see the <a
+href="https://aws.amazon.com/blogs/aws/new-change-sets-for-aws-cloudformation/">announcement
+article</a>. To use them in Humidifier, <code>Stack</code> has the
+<code>create_change_set</code> and <code>deploy_change_set</code> methods.
+The <code>create_change_set</code> method will create a change set on the
+stack. The <code>deploy_change_set</code> method will create a change set
+if the stack currently exists, and otherwise will create the stack.</p>
 
 <h2 id="label-Introspection">Introspection</h2>
 <ul><li>

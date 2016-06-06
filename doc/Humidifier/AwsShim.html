@@ -151,6 +151,7 @@
         </dt>
         <dd><pre class="code">create delete deploy exists? update valid?
   create_and_wait delete_and_wait deploy_and_wait update_and_wait
+  create_change_set deploy_change_set
 ].freeze</pre></dd>
       
     </dl>
@@ -320,7 +321,6 @@ what successfully loaded</p>
       <pre class="lines">
 
 
-23
 24
 25
 26
@@ -332,10 +332,11 @@ what successfully loaded</p>
 32
 33
 34
-35</pre>
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='id identifier rubyid_try_require_sdk'>try_require_sdk</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>aws-sdk-v1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -388,12 +389,12 @@ what successfully loaded</p>
       <pre class="lines">
 
 
-20
 21
-22</pre>
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_shim'>shim</span>
   <span class='ivar'>@shim</span>
@@ -436,12 +437,12 @@ what successfully loaded</p>
       <pre class="lines">
 
 
-42
 43
-44</pre>
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_instance'>instance</span>
   <span class='ivar'>@instance</span> <span class='op'>||=</span> <span class='id identifier rubyid_new'>new</span>
@@ -477,12 +478,12 @@ what successfully loaded</p>
       <pre class="lines">
 
 
-47
 48
-49</pre>
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_shim'>shim</span>
   <span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_shim'>shim</span>
