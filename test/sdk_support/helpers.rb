@@ -12,14 +12,14 @@ module SdkSupport
     end
 
     def unset_shim
-      Humidifier::AwsShim.instance_variable_set(:@instance, nil)
+      Humidifier::Core::AwsShim.instance_variable_set(:@instance, nil)
     end
 
     def with_sdk_v1_loaded
       Object.const_set(:AWS, AwsDouble)
       begin
         unset_shim
-        yield Humidifier::AwsShim.shim
+        yield Humidifier::Core::AwsShim.shim
       ensure
         Object.send(:remove_const, :AWS)
       end
@@ -29,7 +29,7 @@ module SdkSupport
       Object.const_set(:Aws, AwsDouble)
       begin
         unset_shim
-        yield Humidifier::AwsShim.shim
+        yield Humidifier::Core::AwsShim.shim
       ensure
         Object.send(:remove_const, :Aws)
       end

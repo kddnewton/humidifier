@@ -3,22 +3,22 @@ require 'json'
 require 'pathname'
 
 require 'humidifier/humidifier'
-require 'humidifier/utils'
+require 'humidifier/core/utils'
 
-require 'humidifier/fn'
-require 'humidifier/ref'
-require 'humidifier/props'
+require 'humidifier/core/fn'
+require 'humidifier/core/ref'
+require 'humidifier/core/props'
 
-require 'humidifier/aws_shim'
-require 'humidifier/loader'
-require 'humidifier/mapping'
-require 'humidifier/output'
-require 'humidifier/parameter'
-require 'humidifier/resource'
-require 'humidifier/sdk_payload'
-require 'humidifier/serializer'
-require 'humidifier/sleeper'
-require 'humidifier/stack'
+require 'humidifier/core/aws_shim'
+require 'humidifier/core/loader'
+require 'humidifier/core/mapping'
+require 'humidifier/core/output'
+require 'humidifier/core/parameter'
+require 'humidifier/core/resource'
+require 'humidifier/core/sdk_payload'
+require 'humidifier/core/serializer'
+require 'humidifier/core/sleeper'
+require 'humidifier/core/stack'
 require 'humidifier/version'
 
 # container module for all gem classes
@@ -26,12 +26,12 @@ module Humidifier
   class << self
     # convenience method for calling cloudformation functions
     def fn
-      Fn
+      Core::Fn
     end
 
     # convenience method for creating references
     def ref(reference)
-      Ref.new(reference)
+      Core::Ref.new(reference)
     end
 
     # the list of all registered resources
@@ -46,4 +46,4 @@ module Humidifier
   end
 end
 
-Humidifier::Loader.load
+Humidifier::Core::Loader.load

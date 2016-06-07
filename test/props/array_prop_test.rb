@@ -15,7 +15,7 @@ module Props
     private
 
     def build
-      Humidifier::Props::ArrayProp.new(key: 'MyTestKey', spec: 'String')
+      Humidifier::Core::Props::ArrayProp.new(key: 'MyTestKey', spec: 'String')
     end
   end
 end

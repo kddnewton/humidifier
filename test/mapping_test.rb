@@ -4,13 +4,13 @@ class MappingTest < Minitest::Test
 
   def test_to_cf
     with_mocked_serializer({}) do |value|
-      assert_equal value, Humidifier::Mapping.new(value).to_cf
+      assert_equal value, Humidifier::Core::Mapping.new(value).to_cf
     end
   end
 
   def test_to_cf_with_opts
     with_mocked_serializer(foo: 'bar', bar: 'baz') do |value|
-      output = Humidifier::Mapping.new(value)
+      output = Humidifier::Core::Mapping.new(value)
       assert_equal value, output.to_cf
     end
   end

@@ -3,10 +3,10 @@ require 'test_helper'
 class ExtensionTest < Minitest::Test
 
   def test_basic
-    assert_equal 'foo',               Humidifier::Utils.underscore('Foo')
-    assert_equal 'foo_bar',           Humidifier::Utils.underscore('FooBar')
-    assert_equal 'foo_bar_baz',       Humidifier::Utils.underscore('FooBarBaz')
-    assert_equal 'foofoofoofoo_baar', Humidifier::Utils.underscore('FoofoofoofooBaar')
+    assert_equal 'foo',               Humidifier::Core::Utils.underscore('Foo')
+    assert_equal 'foo_bar',           Humidifier::Core::Utils.underscore('FooBar')
+    assert_equal 'foo_bar_baz',       Humidifier::Core::Utils.underscore('FooBarBaz')
+    assert_equal 'foofoofoofoo_baar', Humidifier::Core::Utils.underscore('FoofoofoofooBaar')
   end
 
   Humidifier.registry.each do |_, clazz|

@@ -4,17 +4,17 @@ class StackTest < Minitest::Test
   ResourceDouble = Struct.new(:to_cf)
 
   def test_defaults
-    stack = Humidifier::Stack.new
-    Humidifier::Stack::STATIC_RESOURCES.values.each do |prop|
+    stack = Humidifier::Core::Stack.new
+    Humidifier::Core::Stack::STATIC_RESOURCES.values.each do |prop|
       assert_equal nil, stack.send(prop)
     end
-    Humidifier::Stack::ENUMERABLE_RESOURCES.values.each do |prop|
+    Humidifier::Core::Stack::ENUMERABLE_RESOURCES.values.each do |prop|
       assert_equal ({}), stack.send(prop)
     end
   end
 
   def test_add
-    stack = Humidifier::Stack.new
+    stack = Humidifier::Core::Stack.new
     resource = Object.new
     stack.add('MyResource', resource)
 
@@ -22,17 +22,17 @@ class StackTest < Minitest::Test
   end
 
   def test_identifier
-    stack = Humidifier::Stack.new(id: 'foo', name: 'bar')
+    stack = Humidifier::Core::Stack.new(id: 'foo', name: 'bar')
     assert_equal 'foo', stack.identifier
   end
 
   def test_identifier_no_id
-    stack = Humidifier::Stack.new(name: 'foobar')
+    stack = Humidifier::Core::Stack.new(name: 'foobar')
     assert_equal 'foobar', stack.identifier
   end
 
   def test_add_mapping
-    stack = Humidifier::Stack.new
+    stack = Humidifier::Core::Stack.new
     stack.add_mapping('foo', 'bar' => 'baz')
 
     assert_equal 'foo', stack.mappings.keys.first
@@ -40,7 +40,7 @@ class StackTest < Minitest::Test
   end
 
   def test_add_output
-    stack = Humidifier::Stack.new
+    stack = Humidifier::Core::Stack.new
     stack.add_output('foo', value: 'bar')
 
     assert_equal 'foo', stack.outputs.keys.first
@@ -48,7 +48,7 @@ class StackTest < Minitest::Test
   end
 
   def test_add_parameter
-    stack = Humidifier::Stack.new
+    stack = Humidifier::Core::Stack.new
     stack.add_parameter('foo', type: 'bar')
 
     assert_equal 'foo', stack.parameters.keys.first
@@ -68,7 +68,7 @@ class StackTest < Minitest::Test
     assert_equal expected, JSON.parse(build.to_cf)
   end
 
-  Humidifier::AwsShim::STACK_METHODS.each do |method|
+  Humidifier::Core::AwsShim::STACK_METHODS.each do |method|
     define_method(:"test_#{method}") do
       with_mocked_aws_shim(method) { |stack| stack.send(method) }
     end
@@ -77,7 +77,7 @@ class StackTest < Minitest::Test
   private
 
   def build
-    Humidifier::Stack.new(static_resources.merge(enumerable_resources))
+    Humidifier::Core::Stack.new(static_resources.merge(enumerable_resources))
   end
 
   def static_resources
@@ -101,11 +101,11 @@ class StackTest < Minitest::Test
   end
 
   def with_mocked_aws_shim(method)
-    stack = Humidifier::Stack.new(name: 'test-stack')
+    stack = Humidifier::Core::Stack.new(name: 'test-stack')
     mock = Minitest::Mock.new
-    mock.expect(:call, nil, [Humidifier::SdkPayload.new(stack, {})])
+    mock.expect(:call, nil, [Humidifier::Core::SdkPayload.new(stack, {})])
 
-    Humidifier::AwsShim.stub(method, mock) do
+    Humidifier::Core::AwsShim.stub(method, mock) do
       yield stack
     end
     mock.verify

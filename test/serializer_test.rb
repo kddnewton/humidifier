@@ -4,29 +4,29 @@ class SerializerTest < Minitest::Test
 
   def test_hash
     value = Object.new
-    assert_equal ({ foo: value }), Humidifier::Serializer.dump(foo: value)
+    assert_equal ({ foo: value }), dump(foo: value)
   end
 
   def test_array
     value = Object.new
-    assert_equal [value], Humidifier::Serializer.dump([value])
+    assert_equal [value], dump([value])
   end
 
   def test_ref
     value = Object.new
     ref = Humidifier.ref(value)
-    assert_equal ({ 'Ref' => value }), Humidifier::Serializer.dump(ref)
+    assert_equal ({ 'Ref' => value }), dump(ref)
   end
 
   def test_fn
     value = Object.new
     fn = Humidifier.fn.base64(value)
-    assert_equal ({ 'Fn::Base64' => value }), Humidifier::Serializer.dump(fn)
+    assert_equal ({ 'Fn::Base64' => value }), dump(fn)
   end
 
   def test_others
     value = Object.new
-    assert_equal value, Humidifier::Serializer.dump(value)
+    assert_equal value, dump(value)
   end
 
   def test_integration
@@ -38,6 +38,12 @@ class SerializerTest < Minitest::Test
       { 'Container' => { 'Ref' => reference1 } },
       { 'Fn::Base64' => { 'Ref' => reference2 } }
     ]
-    assert_equal expected, Humidifier::Serializer.dump(value)
+    assert_equal expected, dump(value)
+  end
+
+  private
+
+  def dump(value)
+    Humidifier::Core::Serializer.dump(value)
   end
 end

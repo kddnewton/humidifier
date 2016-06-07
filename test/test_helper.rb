@@ -35,13 +35,13 @@ Minitest::Test.send(:include, Module.new do
     mock = Minitest::Mock.new
     mock.expect(:call, value, [value])
 
-    Humidifier::Serializer.stub(:dump, mock) { yield value }
+    Humidifier::Core::Serializer.stub(:dump, mock) { yield value }
     mock.verify
   end
 end)
 
 # stub the sleep method so that the tests can run faster
-Humidifier::Sleeper.send(:prepend, Module.new do
+Humidifier::Core::Sleeper.send(:prepend, Module.new do
   def sleep(count)
   end
 end)

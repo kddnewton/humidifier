@@ -11,12 +11,12 @@ class SleeperTest < Minitest::Test
 
   def test_timeout
     assert_raises RuntimeError do
-      Humidifier::Sleeper.new(10) { false }
+      Humidifier::Core::Sleeper.new(10) { false }
     end
   end
 
   def test_ticking
-    Humidifier::Sleeper.new(10) { Ticker.tick }
+    Humidifier::Core::Sleeper.new(10) { Ticker.tick }
     assert Ticker.tick
   end
 end

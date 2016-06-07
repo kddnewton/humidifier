@@ -30,6 +30,6 @@ class SdkPayloadTest < Minitest::Test
   private
 
   def build
-    Humidifier::SdkPayload.new(StackDouble.new('identifier', 'name', 'to_cf'), foo: 'bar')
+    Humidifier::Core::SdkPayload.new(StackDouble.new('identifier', 'name', 'to_cf'), foo: 'bar')
   end
 end
