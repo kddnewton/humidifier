@@ -44,6 +44,10 @@ module Humidifier
       registry[aws_name]
     end
   end
+
+  # the container for all non-dynamically generated constants
+  module Core
+  end
 end
 
 Humidifier::Core::Loader.load

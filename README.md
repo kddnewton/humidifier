@@ -12,10 +12,10 @@ Humidifier is tested with Ruby 2.0 and higher.
 
 ## Building stacks and resources
 
-Stacks are represented with the `Humidifier::Stack` class. You can set any of the top-level JSON attributes through the initializer. Resources are represented by an exact mapping from `AWS` resource names to `Humidifier` resources names (e.g. `AWS::EC2::Instance` becomes `Humidifier::EC2::Instance`). Resources have accessors for each JSON attribute. Each attribute can also be set through the `initialize`, `update`, and `update_attribute` methods.
+Stacks are represented with the `Humidifier::Core::Stack` class. You can set any of the top-level JSON attributes through the initializer. Resources are represented by an exact mapping from `AWS` resource names to `Humidifier` resources names (e.g. `AWS::EC2::Instance` becomes `Humidifier::EC2::Instance`). Resources have accessors for each JSON attribute. Each attribute can also be set through the `initialize`, `update`, and `update_attribute` methods.
 
 ```ruby
-stack = Humidifier::Stack.new(
+stack = Humidifier::Core::Stack.new(
   aws_template_format_version: '2010-09-09',
   description: 'Example stack'
 )
