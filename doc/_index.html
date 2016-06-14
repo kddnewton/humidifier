@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Documentation by YARD 0.8.7.6
+  Humidifier
   
 </title>
 
@@ -13,9 +13,8 @@
   <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
+  pathId = null;
   relpath = '';
-  framesUrl = "frames.html#!_index.html";
 </script>
 
 
@@ -26,37 +25,36 @@
 
   </head>
   <body>
-    <div id="header">
-      <div id="menu">
-  
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html"></iframe>
+      <div id="resizer"></div>
+    </div>
 
-  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
 </div>
 
-      <div id="search">
+        <div id="search">
   
     <a class="full_list_link" id="class_list_link"
         href="class_list.html">
-      Class List
-    </a>
-  
-    <a class="full_list_link" id="method_list_link"
-        href="method_list.html">
-      Method List
-    </a>
-  
-    <a class="full_list_link" id="file_list_link"
-        href="file_list.html">
-      File List
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
     </a>
   
 </div>
-      <div class="clear"></div>
-    </div>
+        <div class="clear"></div>
+      </div>
 
-    <iframe id="search_frame"></iframe>
+      <iframe id="search_frame" src="class_list.html"></iframe>
 
-    <div id="content"><h1 class="noborder title">Documentation by YARD 0.8.7.6</h1>
+      <div id="content"><h1 class="noborder title">Humidifier</h1>
 <div id="listing">
   <h1 class="alphaindex">Alphabetic Index</h1>
   
@@ -67,7 +65,10 @@
     <li class="r1"><a href="index.html" title="README">README</a></li>
     
   
-    <li class="r2"><a href="file.Development.html" title="Development">Development</a></li>
+    <li class="r2"><a href="file.LICENSE.html" title="LICENSE">LICENSE</a></li>
+    
+  
+    <li class="r1"><a href="file.Development.html" title="Development">Development</a></li>
     
   
   </ul>
@@ -144,16 +145,16 @@
               </li>
             
               <li>
-                <span class='object_link'><a href="Humidifier/ElasticBeanstalk/Application.html" title="Humidifier::ElasticBeanstalk::Application (class)">Application</a></span>
+                <span class='object_link'><a href="Humidifier/CodeDeploy/Application.html" title="Humidifier::CodeDeploy::Application (class)">Application</a></span>
                 
-                  <small>(Humidifier::ElasticBeanstalk)</small>
+                  <small>(Humidifier::CodeDeploy)</small>
                 
               </li>
             
               <li>
-                <span class='object_link'><a href="Humidifier/CodeDeploy/Application.html" title="Humidifier::CodeDeploy::Application (class)">Application</a></span>
+                <span class='object_link'><a href="Humidifier/ElasticBeanstalk/Application.html" title="Humidifier::ElasticBeanstalk::Application (class)">Application</a></span>
                 
-                  <small>(Humidifier::CodeDeploy)</small>
+                  <small>(Humidifier::ElasticBeanstalk)</small>
                 
               </li>
             
@@ -328,9 +329,9 @@
               </li>
             
               <li>
-                <span class='object_link'><a href="Humidifier/ECS/Cluster.html" title="Humidifier::ECS::Cluster (class)">Cluster</a></span>
+                <span class='object_link'><a href="Humidifier/EMR/Cluster.html" title="Humidifier::EMR::Cluster (class)">Cluster</a></span>
                 
-                  <small>(Humidifier::ECS)</small>
+                  <small>(Humidifier::EMR)</small>
                 
               </li>
             
@@ -342,9 +343,9 @@
               </li>
             
               <li>
-                <span class='object_link'><a href="Humidifier/EMR/Cluster.html" title="Humidifier::EMR::Cluster (class)">Cluster</a></span>
+                <span class='object_link'><a href="Humidifier/ECS/Cluster.html" title="Humidifier::ECS::Cluster (class)">Cluster</a></span>
                 
-                  <small>(Humidifier::EMR)</small>
+                  <small>(Humidifier::ECS)</small>
                 
               </li>
             
@@ -514,6 +515,13 @@
                 <span class='object_link'><a href="Humidifier/Config/DeliveryChannel.html" title="Humidifier::Config::DeliveryChannel (class)">DeliveryChannel</a></span>
                 
                   <small>(Humidifier::Config)</small>
+                
+              </li>
+            
+              <li>
+                <span class='object_link'><a href="Humidifier/KinesisFirehose/DeliveryStream.html" title="Humidifier::KinesisFirehose::DeliveryStream (class)">DeliveryStream</a></span>
+                
+                  <small>(Humidifier::KinesisFirehose)</small>
                 
               </li>
             
@@ -730,6 +738,13 @@
               </li>
             
               <li>
+                <span class='object_link'><a href="Humidifier/EC2/FlowLog.html" title="Humidifier::EC2::FlowLog (class)">FlowLog</a></span>
+                
+                  <small>(Humidifier::EC2)</small>
+                
+              </li>
+            
+              <li>
                 <span class='object_link'><a href="Humidifier/Fn.html" title="Humidifier::Fn (class)">Fn</a></span>
                 
                   <small>(Humidifier)</small>
@@ -825,16 +840,16 @@
               </li>
             
               <li>
-                <span class='object_link'><a href="Humidifier/OpsWorks/Instance.html" title="Humidifier::OpsWorks::Instance (class)">Instance</a></span>
+                <span class='object_link'><a href="Humidifier/EC2/Instance.html" title="Humidifier::EC2::Instance (class)">Instance</a></span>
                 
-                  <small>(Humidifier::OpsWorks)</small>
+                  <small>(Humidifier::EC2)</small>
                 
               </li>
             
               <li>
-                <span class='object_link'><a href="Humidifier/EC2/Instance.html" title="Humidifier::EC2::Instance (class)">Instance</a></span>
+                <span class='object_link'><a href="Humidifier/OpsWorks/Instance.html" title="Humidifier::OpsWorks::Instance (class)">Instance</a></span>
                 
-                  <small>(Humidifier::EC2)</small>
+                  <small>(Humidifier::OpsWorks)</small>
                 
               </li>
             
@@ -912,6 +927,13 @@
             
               <li>
                 <span class='object_link'><a href="Humidifier/Kinesis.html" title="Humidifier::Kinesis (module)">Kinesis</a></span>
+                
+                  <small>(Humidifier)</small>
+                
+              </li>
+            
+              <li>
+                <span class='object_link'><a href="Humidifier/KinesisFirehose.html" title="Humidifier::KinesisFirehose (module)">KinesisFirehose</a></span>
                 
                   <small>(Humidifier)</small>
                 
@@ -1271,16 +1293,16 @@
               </li>
             
               <li>
-                <span class='object_link'><a href="Humidifier/ApiGateway/Resource.html" title="Humidifier::ApiGateway::Resource (class)">Resource</a></span>
+                <span class='object_link'><a href="Humidifier/Resource.html" title="Humidifier::Resource (class)">Resource</a></span>
                 
-                  <small>(Humidifier::ApiGateway)</small>
+                  <small>(Humidifier)</small>
                 
               </li>
             
               <li>
-                <span class='object_link'><a href="Humidifier/Resource.html" title="Humidifier::Resource (class)">Resource</a></span>
+                <span class='object_link'><a href="Humidifier/ApiGateway/Resource.html" title="Humidifier::ApiGateway::Resource (class)">Resource</a></span>
                 
-                  <small>(Humidifier)</small>
+                  <small>(Humidifier::ApiGateway)</small>
                 
               </li>
             
@@ -1412,16 +1434,16 @@
               </li>
             
               <li>
-                <span class='object_link'><a href="Humidifier/EC2/SecurityGroup.html" title="Humidifier::EC2::SecurityGroup (class)">SecurityGroup</a></span>
+                <span class='object_link'><a href="Humidifier/ElastiCache/SecurityGroup.html" title="Humidifier::ElastiCache::SecurityGroup (class)">SecurityGroup</a></span>
                 
-                  <small>(Humidifier::EC2)</small>
+                  <small>(Humidifier::ElastiCache)</small>
                 
               </li>
             
               <li>
-                <span class='object_link'><a href="Humidifier/ElastiCache/SecurityGroup.html" title="Humidifier::ElastiCache::SecurityGroup (class)">SecurityGroup</a></span>
+                <span class='object_link'><a href="Humidifier/EC2/SecurityGroup.html" title="Humidifier::EC2::SecurityGroup (class)">SecurityGroup</a></span>
                 
-                  <small>(Humidifier::ElastiCache)</small>
+                  <small>(Humidifier::EC2)</small>
                 
               </li>
             
@@ -1822,9 +1844,10 @@
 
 </div>
 
-    <div id="footer">
+      <div id="footer">
    Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
 </div>
 
+    </div>
   </body>
 </html>
