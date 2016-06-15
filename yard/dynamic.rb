@@ -10,8 +10,6 @@ module Dynamic
 
   class << self
     def generate(filepath)
-      YARD::Tags::Library.define_tag('AWS Resource', :aws)
-
       File.open(filepath, 'w') do |file|
         Humidifier.registry.sort.each do |aws_name, clazz|
           file.write(docs_for(aws_name, clazz))
