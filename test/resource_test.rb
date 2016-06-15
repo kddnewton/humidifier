@@ -1,11 +1,11 @@
 require 'test_helper'
 
 class ResourceTest < Minitest::Test
-  Humidifier::Resource.props = {
-    'one' => Humidifier::Props::StringProp.new('One'),
-    'two' => Humidifier::Props::IntegerProp.new('Two')
+  Humidifier::Core::Resource.props = {
+    'one' => Humidifier::Core::Props::StringProp.new('One'),
+    'two' => Humidifier::Core::Props::IntegerProp.new('Two')
   }
-  Humidifier::Resource.aws_name = 'AWS::Resource'
+  Humidifier::Core::Resource.aws_name = 'AWS::Resource'
 
   def test_method_missing_reader
     resource = build
@@ -20,7 +20,7 @@ class ResourceTest < Minitest::Test
 
   def test_respond_to_missing?
     resource = build
-    Humidifier::Resource.props.keys.each do |key|
+    Humidifier::Core::Resource.props.keys.each do |key|
       assert resource.respond_to?(key)
       assert resource.respond_to?("#{key}=")
     end
@@ -39,7 +39,7 @@ class ResourceTest < Minitest::Test
   end
 
   def test_initialize_raw
-    resource = Humidifier::Resource.new({ 'One' => 'one', 'Two' => 2 }, true)
+    resource = Humidifier::Core::Resource.new({ 'One' => 'one', 'Two' => 2 }, true)
     assert_equal ({ 'one' => 'one', 'two' => 2 }), resource.properties
   end
 
@@ -80,8 +80,8 @@ class ResourceTest < Minitest::Test
   end
 
   def test_prop?
-    assert Humidifier::Resource.prop?('one')
-    refute Humidifier::Resource.prop?('three')
+    assert Humidifier::Core::Resource.prop?('one')
+    refute Humidifier::Core::Resource.prop?('three')
   end
 
   def test_common_attributes
@@ -115,12 +115,12 @@ class ResourceTest < Minitest::Test
   private
 
   def build
-    Humidifier::Resource.new(one: 'one', two: 2)
+    Humidifier::Core::Resource.new(one: 'one', two: 2)
   end
 
   def build_slate
-    Class.new(Humidifier::Resource) do
-      self.props = { 'foo' => Humidifier::Props::StringProp.new('Foo') }
+    Class.new(Humidifier::Core::Resource) do
+      self.props = { 'foo' => Humidifier::Core::Props::StringProp.new('Foo') }
     end
   end
 end

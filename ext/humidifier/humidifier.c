@@ -88,6 +88,7 @@ static VALUE underscore(VALUE self, VALUE str)
 void Init_humidifier()
 {
   VALUE Humidifier = rb_define_module("Humidifier");
-  VALUE Utils = rb_define_module_under(Humidifier, "Utils");
+  VALUE Core = rb_define_module_under(Humidifier, "Core");
+  VALUE Utils = rb_define_module_under(Core, "Utils");
   rb_define_singleton_method(Utils, "underscore", underscore, 1);
 }
