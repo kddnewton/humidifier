@@ -19,7 +19,7 @@ The `underscore` string utility method does a lot of the heavy lifting of changi
 
 ## Docs
 
-To build the docs, run `bin/build-docs`. This will write out a `magic.rb` file that handles the dynamically-generated classes through YARD directives. Once the docs are built, push to the `gh-pages` git subtree which will automatically update the github pages site (`git subtree push --prefix doc origin gh-pages`).
+To build the docs, run `bundle exec rake yard`. Once the docs are built, push to the `gh-pages` git subtree which will automatically update the github pages site (`git subtree push --prefix doc origin gh-pages`).
 
 ## Contributing
 

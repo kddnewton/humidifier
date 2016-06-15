@@ -2,6 +2,9 @@ AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
   TargetRubyVersion: 2.0
+  Exclude:
+  - 'vendor/**/*'
+  - 'yard/**/*'
 
 # Increase to github width
 Metrics/LineLength:

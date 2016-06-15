@@ -1,0 +1,10 @@
+{
+  "Type" : "AWS::EC2::FlowLog",
+  "Properties" : {
+    "DeliverLogsPermissionArn" : String,
+    "LogGroupName" : String,
+    "ResourceId" : String,
+    "ResourceType" : String,
+    "TrafficType" : String
+  }
+}
