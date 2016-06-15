@@ -6,7 +6,7 @@ module Humidifier
 
       # Create a change set in CFN
       def create_change_set(payload)
-        payload.merge(change_set_name: "changeset-#{Time.now.strftime('%Y-%m-%d-%H-%M-%S')}")
+        payload[:change_set_name] ||= "changeset-#{Time.now.strftime('%Y-%m-%d-%H-%M-%S')}"
         params = { stack_name: payload.identifier, template_body: payload.to_cf }.merge(payload.options)
         try_valid { client.create_change_set(params) }
       end

@@ -12,6 +12,14 @@ class SDKV2Test < Minitest::Test
     end
   end
 
+  def test_create_change_set_with_name_given
+    with_sdk_v2_loaded do |sdk|
+      SdkSupport.expect(:create_change_set, [change_set_options.merge(change_set_name: 'name')])
+      assert sdk.create_change_set(payload(identifier: 'name', to_cf: 'body', options: { change_set_name: 'name' }))
+      SdkSupport.verify
+    end
+  end
+
   def test_deploy_change_set_exists
     with_sdk_v2_loaded do |sdk|
       SdkSupport.expect(:exists?, [], true)
