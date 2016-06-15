@@ -25,5 +25,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 0.39'
   spec.add_development_dependency 'rake-compiler', '~> 0.9.8'
   spec.add_development_dependency 'benchmark-ips', '~> 2.6.1'
-  spec.add_development_dependency 'yard', '~> 0.8'
 end

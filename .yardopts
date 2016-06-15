@@ -1,0 +1,8 @@
+--title 'Humidifier'
+--no-private
+--template-path ./yard/templates
+--markup markdown
+--quiet
+-
+LICENSE
+Development.md

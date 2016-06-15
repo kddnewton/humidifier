@@ -1,0 +1,9 @@
+{
+  "Type" : "AWS::KinesisFirehose::DeliveryStream",
+  "Properties" : {
+    "DeliveryStreamName" : String,
+    "ElasticsearchDestinationConfiguration" : ElasticsearchDestinationConfiguration,
+    "RedshiftDestinationConfiguration" : RedshiftDestinationConfiguration,
+    "S3DestinationConfiguration" : S3DestinationConfiguration
+  }
+}
