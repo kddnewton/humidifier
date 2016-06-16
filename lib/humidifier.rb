@@ -10,6 +10,7 @@ require 'humidifier/ref'
 require 'humidifier/props'
 
 require 'humidifier/aws_shim'
+require 'humidifier/condition'
 require 'humidifier/loader'
 require 'humidifier/mapping'
 require 'humidifier/output'

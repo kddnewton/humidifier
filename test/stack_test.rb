@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class StackTest < Minitest::Test
-  ResourceDouble = Struct.new(:to_cf)
 
   def test_defaults
     stack = Humidifier::Stack.new
@@ -19,6 +18,18 @@ class StackTest < Minitest::Test
     stack.add('MyResource', resource)
 
     assert_equal ({ 'MyResource' => resource }), stack.resources
+  end
+
+  def test_add_condition
+    stack = Humidifier::Stack.new
+    stack.add_condition('foo', Humidifier.fn.if('Bar'))
+
+    conditions = stack.conditions
+    assert_equal ['foo'], conditions.keys
+
+    opts = conditions.values.first.opts
+    assert_equal 'Fn::If', opts.name
+    assert_equal 'Bar', opts.value
   end
 
   def test_identifier
@@ -55,19 +66,6 @@ class StackTest < Minitest::Test
     assert_equal 'bar', stack.parameters.values.first.type
   end
 
-  def test_to_cf
-    expected = {
-      'AWSTemplateFormatVersion' => 'foo',
-      'Description' => 'bar',
-      'Metadata' => 'baz',
-      'Resources' => { 'One' => 'One', 'Two' => 'Two' },
-      'Mappings' => { 'Three' => 'Three' },
-      'Outputs' => { 'Four' => 'Four' },
-      'Parameters' => { 'Five' => 'Five' }
-    }
-    assert_equal expected, JSON.parse(build.to_cf)
-  end
-
   Humidifier::AwsShim::STACK_METHODS.each do |method|
     define_method(:"test_#{method}") do
       with_mocked_aws_shim(method) { |stack| stack.send(method) }
@@ -75,30 +73,6 @@ class StackTest < Minitest::Test
   end
 
   private
-
-  def build
-    Humidifier::Stack.new(static_resources.merge(enumerable_resources))
-  end
-
-  def static_resources
-    {
-      aws_template_format_version: 'foo',
-      description: 'bar',
-      metadata: 'baz'
-    }
-  end
-
-  def enumerable_resources
-    {
-      resources: {
-        'One' => ResourceDouble.new('One'),
-        'Two' => ResourceDouble.new('Two')
-      },
-      mappings: { 'Three' => ResourceDouble.new('Three') },
-      outputs: { 'Four' => ResourceDouble.new('Four') },
-      parameters: { 'Five' => ResourceDouble.new('Five') }
-    }
-  end
 
   def with_mocked_aws_shim(method)
     stack = Humidifier::Stack.new(name: 'test-stack')

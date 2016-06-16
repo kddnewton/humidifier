@@ -4,7 +4,8 @@ module Humidifier
   class Resource
 
     # Attributes that are available to every stack
-    COMMON_ATTRIBUTES = Utils.underscored(%w[CreationPolicy DeletionPolicy DependsOn Metadata UpdatePolicy])
+    COMMON_ATTRIBUTES =
+      Utils.underscored(%w[Condition CreationPolicy DeletionPolicy DependsOn Metadata UpdatePolicy])
 
     attr_accessor :properties, *COMMON_ATTRIBUTES.values
 
