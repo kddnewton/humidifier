@@ -5,7 +5,6 @@
     "Applications" : [ Applications, ... ],
     "BootstrapActions" [ Bootstrap Actions, ... ],
     "Configurations" : [ Configurations, ... ],
-    "EbsConfiguration" : EBSConfiguration,
     "Instances" : JobFlowInstancesConfig,
     "JobFlowRole" : String,
     "LogUri" : String,

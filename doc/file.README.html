@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Humidifier
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <iframe id="search_frame" src="file_list.html"></iframe>
+
+      <div id="content"><div id='filecontents'>
+<h1 id="label-Humidifier">Humidifier</h1>
+
+<p><a href="https://travis-ci.com/localytics/humidifier"><img
+src="https://travis-ci.com/localytics/humidifier.svg?token=kQUiABmGkzyHdJdMnCnv&branch=master"></a>
+<a
+href="https://coveralls.io/github/localytics/humidifier?branch=master"><img
+src="https://coveralls.io/repos/github/localytics/humidifier/badge.svg?branch=master&t=52zybb"></a>
+<a
+href="https://localytics.artifactoryonline.com/localytics/webapp/#/artifacts/browse/tree/General/ruby-gems-virtual/gems"><img
+src="http://artifactory-badge.gw.localytics.com/gem/humidifier"></a></p>
+
+<p>Humidifier allows you to build AWS CloudFormation (CFN) templates
+programmatically. CFN stacks and resources are represented as Ruby objects
+with accessors for all their supported properties. Stacks and resources
+have <code>to_cf</code> methods that allow you to quickly inspect what will
+be uploaded.</p>
+
+<p>For the full docs, go to <a
+href="http://localytics.github.io/humidifier/">localytics.github.io/humidifier/</a>.
+For local development instructions, see the <a
+href="http://localytics.github.io/humidifier/file.Development.html">Development</a>
+page.</p>
+
+<p>Humidifier is tested with Ruby 2.0 and higher.</p>
+
+<h2 id="label-Building+stacks+and+resources">Building stacks and resources</h2>
+
+<p>Stacks are represented with the <code>Humidifier::Stack</code> class. You
+can set any of the top-level JSON attributes through the initializer.
+Resources are represented by an exact mapping from <code>AWS</code>
+resource names to <code>Humidifier</code> resources names (e.g.
+<code>AWS::EC2::Instance</code> becomes
+<code>Humidifier::EC2::Instance</code>). Resources have accessors for each
+JSON attribute. Each attribute can also be set through the
+<code>initialize</code>, <code>update</code>, and
+<code>update_attribute</code> methods.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_stack'>stack</span> <span class='op'>=</span> <span class='const'>Humidifier</span><span class='op'>::</span><span class='const'>Stack</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+  <span class='label'>aws_template_format_version:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2010-09-09</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='label'>description:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Example stack</span><span class='tstring_end'>&#39;</span></span>
+<span class='rparen'>)</span>
+
+<span class='id identifier rubyid_load_balancer'>load_balancer</span> <span class='op'>=</span> <span class='const'>Humidifier</span><span class='op'>::</span><span class='const'>ElasticLoadBalancing</span><span class='op'>::</span><span class='const'>LoadBalancer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+  <span class='label'>listeners:</span> <span class='lbracket'>[</span><span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Port</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>80</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Protocol</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>InstancePort</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>80</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>InstanceProtocol</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='rbracket'>]</span>
+<span class='rparen'>)</span>
+<span class='id identifier rubyid_load_balancer'>load_balancer</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>internal</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_auto_scaling_group'>auto_scaling_group</span> <span class='op'>=</span> <span class='const'>Humidifier</span><span class='op'>::</span><span class='const'>AutoScaling</span><span class='op'>::</span><span class='const'>AutoScalingGroup</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>min_size:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>max_size:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>20</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_auto_scaling_group'>auto_scaling_group</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span>
+  <span class='label'>availability_zones:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>us-east-1a</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+  <span class='label'>load_balancer_names:</span> <span class='lbracket'>[</span><span class='const'>Humidifier</span><span class='period'>.</span><span class='id identifier rubyid_ref'>ref</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>LoadBalancer</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span>
+<span class='rparen'>)</span>
+
+<span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>LoadBalancer</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_load_balancer'>load_balancer</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>AutoScalingGroup</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_auto_scaling_group'>auto_scaling_group</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_deploy_and_wait'>deploy_and_wait</span>
+</code></pre>
+
+<h2 id="label-Interfacing+with+AWS">Interfacing with AWS</h2>
+
+<p>Once stacks have the appropriate resources, you can query AWS to handle all
+stack CRUD operations. The operations themselves are intuitively named
+(i.e. <code>create</code>, <code>update</code>, <code>delete</code>). There
+are also convenience methods for validating a stack body
+(<code>valid?</code>), checking the existence of a stack
+(<code>exists?</code>), and creating or updating based on existence
+(<code>deploy</code>). The <code>create</code>, <code>update</code>,
+<code>delete</code>, and <code>deploy</code> methods all have
+<code>_and_wait</code> corollaries that will cause the main ruby thread to
+sleep until the operation is complete.</p>
+
+<h3 id="label-SDK+version">SDK version</h3>
+
+<p>Humidifier assumes you have an <code>aws-sdk</code> gem installed when you
+call these operations. It detects the version of the gem you have installed
+and uses the appropriate API depending on what is available. If Humidifier
+cannot find any way to use the AWS SDK, it will warn you on every API call
+and simply return false.</p>
+
+<h3 id="label-CloudFormation+functions">CloudFormation functions</h3>
+
+<p>You can use CFN intrinsic functions and references using
+<code>Humidifier.fn.[name]</code> and <code>Humidifier.ref</code>. Those
+will build appropriate structures that know how to be dumped to CFN syntax
+appropriately.</p>
+
+<h3 id="label-Change+Sets">Change Sets</h3>
+
+<p>Instead of immediately pushing your changes to CloudFormation, Humidifier
+also supports change sets. Change sets are a powerful feature that allow
+you to see the changes that will be made before you make them. To read more
+about change sets see the <a
+href="https://aws.amazon.com/blogs/aws/new-change-sets-for-aws-cloudformation/">announcement
+article</a>. To use them in Humidifier, <code>Stack</code> has the
+<code>create_change_set</code> and <code>deploy_change_set</code> methods.
+The <code>create_change_set</code> method will create a change set on the
+stack. The <code>deploy_change_set</code> method will create a change set
+if the stack currently exists, and otherwise will create the stack.</p>
+
+<h2 id="label-Introspection">Introspection</h2>
+
+<p>To see the template body, you can check the <code>to_cf</code> method on
+stacks, resources, fns, and refs. All of them will output a hash of what
+will be uploaded (except the stack, which will output a string
+representation).</p>
+
+<p>Humidifier itself contains a registry of all possible resources that it
+supports. You can access it with <code>Humidifier.registry</code> which is
+a hash of AWS resource name pointing to the class.</p>
+
+<p>Resources have an <code>aws_name</code> method to see how AWS references
+them. They also contain a <code>props</code> method that contains a hash of
+the name that Humidifier uses to reference the prop pointing to the
+appropriate prop object.</p>
+</div></div>
+
+      <div id="footer">
+   Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
+</div>
+
+    </div>
+  </body>
+</html>

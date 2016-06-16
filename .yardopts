@@ -1,0 +1,9 @@
+--title 'Humidifier'
+--no-private
+--template-path ./yard/templates
+--markup markdown
+--tag aws:"AWS Resource"
+--quiet
+-
+LICENSE
+Development.md

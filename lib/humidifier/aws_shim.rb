@@ -1,61 +1,60 @@
+require 'humidifier/aws_adapters/base'
+require 'humidifier/aws_adapters/noop'
+require 'humidifier/aws_adapters/sdkv1'
+require 'humidifier/aws_adapters/sdkv2'
+
 module Humidifier
 
   # Optionally provides aws-sdk functionality if the gem is loaded
-  class AWSShim
+  class AwsShim
+
+    # The AWS region, can be set through the environment, defaults to us-east-1
     REGION = ENV['AWS_REGION'] || 'us-east-1'
 
-    # Doesn't do anything
-    class Noop
-      def method_missing(method, *)
-        if method == :validate_stack
-          puts 'WARNING: Not validating because aws-sdk not loaded.'
-          false
-        else
-          super
-        end
-      end
-    end
-
-    # Validate using v1 of the aws-sdk
-    class SDKV1
-      def validate_stack(stack)
-        AWS::CloudFormation::Client.new(region: REGION).validate_template(template_body: stack.to_cf)
-        true
-      rescue AWS::CloudFormation::Errors::ValidationError
-        false
-      end
-    end
-
-    # Validate using v2 of the aws-sdk
-    class SDKV2
-      def validate_stack(stack)
-        Aws::CloudFormation::Client.new(region: REGION).validate_template(template_body: stack.to_cf)
-        true
-      rescue Aws::CloudFormation::Errors::ValidationError
-        false
-      end
-    end
+    # Methods that are sent over to the aws adapter from the stack
+    STACK_METHODS = %i[
+      create delete deploy exists? update valid?
+      create_and_wait delete_and_wait deploy_and_wait update_and_wait
+      create_change_set deploy_change_set
+    ].freeze
 
     attr_accessor :shim
 
+    # Attempt to require both aws-sdk-v1 and aws-sdk, then set the shim based on what successfully loaded
     def initialize
-      self.shim = begin
-        require 'aws-sdk'
-        nil
-      rescue LoadError
-        Noop.new
-      end
-      self.shim ||= Object.const_defined?(:AWS) ? SDKV1.new : SDKV2.new
+      try_require_sdk('aws-sdk-v1')
+      try_require_sdk('aws-sdk')
+
+      self.shim =
+        if Object.const_defined?(:AWS)
+          AwsAdapters::SDKV1.new
+        elsif Object.const_defined?(:Aws)
+          AwsAdapters::SDKV2.new
+        else
+          AwsAdapters::Noop.new
+        end
     end
 
     class << self
+      extend Forwardable
+      def_delegators :shim, *STACK_METHODS
+
+      # The shim singleton
       def instance
         @instance ||= new
       end
 
-      def validate_stack(stack)
-        instance.shim.validate_stack(stack)
+      # The target of all of the forwarding
+      def shim
+        instance.shim
       end
+    end
+
+    private
+
+    def try_require_sdk(name)
+      require name
+    rescue LoadError # rubocop:disable Lint/HandleExceptions
     end
   end
 end

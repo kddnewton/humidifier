@@ -90,6 +90,15 @@ class ResourceTest < Minitest::Test
     assert resource.to_cf['Condition'] = 'Bar'
   end
 
+  def test_common_attributes
+    resource = build
+    resource.depends_on = 'foo'
+    resource.metadata = 'bar'
+
+    expected = { 'DependsOn' => 'foo', 'Metadata' => 'bar' }
+    assert_equal expected, resource.to_cf.reject { |key| %w[Type Properties].include?(key) }
+  end
+
   private
 
   def build

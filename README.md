@@ -4,24 +4,15 @@
 [![Coverage Status](https://coveralls.io/repos/github/localytics/humidifier/badge.svg?branch=master&t=52zybb)](https://coveralls.io/github/localytics/humidifier?branch=master)
 [![Gem Version](http://artifactory-badge.gw.localytics.com/gem/humidifier)](https://localytics.artifactoryonline.com/localytics/webapp/#/artifacts/browse/tree/General/ruby-gems-virtual/gems)
 
-Humidifier is a small ruby gem that allows you to build AWS CloudFormation (CFN) templates programmatically. Every CFN resource is represented as a ruby object that has accessors to read and write properties that can then be uploaded to CFN. Each resource and the stack have `to_cf` methods that allow you to quickly inspect what will be uploaded.
+Humidifier allows you to build AWS CloudFormation (CFN) templates programmatically. CFN stacks and resources are represented as Ruby objects with accessors for all their supported properties. Stacks and resources have `to_cf` methods that allow you to quickly inspect what will be uploaded.
 
-## Development
+For the full docs, go to [http://localytics.github.io/humidifier/](http://localytics.github.io/humidifier/). For local development instructions, see the [Development](http://localytics.github.io/humidifier/file.Development.html) page.
 
-The specs pulled from the CFN docs live under `/specs`. You can update them by running `bin/get-docs`. This script will scrape the docs by going to the [listings page](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html), finding the list of CFN resources, and then downloading the spec for each resource by going to the individual page.
+Humidifier is tested with Ruby 2.0 and higher.
 
-## Testing
+## Building stacks and resources
 
-The default rake task runs the tests. Coverage is reported on the command line, and to coveralls.io in CI. Styling is governed by rubocop. To run both tests and rubocop:
-
-    $ bundle exec rake
-    $ bundle exec rubocop
-
-Humidifier is tested to work with ruby 2.0 and higher.
-
-## Example
-
-In the following example we build a load balancer object, set the scheme, at it to a stack, and output the CFN template.
+Stacks are represented with the `Humidifier::Stack` class. You can set any of the top-level JSON attributes through the initializer. Resources are represented by an exact mapping from `AWS` resource names to `Humidifier` resources names (e.g. `AWS::EC2::Instance` becomes `Humidifier::EC2::Instance`). Resources have accessors for each JSON attribute. Each attribute can also be set through the `initialize`, `update`, and `update_attribute` methods.
 
 ```ruby
 stack = Humidifier::Stack.new(
@@ -42,49 +33,30 @@ auto_scaling_group.update(
 
 stack.add('LoadBalancer', load_balancer)
 stack.add('AutoScalingGroup', auto_scaling_group)
-puts stack.to_cf
+stack.deploy_and_wait
 ```
 
-The above code will output:
+## Interfacing with AWS
 
-```json
-{
-  "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Example stack",
-  "Resources": {
-    "LoadBalancer": {
-      "Type": "AWS::ElasticLoadBalancing::LoadBalancer",
-      "Properties": {
-        "Listeners": [
-          {
-            "Port": 80,
-            "Protocol": "http",
-            "InstancePort": 80,
-            "InstanceProtocol": "http"
-          }
-        ],
-        "Scheme": "internal"
-      }
-    },
-    "AutoScalingGroup": {
-      "Type": "AWS::AutoScaling::AutoScalingGroup",
-      "Properties": {
-        "MinSize": "1",
-        "MaxSize": "20",
-        "AvailabilityZones": [
-          "us-east-1a"
-        ],
-        "LoadBalancerNames": [
-          {
-            "Ref": "LoadBalancer"
-          }
-        ]
-      }
-    }
-  }
-}
-```
+Once stacks have the appropriate resources, you can query AWS to handle all stack CRUD operations. The operations themselves are intuitively named (i.e. `create`, `update`, `delete`). There are also convenience methods for validating a stack body (`valid?`), checking the existence of a stack (`exists?`), and creating or updating based on existence (`deploy`). The `create`, `update`, `delete`, and `deploy` methods all have `_and_wait` corollaries that will cause the main ruby thread to sleep until the operation is complete.
 
-## API Reference
+### SDK version
 
-For a list of resources and their properties, see the [API reference](docs/api.md).
+Humidifier assumes you have an `aws-sdk` gem installed when you call these operations. It detects the version of the gem you have installed and uses the appropriate API depending on what is available. If Humidifier cannot find any way to use the AWS SDK, it will warn you on every API call and simply return false.
+
+### CloudFormation functions
+
+You can use CFN intrinsic functions and references using `Humidifier.fn.[name]` and `Humidifier.ref`. Those will build appropriate structures that know how to be dumped to CFN syntax appropriately.
+
+### Change Sets
+
+Instead of immediately pushing your changes to CloudFormation, Humidifier also supports change sets. Change sets are a powerful feature that allow you to see the changes that will be made before you make them. To read more about change sets see the [announcement article](https://aws.amazon.com/blogs/aws/new-change-sets-for-aws-cloudformation/). To use them in Humidifier, `Stack` has the `create_change_set` and `deploy_change_set` methods. The `create_change_set` method will create a change set on the stack. The `deploy_change_set` method will create a change set if the stack currently exists, and otherwise will create the stack.
+
+## Introspection
+
+To see the template body, you can check the `to_cf` method on stacks, resources, fns, and refs. All of them will output a hash of what will be uploaded (except the stack, which will output a string representation).
+
+Humidifier itself contains a registry of all possible resources that it supports. You can access it with `Humidifier.registry` which is a hash of AWS resource name pointing to the class.
+
+Resources have an `aws_name` method to see how AWS references them. They also contain a `props` method that contains a hash of the name that Humidifier uses to reference the prop pointing to the appropriate prop object.
+

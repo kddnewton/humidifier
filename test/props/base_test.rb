@@ -30,15 +30,27 @@ module Props
     end
 
     def test_whitelisted_value?
+      base = Humidifier::Props::Base.new
+      original_whitelist = Humidifier::Props::Base::WHITELIST
+
       suppress_warnings do
-        base = Humidifier::Props::Base.new
-        original_whitelist = Humidifier::Props::Base::WHITELIST
         Humidifier::Props::Base.const_set(:WHITELIST, [])
         refute base.whitelisted_value?('test')
+
         Humidifier::Props::Base::WHITELIST << String
         assert base.whitelisted_value?('test')
+
         Humidifier::Props::Base.const_set(:WHITELIST, original_whitelist)
       end
+    end
+
+    private
+
+    def suppress_warnings
+      warn_level = $VERBOSE
+      $VERBOSE = nil
+      yield
+      $VERBOSE = warn_level
     end
   end
 end

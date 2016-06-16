@@ -3,7 +3,10 @@ module Humidifier
   # Builds CFN function calls
   class Fn
 
-    FUNCTIONS = %w[And Base64 Equals FindInMap GetAtt GetAZs If Join Not Or Select].freeze
+    # The list of all internal functions provided by AWS from
+    # http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html
+    FUNCTIONS = Utils.underscored(%w[And Base64 Equals FindInMap GetAtt GetAZs If Join Not Or Select])
+
     attr_accessor :name, :value
 
     def initialize(name, value)
@@ -11,18 +14,15 @@ module Humidifier
       self.value = value
     end
 
+    # CFN stack syntax
     def to_cf
       { name => value }
     end
 
     class << self
-      FUNCTIONS.each do |function|
-        define_method(Utils.underscore(function)) do |value|
-          new(function, value)
-        end
+      FUNCTIONS.each do |name, func|
+        define_method(func) { |value| new(name, value) }
       end
     end
   end
-
-  Props::Base::WHITELIST << Fn
 end

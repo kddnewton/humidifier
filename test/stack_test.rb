@@ -1,15 +1,14 @@
 require 'test_helper'
 
 class StackTest < Minitest::Test
-  ResourceDouble = Struct.new(:to_cf)
 
   def test_defaults
     stack = Humidifier::Stack.new
-    Humidifier::Stack.const_get(:STATIC_RESOURCES).each do |resource_type|
-      assert_equal nil, stack.send(resource_type)
+    Humidifier::Stack::STATIC_RESOURCES.values.each do |prop|
+      assert_equal nil, stack.send(prop)
     end
-    Humidifier::Stack.const_get(:ENUMERABLE_RESOURCES).each do |resource_type|
-      assert_equal ({}), stack.send(resource_type)
+    Humidifier::Stack::ENUMERABLE_RESOURCES.values.each do |prop|
+      assert_equal ({}), stack.send(prop)
     end
   end
 
@@ -22,12 +21,25 @@ class StackTest < Minitest::Test
   end
 
   def test_add_condition
-    stack = build_stack_with_condition
-    assert_equal 'foo', stack.conditions.keys.first
+    stack = Humidifier::Stack.new
+    stack.add_condition('foo', Humidifier.fn.if('Bar'))
 
-    condition = stack.conditions.values.first
-    assert_equal 'Fn::If', condition.opts.name
-    assert_equal 'Bar', condition.opts.value
+    conditions = stack.conditions
+    assert_equal ['foo'], conditions.keys
+
+    opts = conditions.values.first.opts
+    assert_equal 'Fn::If', opts.name
+    assert_equal 'Bar', opts.value
+  end
+
+  def test_identifier
+    stack = Humidifier::Stack.new(id: 'foo', name: 'bar')
+    assert_equal 'foo', stack.identifier
+  end
+
+  def test_identifier_no_id
+    stack = Humidifier::Stack.new(name: 'foobar')
+    assert_equal 'foobar', stack.identifier
   end
 
   def test_add_mapping
@@ -54,63 +66,22 @@ class StackTest < Minitest::Test
     assert_equal 'bar', stack.parameters.values.first.type
   end
 
-  EXPECTED_CF = {
-    'AWSTemplateFormatVersion' => 'foo',
-    'Description' => 'bar',
-    'Metadata' => 'baz',
-    'Resources' => { 'One' => 'One', 'Two' => 'Two' },
-    'Mappings' => { 'Three' => 'Three' },
-    'Outputs' => { 'Four' => 'Four' },
-    'Parameters' => { 'Five' => 'Five' },
-    'Conditions' => { 'Six' => 'Six' }
-  }.freeze
-
-  def test_to_cf
-    assert_equal EXPECTED_CF, JSON.parse(build.to_cf)
-  end
-
-  def test_valid?
-    stack = Humidifier::Stack.new
-    mock = Minitest::Mock.new
-    mock.expect(:call, nil, [stack])
-
-    Humidifier::AWSShim.stub(:validate_stack, mock) do
-      stack.valid?
+  Humidifier::AwsShim::STACK_METHODS.each do |method|
+    define_method(:"test_#{method}") do
+      with_mocked_aws_shim(method) { |stack| stack.send(method) }
     end
-    mock.verify
   end
 
   private
 
-  def build
-    Humidifier::Stack.new(static_resources.merge(enumerable_resources))
-  end
+  def with_mocked_aws_shim(method)
+    stack = Humidifier::Stack.new(name: 'test-stack')
+    mock = Minitest::Mock.new
+    mock.expect(:call, nil, [Humidifier::SdkPayload.new(stack, {})])
 
-  def static_resources
-    {
-      aws_template_format_version: 'foo',
-      description: 'bar',
-      metadata: 'baz'
-    }
+    Humidifier::AwsShim.stub(method, mock) do
+      yield stack
+    end
+    mock.verify
   end
-
-  def enumerable_resources
-    {
-      resources: {
-        'One' => ResourceDouble.new('One'),
-        'Two' => ResourceDouble.new('Two')
-      },
-      mappings: { 'Three' => ResourceDouble.new('Three') },
-      outputs: { 'Four' => ResourceDouble.new('Four') },
-      parameters: { 'Five' => ResourceDouble.new('Five') },
-      conditions: { 'Six' => ResourceDouble.new('Six') }
-    }
-  end
-
-  def build_stack_with_condition
-    stack = Humidifier::Stack.new
-    stack.add_condition('foo', Humidifier::Fn.new('If', 'Bar'))
-    stack
-  end
-
 end

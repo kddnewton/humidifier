@@ -1,33 +1,31 @@
 require 'test_helper'
 
-class PropertyMethodsTest < Minitest::Test
-  class Slate
-    extend Humidifier::PropertyMethods
-    attr_accessor :properties
-
-    def initialize(properties = {})
-      self.properties = properties
-    end
-
-    def update_property(key, value)
-      properties[key] = value
-    end
-  end
+class ResourceTest < Minitest::Test
 
   def test_build_property_reader
-    Slate.build_property_reader(:foo)
-    slate = Slate.new('foo' => 'bar')
+    slate = build_slate
+    slate.build_property_reader(:foo)
+    resource = slate.new('foo' => 'bar')
 
-    assert slate.respond_to?(:foo)
-    assert_equal 'bar', slate.foo
+    assert resource.respond_to?(:foo)
+    assert_equal 'bar', resource.foo
   end
 
   def test_build_property_writer
-    Slate.build_property_writer(:foo=)
-    slate = Slate.new
+    slate = build_slate
+    slate.build_property_writer(:foo=)
+    resource = slate.new
 
-    assert slate.respond_to?(:foo=)
-    slate.foo = 'bar'
-    assert_equal 'bar', slate.properties['foo']
+    assert resource.respond_to?(:foo=)
+    resource.foo = 'bar'
+    assert_equal 'bar', resource.properties['foo']
+  end
+
+  private
+
+  def build_slate
+    Class.new(Humidifier::Resource) do
+      self.props = { 'foo' => Humidifier::Props::StringProp.new('Foo') }
+    end
   end
 end
