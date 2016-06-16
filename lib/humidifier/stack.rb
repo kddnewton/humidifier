@@ -7,7 +7,7 @@ module Humidifier
     STATIC_RESOURCES     = Utils.underscored(%w[AWSTemplateFormatVersion Description Metadata])
 
     # Lists of objects linked to the stack
-    ENUMERABLE_RESOURCES = Utils.underscored(%w[Mappings Outputs Parameters Resources])
+    ENUMERABLE_RESOURCES = Utils.underscored(%w[Conditions Mappings Outputs Parameters Resources])
 
     attr_accessor :id, :name, *ENUMERABLE_RESOURCES.values, *STATIC_RESOURCES.values
 
@@ -34,7 +34,7 @@ module Humidifier
       JSON.pretty_generate(enumerable_resources.merge(static_resources))
     end
 
-    %i[mapping output parameter].each do |resource_type|
+    %i[condition mapping output parameter].each do |resource_type|
       define_method(:"add_#{resource_type}") do |name, opts = {}|
         send(:"#{resource_type}s")[name] = Humidifier.const_get(resource_type.capitalize).new(opts)
       end
