@@ -7,14 +7,15 @@ Gem::Specification.new do |spec|
   spec.name          = 'humidifier'
   spec.version       = Humidifier::VERSION
   spec.authors       = ['Localytics']
-  spec.email         = ['techops@localytics.com']
+  spec.email         = ['oss@localytics.com']
 
-  spec.summary       = 'Build CloudFormation templates programmatically'
+  spec.summary       = 'CloudFormation made easy'
   spec.homepage      = 'https://github.com/localytics/humidifier'
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^test/}) }
+  spec.files         = Dir['LICENSE', 'README.md', 'ext/**/*', 'lib/**/*', 'specs/**/*']
   spec.require_paths = ['lib']
   spec.extensions    = ['ext/humidifier/extconf.rb']
+  spec.required_ruby_version = '>= 2.0.0'
 
   spec.add_development_dependency 'bundler', '~> 1.11'
   spec.add_development_dependency 'rake', '~> 10.0'
