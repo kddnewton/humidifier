@@ -34,7 +34,7 @@ module Humidifier
       JSON.pretty_generate(enumerable_resources.merge(static_resources))
     end
 
-    (Humidifier::Stack::ENUMERABLE_RESOURCES.values - [:resources]).each do |resource_type|
+    (ENUMERABLE_RESOURCES.values - [:resources]).each do |resource_type|
       define_method(:"add_#{resource_type}") do |name, opts = {}|
         send(:"#{resource_type}s")[name] = Humidifier.const_get(resource_type.capitalize).new(opts)
       end
