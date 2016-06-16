@@ -21,6 +21,7 @@ Rake::Task[:test].prerequisites << :compile
 YARD::Rake::YardocTask.new do |t|
   filepath = File.join('lib', 'humidifier', 'magic.rb')
 
+  t.stats_options = ['--list-undoc']
   t.before = lambda do
     require 'humidifier'
     require_relative 'yard/dynamic'

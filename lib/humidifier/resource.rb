@@ -33,7 +33,7 @@ module Humidifier
       valid_accessor?(name) || super
     end
 
-    # A hash representing the CFN syntax for this resource
+    # CFN stack syntax
     def to_cf
       props_cf = Utils.enumerable_to_h(properties) { |(key, value)| self.class.props[key].to_cf(value) }
       { 'Type' => self.class.aws_name, 'Properties' => props_cf }.merge(common_attributes)

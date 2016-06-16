@@ -26,6 +26,7 @@ module Humidifier
         @name ||= Utils.underscore(key)
       end
 
+      # CFN stack syntax
       def to_cf(value)
         [key, Serializer.dump(value)]
       end

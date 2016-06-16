@@ -10,6 +10,7 @@ module Humidifier
       self.value       = opts[:value]
     end
 
+    # CFN stack syntax
     def to_cf
       cf = { 'Value' => Serializer.dump(value) }
       cf['Description'] = description if description
