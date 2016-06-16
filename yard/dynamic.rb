@@ -2,9 +2,6 @@
 # them because it can't find them. As such, this script loops through the registry of resources and builds a ruby
 # file called "magic.rb" that YARD will find. The file contains only comments and takes advantage of the fact that
 # YARD will parse a block of comments as code if it has the @!parse directive.
-
-# Once the docs are built, you can push them to the gh-pages subtree by running:
-# $ git subtree push --prefix doc origin gh-pages
 module Dynamic
   DOCS_BASE = 'http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-'
 
