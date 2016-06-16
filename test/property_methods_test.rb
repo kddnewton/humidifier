@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ResourceTest < Minitest::Test
+class PropertyMethodsTest < Minitest::Test
 
   def test_build_property_reader
     slate = build_slate
