@@ -135,7 +135,7 @@
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_underscored'>underscored</span><span class='lparen'>(</span><span class='qwords_beg'>%w[</span><span class='tstring_content'>CreationPolicy</span><span class='words_sep'> </span><span class='tstring_content'>DeletionPolicy</span><span class='words_sep'> </span><span class='tstring_content'>DependsOn</span><span class='words_sep'> </span><span class='tstring_content'>Metadata</span><span class='words_sep'> </span><span class='tstring_content'>UpdatePolicy</span><span class='words_sep'>]</span><span class='rparen'>)</span></pre></dd>
+        <dd><pre class="code"><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_underscored'>underscored</span><span class='lparen'>(</span><span class='qwords_beg'>%w[</span><span class='tstring_content'>Condition</span><span class='words_sep'> </span><span class='tstring_content'>CreationPolicy</span><span class='words_sep'> </span><span class='tstring_content'>DeletionPolicy</span><span class='words_sep'> </span><span class='tstring_content'>DependsOn</span><span class='words_sep'> </span><span class='tstring_content'>Metadata</span><span class='words_sep'> </span><span class='tstring_content'>UpdatePolicy</span><span class='words_sep'>]</span><span class='rparen'>)</span></pre></dd>
       
     </dl>
   
@@ -425,13 +425,13 @@ call, builds the accessor methods to get a speed boost.</p>
       <pre class="lines">
 
 
-11
 12
 13
-14</pre>
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_properties'>properties</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_raw'>raw</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_properties'>properties</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -477,7 +477,6 @@ call, builds the accessor methods to get a speed boost</p>
       <pre class="lines">
 
 
-18
 19
 20
 21
@@ -487,10 +486,11 @@ call, builds the accessor methods to get a speed boost</p>
 25
 26
 27
-28</pre>
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_valid_accessor?'>valid_accessor?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -541,12 +541,12 @@ call, builds the accessor methods to get a speed boost</p>
       <pre class="lines">
 
 
-55
 56
-57</pre>
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_aws_name'>aws_name</span>
   <span class='ivar'>@aws_name</span>
@@ -584,12 +584,12 @@ call, builds the accessor methods to get a speed boost</p>
       <pre class="lines">
 
 
-55
 56
-57</pre>
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_props'>props</span>
   <span class='ivar'>@props</span>
@@ -645,12 +645,12 @@ call, builds the accessor methods to get a speed boost</p>
       <pre class="lines">
 
 
-72
 73
-74</pre>
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_prop?'>prop?</span><span class='lparen'>(</span><span class='id identifier rubyid_prop'>prop</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_props'>props</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='id identifier rubyid_prop'>prop</span><span class='rparen'>)</span>
@@ -705,12 +705,12 @@ call, builds the accessor methods to get a speed boost</p>
       <pre class="lines">
 
 
-31
 32
-33</pre>
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_respond_to_missing?'>respond_to_missing?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_valid_accessor?'>valid_accessor?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='kw'>super</span>
@@ -746,13 +746,13 @@ call, builds the accessor methods to get a speed boost</p>
       <pre class="lines">
 
 
-36
 37
 38
-39</pre>
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span>
   <span class='id identifier rubyid_props_cf'>props_cf</span> <span class='op'>=</span> <span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_enumerable_to_h'>enumerable_to_h</span><span class='lparen'>(</span><span class='id identifier rubyid_properties'>properties</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span><span class='op'>|</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_props'>props</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_cf'>to_cf</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -789,12 +789,12 @@ call, builds the accessor methods to get a speed boost</p>
       <pre class="lines">
 
 
-42
 43
-44</pre>
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_properties'>properties</span><span class='comma'>,</span> <span class='id identifier rubyid_raw'>raw</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_property'>property</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span> <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='id identifier rubyid_property'>property</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_raw'>raw</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -830,15 +830,15 @@ call, builds the accessor methods to get a speed boost</p>
       <pre class="lines">
 
 
-47
 48
 49
 50
 51
-52</pre>
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/resource.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='id identifier rubyid_property'>property</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_raw'>raw</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_property'>property</span> <span class='op'>=</span> <span class='id identifier rubyid_property'>property</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
