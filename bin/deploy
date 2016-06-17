@@ -25,6 +25,7 @@ function deploy {
   git push origin "$gem_version"
 
   bundle exec rake yard
+  git fetch
   git checkout gh-pages
   ls -a | grep -v -E '^doc|^.$|^..$|^\.git' | xargs rm -r
   cp -r doc/* . && rm -r doc && git add .
