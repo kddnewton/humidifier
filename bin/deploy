@@ -23,6 +23,9 @@ function deploy {
   git config --global user.name "Travis CI"
   git tag -a "$gem_version" -m "Version $gem_version"
   git push origin "$gem_version"
+
+  bundle exec rake yard
+  git subtree push --prefix doc origin gh-pages
 }
 
 [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]] && deploy
