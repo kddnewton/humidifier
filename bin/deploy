@@ -1,13 +1,14 @@
 #!/bin/bash
 
 set -e
-if [ "$#" -ne 2 ]; then
-  echo 'Artifactory username and password are required'
+if [ "$#" -ne 3 ]; then
+  echo 'Artifactory username, artifactory username, and github token are required'
   exit 1
 fi
 
 ARTIFACTORY_USERNAME=$1
 ARTIFACTORY_PASSWORD=$2
+GITHUB_TOKEN=$3
 GEM_HOST=localytics.artifactoryonline.com/localytics/api/gems/ruby-gems-local
 
 function deploy {
@@ -24,8 +25,14 @@ function deploy {
   git tag -a "$gem_version" -m "Version $gem_version"
   git push origin "$gem_version"
 
+  # Publish docs
   bundle exec rake yard
-  git subtree push --prefix doc origin gh-pages
+  pushd doc
+  git init
+  git add .
+  git commit -m "Updating docs for version $gem_version"
+  git push --force "https://${GITHUB_TOKEN}@github.com/localytics/humidifier.git" master:gh-pages > /dev/null 2>&1
+  popd
 }
 
 [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]] && deploy

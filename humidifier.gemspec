@@ -10,7 +10,9 @@ Gem::Specification.new do |spec|
   spec.email         = ['oss@localytics.com']
 
   spec.summary       = 'CloudFormation made easy'
+  spec.description   = 'Programmatically generate and manage AWS CloudFormation templates, stacks, and change sets.'
   spec.homepage      = 'https://github.com/localytics/humidifier'
+  spec.license       = 'MIT'
 
   spec.files         = Dir['LICENSE', 'README.md', 'ext/**/*', 'lib/**/*', 'specs/**/*']
   spec.require_paths = ['lib']
@@ -24,6 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', '~> 0.11'
   spec.add_development_dependency 'coveralls', '~> 0.8'
   spec.add_development_dependency 'rubocop', '~> 0.39'
-  spec.add_development_dependency 'rake-compiler', '~> 0.9.8'
-  spec.add_development_dependency 'benchmark-ips', '~> 2.6.1'
+  spec.add_development_dependency 'rake-compiler', '~> 0.9'
+  spec.add_development_dependency 'benchmark-ips', '~> 2.6'
 end
