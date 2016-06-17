@@ -25,7 +25,11 @@ function deploy {
   git push origin "$gem_version"
 
   bundle exec rake yard
-  git subtree push --prefix doc origin gh-pages
+  git checkout gh-pages
+  ls -a | grep -v -E '^doc|^.$|^..$|^\.git' | xargs rm -r
+  cp -r doc/* . && rm -r doc && git add .
+  git commit -m "Updating docs for version $gem_version"
+  git push origin gh-pages
 }
 
 [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]] && deploy
