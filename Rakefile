@@ -16,8 +16,6 @@ end
 
 Rake::Task[:test].prerequisites << :compile
 
-# Once the docs are built, you can push them to the gh-pages subtree by running:
-# $ git subtree push --prefix doc origin gh-pages
 YARD::Rake::YardocTask.new do |t|
   filepath = File.join('lib', 'humidifier', 'magic.rb')
 

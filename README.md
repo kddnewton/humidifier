@@ -65,10 +65,11 @@ To get started, ensure you have ruby installed, version 2.0 or later. From there
 
 ### Testing
 
-The default rake task runs the tests. Coverage is reported on the command line, and to coveralls.io in CI. Styling is governed by rubocop. To run both tests and rubocop:
+The default rake task runs the tests. Coverage is reported on the command line, and to coveralls.io in CI. Styling is governed by rubocop. The docs are generated with yard. To run all three of these, run:
 
     $ bundle exec rake
     $ bundle exec rubocop
+    $ bundle exec rake yard
 
 ### Specs
 
@@ -77,10 +78,6 @@ The specs pulled from the CFN docs live under `/specs`. You can update them by r
 ### Extension
 
 The `underscore` string utility method does a lot of the heavy lifting of changing AWS property names over to ruby method names. As such, it's been extracted to a native extension to increase speed and efficiency. To compile it locally run `rake compile`.
-
-### Docs
-
-To build the docs, run `bundle exec rake yard`. Once the docs are built, push to the `gh-pages` git subtree which will automatically update the github pages site (`git subtree push --prefix doc origin gh-pages`).
 
 ### Contributing
 
