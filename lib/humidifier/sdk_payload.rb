@@ -4,7 +4,7 @@ module Humidifier
   class SdkPayload
 
     # The maximum amount of time that Humidifier should wait for a stack to complete a CRUD operation
-    MAX_WAIT = 300
+    MAX_WAIT = 600
 
     attr_accessor :stack, :options, :max_wait
 
