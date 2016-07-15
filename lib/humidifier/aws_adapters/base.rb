@@ -9,8 +9,7 @@ module Humidifier
       # Create a CFN stack
       def create(payload)
         try_valid do
-          params = { stack_name: payload.name, template_body: payload.to_cf }.merge(payload.options)
-          response = client.create_stack(params)
+          response = client.create_stack(payload.create_params)
           payload.id = response.stack_id
           response
         end
@@ -18,7 +17,7 @@ module Humidifier
 
       # Delete a CFN stack
       def delete(payload)
-        client.delete_stack({ stack_name: payload.identifier }.merge(payload.options))
+        client.delete_stack(payload.delete_params)
         true
       end
 
@@ -29,15 +28,12 @@ module Humidifier
 
       # Update a CFN stack
       def update(payload)
-        try_valid do
-          params = { stack_name: payload.identifier, template_body: payload.to_cf }.merge(payload.options)
-          client.update_stack(params)
-        end
+        try_valid { client.update_stack(payload.update_params) }
       end
 
       # Validate a template in CFN
       def valid?(payload)
-        try_valid { client.validate_template({ template_body: payload.to_cf }.merge(payload.options)) }
+        try_valid { client.validate_template(payload.validate_params) }
       end
 
       %i[create delete deploy update].each do |method|

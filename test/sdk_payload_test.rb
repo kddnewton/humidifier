@@ -6,7 +6,6 @@ class SdkPayloadTest < Minitest::Test
   def test_forwarding
     assert_equal 'identifier', build.identifier
     assert_equal 'name', build.name
-    assert_equal 'to_cf', build.to_cf
   end
 
   def test_options
