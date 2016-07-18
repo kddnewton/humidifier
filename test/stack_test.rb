@@ -20,6 +20,16 @@ class StackTest < Minitest::Test
     assert_equal ({ 'MyResource' => resource }), stack.resources
   end
 
+  def test_add_with_attributes
+    attributes = %w[alpha beta]
+    mock = Minitest::Mock.new
+    mock.expect(:update_attributes, nil, [attributes])
+
+    stack = Humidifier::Stack.new
+    stack.add('MyResource', mock, attributes)
+    assert_mock mock
+  end
+
   def test_add_condition
     stack = Humidifier::Stack.new
     stack.add_condition('foo', Humidifier.fn.if('Bar'))

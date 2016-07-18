@@ -19,9 +19,11 @@ module Humidifier
       STATIC_RESOURCES.values.each { |prop| send(:"#{prop}=", opts[prop]) }
     end
 
-    # Add a resource to the stack
-    def add(name, resource)
+    # Add a resource to the stack and optionally set its attributes
+    def add(name, resource, attributes = {})
       resources[name] = resource
+      resource.update_attributes(attributes) if attributes.any?
+      resource
     end
 
     # The identifier used by the shim to find the stack in CFN, prefers id to name

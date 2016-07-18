@@ -44,6 +44,14 @@ module Humidifier
       properties.each { |property, value| update_property(property, value, raw) }
     end
 
+    # Update the attributes of the resource defined by COMMON_ATTRIBUTES
+    def update_attributes(attributes)
+      attributes.each do |attribute, value|
+        raise ArgumentError, "Invalid attribute: #{attribute}" unless COMMON_ATTRIBUTES.value?(attribute)
+        public_send(:"#{attribute}=", value)
+      end
+    end
+
     # Update an individual property on this resource
     def update_property(property, value, raw = false)
       property = property.to_s
