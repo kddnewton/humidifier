@@ -53,6 +53,14 @@ class ResourceTest < Minitest::Test
     assert_equal ({ 'one' => 'three', 'two' => 4 }), resource.properties
   end
 
+  def test_update_attributes
+    resource = build
+    resource.update_attributes(condition: 'foo', creation_policy: 'bar')
+
+    assert_equal 'foo', resource.condition
+    assert_equal 'bar', resource.creation_policy
+  end
+
   def test_update_property
     resource = build
     resource.update_property('one', 'three')
