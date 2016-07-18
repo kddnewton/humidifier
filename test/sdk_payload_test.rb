@@ -34,7 +34,7 @@ class SdkPayloadTest < Minitest::Test
       update_params: { stack_name: 'identifier', template_body: 'to_cf' },
       validate_params: { template_body: 'to_cf' }
     }.each do |method, expected|
-      assert_equal expected, build.public_send(method).merge(foo: 'bar')
+      assert_equal expected.merge(foo: 'bar'), build.public_send(method), "Not equal for method: #{method}"
     end
   end
 
