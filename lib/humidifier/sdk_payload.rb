@@ -27,22 +27,31 @@ module Humidifier
       self.options = new_options.merge(options)
     end
 
-    def create_params
-      { stack_name: stack.name, template_body: stack.to_cf }.merge(options)
-    end
+    ###
+    # Param sets
+    ###
 
+    # Param set for the #create_change_set SDK method
     def create_change_set_params
       { stack_name: stack.identifier, template_body: stack.to_cf }.merge(options)
     end
 
+    # Param set for the #create_stack SDK method
+    def create_params
+      { stack_name: stack.name, template_body: stack.to_cf }.merge(options)
+    end
+
+    # Param set for the #delete_stack SDK method
     def delete_params
       { stack_name: stack.identifier }.merge(options)
     end
 
+    # Param set for the #update_stack SDK method
     def update_params
       { stack_name: stack.identifier, template_body: stack.to_cf }.merge(options)
     end
 
+    # Param set for the #validate_template SDK method
     def validate_params
       { template_body: stack.to_cf }.merge(options)
     end

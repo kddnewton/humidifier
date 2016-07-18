@@ -26,6 +26,18 @@ class SdkPayloadTest < Minitest::Test
     assert_equal 'bar', payload.options[:foo]
   end
 
+  def test_param_sets
+    {
+      create_change_set_params: { stack_name: 'identifier', template_body: 'to_cf' },
+      create_params: { stack_name: 'name', template_body: 'to_cf' },
+      delete_params: { stack_name: 'identifier' },
+      update_params: { stack_name: 'identifier', template_body: 'to_cf' },
+      validate_params: { template_body: 'to_cf' }
+    }.each do |method, expected|
+      assert_equal expected, build.public_send(method).merge(foo: 'bar')
+    end
+  end
+
   private
 
   def build
