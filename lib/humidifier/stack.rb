@@ -14,6 +14,7 @@ module Humidifier
     def initialize(opts = {})
       self.name = opts[:name]
       self.id   = opts[:id]
+      self.default_identifier = self.class.next_default_identifier
 
       ENUMERABLE_RESOURCES.values.each { |prop| send(:"#{prop}=", opts.fetch(prop, {})) }
       STATIC_RESOURCES.values.each { |prop| send(:"#{prop}=", opts[prop]) }
@@ -28,7 +29,7 @@ module Humidifier
 
     # The identifier used by the shim to find the stack in CFN, prefers id to name
     def identifier
-      id || name
+      id || name || default_identifier
     end
 
     # A string representation of the stack that's valid for CFN
@@ -46,7 +47,15 @@ module Humidifier
       define_method(method) { |opts = {}| AwsShim.send(method, SdkPayload.new(self, opts)) }
     end
 
+    # Increment the default identifier
+    def self.next_default_identifier
+      @count = (@count || 0) + 1
+      "humidifier-stack-template-#{@count}"
+    end
+
     private
+
+    attr_accessor :default_identifier
 
     def enumerable_resources
       ENUMERABLE_RESOURCES.each_with_object({}) do |(name, prop), list|
