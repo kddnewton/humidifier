@@ -64,6 +64,19 @@ class SDKV2Test < Minitest::Test
     end
   end
 
+  def test_upload
+    with_config('test.s3.bucket') do
+      with_sdk_v2_loaded do |sdk|
+        SdkSupport.expect(:config, [], SdkSupport.double)
+        SdkSupport.expect(:update, [region: Humidifier::AwsShim::REGION])
+        SdkSupport.expect(:put_object, [body: 'body', bucket: 'test.s3.bucket', key: 'identifier.json'])
+        SdkSupport.expect(:presigned_url, [:get])
+        sdk.upload(payload(identifier: 'identifier', to_cf: 'body'))
+        SdkSupport.verify
+      end
+    end
+  end
+
   private
 
   def change_set_options
