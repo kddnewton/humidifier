@@ -1,10 +1,17 @@
 module SdkSupport
   module Helpers
+    class PayloadStack
+      attr_accessor :id, :identifier, :name, :to_cf
+
+      def initialize(opts = {})
+        opts.each { |key, value| instance_variable_set(:"@#{key}", value) }
+      end
+    end
 
     private
 
     def payload(opts = {})
-      Payload.new(opts)
+      Humidifier::SdkPayload.new(PayloadStack.new(opts), {})
     end
 
     def stub(value)

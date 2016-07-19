@@ -4,7 +4,7 @@ class BaseTest < Minitest::Test
 
   def test_validation_error
     create_payload = Object.new
-    def create_payload.name
+    def create_payload.create_params
       raise SdkSupport::AwsDouble::CloudFormation::Errors::ValidationError, 'test-error'
     end
 
@@ -20,7 +20,7 @@ class BaseTest < Minitest::Test
       SdkSupport.expect(:create_stack, [{ stack_name: 'name', template_body: 'body' }], stub(stack_id: 'test-id'))
 
       sdk.create(create_payload)
-      assert_equal 'test-id', create_payload.id
+      assert_equal 'test-id', create_payload.stack.id
       SdkSupport.verify
     end
   end
@@ -50,7 +50,7 @@ class BaseTest < Minitest::Test
       SdkSupport.expect(:create_stack, [{ stack_name: 'name', template_body: 'body' }], stub(stack_id: 'test-id'))
 
       sdk.deploy(deploy_payload)
-      assert_equal 'test-id', deploy_payload.id
+      assert_equal 'test-id', deploy_payload.stack.id
       SdkSupport.verify
     end
   end

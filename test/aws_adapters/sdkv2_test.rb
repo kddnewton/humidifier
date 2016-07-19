@@ -56,7 +56,7 @@ class SDKV2Test < Minitest::Test
 
       SdkSupport.expect(:create_stack, [{ stack_name: 'name', template_body: 'body' }], stub(stack_id: 'test-id'))
       SdkSupport.expect(:wait_until, [:stack_create_complete, stack_name: 'test-id'])
-      SdkSupport.expect(:max_attempts=, [2])
+      SdkSupport.expect(:max_attempts=, [Humidifier::SdkPayload::MAX_WAIT / 5])
       SdkSupport.expect(:delay=, [5])
 
       sdk.create_and_wait(create_payload)
