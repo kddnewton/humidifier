@@ -10,7 +10,7 @@ on the top-level Humidifier object like so:
 
     Humidifier.configure do |config|
       config.s3_bucket = 'my.s3.bucket'
-      config.s3_prefix = 'my-prefix' # optional
+      config.s3_prefix = 'my-prefix/' # optional
     end
 MSG
 
