@@ -6,6 +6,9 @@ module Humidifier
     # The maximum size a template body can be before it has to be put somewhere and referenced through a URL
     MAX_TEMPLATE_BODY_SIZE = 51_200
 
+    # The maximum size a template body can be inside of an S3 bucket
+    MAX_TEMPLATE_URL_SIZE = 460_800
+
     # The maximum amount of time that Humidifier should wait for a stack to complete a CRUD operation
     MAX_WAIT = 600
 
@@ -68,10 +71,12 @@ module Humidifier
 
     def template_param
       @template_param ||=
-        if template_body.bytesize < MAX_TEMPLATE_BODY_SIZE
-          { template_body: template_body }
-        else
+        if template_body.bytesize > MAX_TEMPLATE_URL_SIZE
+          raise "Cannot use a template > #{MAX_TEMPLATE_URL_SIZE} bytes (currently #{template_body.bytesize} bytes)"
+        elsif template_body.bytesize > MAX_TEMPLATE_BODY_SIZE
           { template_url: AwsShim.upload(self) }
+        else
+          { template_body: template_body }
         end
     end
   end

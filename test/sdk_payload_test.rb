@@ -53,6 +53,13 @@ class SdkPayloadTest < Minitest::Test
     end
   end
 
+  def test_template_param_extra_large
+    template_body = 'a' * (Humidifier::SdkPayload::MAX_TEMPLATE_URL_SIZE + 1)
+    assert_raises RuntimeError do
+      build(template_body).send(:template_param)
+    end
+  end
+
   private
 
   def build(template_body = 'to_cf')
