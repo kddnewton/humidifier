@@ -3,6 +3,9 @@ module Humidifier
   # The payload sent to the shim methods, representing the stack and the options
   class SdkPayload
 
+    # The maximum size a template body can be before it has to be put somewhere and referenced through a URL
+    MAX_TEMPLATE_BODY_SIZE = 51200
+
     # The maximum amount of time that Humidifier should wait for a stack to complete a CRUD operation
     MAX_WAIT = 600
 
@@ -33,12 +36,12 @@ module Humidifier
 
     # Param set for the #create_change_set SDK method
     def create_change_set_params
-      { stack_name: stack.identifier, template_body: stack.to_cf }.merge(options)
+      { stack_name: stack.identifier, template_body: template_body }.merge(options)
     end
 
     # Param set for the #create_stack SDK method
     def create_params
-      { stack_name: stack.name, template_body: stack.to_cf }.merge(options)
+      { stack_name: stack.name, template_body: template_body }.merge(options)
     end
 
     # Param set for the #delete_stack SDK method
@@ -48,12 +51,22 @@ module Humidifier
 
     # Param set for the #update_stack SDK method
     def update_params
-      { stack_name: stack.identifier, template_body: stack.to_cf }.merge(options)
+      { stack_name: stack.identifier, template_body: template_body }.merge(options)
     end
 
     # Param set for the #validate_template SDK method
     def validate_params
-      { template_body: stack.to_cf }.merge(options)
+      { template_body: template_body }.merge(options)
+    end
+
+    private
+
+    def template_body
+      @template_body ||= stack.to_cf
+    end
+
+    def upload_required?
+      template_body.bytesize > MAX_TEMPLATE_BODY_SIZE
     end
   end
 end
