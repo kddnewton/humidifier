@@ -4,7 +4,7 @@ module Humidifier
   class SdkPayload
 
     # The maximum size a template body can be before it has to be put somewhere and referenced through a URL
-    MAX_TEMPLATE_BODY_SIZE = 51200
+    MAX_TEMPLATE_BODY_SIZE = 51_200
 
     # The maximum amount of time that Humidifier should wait for a stack to complete a CRUD operation
     MAX_WAIT = 600

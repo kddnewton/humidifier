@@ -26,6 +26,10 @@ class SdkPayloadTest < Minitest::Test
     assert_equal 'bar', payload.options[:foo]
   end
 
+  def test_template_body
+    assert_equal 'to_cf', build.template_body
+  end
+
   def test_param_sets
     {
       create_change_set_params: { stack_name: 'identifier', template_body: 'to_cf' },
@@ -38,9 +42,20 @@ class SdkPayloadTest < Minitest::Test
     end
   end
 
+  def test_template_param_small
+    assert_equal ({ template_body: 'to_cf' }), build.send(:template_param)
+  end
+
+  def test_template_param_large
+    template_body = 'a' * (Humidifier::SdkPayload::MAX_TEMPLATE_BODY_SIZE + 1)
+    Humidifier::AwsShim.stub(:upload, 'foobar') do
+      assert_equal ({ template_url: 'foobar' }), build(template_body).send(:template_param)
+    end
+  end
+
   private
 
-  def build
-    Humidifier::SdkPayload.new(StackDouble.new('identifier', 'name', 'to_cf'), foo: 'bar')
+  def build(template_body = 'to_cf')
+    Humidifier::SdkPayload.new(StackDouble.new('identifier', 'name', template_body), foo: 'bar')
   end
 end
