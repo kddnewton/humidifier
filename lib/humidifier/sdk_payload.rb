@@ -30,18 +30,23 @@ module Humidifier
       self.options = new_options.merge(options)
     end
 
+    # The body of the template
+    def template_body
+      @template_body ||= stack.to_cf
+    end
+
     ###
     # Param sets
     ###
 
     # Param set for the #create_change_set SDK method
     def create_change_set_params
-      { stack_name: stack.identifier, template_body: template_body }.merge(options)
+      { stack_name: stack.identifier }.merge(template_param).merge(options)
     end
 
     # Param set for the #create_stack SDK method
     def create_params
-      { stack_name: stack.name, template_body: template_body }.merge(options)
+      { stack_name: stack.name }.merge(template_param).merge(options)
     end
 
     # Param set for the #delete_stack SDK method
@@ -51,22 +56,23 @@ module Humidifier
 
     # Param set for the #update_stack SDK method
     def update_params
-      { stack_name: stack.identifier, template_body: template_body }.merge(options)
+      { stack_name: stack.identifier }.merge(template_param).merge(options)
     end
 
     # Param set for the #validate_template SDK method
     def validate_params
-      { template_body: template_body }.merge(options)
+      template_param.merge(options)
     end
 
     private
 
-    def template_body
-      @template_body ||= stack.to_cf
-    end
-
-    def upload_required?
-      template_body.bytesize > MAX_TEMPLATE_BODY_SIZE
+    def template_param
+      @template_param ||=
+        if template_body.bytesize < MAX_TEMPLATE_BODY_SIZE
+          { template_body: template_body }
+        else
+          { template_url: AwsShim.upload(self) }
+        end
     end
   end
 end

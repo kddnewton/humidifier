@@ -31,6 +31,12 @@ module Humidifier
         try_valid { client.update_stack(payload.update_params) }
       end
 
+      # Upload a CFN stack to S3 so that it can be referenced via template_url
+      def upload(payload)
+        Humidifier.config.ensure_upload_configured!(payload)
+        upload_object(payload, "#{Humidifier.config.s3_prefix}#{payload.identifier}.json")
+      end
+
       # Validate a template in CFN
       def valid?(payload)
         try_valid { client.validate_template(payload.validate_params) }

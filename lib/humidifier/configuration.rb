@@ -10,11 +10,11 @@ on the top-level Humidifier object like so:
 
     Humidifier.configure do |config|
       config.s3_bucket = 'my.s3.bucket'
-      config.s3_path = 'my-prefix' # optional
+      config.s3_prefix = 'my-prefix' # optional
     end
 MSG
 
-    attr_accessor :s3_bucket, :s3_path
+    attr_accessor :s3_bucket, :s3_prefix
 
     # raise an error unless the s3_bucket field is set
     def ensure_upload_configured!(payload)

@@ -13,7 +13,7 @@ module Humidifier
 
     # Methods that are sent over to the aws adapter from the stack
     STACK_METHODS = %i[
-      create delete deploy exists? update valid?
+      create delete deploy exists? update upload valid?
       create_and_wait delete_and_wait deploy_and_wait update_and_wait
       create_change_set deploy_change_set
     ].freeze

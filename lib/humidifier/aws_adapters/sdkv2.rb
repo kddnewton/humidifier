@@ -37,6 +37,13 @@ module Humidifier
 
         response
       end
+
+      def upload_object(payload, key)
+        base_module.config.update(region: AwsShim::REGION)
+        @s3_client ||= base_module::S3::Client.new
+        @s3_client.put_object(body: payload.template_body, bucket: Humidifier.config.s3_bucket, key: key)
+        base_module::S3::Object.new(Humidifier.config.s3_bucket, key).presigned_url(:get)
+      end
     end
   end
 end
