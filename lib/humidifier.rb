@@ -11,6 +11,7 @@ require 'humidifier/props'
 
 require 'humidifier/aws_shim'
 require 'humidifier/condition'
+require 'humidifier/configuration'
 require 'humidifier/loader'
 require 'humidifier/mapping'
 require 'humidifier/output'
@@ -25,6 +26,16 @@ require 'humidifier/version'
 # container module for all gem classes
 module Humidifier
   class << self
+    # the configuration instance
+    def config
+      @config ||= Configuration.new
+    end
+
+    # yield the config object to the block for setting user params
+    def configure
+      yield config
+    end
+
     # convenience method for calling cloudformation functions
     def fn
       Fn

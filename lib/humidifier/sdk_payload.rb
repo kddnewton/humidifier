@@ -3,8 +3,25 @@ module Humidifier
   # The payload sent to the shim methods, representing the stack and the options
   class SdkPayload
 
+    # The maximum size a template body can be before it has to be put somewhere and referenced through a URL
+    MAX_TEMPLATE_BODY_SIZE = 51_200
+
+    # The maximum size a template body can be inside of an S3 bucket
+    MAX_TEMPLATE_URL_SIZE = 460_800
+
     # The maximum amount of time that Humidifier should wait for a stack to complete a CRUD operation
     MAX_WAIT = 600
+
+    # Thrown when a template is too large to use the template_url option
+    class TemplateTooLargeError < StandardError
+      def initialize(bytesize)
+        message = <<-MSG
+Cannot use a template > #{MAX_TEMPLATE_URL_SIZE} bytes (currently #{bytesize} bytes), consider using nested stacks
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stack.html)
+MSG
+        super(message)
+      end
+    end
 
     attr_accessor :stack, :options, :max_wait
 
@@ -27,18 +44,23 @@ module Humidifier
       self.options = new_options.merge(options)
     end
 
+    # The body of the template
+    def template_body
+      @template_body ||= stack.to_cf
+    end
+
     ###
     # Param sets
     ###
 
     # Param set for the #create_change_set SDK method
     def create_change_set_params
-      { stack_name: stack.identifier, template_body: stack.to_cf }.merge(options)
+      { stack_name: stack.identifier }.merge(template_param).merge(options)
     end
 
     # Param set for the #create_stack SDK method
     def create_params
-      { stack_name: stack.name, template_body: stack.to_cf }.merge(options)
+      { stack_name: stack.name }.merge(template_param).merge(options)
     end
 
     # Param set for the #delete_stack SDK method
@@ -48,12 +70,26 @@ module Humidifier
 
     # Param set for the #update_stack SDK method
     def update_params
-      { stack_name: stack.identifier, template_body: stack.to_cf }.merge(options)
+      { stack_name: stack.identifier }.merge(template_param).merge(options)
     end
 
     # Param set for the #validate_template SDK method
     def validate_params
-      { template_body: stack.to_cf }.merge(options)
+      template_param.merge(options)
+    end
+
+    private
+
+    def template_param
+      @template_param ||= begin
+        raise TemplateTooLargeError, template_body.bytesize if template_body.bytesize > MAX_TEMPLATE_URL_SIZE
+
+        if template_body.bytesize > MAX_TEMPLATE_BODY_SIZE
+          { template_url: AwsShim.upload(self) }
+        else
+          { template_body: template_body }
+        end
+      end
     end
   end
 end

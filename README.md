@@ -59,6 +59,17 @@ Humidifier itself contains a registry of all possible resources that it supports
 
 Resources have an `aws_name` method to see how AWS references them. They also contain a `props` method that contains a hash of the name that Humidifier uses to reference the prop pointing to the appropriate prop object.
 
+### Large templates
+
+When templates are especially large (larger than 51,200 bytes), they cannot be uploaded directly through the AWS SDK. You can configure Humidifier to seemlessly upload the templates to S3 and reference them using an S3 URL instead by:
+
+```ruby
+Humidifier.configure do |config|
+  config.s3_bucket = 'my.s3.bucket'
+  config.s3_prefix = 'my-prefix/' # optional
+end
+```
+
 ## Development
 
 To get started, ensure you have ruby installed, version 2.0 or later. From there, install the `bundler` gem: `gem install bundler` and then `bundle install` in the root of the repository.

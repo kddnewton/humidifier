@@ -54,6 +54,16 @@ class SDKV1Test < Minitest::Test
     end
   end
 
+  def test_upload
+    with_config('test.s3.bucket') do
+      with_sdk_v1_loaded do |sdk|
+        upload_expectations
+        sdk.upload(payload(identifier: 'identifier', to_cf: 'body'))
+        SdkSupport.verify
+      end
+    end
+  end
+
   private
 
   def create_and_wait_failure_expectations
@@ -64,5 +74,14 @@ class SDKV1Test < Minitest::Test
 
     events_response = stub(stack_events: [stub(resource_status: 'FAILED', resource_status_reason: 'failure')])
     SdkSupport.expect(:describe_stack_events, [{ stack_name: 'test-id' }], events_response)
+  end
+
+  def upload_expectations
+    SdkSupport.expect(:config, [region: Humidifier::AwsShim::REGION])
+    SdkSupport.expect(:new, [], SdkSupport.double)
+    SdkSupport.expect(:buckets, [], 'test.s3.bucket' => SdkSupport.double)
+    SdkSupport.expect(:objects, [], SdkSupport.double)
+    SdkSupport.expect(:create, ['identifier.json', 'body'], SdkSupport.double)
+    SdkSupport.expect(:url_for, [:read])
   end
 end

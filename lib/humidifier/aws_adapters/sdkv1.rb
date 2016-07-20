@@ -47,6 +47,12 @@ module Humidifier
         response
       end
 
+      def upload_object(payload, key)
+        base_module.config(region: AwsShim::REGION)
+        @s3 ||= base_module::S3.new
+        @s3.buckets[Humidifier.config.s3_bucket].objects.create(key, payload.template_body).url_for(:read)
+      end
+
       def unsupported(method)
         puts "WARNING: Cannot #{method} because that functionality is not supported in V1 of aws-sdk."
         false

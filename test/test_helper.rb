@@ -29,8 +29,13 @@ end
 Dir[File.expand_path('../sdk_support/*.rb', __FILE__)].each { |file| require file }
 Minitest::Test.send(:include, SdkSupport::Helpers)
 
-# include the ability to mock the serializer in tests
+# extra methods for testing config and serializers
 Minitest::Test.send(:include, Module.new do
+  def with_config(s3_bucket, s3_prefix = nil, &block)
+    config = Humidifier::Configuration.new(s3_bucket: s3_bucket, s3_prefix: s3_prefix)
+    Humidifier.stub(:config, config, &block)
+  end
+
   def with_mocked_serializer(value)
     mock = Minitest::Mock.new
     mock.expect(:call, value, [value])

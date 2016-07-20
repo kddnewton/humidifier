@@ -3,7 +3,10 @@ require 'test_helper'
 class StackTest < Minitest::Test
 
   def test_defaults
+    reset_stack_count
     stack = Humidifier::Stack.new
+
+    assert_match(/1\z/, stack.identifier)
     Humidifier::Stack::STATIC_RESOURCES.values.each do |prop|
       assert_equal nil, stack.send(prop)
     end
@@ -82,7 +85,18 @@ class StackTest < Minitest::Test
     end
   end
 
+  def test_class_next_default_identifier
+    reset_stack_count
+    (1..5).each do |num|
+      assert_match(/#{num}\z/, Humidifier::Stack.next_default_identifier)
+    end
+  end
+
   private
+
+  def reset_stack_count
+    Humidifier::Stack.instance_variable_set(:@count, nil)
+  end
 
   def with_mocked_aws_shim(method)
     stack = Humidifier::Stack.new(name: 'test-stack')

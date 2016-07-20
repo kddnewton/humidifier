@@ -63,6 +63,18 @@ class BaseTest < Minitest::Test
     end
   end
 
+  def test_upload_configured
+    fake_sdk = Class.new(Humidifier::AwsAdapters::Base) do
+      def upload_object(_, key)
+        key
+      end
+    end
+
+    with_config('test.s3.bucket', 'prefix/') do
+      assert_equal 'prefix/name.json', fake_sdk.new.upload(payload(identifier: 'name'))
+    end
+  end
+
   def test_valid?
     with_both_sdks do |sdk|
       SdkSupport.expect(:validate_template, [{ template_body: 'body' }])
