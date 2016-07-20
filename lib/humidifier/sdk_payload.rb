@@ -12,6 +12,17 @@ module Humidifier
     # The maximum amount of time that Humidifier should wait for a stack to complete a CRUD operation
     MAX_WAIT = 600
 
+    # Thrown when a template is too large to use the template_url option
+    class TemplateTooLargeError < StandardError
+      def initialize(bytesize)
+        message = <<-MSG
+Cannot use a template > #{MAX_TEMPLATE_URL_SIZE} bytes (currently #{bytesize} bytes), consider using nested stacks
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stack.html)
+MSG
+        super(message)
+      end
+    end
+
     attr_accessor :stack, :options, :max_wait
 
     extend Forwardable
@@ -70,14 +81,15 @@ module Humidifier
     private
 
     def template_param
-      @template_param ||=
-        if template_body.bytesize > MAX_TEMPLATE_URL_SIZE
-          raise "Cannot use a template > #{MAX_TEMPLATE_URL_SIZE} bytes (currently #{template_body.bytesize} bytes)"
-        elsif template_body.bytesize > MAX_TEMPLATE_BODY_SIZE
+      @template_param ||= begin
+        raise TemplateTooLargeError, template_body.bytesize if template_body.bytesize > MAX_TEMPLATE_URL_SIZE
+
+        if template_body.bytesize > MAX_TEMPLATE_BODY_SIZE
           { template_url: AwsShim.upload(self) }
         else
           { template_body: template_body }
         end
+      end
     end
   end
 end

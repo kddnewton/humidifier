@@ -55,9 +55,11 @@ class SdkPayloadTest < Minitest::Test
 
   def test_template_param_extra_large
     template_body = 'a' * (Humidifier::SdkPayload::MAX_TEMPLATE_URL_SIZE + 1)
-    assert_raises RuntimeError do
-      build(template_body).send(:template_param)
-    end
+    error =
+      assert_raises Humidifier::SdkPayload::TemplateTooLargeError do
+        build(template_body).send(:template_param)
+      end
+    assert_match(/#{Humidifier::SdkPayload::MAX_TEMPLATE_URL_SIZE + 1} bytes/, error.message)
   end
 
   private
