@@ -20,11 +20,7 @@ module Humidifier
 
       # Create a change set if the stack exists, otherwise create the stack
       def deploy_change_set(payload)
-        if exists?(payload)
-          create_change_set(payload)
-        else
-          create(payload).instance_eval { ResponseWrapper.new(self) }
-        end
+        exists?(payload) ? create_change_set(payload) : ResponseWrapper.new(create(payload))
       end
 
       # True if the stack exists in CFN
