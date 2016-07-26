@@ -12,7 +12,7 @@ module Humidifier
 
       # Wrap the result from create_stack so it responds to :id in addition to
       # :stack_id
-      ResponseWrapper = Struct.new(:stack_id) do
+      class ResponseWrapper < SimpleDelegator
         def id
           stack_id
         end
@@ -23,7 +23,7 @@ module Humidifier
         if exists?(payload)
           create_change_set(payload)
         else
-          create(payload).instance_eval { ResponseWrapper.new(stack_id) }
+          create(payload).instance_eval { ResponseWrapper.new(self) }
         end
       end
 
