@@ -1,0 +1,7 @@
+{
+   "Type": "AWS::IoT::PolicyPrincipalAttachment",
+   "Properties": {
+      "PolicyName": String,
+      "Principal": String
+    }
+}

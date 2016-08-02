@@ -1,8 +1,9 @@
 {
-   "Type": "AWS::IAM::Group",
-   "Properties": {
-      "ManagedPolicyArns": [ String, ... ],
-      "Path": String,
-      "Policies": [ Policies, ... ]
-   }
+  "Type": "AWS::IAM::Group",
+  "Properties": {
+    "GroupName": String,
+    "ManagedPolicyArns": [ String, ... ],
+    "Path": String,
+    "Policies": [ Policies, ... ]
+  }
 }

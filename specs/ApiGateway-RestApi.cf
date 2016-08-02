@@ -1,7 +1,7 @@
 {
   "Type" : "AWS::ApiGateway::RestApi",
   "Properties" : {
-    "Body" : String,
+    "Body" : JSON object,
     "BodyS3Location" : S3Location,
     "CloneFrom" : String,
     "Description" : String,

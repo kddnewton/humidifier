@@ -1,0 +1,7 @@
+{
+   "Type": "AWS::IoT::Certificate",
+   "Properties": {
+      "CertificateSigningRequest": String,
+      "Status": String
+    }
+}
