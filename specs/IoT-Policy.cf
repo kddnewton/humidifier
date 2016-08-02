@@ -1,0 +1,7 @@
+{
+   "Type": "AWS::IoT::Policy",
+   "Properties": {
+      "PolicyDocument": JSON object,
+      "PolicyName": String
+    }
+}

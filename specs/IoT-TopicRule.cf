@@ -1,0 +1,7 @@
+{
+   "Type": "AWS::IoT::TopicRule",
+   "Properties": {
+      "RuleName": String,
+      "TopicRulePayload": TopicRulePayLoad
+   }
+}

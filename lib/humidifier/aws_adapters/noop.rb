@@ -13,6 +13,12 @@ module Humidifier
           super
         end
       end
+
+      # We capture stack methods and warn about them but don't actually respond
+      # to them
+      def respond_to_missing?(method, *)
+        AwsShim::STACK_METHODS.include?(method) ? false : super
+      end
     end
   end
 end

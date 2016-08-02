@@ -1,3 +1,4 @@
+# rubocop:disable Style/MethodMissing
 module SdkSupport
   def self.double
     AwsDouble

@@ -11,6 +11,10 @@ module SdkSupport
       struct.key?(method) ? struct[method] : super
     end
 
+    def respond_to_missing?(method, *)
+      struct.key?(method) || super
+    end
+
     def key?(key)
       struct.key?(key)
     end
