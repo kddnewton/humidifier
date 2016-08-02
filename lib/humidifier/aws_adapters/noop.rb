@@ -13,6 +13,10 @@ module Humidifier
           super
         end
       end
+
+      def respond_to_missing?(method, *)
+        AwsShim::STACK_METHODS.include?(method) || super
+      end
     end
   end
 end
