@@ -15,6 +15,11 @@ class NoopTest < Minitest::Test
     end
   end
 
+  def test_respond_to_missing?
+    noop = Humidifier::AwsAdapters::Noop.new
+    refute noop.respond_to?(:validate)
+  end
+
   private
 
   def assert_warning(command)
