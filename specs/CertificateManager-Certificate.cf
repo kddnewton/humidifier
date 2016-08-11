@@ -1,0 +1,8 @@
+{
+  "Type" : "AWS::CertificateManager::Certificate",
+  "Properties" : {
+    "DomainName" : String,
+    "DomainValidationOptions" : [ DomainValidationOptions, ... ],
+    "SubjectAlternativeNames" : [ String, ... ]
+  }
+}

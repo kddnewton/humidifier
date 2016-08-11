@@ -1,0 +1,20 @@
+{
+  "Type" : "AWS::ElasticLoadBalancingV2::TargetGroup",
+  "Properties" : {
+    "HealthCheckIntervalSeconds" : Integer,
+    "HealthCheckPath" : String,
+    "HealthCheckPort" : String,
+    "HealthCheckProtocol" : String,
+    "HealthCheckTimeoutSeconds" : Integer,
+    "HealthyThresholdCount" : Integer,
+    "Matcher" : Matcher,
+    "Name" : String,
+    "Port" : Integer,
+    "Protocol" : String,
+    "Tags" : [ Resource Tag, ... ],
+    "TargetGroupAttributes" : [ TargetGroupAttributes, ... ],
+    "Targets" : [ TargetDescription, ... ],
+    "UnhealthyThresholdCount" : Integer,
+    "VpcId" : String
+  }
+}

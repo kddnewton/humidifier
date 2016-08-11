@@ -1,0 +1,12 @@
+{
+  "Type" : "AWS::ApplicationAutoScaling::ScalingPolicy",
+  "Properties" : {
+    "PolicyName" : String,
+    "PolicyType" : String,
+    "ResourceId" : String,
+    "ScalableDimension" : String,
+    "ScalingTargetId" : String,
+    "ServiceNamespace" : String,
+    "StepScalingPolicyConfiguration" : StepScalingPolicyConfiguration
+  }
+}

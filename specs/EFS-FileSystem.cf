@@ -1,6 +1,7 @@
 {
   "Type" : "AWS::EFS::FileSystem",
   "Properties" : {
-    "FileSystemTags" : [ FileSystemTags, ... ]
+    "FileSystemTags" : [ FileSystemTags, ... ],
+    "PerformanceMode" : String
   }
 }
