@@ -1,21 +1,22 @@
 {
-   "Type" : "AWS::AutoScaling::AutoScalingGroup",
-   "Properties" : {
-      "AvailabilityZones" : [ String, ... ],
-      "Cooldown" : String,
-      "DesiredCapacity" : String,
-      "HealthCheckGracePeriod" : Integer,
-      "HealthCheckType" : String,
-      "InstanceId" : String,
-      "LaunchConfigurationName" : String,
-      "LoadBalancerNames" : [ String, ... ],
-      "MaxSize" : String,
-      "MetricsCollection" : [ MetricsCollection, ... ]
-      "MinSize" : String,
-      "NotificationConfigurations" : [ NotificationConfigurations, ... ],
-      "PlacementGroup" : String,
-      "Tags" : [ Auto Scaling Tag, ..., ],
-      "TerminationPolicies" : [ String, ..., ],
-      "VPCZoneIdentifier" : [ String, ... ]
-   }
+  "Type" : "AWS::AutoScaling::AutoScalingGroup",
+  "Properties" : {
+    "AvailabilityZones" : [ String, ... ],
+    "Cooldown" : String,
+    "DesiredCapacity" : String,
+    "HealthCheckGracePeriod" : Integer,
+    "HealthCheckType" : String,
+    "InstanceId" : String,
+    "LaunchConfigurationName" : String,
+    "LoadBalancerNames" : [ String, ... ],
+    "MaxSize" : String,
+    "MetricsCollection" : [ MetricsCollection, ... ]
+    "MinSize" : String,
+    "NotificationConfigurations" : [ NotificationConfigurations, ... ],
+    "PlacementGroup" : String,
+    "Tags" : [ Auto Scaling Tag, ..., ],
+    "TargetGroupARNs" : [ String, ... ],
+    "TerminationPolicies" : [ String, ..., ],
+    "VPCZoneIdentifier" : [ String, ... ]
+  }
 }

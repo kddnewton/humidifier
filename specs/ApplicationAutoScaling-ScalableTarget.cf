@@ -1,0 +1,11 @@
+{
+  "Type" : "AWS::ApplicationAutoScaling::ScalableTarget",
+  "Properties" : {
+    "MaxCapacity" : Integer,
+    "MinCapacity" : Integer,
+    "ResourceId" : String,
+    "RoleARN" : String,
+    "ScalableDimension" : String,
+    "ServiceNamespace" : String
+  }
+}
