@@ -24,6 +24,8 @@
     "MasterUsername" : String,
     "MasterUserPassword" : String,
     "MultiAZ" : Boolean,
+    "MonitoringInterval" : Integer,
+    "MonitoringRoleArn" : String,
     "OptionGroupName" : String,
     "Port" : String,
     "PreferredBackupWindow" : String,

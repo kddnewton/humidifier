@@ -3,6 +3,7 @@
   "Properties" : {
     "DomainName" : String,
     "DomainValidationOptions" : [ DomainValidationOptions, ... ],
-    "SubjectAlternativeNames" : [ String, ... ]
+    "SubjectAlternativeNames" : [ String, ... ],
+    "Tags" : [ Resource Tag, ... ]
   }
 }

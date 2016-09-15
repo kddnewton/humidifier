@@ -1,6 +1,7 @@
 {
   "Type" : "AWS::Logs::LogGroup",
   "Properties" : {
+    "LogGroupName" : String,
     "RetentionInDays" : Integer
   }
 }
