@@ -97,6 +97,20 @@ module Humidifier
       end
     end
 
+    # An number property
+    class NumberProp < Base
+      # converts the value through #to_i unless it is whitelisted
+      def convert(value)
+        puts "WARNING: Property #{name} should be a number" unless valid?(value)
+        value.to_i
+      end
+
+      # true if it is whitelisted or a Integer
+      def valid?(value)
+        whitelisted_value?(value) || value.is_a?(Integer)
+      end
+    end
+
     class << self
       # builds the appropriate prop object from the given spec line
       def from(spec_line)
@@ -106,6 +120,7 @@ module Humidifier
         when 'Boolean' then BooleanProp.new(key)
         when 'Integer' then IntegerProp.new(key)
         when 'String' then StringProp.new(key)
+        when 'Number' then NumberProp.new(key)
         when /\[.*?\]/ then ArrayProp.new(key)
         else JSONProp.new(key)
         end
