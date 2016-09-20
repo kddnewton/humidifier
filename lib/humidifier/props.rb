@@ -77,9 +77,9 @@ module Humidifier
         value.to_i
       end
 
-      # true if it is whitelisted or a Fixnum
+      # true if it is whitelisted or a Integer
       def valid?(value)
-        whitelisted_value?(value) || value.is_a?(Fixnum)
+        whitelisted_value?(value) || value.is_a?(Integer)
       end
     end
 

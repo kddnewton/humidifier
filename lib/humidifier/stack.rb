@@ -49,7 +49,8 @@ module Humidifier
 
     # Increment the default identifier
     def self.next_default_identifier
-      @count = (@count || 0) + 1
+      @count ||= 0
+      @count += 1
       "humidifier-stack-template-#{@count}"
     end
 
