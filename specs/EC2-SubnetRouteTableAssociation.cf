@@ -2,6 +2,6 @@
    "Type" : "AWS::EC2::SubnetRouteTableAssociation",
    "Properties" : {
       "RouteTableId" : String,
-      "SubnetId" : String,
+      "SubnetId" : String
    }
 }

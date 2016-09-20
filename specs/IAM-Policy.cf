@@ -1,10 +1,10 @@
 {
-   "Type": "AWS::IAM::Policy",
-   "Properties": {
-      "Groups" : [ String, ... ],
-      "PolicyDocument" : JSON object,
-      "PolicyName" : String,
-      "Roles" : [ String, ... ],
-      "Users" : [ String, ... ]
-   }
+  "Type" : "AWS::IAM::Policy"
+  "Properties" : { 
+    "Groups" : [ String, ... ],
+    "PolicyDocument" : JSON object,
+    "PolicyName" : String,
+    "Roles" : [ String, ... ],
+    "Users" : [ String, ... ]
+  }
 }

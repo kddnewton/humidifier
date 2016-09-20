@@ -1,6 +1,6 @@
-"MySDBDomain" : {
-    "Type" : "AWS::SDB::Domain",
-    "Properties" : {
-        "Description" : "Other than this AWS CloudFormation Description property, SDB Domains have no properties."
-    }
+{
+  "Type" : "AWS::SDB::Domain",
+  "Properties" : {
+    "Description" : String
+  }
 }

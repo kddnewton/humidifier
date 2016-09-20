@@ -1,6 +1,6 @@
 {
-  "Type": "AWS::Redshift::ClusterSecurityGroup",
-  "Properties": {
+  "Type" : "AWS::Redshift::ClusterSecurityGroup",
+  "Properties" : {
     "Description" : String
   }
 }

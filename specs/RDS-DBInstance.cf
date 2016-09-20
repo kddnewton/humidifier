@@ -23,6 +23,8 @@
     "LicenseModel" : String,
     "MasterUsername" : String,
     "MasterUserPassword" : String,
+    "MonitoringInterval" : Integer,
+    "MonitoringRoleArn" : String,
     "MultiAZ" : Boolean,
     "MonitoringInterval" : Integer,
     "MonitoringRoleArn" : String,
@@ -34,7 +36,7 @@
     "SourceDBInstanceIdentifier" : String,
     "StorageEncrypted" : Boolean,
     "StorageType" : String,
-    "Tags" : [ Resource Tag, ..., ],
+    "Tags" : [ Resource Tag, ... ],
     "VPCSecurityGroups" : [ String, ... ]
   }
 }

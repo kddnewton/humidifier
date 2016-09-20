@@ -1,6 +1,6 @@
 {
    "Type": "AWS::IoT::Thing",
-   "Properties" : {
+   "Properties": {
       "AttributePayload": { String:String, ... },
       "ThingName": String
     }

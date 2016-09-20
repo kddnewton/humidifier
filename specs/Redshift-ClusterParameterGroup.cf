@@ -1,6 +1,6 @@
 {
-  "Type": "AWS::Redshift::ClusterParameterGroup",
-  "Properties": {
+  "Type" : "AWS::Redshift::ClusterParameterGroup",
+  "Properties" : {
     "Description" : String,
     "ParameterGroupFamily" : String,
     "Parameters" : [ Parameter, ... ]

@@ -29,5 +29,7 @@ Nokogiri::HTML(get_url('aws-template-resource-type-ref.html')).css('.highlights 
     CF
   end
 
-  File.write(File.join('specs', aws_name.scan(/AWS::(.*?)::(.*?)(?:\z|")/).first.join('-') + '.cf'), specs)
+  scanned = aws_name.scan(/AWS::(.*?)::(.*?)(?:\z|")/).first
+  scanned = %w[CloudFormation CustomResource] if scanned.nil?
+  File.write(File.join('specs', scanned.join('-') + '.cf'), specs)
 end

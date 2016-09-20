@@ -5,6 +5,6 @@
       "CidrBlock" : String,
       "MapPublicIpOnLaunch" : Boolean,
       "Tags" : [ Resource Tag, ... ],
-      "VpcId" : { "Ref" : String }
+      "VpcId" : String
    }
 }

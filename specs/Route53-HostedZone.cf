@@ -1,7 +1,7 @@
 {
   "Type" : "AWS::Route53::HostedZone",
   "Properties" : {
-    "HostedZoneConfig" : { HostedZoneConfig },
+    "HostedZoneConfig" : HostedZoneConfig,
     "HostedZoneTags" : [  HostedZoneTags, ... ],
     "Name" : String,
     "VPCs" : [ HostedZoneVPCs, ... ]

@@ -33,8 +33,13 @@ module Humidifier
     end
 
     # A string representation of the stack that's valid for CFN
-    def to_cf
-      JSON.pretty_generate(enumerable_resources.merge(static_resources))
+    def to_cf(serializer = :json)
+      resources = static_resources.merge(enumerable_resources)
+
+      case serializer
+      when :json then JSON.pretty_generate(resources)
+      when :yaml then YAML.dump(resources)
+      end
     end
 
     %i[condition mapping output parameter].each do |resource_type|

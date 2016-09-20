@@ -1,5 +1,5 @@
 "Type" : "AWS::EC2::SubnetNetworkAclAssociation",
 "Properties" : {
-   "SubnetId" : { String },
-   "NetworkAclId" : { String }
+   "SubnetId" : String,
+   "NetworkAclId" : String
 }

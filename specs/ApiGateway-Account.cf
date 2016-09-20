@@ -1,6 +1,6 @@
 {
   "Type" : "AWS::ApiGateway::Account",
   "Properties" : {
-    "CloudWatchRoleArn" : String
+    "CloudWatchRoleArn": String
   }
 }

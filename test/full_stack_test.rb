@@ -16,7 +16,8 @@ class FullStackTest < Minitest::Test
 
   def test_to_cf
     stack = Humidifier::Stack.new(static_resources.merge(enumerable_resources))
-    assert_equal EXPECTED_CF, JSON.parse(stack.to_cf)
+    assert_equal EXPECTED_CF, JSON.parse(stack.to_cf(:json))
+    assert_equal EXPECTED_CF, YAML.load(stack.to_cf(:yaml))
   end
 
   private

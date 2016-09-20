@@ -1,6 +1,6 @@
 {
-  "Type": "AWS::Redshift::Cluster",
-  "Properties": {
+  "Type" : "AWS::Redshift::Cluster",
+  "Properties" : {
     "AllowVersionUpgrade" : Boolean,
     "AutomatedSnapshotRetentionPeriod" : Integer,
     "AvailabilityZone" : String,

@@ -4,7 +4,7 @@
     "AliasTarget" : AliasTarget,
     "Comment" : String,
     "Failover" : String,
-    "GeoLocation" : { GeoLocation },
+    "GeoLocation" : GeoLocation,
     "HealthCheckId" : String,
     "HostedZoneId" : String,
     "HostedZoneName" : String,

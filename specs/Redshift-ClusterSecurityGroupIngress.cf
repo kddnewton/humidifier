@@ -1,6 +1,6 @@
 {
-  "Type": "AWS::Redshift::ClusterSecurityGroupIngress",
-  "Properties": {
+  "Type" : "AWS::Redshift::ClusterSecurityGroupIngress",
+  "Properties" : {
     "ClusterSecurityGroupName" : String,
     "CIDRIP" : String,
     "EC2SecurityGroupName" : String,
