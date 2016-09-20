@@ -1,5 +1,5 @@
 {
-   "Type": "AWS::RDS::OptionGroup",
+   "Type" : "AWS::RDS::OptionGroup",
    "Properties" : {
       "EngineName" : String,
       "MajorEngineVersion" : String,

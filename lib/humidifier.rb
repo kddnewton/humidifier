@@ -1,6 +1,7 @@
 require 'forwardable'
 require 'json'
 require 'pathname'
+require 'yaml'
 
 require 'humidifier/humidifier'
 require 'humidifier/utils'

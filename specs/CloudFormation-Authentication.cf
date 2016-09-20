@@ -1,18 +1,17 @@
 {
   "Type": "AWS::CloudFormation::Authentication",
   "Properties" : {
-   "Type" : "AWS::CloudFormation::Authentication" {
-      "String" : {
-         "accessKeyId" : String,
-         "buckets" : [ String, ... ],
-         "password" : String,
-         "secretKey" : String,
-         "type" : String,
-         "uris" : [ String, ... ],
-         "username" : String,
-         "roleName" : String
-      },
-      ...
-   }
+  "Type" : "AWS::CloudFormation::Authentication" {
+    "String" : {
+      "accessKeyId" : String,
+      "buckets" : [ String, ... ],
+      "password" : String,
+      "secretKey" : String,
+      "type" : String,
+      "uris" : [ String, ... ],
+      "username" : String,
+      "roleName" : String
+    }
+  }
 }
 }

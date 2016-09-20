@@ -6,6 +6,7 @@
     "DomainName" : String,
     "EBSOptions" : EBS Options,
     "ElasticsearchClusterConfig" : Elasticsearch Cluster Config,
+    "ElasticsearchVersion" : String,
     "SnapshotOptions" : Snapshot Options,
     "Tags" : [ Resource Tag, ... ]
   }

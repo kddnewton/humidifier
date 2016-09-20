@@ -1,5 +1,5 @@
 {
-  "Type": "AWS::RDS::DBClusterParameterGroup",
+  "Type" : "AWS::RDS::DBClusterParameterGroup",
   "Properties" : {
     "Description" : String,
     "Family" : String,

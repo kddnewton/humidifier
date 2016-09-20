@@ -1,5 +1,5 @@
 {
-   "Type": "AWS::RDS::DBParameterGroup",
+   "Type" : "AWS::RDS::DBParameterGroup",
    "Properties" : {
       "Description" : String,
       "Family" : String,

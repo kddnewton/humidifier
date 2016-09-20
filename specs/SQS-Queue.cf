@@ -1,6 +1,6 @@
 {
-   "Type": "AWS::SQS::Queue",
-   "Properties": {
+   "Type" : "AWS::SQS::Queue",
+   "Properties" : {
       "DelaySeconds": Integer,
       "MaximumMessageSize": Integer,
       "MessageRetentionPeriod": Integer,

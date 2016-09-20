@@ -21,7 +21,7 @@
       "SecurityGroupIds" : [ String, ... ],
       "SecurityGroups" : [ String, ... ],
       "SourceDestCheck" : Boolean,
-      "SsmAssociations" : [ SSMAssociation, ... ]
+      "SsmAssociations" : [ SSMAssociation, ... ],
       "SubnetId" : String,
       "Tags" : [ Resource Tag, ... ],
       "Tenancy" : String,

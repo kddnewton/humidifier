@@ -1,4 +1,4 @@
-"SubnetGroup" : {
+{
     "Type" : "AWS::ElastiCache::SubnetGroup",
     "Properties" : {
         "Description" : String,

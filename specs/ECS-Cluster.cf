@@ -1,6 +1,6 @@
 {
-  "Type": "AWS::ECS::Cluster",
+  "Type" : "AWS::ECS::Cluster",
   "Properties" : {
-  "Type" : "AWS::ECS::Cluster"
-}
+    "ClusterName" : String
+  }
 }

@@ -4,6 +4,6 @@
     "Description" : String,
     "Enabled" : Boolean,
     "EnableKeyRotation" : Boolean,
-    "KeyPolicy" : JSON object    
+    "KeyPolicy" : JSON object
   }
 }
