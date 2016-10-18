@@ -1,0 +1,10 @@
+{
+  "Type" : "AWS::ApiGateway::UsagePlan",
+  "Properties" : {
+    "ApiStages" : [ ApiStage, ... ],
+    "Description" : String,
+    "Quota" : QuotaSettings,
+    "Throttle" : ThrottleSettings,
+    "UsagePlanName" : String
+  }
+}

@@ -1,7 +1,7 @@
 {
   "Type": "AWS::Logs::MetricFilter",    
   "Properties": {
-    "FilterPattern": [String, ...],
+    "FilterPattern": String,
     "LogGroupName": String,
     "MetricTransformations": [ MetricTransformations, ... ]
   }

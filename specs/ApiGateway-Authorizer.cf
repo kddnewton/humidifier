@@ -7,6 +7,7 @@
     "IdentitySource" : String,
     "IdentityValidationExpression" : String,
     "Name" : String,
+    "ProviderARNs" : [ String, ... ],
     "RestApiId" : String,
     "Type" : String
   }
