@@ -1,0 +1,8 @@
+{
+  "Type" : "AWS::CodeCommit::Repository",
+  "Properties" : {
+    "RepositoryDescription" : String, required,
+    "RepositoryName" : String,
+    "Triggers" : [ Trigger ]
+  }
+}

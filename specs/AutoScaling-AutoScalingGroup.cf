@@ -10,7 +10,7 @@
       "LaunchConfigurationName" : String,
       "LoadBalancerNames" : [ String, ... ],
       "MaxSize" : String,
-      "MetricsCollection" : [ MetricsCollection, ... ]
+      "MetricsCollection" : [ MetricsCollection, ... ],
       "MinSize" : String,
       "NotificationConfigurations" : [ NotificationConfigurations, ... ],
       "PlacementGroup" : String,

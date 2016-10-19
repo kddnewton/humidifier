@@ -9,15 +9,23 @@
     "CacheSubnetGroupName" : String,
     "Engine" : String,
     "EngineVersion" : String,
+    "NodeGroupConfiguration" : [ NodeGroupConfiguration ],
     "NotificationTopicArn" : String,
     "NumCacheClusters" : Integer,
+    "NumNodeGroups" : Integer,
     "Port" : Integer,
     "PreferredCacheClusterAZs" : [ String, ... ],
     "PreferredMaintenanceWindow" : String,
+    "PrimaryClusterId" : String,
+    "ReplicasPerNodeGroup" : Integer,
     "ReplicationGroupDescription" : String,
+    "ReplicationGroupId" : String,
     "SecurityGroupIds" : [ String, ... ],
     "SnapshotArns" : [ String, ... ],
+    "SnapshotName" : String,
     "SnapshotRetentionLimit" : Integer,
-    "SnapshotWindow" : String
+    "SnapshottingClusterId" : String,
+    "SnapshotWindow" : String,
+    "Tags" : Resource Tag, ...
   }
 }

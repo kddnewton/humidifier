@@ -1,7 +1,8 @@
 {
-    "Type" : "AWS::ElastiCache::SubnetGroup",
-    "Properties" : {
-        "Description" : String,
-        "SubnetIds" : [ String, ... ]
-    }
+  "Type" : "AWS::ElastiCache::SubnetGroup",
+  "Properties" : {
+    "CacheSubnetGroupName" : String,
+    "Description" : String,
+    "SubnetIds" : [ String, ... ]
+  }
 }
