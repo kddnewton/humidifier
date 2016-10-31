@@ -61,7 +61,7 @@ Resources have an `aws_name` method to see how AWS references them. They also co
 
 ### Large templates
 
-When templates are especially large (larger than 51,200 bytes), they cannot be uploaded directly through the AWS SDK. You can configure Humidifier to seemlessly upload the templates to S3 and reference them using an S3 URL instead by:
+When templates are especially large (larger than 51,200 bytes), they cannot be uploaded directly through the AWS SDK. You can configure Humidifier to seamlessly upload the templates to S3 and reference them using an S3 URL instead by:
 
 ```ruby
 Humidifier.configure do |config|
