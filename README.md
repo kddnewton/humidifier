@@ -43,6 +43,14 @@ Once stacks have the appropriate resources, you can query AWS to handle all stac
 
 Humidifier assumes you have an `aws-sdk` gem installed when you call these operations. It detects the version of the gem you have installed and uses the appropriate API depending on what is available. If Humidifier cannot find any way to use the AWS SDK, it will warn you on every API call and simply return false.
 
+You can also manually specify the version of the SDK that you want to use, in the case that you have both gems in your load path. In that case, you would specify it on the Humidifier configuration object:
+
+```ruby
+Humidifier.configure do |config|
+  config.sdk_version = 1
+end
+```
+
 #### CloudFormation functions
 
 You can use CFN intrinsic functions and references using `Humidifier.fn.[name]` and `Humidifier.ref`. Those will build appropriate structures that know how to be dumped to CFN syntax appropriately.
