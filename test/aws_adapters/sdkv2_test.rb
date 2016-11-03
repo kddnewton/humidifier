@@ -65,7 +65,7 @@ class SDKV2Test < Minitest::Test
   end
 
   def test_upload
-    with_config('test.s3.bucket') do
+    with_config(s3_bucket: 'test.s3.bucket') do
       with_sdk_v2_loaded do |sdk|
         SdkSupport.expect(:config, [], SdkSupport.double)
         SdkSupport.expect(:update, [region: Humidifier::AwsShim::REGION])
