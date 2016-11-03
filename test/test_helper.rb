@@ -31,8 +31,8 @@ Minitest::Test.send(:include, SdkSupport::Helpers)
 
 # extra methods for testing config and serializers
 Minitest::Test.send(:include, Module.new do
-  def with_config(s3_bucket, s3_prefix = nil, &block)
-    config = Humidifier::Configuration.new(s3_bucket: s3_bucket, s3_prefix: s3_prefix)
+  def with_config(options = {}, &block)
+    config = Humidifier::Configuration.new(options)
     Humidifier.stub(:config, config, &block)
   end
 

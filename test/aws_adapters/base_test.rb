@@ -70,7 +70,7 @@ class BaseTest < Minitest::Test
       end
     end
 
-    with_config('test.s3.bucket', 'prefix/') do
+    with_config(s3_bucket: 'test.s3.bucket', s3_prefix: 'prefix/') do
       assert_equal 'prefix/name.json', fake_sdk.new.upload(payload(identifier: 'name'))
     end
   end

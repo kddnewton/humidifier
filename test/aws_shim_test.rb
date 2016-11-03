@@ -13,19 +13,30 @@ class AwsShimTest < Minitest::Test
     mock.verify
   end
 
-  def test_initialize_noop
-    assert_kind_of Humidifier::AwsAdapters::Noop, Humidifier::AwsShim.new.shim
+  def test_initialize_sdk_version_1?
+    with_config(sdk_version: 1) { assert_shim(:SDKV1) }
   end
 
-  def test_initialize_sdk_v1
-    with_sdk_v1_loaded do
-      assert_kind_of Humidifier::AwsAdapters::SDKV1, Humidifier::AwsShim.new.shim
-    end
+  def test_initialize_sdk_version_2?
+    with_config(sdk_version: 2) { assert_shim(:SDKV2) }
   end
 
-  def test_initialize_sdk_v2
-    with_sdk_v2_loaded do
-      assert_kind_of Humidifier::AwsAdapters::SDKV2, Humidifier::AwsShim.new.shim
-    end
+  def test_guess_sdk_noop
+    assert_shim(:Noop)
+  end
+
+  def test_guess_sdk_sdk_v1
+    with_sdk_v1_loaded { assert_shim(:SDKV1) }
+  end
+
+  def test_guess_sdk_sdk_v2
+    with_sdk_v2_loaded { assert_shim(:SDKV2) }
+  end
+
+  private
+
+  def assert_shim(kind)
+    expected = Humidifier::AwsAdapters.const_get(kind)
+    assert_kind_of expected, Humidifier::AwsShim.new.shim
   end
 end

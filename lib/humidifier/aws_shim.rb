@@ -20,18 +20,17 @@ module Humidifier
 
     attr_accessor :shim
 
-    # Attempt to require both aws-sdk-v1 and aws-sdk, then set the shim based on what successfully loaded
+    # Either set the SDK based on the configured option or guess the SDK
+    # version by attempting to require both aws-sdk-v1 and aws-sdk, then setting
+    # the shim based on what successfully loaded
     def initialize
-      try_require_sdk('aws-sdk-v1')
-      try_require_sdk('aws-sdk')
-
       self.shim =
-        if Object.const_defined?(:AWS)
+        if Humidifier.config.sdk_version_1?
           AwsAdapters::SDKV1.new
-        elsif Object.const_defined?(:Aws)
+        elsif Humidifier.config.sdk_version_2?
           AwsAdapters::SDKV2.new
         else
-          AwsAdapters::Noop.new
+          guess_sdk
         end
     end
 
@@ -51,6 +50,19 @@ module Humidifier
     end
 
     private
+
+    def guess_sdk
+      try_require_sdk('aws-sdk-v1')
+      try_require_sdk('aws-sdk')
+
+      if Object.const_defined?(:Aws)
+        AwsAdapters::SDKV2.new
+      elsif Object.const_defined?(:AWS)
+        AwsAdapters::SDKV1.new
+      else
+        AwsAdapters::Noop.new
+      end
+    end
 
     def try_require_sdk(name)
       require name

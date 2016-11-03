@@ -14,16 +14,27 @@ on the top-level Humidifier object like so:
     end
 MSG
 
-    attr_accessor :s3_bucket, :s3_prefix
+    attr_accessor :s3_bucket, :s3_prefix, :sdk_version
 
     def initialize(opts = {})
-      self.s3_bucket = opts[:s3_bucket]
-      self.s3_prefix = opts[:s3_prefix]
+      self.s3_bucket   = opts[:s3_bucket]
+      self.s3_prefix   = opts[:s3_prefix]
+      self.sdk_version = opts[:sdk_version]
     end
 
     # raise an error unless the s3_bucket field is set
     def ensure_upload_configured!(payload)
       raise UPLOAD_MESSAGE.gsub('%{identifier}', payload.identifier) if s3_bucket.nil?
+    end
+
+    # true if the sdk_version option is set to 1 or '1'
+    def sdk_version_1?
+      sdk_version.to_s == '1'
+    end
+
+    # true if the sdk_version option is set to 2 or '2'
+    def sdk_version_2?
+      sdk_version.to_s == '2'
     end
   end
 end

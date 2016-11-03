@@ -55,7 +55,7 @@ class SDKV1Test < Minitest::Test
   end
 
   def test_upload
-    with_config('test.s3.bucket') do
+    with_config(s3_bucket: 'test.s3.bucket') do
       with_sdk_v1_loaded do |sdk|
         upload_expectations
         sdk.upload(payload(identifier: 'identifier', to_cf: 'body'))
