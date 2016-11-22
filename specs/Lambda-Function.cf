@@ -3,8 +3,10 @@
   "Properties" : {
     "Code" : Code,
     "Description" : String,
+    "Environment" : Environment,
     "FunctionName" : String,
     "Handler" : String,
+    "KmsKeyArn" : String,
     "MemorySize" : Integer,
     "Role" : String,
     "Runtime" : String,
