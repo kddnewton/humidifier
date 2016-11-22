@@ -5,7 +5,8 @@ module Humidifier
 
     # The list of all internal functions provided by AWS from
     # http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html
-    FUNCTIONS = Utils.underscored(%w[And Base64 Equals FindInMap GetAtt GetAZs If Join Not Or Select])
+    FUNCTIONS = Utils.underscored(%w[And Base64 Equals FindInMap GetAtt GetAZs
+                                     If ImportValue Join Not Or Select Sub])
 
     attr_accessor :name, :value
 

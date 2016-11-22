@@ -1,0 +1,8 @@
+{
+  "Type" : "AWS::SNS::Subscription",
+  "Properties" : {
+    "Endpoint" : String,
+    "Protocol" : String,
+    "TopicArn" : String
+  }
+}
