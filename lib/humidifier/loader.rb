@@ -6,13 +6,16 @@ module Humidifier
   module Config
   end
 
-  # Reads each of the files under /specs/ and loads them each as a class
+  # Reads the lib/specs.json file and load each resource as a class
   class Loader
 
     # loop through the specs and register each class
     def load
-      spec_directory = File.expand_path(File.join('..', '..', '..', 'specs', '*'), __FILE__)
-      Dir[spec_directory].each { |filepath| load_from(filepath) }
+      filepath = File.expand_path(File.join('..', '..', 'specs.json'), __FILE__)
+      JSON.parse(File.read(filepath))['ResourceTypes'].each do |key, spec|
+        match = key.match(/\AAWS::(\w+)::(\w+)\z/)
+        register(match[1], match[2], spec)
+      end
     end
 
     # convenience class method to build a new loader and call load
@@ -25,20 +28,12 @@ module Humidifier
     def build_class(aws_name, spec)
       Class.new(Resource) do
         self.aws_name = aws_name
-        self.props = spec.each_with_object({}) do |spec_line, props|
-          prop = Props.from(spec_line)
-          props[prop.name] = prop unless prop.name.nil?
-        end
+        self.props =
+          Utils.enumerable_to_h(spec['Properties']) do |(key, config)|
+            prop = Props.from(key, config)
+            [prop.name, prop]
+          end
       end
-    end
-
-    def load_from(filepath)
-      group, resource = Pathname.new(filepath).basename('.cf').to_s.split('-')
-      spec = File.readlines(filepath).select do |line|
-        # flipflop operator (http://stackoverflow.com/questions/14456634)
-        true if line.include?('Properties')...(line.strip == '}')
-      end
-      register(group, resource, spec[1..-2])
     end
 
     def register(group, resource, spec)

@@ -7,12 +7,11 @@ module Props
     end
 
     def test_name_conversion
-      base = Humidifier::Props::Base.new('MyTestKey')
-      assert_equal 'my_test_key', base.name
+      assert_equal 'my_test_key', build('MyTestKey').name
     end
 
     def test_to_cf
-      base = Humidifier::Props::Base.new('MyTestKey')
+      base = build('MyTestKey')
       value = Object.new
 
       mock = Minitest::Mock.new
@@ -25,12 +24,24 @@ module Props
     end
 
     def test_convertable?
-      refute Humidifier::Props::Base.new.convertable?
-      assert TestProp.new.convertable?
+      refute build.convertable?
+      assert TestProp.new('Test').convertable?
+    end
+
+    def test_documentation
+      assert_equal 'documentation', build('Test', 'Documentation' => 'documentation').documentation
+    end
+
+    def test_required?
+      assert build('Test', 'Required' => true).required?
+    end
+
+    def test_update_type
+      assert_equal 'update_type', build('Test', 'UpdateType' => 'update_type').update_type
     end
 
     def test_whitelisted_value?
-      base = Humidifier::Props::Base.new
+      base = build
       original_whitelist = Humidifier::Props::Base::WHITELIST
 
       suppress_warnings do
@@ -45,6 +56,10 @@ module Props
     end
 
     private
+
+    def build(key = 'Test', spec = {})
+      Humidifier::Props::Base.new(key, spec)
+    end
 
     def suppress_warnings
       warn_level = $VERBOSE
