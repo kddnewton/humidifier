@@ -28,4 +28,24 @@ YARD::Rake::YardocTask.new do |t|
   t.after = -> { FileUtils.rm(filepath) }
 end
 
+desc 'Download the latest specs from AWS'
+task :specs do
+  require 'net/http'
+  require 'nokogiri'
+
+  url = URI.parse('http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html')
+  row =
+    Nokogiri::HTML(Net::HTTP.get_response(url).body).css('table[summary="Resource Specification"] tr').detect do |tr|
+      name_container = tr.at_css('td:first-child p')
+      (name_container && name_container.text.strip) == 'US East (N. Virginia)'
+    end
+
+  href = row.at_css('td:nth-child(2) p a').attr('href')
+  print "Downloading from #{href}..."
+
+  response = Net::HTTP.get_response(URI.parse(href)).body
+  size = File.write(File.expand_path(File.join('..', 'lib', 'specs.json'), __FILE__), response)
+  puts " wrote lib/specs.json (#{(size / 1024.0).round}K)"
+end
+
 task default: :test
