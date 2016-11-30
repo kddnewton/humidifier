@@ -1,7 +1,0 @@
-{
-   "Type" : "AWS::ElasticBeanstalk::Application",
-   "Properties" : {
-      "ApplicationName" : String,
-      "Description" : String
-   }
-}

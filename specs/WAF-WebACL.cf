@@ -1,9 +1,0 @@
-{
-  "Type" : "AWS::WAF::WebACL",
-  "Properties" : {
-    "DefaultAction" : Action,
-    "MetricName" : String,
-    "Name" : String,
-    "Rules" : [ Rule, ... ]
-  }
-}

@@ -1,8 +1,0 @@
-{
-   "Type" : "AWS::RDS::DBSubnetGroup",
-   "Properties" : {
-      "DBSubnetGroupDescription" : String,
-      "SubnetIds" : [ String, ... ],
-      "Tags" : [ Resource Tag, ... ]
-   }
-}

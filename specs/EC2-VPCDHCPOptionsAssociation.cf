@@ -1,7 +1,0 @@
-{ 
-   "Type" : "AWS::EC2::VPCDHCPOptionsAssociation",
-   "Properties" : {
-      "DhcpOptionsId" : String,
-      "VpcId" : String
-   }
-}

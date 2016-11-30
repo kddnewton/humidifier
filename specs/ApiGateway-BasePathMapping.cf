@@ -1,9 +1,0 @@
-{
-  "Type" : "AWS::ApiGateway::BasePathMapping",
-  "Properties" : {
-    "BasePath" : String,
-    "DomainName" : String,
-    "RestApiId" : String,
-    "Stage" : String
-  }
-}

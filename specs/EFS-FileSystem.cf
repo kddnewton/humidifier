@@ -1,7 +1,0 @@
-{
-  "Type" : "AWS::EFS::FileSystem",
-  "Properties" : {
-    "FileSystemTags" : [ FileSystemTags, ... ],
-    "PerformanceMode" : String
-  }
-}

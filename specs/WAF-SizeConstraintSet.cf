@@ -1,7 +1,0 @@
-{
-  "Type" : "AWS::WAF::SizeConstraintSet",
-  "Properties" : {
-    "Name" : String,
-    "SizeConstraints" : [ SizeConstraint, ... ]
-  }
-}

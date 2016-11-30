@@ -1,8 +1,0 @@
-{
-   "Type": "AWS::ElastiCache::ParameterGroup",
-   "Properties": {
-      "CacheParameterGroupFamily" : String,
-      "Description" : String,
-      "Properties" : { String:String, ... }
-   }
-}

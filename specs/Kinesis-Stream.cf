@@ -1,8 +1,0 @@
-{
-   "Type" : "AWS::Kinesis::Stream",
-   "Properties" : {
-      "Name" : String,
-      "ShardCount" : Integer,
-      "Tags" : [ Resource Tag, ... ]
-   }
-}

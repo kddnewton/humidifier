@@ -1,8 +1,0 @@
-{
-   "Type" : "AWS::EC2::VPCGatewayAttachment",
-   "Properties" : {
-      "InternetGatewayId" : String,
-      "VpcId" : String,
-      "VpnGatewayId" : String
-   }
-}

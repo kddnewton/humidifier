@@ -1,7 +1,0 @@
-{
-   "Type": "AWS::IoT::ThingPrincipalAttachment",
-   "Properties": {
-      "Principal": String,
-      "ThingName": String
-    }
-}

@@ -1,9 +1,0 @@
-{
-  "Type" : "AWS::RDS::DBClusterParameterGroup",
-  "Properties" : {
-    "Description" : String,
-    "Family" : String,
-    "Parameters" : DBParameters,
-    "Tags" : [ Resource Tag, ... ]
-  }
-}

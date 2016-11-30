@@ -1,8 +1,0 @@
-{
-  "Type" : "AWS::Config::ConfigurationRecorder",
-  "Properties" : {
-    "Name" : String,
-    "RecordingGroup" : Recording group,
-    "RoleARN" : String
-  }
-}

@@ -1,8 +1,0 @@
-{
-   "Type" : "Custom::String",
-   "Version" : "1.0",
-   "Properties" : {
-      "ServiceToken" : String,
-      ... provider-defined properties ...
-   }
-}

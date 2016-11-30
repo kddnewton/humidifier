@@ -1,8 +1,0 @@
-{
-  "Type" : "AWS::ElasticBeanstalk::ApplicationVersion",
-  "Properties" : {
-    "ApplicationName" : String,
-    "Description" : String,
-    "SourceBundle" : { SourceBundle }
-  }
-}

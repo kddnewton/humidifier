@@ -1,8 +1,0 @@
-{
-  "Type" : "AWS::SNS::Topic",
-  "Properties" : {
-    "DisplayName" : String,
-    "Subscription" : [ SNS Subscription, ... ],
-    "TopicName" : String
-  }
-}
