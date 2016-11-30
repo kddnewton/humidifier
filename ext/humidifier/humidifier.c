@@ -1,20 +1,5 @@
 #include <humidifier.h>
 
-// copies from the source string to the destination string after passing through a character whitelist filter
-// note that this is exclusively built for AWS::CloudFormation::Interface, so if AWS ever fixes their docs this can
-// be replaced by strcpy
-static void filter(char* dest, const char* source)
-{
-  int source_idx, dest_idx;
-
-  for (source_idx = 0, dest_idx = 0; source[source_idx] != '\0'; source_idx++) {
-    if (source[source_idx] != ':') {
-      dest[dest_idx++] = source[source_idx];
-    }
-  }
-  dest[dest_idx] = '\0';
-}
-
 // takes a substring from underscore_preprocess like EC2T or AWST and converts it to Ec2T or AwsT
 static void format_substring(char* substr, const int substr_idx, const int capitalize)
 {
@@ -64,7 +49,7 @@ static VALUE underscore(VALUE self, VALUE str)
   char *str_value = rb_string_value_cstr(&str);
   char orig_str[strlen(str_value) + 1];
 
-  filter(orig_str, str_value);
+  strcpy(orig_str, str_value);
   preprocess(orig_str);
 
   // manually null-terminating the string because on Fedora for strings of length 16 this breaks otherwise
