@@ -1,8 +1,0 @@
-{
-   "Type":"AWS::EC2::VolumeAttachment",
-   "Properties" : {
-      "Device" : String,
-      "InstanceId" : String,
-      "VolumeId" : String
-   }
-}

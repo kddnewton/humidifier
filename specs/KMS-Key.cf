@@ -1,9 +1,0 @@
-{
-  "Type" : "AWS::KMS::Key",
-  "Properties" : {
-    "Description" : String,
-    "Enabled" : Boolean,
-    "EnableKeyRotation" : Boolean,
-    "KeyPolicy" : JSON object
-  }
-}

@@ -1,9 +1,9 @@
 require 'test_helper'
 
 module Props
-  class IntegerPropTest < Minitest::Test
+  class MapPropTest < Minitest::Test
     def test_valid?
-      assert build.valid?(1)
+      assert build.valid?({})
       assert build.valid?(Humidifier.ref(Object.new))
       assert build.valid?(Humidifier.fn.base64(Object.new))
     end
@@ -11,23 +11,19 @@ module Props
     def test_rejects_other_values
       refute build.valid?(Object.new)
       refute build.valid?([])
-      refute build.valid?({})
+      refute build.valid?(false)
       refute build.valid?(1.0)
     end
 
-    def test_convert_valid
-      assert_equal 5, build.convert(5)
-    end
-
-    def test_convert_invalid
-      out, * = capture_io { assert_equal 6, build.convert('6') }
-      assert_match(/WARNING: Property test/, out)
+    def test_subprop
+      assert build.valid?('foo' => 1, 'bar' => 2)
+      refute build.valid?('foo' => 1, 'bar' => '2')
     end
 
     private
 
     def build
-      Humidifier::Props::IntegerProp.new('Test')
+      Humidifier::Props::MapProp.new('Test', 'PrimitiveType' => 'Integer')
     end
   end
 end

@@ -1,8 +1,0 @@
-{
-   "Type" : "AWS::EC2::VPCPeeringConnection",
-   "Properties" : {
-      "PeerVpcId" : String,
-      "Tags" : [ Resource Tag, ... ],
-      "VpcId" : String
-   }
-}

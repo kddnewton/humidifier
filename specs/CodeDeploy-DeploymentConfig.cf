@@ -1,7 +1,0 @@
-{
-  "Type" : "AWS::CodeDeploy::DeploymentConfig",
-  "Properties" : {
-    "DeploymentConfigName" : String,
-    "MinimumHealthyHosts" : MinimumHealthyHosts
-  }
-}

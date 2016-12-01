@@ -1,7 +1,0 @@
-{
-   "Type": "AWS::IAM::InstanceProfile",
-   "Properties": {
-      "Path": String,
-      "Roles": [ IAM Roles ]
-   }
-}

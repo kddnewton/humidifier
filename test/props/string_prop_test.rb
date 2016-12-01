@@ -2,29 +2,32 @@ require 'test_helper'
 
 module Props
   class StringPropTest < Minitest::Test
-
     def test_valid?
-      assert Humidifier::Props::StringProp.new.valid?('value')
-      assert Humidifier::Props::StringProp.new.valid?(Humidifier.ref(Object.new))
-      assert Humidifier::Props::StringProp.new.valid?(Humidifier.fn.base64(Object.new))
+      assert build.valid?('value')
+      assert build.valid?(Humidifier.ref(Object.new))
+      assert build.valid?(Humidifier.fn.base64(Object.new))
     end
 
     def test_rejects_other_values
-      refute Humidifier::Props::StringProp.new.valid?(Object.new)
-      refute Humidifier::Props::StringProp.new.valid?([])
-      refute Humidifier::Props::StringProp.new.valid?({})
-      refute Humidifier::Props::StringProp.new.valid?(1)
+      refute build.valid?(Object.new)
+      refute build.valid?([])
+      refute build.valid?({})
+      refute build.valid?(1)
     end
 
     def test_convert_valid
-      assert_equal 'test', Humidifier::Props::StringProp.new.convert('test')
+      assert_equal 'test', build.convert('test')
     end
 
     def test_convert_invalid
-      out, * = capture_io do
-        assert_equal '5', Humidifier::Props::StringProp.new('Test').convert(5)
-      end
+      out, * = capture_io { assert_equal '5', build.convert(5) }
       assert_match(/WARNING: Property test/, out)
+    end
+
+    private
+
+    def build
+      Humidifier::Props::StringProp.new('Test')
     end
   end
 end

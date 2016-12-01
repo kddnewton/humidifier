@@ -1,7 +1,0 @@
-{
-   "Type" : "AWS::EC2::VPNConnectionRoute",
-   "Properties" : {
-      "DestinationCidrBlock" : String,
-      "VpnConnectionId" : String
-   }
-}

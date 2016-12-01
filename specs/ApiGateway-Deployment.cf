@@ -1,9 +1,0 @@
-{
-  "Type" : "AWS::ApiGateway::Deployment",
-  "Properties" : {
-    "Description" : String,
-    "RestApiId" : String,
-    "StageDescription" : StageDescription,
-    "StageName" : String
-  }
-}

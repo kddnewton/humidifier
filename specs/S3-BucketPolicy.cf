@@ -1,7 +1,0 @@
-{
-   "Type" : "AWS::S3::BucketPolicy",
-   "Properties" : {
-      "Bucket" : String,
-      "PolicyDocument" : JSON
-   }
-}

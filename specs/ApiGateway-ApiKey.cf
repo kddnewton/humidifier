@@ -1,9 +1,0 @@
-{
-  "Type" : "AWS::ApiGateway::ApiKey",
-  "Properties" : {
-    "Description" : String,
-    "Enabled" : Boolean,
-    "Name" : String,
-    "StageKeys" : [ StageKey, ... ]
-  }
-}

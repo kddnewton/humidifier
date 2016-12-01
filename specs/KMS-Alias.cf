@@ -1,7 +1,0 @@
-{
-  "Type" : "AWS::KMS::Alias",
-  "Properties" : {
-    "AliasName" : String,
-    "TargetKeyId" : String
-  }
-}

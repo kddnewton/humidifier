@@ -3,6 +3,7 @@ AllCops:
   DisplayStyleGuide: true
   TargetRubyVersion: 2.0
   Exclude:
+  - 'specs/**/*'
   - 'vendor/**/*'
   - 'yard/**/*'
 
@@ -16,10 +17,6 @@ Style/EmptyLinesAroundClassBody:
 
 # Ignore because whitespace is good
 Style/EmptyLinesAroundModuleBody:
-  Enabled: false
-
-# Very convenient for parsing the configs
-Style/FlipFlop:
   Enabled: false
 
 # Useful and concise in gsub statements

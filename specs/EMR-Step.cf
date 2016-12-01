@@ -1,9 +1,0 @@
-{
-  "Type" : "AWS::EMR::Step",
-  "Properties" : {
-    "ActionOnFailure" : String,
-    "HadoopJarStep" : HadoopJarStepConfig,
-    "JobFlowId" : String,
-    "Name" : String
-  }
-}

@@ -21,15 +21,13 @@ module SdkSupport
       class Client
         include ForwardMissing
 
-        def initialize(*)
-        end
+        def initialize(*); end
       end
 
       class Stack
         include ForwardMissing
 
-        def initialize(*)
-        end
+        def initialize(*); end
       end
     end
 
@@ -39,15 +37,13 @@ module SdkSupport
       class Client
         include ForwardMissing
 
-        def initialize(*)
-        end
+        def initialize(*); end
       end
 
       class Object
         include ForwardMissing
 
-        def initialize(*)
-        end
+        def initialize(*); end
       end
     end
   end

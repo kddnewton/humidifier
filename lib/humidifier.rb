@@ -10,6 +10,11 @@ require 'humidifier/fn'
 require 'humidifier/ref'
 require 'humidifier/props'
 
+require 'humidifier/props/base'
+%w[boolean double integer json list map string structure timestamp].each do |type|
+  require "humidifier/props/#{type}_prop"
+end
+
 require 'humidifier/aws_shim'
 require 'humidifier/condition'
 require 'humidifier/configuration'

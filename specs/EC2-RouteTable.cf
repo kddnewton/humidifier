@@ -1,7 +1,0 @@
-{
-   "Type" : "AWS::EC2::RouteTable",
-   "Properties" : {
-      "VpcId" : String,
-      "Tags" : [ Resource Tag, ... ]
-   }
-}

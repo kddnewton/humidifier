@@ -1,6 +1,0 @@
-{
-  "Type" : "AWS::Redshift::ClusterSecurityGroup",
-  "Properties" : {
-    "Description" : String
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "Type" : "AWS::WAF::SqlInjectionMatchSet",
-  "Properties" : {
-    "Name" : String,
-    "SqlInjectionMatchTuples" : [ SqlInjectionMatchTuple, ... ]
-  }
-}

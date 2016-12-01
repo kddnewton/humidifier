@@ -1,6 +1,0 @@
-{
-  "Type" : "AWS::SDB::Domain",
-  "Properties" : {
-    "Description" : String
-  }
-}

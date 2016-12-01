@@ -1,9 +1,0 @@
-{
-  "Type" : "AWS::ECS::TaskDefinition",
-  "Properties" : {
-    "ContainerDefinitions" : [ Container Definition, ... ],
-    "Family" : String,
-    "TaskRoleArn" : String,
-    "Volumes" : [ Volume Definition, ... ]
-  }
-}

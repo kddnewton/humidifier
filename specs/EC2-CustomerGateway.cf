@@ -1,9 +1,0 @@
-{
-   "Type" : "AWS::EC2::CustomerGateway",
-   "Properties" : {
-      "BgpAsn" : Number,
-      "IpAddress" : String,
-      "Tags" :  [ Resource Tag, ... ],
-      "Type" : String
-   }
-}

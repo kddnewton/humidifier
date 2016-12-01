@@ -47,6 +47,5 @@ end)
 
 # stub the sleep method so that the tests can run faster
 Humidifier::Sleeper.send(:prepend, Module.new do
-  def sleep(count)
-  end
+  def sleep(count); end
 end)

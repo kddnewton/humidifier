@@ -1,8 +1,0 @@
-{
-  "Type" : "AWS::WAF::Rule",
-  "Properties" : {
-    "MetricName" : String,
-    "Name" : String,
-    "Predicates" : [ Predicate, ... ]
-  }
-}

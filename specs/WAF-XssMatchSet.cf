@@ -1,7 +1,0 @@
-{
-  "Type" : "AWS::WAF::XssMatchSet",
-  "Properties" : {
-    "Name" : String,
-    "XssMatchTuples" : [ XssMatchTuple, ... ]
-  }
-}
