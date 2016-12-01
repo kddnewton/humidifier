@@ -82,9 +82,10 @@ MSG
 
     def template_param
       @template_param ||= begin
-        raise TemplateTooLargeError, template_body.bytesize if template_body.bytesize > MAX_TEMPLATE_URL_SIZE
+        bytesize = template_body.bytesize
+        raise TemplateTooLargeError, bytesize if bytesize > MAX_TEMPLATE_URL_SIZE
 
-        if template_body.bytesize > MAX_TEMPLATE_BODY_SIZE
+        if bytesize > MAX_TEMPLATE_BODY_SIZE
           { template_url: AwsShim.upload(self) }
         else
           { template_body: template_body }
