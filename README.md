@@ -20,7 +20,7 @@ Stacks are represented by the `Humidifier::Stack` class. You can set any of the 
 stack = Humidifier::Stack.new(name: 'Example-Stack', aws_template_format_version: '2010-09-09')
 
 load_balancer = Humidifier::ElasticLoadBalancing::LoadBalancer.new(
-  listeners: [{ LoadBalancerPort: 80, Protocol: 'http', InstancePort: 80, InstanceProtocol: 'http' }]
+  listeners: [{ load_balancer_port: 80, protocol: 'http', instance_port: 80, instance_protocol: 'http' }]
 )
 load_balancer.scheme = 'internal'
 
