@@ -30,8 +30,10 @@ end
 
 desc 'Download the latest specs from AWS'
 task :specs do
+  require 'json'
   require 'net/http'
   require 'nokogiri'
+  require './specs/fixer'
 
   url = URI.parse('http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html')
   row =
@@ -41,11 +43,16 @@ task :specs do
     end
 
   href = row.at_css('td:nth-child(2) p a').attr('href')
-  print "Downloading from #{href}..."
+  puts "Downloading from #{href}..."
 
   response = Net::HTTP.get_response(URI.parse(href)).body
-  size = File.write(File.expand_path(File.join('..', 'lib', 'specs.json'), __FILE__), response)
-  puts " wrote lib/specs.json (#{(size / 1024.0).round}K)"
+  filepath = File.expand_path(File.join('..', 'specs', 'CloudFormationResourceSpecification.json'), __FILE__)
+
+  size = File.write(filepath, response)
+  puts "  wrote #{filepath} (#{(size / 1024.0).round(2)}K)"
+
+  size = Fixer.new(filepath).write
+  puts "  wrote fixed #{filepath} (#{(size / 1024.0).round(2)}K)"
 end
 
 task default: :test

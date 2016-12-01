@@ -12,8 +12,8 @@ module Humidifier
       private
 
       # Finds the subprop that's specified in the spec
-      def after_initialize
-        @subprop = Props.singular_from(key, spec)
+      def after_initialize(substructs)
+        @subprop = Props.singular_from(key, spec, substructs)
       end
     end
   end

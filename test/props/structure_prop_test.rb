@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Props
-  class MapPropTest < Minitest::Test
+  class StructurePropTest < Minitest::Test
     def test_valid?
       assert build.valid?({})
       assert build.valid?(Humidifier.ref(Object.new))
@@ -16,14 +16,15 @@ module Props
     end
 
     def test_subprop
-      assert build.valid?('foo' => 1, 'bar' => 2)
-      refute build.valid?('foo' => 1, 'bar' => '2')
+      assert build.valid?(alpha: { beta: 'gamma' })
+      refute build.valid?(alpha: { beta: 1 })
     end
 
     private
 
     def build
-      Humidifier::Props::MapProp.new('Test', 'PrimitiveType' => 'Integer')
+      substructs = { 'Sub' => { 'Properties' => { 'Beta' => { 'PrimitiveType' => 'String' } } } }
+      Humidifier::Props::MapProp.new('Alpha', { 'Type' => 'Sub' }, substructs)
     end
   end
 end

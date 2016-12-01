@@ -15,15 +15,14 @@ module Props
     end
 
     def test_with_subprop
-      prop = build('Test', 'PrimitiveType' => 'Integer')
-      assert prop.valid?([1, 2])
-      refute prop.valid?([1, 'foo'])
+      assert build.valid?([1, 2])
+      refute build.valid?([1, 'foo'])
     end
 
     private
 
-    def build(key = 'Test', spec = {})
-      Humidifier::Props::ListProp.new(key, spec)
+    def build
+      Humidifier::Props::ListProp.new('Test', 'PrimitiveType' => 'Integer')
     end
   end
 end

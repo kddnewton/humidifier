@@ -6,13 +6,13 @@ module Humidifier
       # The list of classes that are valid beyond the normal values for each prop
       WHITELIST = [Fn, Ref].freeze
 
-      attr_reader :key, :name, :spec
+      attr_reader :key, :name, :spec, :substructs
 
-      def initialize(key, spec = {})
+      def initialize(key, spec = {}, substructs = {})
         @key  = key
         @name = Utils.underscore(key)
         @spec = spec
-        after_initialize if respond_to?(:after_initialize, true)
+        after_initialize(substructs) if respond_to?(:after_initialize, true)
       end
 
       # true if the property type knows how to convert its values
