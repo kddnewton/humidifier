@@ -13,15 +13,12 @@ module Humidifier
       end
 
       # builds a prop that is not a List or Map type
-      # PrimitiveType is one of Boolean, Double, Integer, Json, or String
+      # PrimitiveType is one of Boolean, Double, Integer, Json, String, or Timestamp
       def singular_from(key, spec, substructs)
         primitive = spec['PrimitiveItemType'] || spec['PrimitiveType']
 
         if primitive
-          # TODO: support timestamp and long
-          primitive = 'String' if spec['PrimitiveType'] == 'Timestamp'
-          primitive = 'Integer' if spec['PrimitiveType'] == 'Long'
-
+          primitive = 'Integer' if primitive == 'Long'
           const_get(:"#{primitive}Prop").new(key, spec)
         else
           StructureProp.new(key, spec, substructs)
