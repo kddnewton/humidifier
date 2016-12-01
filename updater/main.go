@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
-	"path"
 	"time"
 )
 
@@ -33,7 +32,7 @@ func check() string {
 	os.Chdir("humidifier")
 	defer os.Chdir("..")
 
-	runCommand(path.Join("bin", "get-specs"))
+	runCommand("bundle", "exec", "rake", "specs")
 	out := runCommand("git", "status", "--short")
 
 	if out != "" {
