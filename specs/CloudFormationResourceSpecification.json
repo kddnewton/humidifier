@@ -7126,6 +7126,23 @@
           "UpdateType": "Mutable"
         }
       }
+    },
+    "AWS::CloudFront::Distribution.OriginCustomHeader": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-origin-origincustomheader.html",
+      "Properties": {
+        "HeaderName": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-origin-origincustomheader.html#cfn-cloudfront-origin-origincustomheader-headername",
+          "Required": true,
+          "PrimitiveType": "String",
+          "UpdateType": "Mutable"
+        },
+        "HeaderValue": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-origin-origincustomheader.html#cfn-cloudfront-origin-origincustomheader-headervalue",
+          "PrimitiveType": "String",
+          "Required": true,
+          "UpdateType": "Mutable"
+        }
+      }
     }
   },
   "ResourceTypes": {
