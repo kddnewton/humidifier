@@ -33,7 +33,6 @@ task :specs do
   require 'json'
   require 'net/http'
   require 'nokogiri'
-  require './specs/fixer'
 
   url = URI.parse('http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html')
   row =
@@ -46,13 +45,10 @@ task :specs do
   puts "Downloading from #{href}..."
 
   response = Net::HTTP.get_response(URI.parse(href)).body
-  filepath = File.expand_path(File.join('..', 'specs', 'CloudFormationResourceSpecification.json'), __FILE__)
+  filepath = File.expand_path(File.join('..', 'CloudFormationResourceSpecification.json'), __FILE__)
 
   size = File.write(filepath, response)
   puts "  wrote #{filepath} (#{(size / 1024.0).round(2)}K)"
-
-  size = Fixer.new(filepath).write
-  puts "  wrote fixed #{filepath} (#{(size / 1024.0).round(2)}K)"
 end
 
 task default: :test
