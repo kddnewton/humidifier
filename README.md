@@ -92,7 +92,7 @@ The default rake task runs the tests. Coverage is reported on the command line, 
 
 ### Specs
 
-The specs pulled from the CFN docs lives in `specs/CloudFormationResourceSpecification.json`. You can update it by running `bundle exec rake specs`. This script will pull down the latest [resource specification](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html) to be used with Humidifier.
+The specs pulled from the CFN docs is saved to `CloudFormationResourceSpecification.json`. You can update it by running `bundle exec rake specs`. This script will pull down the latest [resource specification](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html) to be used with Humidifier.
 
 ### Extension
 
