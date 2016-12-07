@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/localytics/humidifier'
   spec.license       = 'MIT'
 
-  spec.files         = Dir['LICENSE', 'README.md', 'ext/**/*', 'lib/**/*', 'specs/**/*']
+  spec.files         = Dir['LICENSE', 'README.md', 'ext/**/*', 'lib/**/*', 'CloudFormationResourceSpecification.json']
   spec.require_paths = ['lib']
   spec.extensions    = ['ext/humidifier/extconf.rb']
   spec.required_ruby_version = '>= 2.0.0'
