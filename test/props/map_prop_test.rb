@@ -20,6 +20,11 @@ module Props
       refute build.valid?('foo' => 1, 'bar' => '2')
     end
 
+    def test_to_cf
+      value = { 'Foo' => 1, 'Bar' => 2 }
+      assert_equal ['Test', value], build.to_cf(value)
+    end
+
     private
 
     def build

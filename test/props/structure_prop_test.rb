@@ -16,15 +16,19 @@ module Props
     end
 
     def test_subprop
-      assert build.valid?(alpha: { beta: 'gamma' })
-      refute build.valid?(alpha: { beta: 1 })
+      assert build.valid?(beta: 'gamma')
+      refute build.valid?(beta: 1)
+    end
+
+    def test_to_cf
+      assert_equal ['Alpha', { 'Beta' => 'gamma' }], build.to_cf(beta: 'gamma')
     end
 
     private
 
     def build
       substructs = { 'Sub' => { 'Properties' => { 'Beta' => { 'PrimitiveType' => 'String' } } } }
-      Humidifier::Props::MapProp.new('Alpha', { 'Type' => 'Sub' }, substructs)
+      Humidifier::Props::StructureProp.new('Alpha', { 'Type' => 'Sub' }, substructs)
     end
   end
 end
