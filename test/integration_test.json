@@ -1,0 +1,78 @@
+{
+  "Resources": {
+    "Distribution": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig" : {
+          "Origins" : [ {
+            "DomainName" : "mybucket.s3.amazonaws.com",
+            "Id" : "myS3Origin",
+            "S3OriginConfig" : {
+              "OriginAccessIdentity" : "origin-access-identity/cloudfront/E127EXAMPLE51Z"
+            }
+          }],
+          "Enabled" : true,
+          "Comment" : "Some comment",
+          "DefaultRootObject" : "index.html",
+          "Logging" : {
+            "IncludeCookies" : false,
+            "Bucket" : "mylogs.s3.amazonaws.com",
+            "Prefix" : "myprefix"
+          },
+          "Aliases" : [ "mysite.example.com", "yoursite.example.com" ],
+          "DefaultCacheBehavior" : {
+            "AllowedMethods" : [ "DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT" ],
+            "TargetOriginId" : "myS3Origin",
+            "ForwardedValues" : {
+              "QueryString" : false,
+              "Cookies" : { "Forward" : "none" }
+            },
+            "TrustedSigners" : [ "1234567890EX", "1234567891EX" ],
+            "ViewerProtocolPolicy" : "allow-all"
+          },
+          "PriceClass" : "PriceClass_200",
+          "Restrictions" : {
+              "GeoRestriction" : {
+                "RestrictionType" : "whitelist",
+                "Locations" : [ "AQ", "CV" ]
+              }
+          },
+          "ViewerCertificate" : { "CloudFrontDefaultCertificate" : true }
+        }
+      }
+    },
+    "SpotFleet": {
+      "Type": "AWS::EC2::SpotFleet",
+      "Properties": {
+        "SpotFleetRequestConfigData": {
+          "IamFleetRole": { "Ref": "IAMFleetRole" },
+          "SpotPrice": "1000",
+          "TargetCapacity": { "Ref": "TargetCapacity" },
+          "LaunchSpecifications": [
+          {
+            "EbsOptimized": false,
+            "InstanceType": { "Ref": "InstanceType" },
+            "ImageId": { "Fn::FindInMap": [ "AWSRegionArch2AMI", { "Ref": "AWS::Region" },
+                         { "Fn::FindInMap": [ "AWSInstanceType2Arch", { "Ref": "InstanceType" }, "Arch" ] }
+                       ]},
+            "SubnetId": { "Ref": "Subnet1" },
+            "WeightedCapacity": 8
+          },
+          {
+            "EbsOptimized": true,
+            "InstanceType": { "Ref": "InstanceType" },
+            "ImageId": { "Fn::FindInMap": [ "AWSRegionArch2AMI", { "Ref": "AWS::Region" },
+                         { "Fn::FindInMap": [ "AWSInstanceType2Arch", { "Ref": "InstanceType" }, "Arch" ] }
+                       ]},
+            "Monitoring": { "Enabled": true },
+            "SecurityGroups": [ { "GroupId": { "Fn::GetAtt": [ "SG0", "GroupId" ] } } ],
+            "SubnetId": { "Ref": "Subnet0" },
+            "IamInstanceProfile": { "Arn": { "Fn::GetAtt": [ "RootInstanceProfile", "Arn" ] } },
+            "WeightedCapacity": 8
+          }
+          ]
+        }
+      }
+    }
+  }
+}

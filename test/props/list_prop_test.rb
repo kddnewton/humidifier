@@ -19,6 +19,11 @@ module Props
       refute build.valid?([1, 'foo'])
     end
 
+    def test_to_cf
+      assert_equal ['Test', [1, 2]], build.to_cf([1, 2])
+      assert_equal ['Test', [1, 2]], build.to_cf([1, 2])
+    end
+
     private
 
     def build

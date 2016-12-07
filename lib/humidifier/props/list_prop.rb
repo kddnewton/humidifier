@@ -4,6 +4,11 @@ module Humidifier
     class ListProp < Base
       attr_reader :subprop
 
+      # CFN stack syntax
+      def to_cf(list)
+        [key, list.map { |value| subprop.to_cf(value).last }]
+      end
+
       # Valid if the value is whitelisted or every value in the list is valid on the subprop
       def valid?(list)
         whitelisted_value?(list) || (list.is_a?(Enumerable) && list.all? { |value| subprop.valid?(value) })
