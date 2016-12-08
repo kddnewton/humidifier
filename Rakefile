@@ -47,7 +47,12 @@ task :specs do
   response = Net::HTTP.get_response(URI.parse(href)).body
   filepath = File.expand_path(File.join('..', 'CloudFormationResourceSpecification.json'), __FILE__)
 
-  size = File.write(filepath, response)
+  json = JSON.parse(response)
+  json['ResourceTypes']['AWS::AutoScaling::AutoScalingGroup']['Properties']['Tags'] =
+    json['ResourceTypes']['AWS::AutoScaling::AutoScalingGroup']['Properties']['AsTags']
+  json['ResourceTypes']['AWS::AutoScaling::AutoScalingGroup']['Properties'].delete('AsTags')
+
+  size = File.write(filepath, JSON.pretty_generate(json))
   puts "  wrote #{filepath} (#{(size / 1024.0).round(2)}K)"
 end
 
