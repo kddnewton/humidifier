@@ -30,6 +30,7 @@ end
 
 desc 'Download the latest specs from AWS'
 task :specs do
+  # Fixes the specs coming from AWS
   class Fixer
     attr_reader :json
 
@@ -51,7 +52,7 @@ task :specs do
       json['ResourceTypes']['AWS::AutoScaling::AutoScalingGroup']['Properties'].delete('AsTags')
     end
 
-    def fix_cloudwatch_alarms
+    def fix_cloudwatch_alarms # rubocop:disable Metrics/AbcSize
       json['ResourceTypes']['AWS::CloudWatch::Alarm']['Properties']['EvaluationPeriods']['PrimitiveType'] = 'String'
       json['ResourceTypes']['AWS::CloudWatch::Alarm']['Properties']['Period']['PrimitiveType'] = 'String'
       json['ResourceTypes']['AWS::CloudWatch::Alarm']['Properties']['Threshold']['PrimitiveType'] = 'String'
