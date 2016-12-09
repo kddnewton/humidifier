@@ -11,7 +11,7 @@ module Humidifier
         else
           Utils.enumerable_to_h(struct) do |(subkey, subvalue)|
             subkey = Utils.underscore(subkey.to_s)
-            [subkey, subprops[subkey].convert(subvalue)]
+            [subkey.to_sym, subprops[subkey].convert(subvalue)]
           end
         end
       end

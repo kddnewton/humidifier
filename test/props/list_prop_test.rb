@@ -24,6 +24,15 @@ module Props
       assert_equal ['Test', [1, 2]], build.to_cf([1, 2])
     end
 
+    def test_convert_valid
+      assert_equal [5], build.convert([5])
+    end
+
+    def test_convert_invalid
+      out, * = capture_io { assert [5], build.convert(['5']) }
+      assert_match(/WARNING: Property test/, out)
+    end
+
     private
 
     def build
