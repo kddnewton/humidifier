@@ -49,4 +49,12 @@ class PropsTest < Minitest::Test
     assert_kind_of Humidifier::Props::StructureProp, prop
     assert_equal 'structure', prop.key
   end
+
+  def test_api
+    ObjectSpace.each_object(Humidifier::Props::Base.singleton_class) do |clazz|
+      next if clazz == Humidifier::Props::Base
+      assert_respond_to clazz.new, :convert
+      assert_respond_to clazz.new, :valid?
+    end
+  end
 end

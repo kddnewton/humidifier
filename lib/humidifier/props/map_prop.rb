@@ -4,6 +4,11 @@ module Humidifier
     class MapProp < Base
       attr_reader :subprop
 
+      # converts the value through mapping using the subprop unless it is valid
+      def convert(map)
+        valid?(map) ? map : Utils.enumerable_to_h(map) { |(key, value)| [key, subprop.convert(value)] }
+      end
+
       # CFN stack syntax
       def to_cf(map)
         dumped =

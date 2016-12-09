@@ -30,6 +30,34 @@ end
 
 desc 'Download the latest specs from AWS'
 task :specs do
+  class Fixer
+    attr_reader :json
+
+    def initialize(json)
+      @json = json
+    end
+
+    def fixed
+      fix_asg_tags
+      fix_cloudwatch_alarms
+      json
+    end
+
+    private
+
+    def fix_asg_tags
+      json['ResourceTypes']['AWS::AutoScaling::AutoScalingGroup']['Properties']['Tags'] =
+        json['ResourceTypes']['AWS::AutoScaling::AutoScalingGroup']['Properties']['AsTags']
+      json['ResourceTypes']['AWS::AutoScaling::AutoScalingGroup']['Properties'].delete('AsTags')
+    end
+
+    def fix_cloudwatch_alarms
+      json['ResourceTypes']['AWS::CloudWatch::Alarm']['Properties']['EvaluationPeriods']['PrimitiveType'] = 'String'
+      json['ResourceTypes']['AWS::CloudWatch::Alarm']['Properties']['Period']['PrimitiveType'] = 'String'
+      json['ResourceTypes']['AWS::CloudWatch::Alarm']['Properties']['Threshold']['PrimitiveType'] = 'String'
+    end
+  end
+
   require 'json'
   require 'net/http'
   require 'nokogiri'
@@ -47,11 +75,7 @@ task :specs do
   response = Net::HTTP.get_response(URI.parse(href)).body
   filepath = File.expand_path(File.join('..', 'CloudFormationResourceSpecification.json'), __FILE__)
 
-  json = JSON.parse(response)
-  json['ResourceTypes']['AWS::AutoScaling::AutoScalingGroup']['Properties']['Tags'] =
-    json['ResourceTypes']['AWS::AutoScaling::AutoScalingGroup']['Properties']['AsTags']
-  json['ResourceTypes']['AWS::AutoScaling::AutoScalingGroup']['Properties'].delete('AsTags')
-
+  json = Fixer.new(JSON.parse(response)).fixed
   size = File.write(filepath, JSON.pretty_generate(json))
   puts "  wrote #{filepath} (#{(size / 1024.0).round(2)}K)"
 end

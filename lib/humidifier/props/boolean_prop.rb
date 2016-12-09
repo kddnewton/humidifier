@@ -2,19 +2,19 @@ module Humidifier
   module Props
     # A boolean property
     class BooleanProp < Base
-      # converts through value == 'true'
+      # converts the value through `value == 'true'` unless it is valid
       def convert(value)
-        if %w[true false].include?(value)
+        if valid?(value) || !%w[true false].include?(value)
+          value
+        else
           puts "WARNING: Property #{name} should be a boolean, not a string"
           value == 'true'
-        else
-          value
         end
       end
 
       # true if it is a boolean
       def valid?(value)
-        value.is_a?(TrueClass) || value.is_a?(FalseClass)
+        whitelisted_value?(value) || value.is_a?(TrueClass) || value.is_a?(FalseClass)
       end
     end
   end

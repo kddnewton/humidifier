@@ -4,10 +4,22 @@ module Humidifier
     class StructureProp < Base
       attr_reader :subprops
 
+      # converts the value through mapping using the subprop unless it is valid
+      def convert(struct)
+        if valid?(struct)
+          struct
+        else
+          Utils.enumerable_to_h(struct) do |(subkey, subvalue)|
+            subkey = Utils.underscore(subkey.to_s)
+            [subkey, subprops[subkey].convert(subvalue)]
+          end
+        end
+      end
+
       # CFN stack syntax
-      def to_cf(value)
+      def to_cf(struct)
         dumped =
-          Utils.enumerable_to_h(value) do |(subkey, subvalue)|
+          Utils.enumerable_to_h(struct) do |(subkey, subvalue)|
             subprops[subkey.to_s].to_cf(subvalue)
           end
         [key, dumped]
@@ -15,9 +27,7 @@ module Humidifier
 
       # true if the value is whitelisted or Hash and all keys are valid for their corresponding props
       def valid?(struct)
-        whitelisted_value?(struct) ||
-          (struct.is_a?(Hash) &&
-          struct.all? { |key, value| subprops.key?(key.to_s) && subprops[key.to_s].valid?(value) })
+        whitelisted_value?(struct) || (struct.is_a?(Hash) && valid_struct?(struct))
       end
 
       private
@@ -29,6 +39,10 @@ module Humidifier
             subprop = config['ItemType'] == type ? self : Props.from(key, config, substructs)
             [Utils.underscore(key), subprop]
           end
+      end
+
+      def valid_struct?(struct)
+        struct.all? { |key, value| subprops.key?(key.to_s) && subprops[key.to_s].valid?(value) }
       end
     end
   end

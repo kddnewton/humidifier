@@ -2,10 +2,14 @@ module Humidifier
   module Props
     # A string property
     class StringProp < Base
-      # converts the value through #to_s unless it is whitelisted
+      # converts the value through #to_s unless it is valid
       def convert(value)
-        puts "WARNING: Property #{name} should be a string" unless valid?(value)
-        whitelisted_value?(value) ? value : value.to_s
+        if valid?(value)
+          value
+        else
+          puts "WARNING: Property #{name} should be a string"
+          value.to_s
+        end
       end
 
       # true if it is whitelisted or a String
