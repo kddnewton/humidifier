@@ -35,7 +35,7 @@ module Humidifier
       def after_initialize(substructs)
         type = spec['ItemType'] || spec['Type']
         @subprops =
-          Utils.enumerable_to_h(substructs[type]['Properties']) do |(key, config)|
+          Utils.enumerable_to_h(substructs.fetch(type, {}).fetch('Properties', {})) do |(key, config)|
             subprop = config['ItemType'] == type ? self : Props.from(key, config, substructs)
             [Utils.underscore(key), subprop]
           end

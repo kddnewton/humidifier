@@ -52,9 +52,9 @@ class PropsTest < Minitest::Test
 
   def test_api
     ObjectSpace.each_object(Humidifier::Props::Base.singleton_class) do |clazz|
-      next if clazz == Humidifier::Props::Base
-      assert_respond_to clazz.new, :convert
-      assert_respond_to clazz.new, :valid?
+      next if %w[Base TestProp].include?(clazz.name.split('::').last)
+      assert_respond_to clazz.new('Foo'), :convert
+      assert_respond_to clazz.new('Bar'), :valid?
     end
   end
 end
