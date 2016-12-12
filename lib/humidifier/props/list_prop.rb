@@ -4,6 +4,11 @@ module Humidifier
     class ListProp < Base
       attr_reader :subprop
 
+      # converts the value through mapping using the subprop unless it is valid
+      def convert(list)
+        valid?(list) ? list : list.map { |value| subprop.convert(value) }
+      end
+
       # CFN stack syntax
       def to_cf(list)
         [key, list.map { |value| subprop.to_cf(value).last }]

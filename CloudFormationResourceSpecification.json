@@ -10096,7 +10096,7 @@
         },
         "EvaluationPeriods": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html#cfn-cloudwatch-alarms-evaluationperiods",
-          "PrimitiveType": "Double",
+          "PrimitiveType": "String",
           "Required": true,
           "UpdateType": "Mutable"
         },
@@ -10130,7 +10130,7 @@
         },
         "Period": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html#cfn-cloudwatch-alarms-period",
-          "PrimitiveType": "Integer",
+          "PrimitiveType": "String",
           "Required": true,
           "UpdateType": "Mutable"
         },
@@ -10142,7 +10142,7 @@
         },
         "Threshold": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html#cfn-cloudwatch-alarms-threshold",
-          "PrimitiveType": "Double",
+          "PrimitiveType": "String",
           "Required": true,
           "UpdateType": "Mutable"
         },

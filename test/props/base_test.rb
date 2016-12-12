@@ -23,11 +23,6 @@ module Props
       mock.verify
     end
 
-    def test_convertable?
-      refute build.convertable?
-      assert TestProp.new('Test').convertable?
-    end
-
     def test_documentation
       assert_equal 'documentation', build('Test', 'Documentation' => 'documentation').documentation
     end

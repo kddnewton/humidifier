@@ -15,11 +15,6 @@ module Humidifier
         after_initialize(substructs) if respond_to?(:after_initialize, true)
       end
 
-      # true if the property type knows how to convert its values
-      def convertable?
-        respond_to?(:convert)
-      end
-
       # the link to the AWS docs
       def documentation
         spec['Documentation']

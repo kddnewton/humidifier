@@ -106,7 +106,7 @@ module Humidifier
 
     def validate_value(property, value, raw)
       prop = self.class.props[property]
-      value = prop.convert(value) if raw && prop.convertable?
+      value = prop.convert(value) if raw
       unless prop.valid?(value)
         raise ArgumentError, "Invalid value for #{property}: #{value.inspect}"
       end
