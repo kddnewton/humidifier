@@ -9,20 +9,16 @@ module Humidifier
         if valid?(struct)
           struct
         else
-          Utils.enumerable_to_h(struct) do |(subkey, subvalue)|
+          struct.map do |subkey, subvalue|
             subkey = Utils.underscore(subkey.to_s)
             [subkey.to_sym, subprops[subkey].convert(subvalue)]
-          end
+          end.to_h
         end
       end
 
       # CFN stack syntax
       def to_cf(struct)
-        dumped =
-          Utils.enumerable_to_h(struct) do |(subkey, subvalue)|
-            subprops[subkey.to_s].to_cf(subvalue)
-          end
-        [key, dumped]
+        [key, struct.map { |subkey, subvalue| subprops[subkey.to_s].to_cf(subvalue) }.to_h]
       end
 
       # true if the value is whitelisted or Hash and all keys are valid for their corresponding props
@@ -35,10 +31,10 @@ module Humidifier
       def after_initialize(substructs)
         type = spec['ItemType'] || spec['Type']
         @subprops =
-          Utils.enumerable_to_h(substructs.fetch(type, {}).fetch('Properties', {})) do |(key, config)|
+          substructs.fetch(type, {}).fetch('Properties', {}).map do |key, config|
             subprop = config['ItemType'] == type ? self : Props.from(key, config, substructs)
             [Utils.underscore(key), subprop]
-          end
+          end.to_h
       end
 
       def valid_struct?(struct)
