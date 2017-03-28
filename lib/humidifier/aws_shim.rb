@@ -4,10 +4,8 @@ require 'humidifier/aws_adapters/sdkv1'
 require 'humidifier/aws_adapters/sdkv2'
 
 module Humidifier
-
   # Optionally provides aws-sdk functionality if the gem is loaded
   class AwsShim
-
     # The AWS region, can be set through the environment, defaults to us-east-1
     REGION = ENV['AWS_REGION'] || 'us-east-1'
 

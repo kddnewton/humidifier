@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class FullStackTest < Minitest::Test
-
   ResourceDouble = Struct.new(:to_cf)
   EXPECTED_CF = {
     'AWSTemplateFormatVersion' => 'foo',
@@ -17,7 +16,7 @@ class FullStackTest < Minitest::Test
   def test_to_cf
     stack = Humidifier::Stack.new(static_resources.merge(enumerable_resources))
     assert_equal EXPECTED_CF, JSON.parse(stack.to_cf(:json))
-    assert_equal EXPECTED_CF, YAML.load(stack.to_cf(:yaml))
+    assert_equal EXPECTED_CF, YAML.safe_load(stack.to_cf(:yaml))
   end
 
   private

@@ -1,5 +1,4 @@
 module Humidifier
-
   # Container for property of CFN resources
   module Props
     class << self

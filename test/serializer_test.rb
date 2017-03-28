@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class SerializerTest < Minitest::Test
-
   def test_hash
     value = Object.new
     assert_equal ({ foo: value }), dump(foo: value)

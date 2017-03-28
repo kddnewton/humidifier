@@ -1,8 +1,6 @@
 module Humidifier
-
   # Dumps an object to CFN syntax
   class Serializer
-
     class << self
       # dumps the given object out to CFN syntax recursively
       def dump(node)

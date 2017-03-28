@@ -1,8 +1,6 @@
 module Humidifier
-
   # a container for user params
   class Configuration
-
     # The message that gets displayed when the stack body is too large to use
     # the template_body option
     UPLOAD_MESSAGE = <<-MSG.freeze

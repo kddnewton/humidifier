@@ -1,8 +1,6 @@
 module Humidifier
-
   # Represents a CFN stack
   class Stack
-
     # Single settings on the stack
     STATIC_RESOURCES     = Utils.underscored(%w[AWSTemplateFormatVersion Description Metadata])
 

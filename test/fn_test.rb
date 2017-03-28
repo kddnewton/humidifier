@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class FnTest < Minitest::Test
-
   Humidifier::Fn::FUNCTIONS.each do |name, func|
     define_method(:"test_#{func}") do
       reference = Object.new

@@ -1,8 +1,6 @@
 module Humidifier
-
   # Superclass for all AWS resources
   class Resource
-
     # Attributes that are available to every stack
     COMMON_ATTRIBUTES =
       Utils.underscored(%w[Condition CreationPolicy DeletionPolicy DependsOn Metadata UpdatePolicy])

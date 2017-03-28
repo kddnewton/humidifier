@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class OutputTest < Minitest::Test
-
   def test_to_cf
     with_mocked_serializer(Object.new) do |value|
       assert_equal ({ 'Value' => value }), Humidifier::Output.new(value: value).to_cf

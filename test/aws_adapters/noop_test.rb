@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class NoopTest < Minitest::Test
-
   Humidifier::AwsShim::STACK_METHODS.each do |method|
     define_method(:"test_#{method}") do
       assert_warning method

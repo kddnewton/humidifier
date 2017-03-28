@@ -1,8 +1,6 @@
 module Humidifier
-
   # Dumps an object to CFN syntax
   module Utils
-
     class << self
       # back-supporting ruby 2.0's lack of Enumerable#to_h
       def enumerable_to_h(enumerable)

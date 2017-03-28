@@ -1,8 +1,6 @@
 module Humidifier
-
   # Manages waiting for stack events for v1 of the SDK
   class Sleeper
-
     attr_accessor :attempts
 
     # Store attempts and wait for the block to return true

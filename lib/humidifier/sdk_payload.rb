@@ -1,8 +1,6 @@
 module Humidifier
-
   # The payload sent to the shim methods, representing the stack and the options
   class SdkPayload
-
     # The maximum size a template body can be before it has to be put somewhere and referenced through a URL
     MAX_TEMPLATE_BODY_SIZE = 51_200
 
