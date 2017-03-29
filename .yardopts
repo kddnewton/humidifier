@@ -4,5 +4,6 @@
 --markup markdown
 --tag aws:"AWS Resource"
 --quiet
+--output-dir docs
 -
 LICENSE
