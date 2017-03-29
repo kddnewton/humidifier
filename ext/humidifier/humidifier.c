@@ -1,6 +1,7 @@
 #include <humidifier.h>
 
-// takes a substring from underscore_preprocess like EC2T or AWST and converts it to Ec2T or AwsT
+// takes a substring from underscore_preprocess like EC2T or AWST and converts
+// it to Ec2T or AwsT
 static void format_substring(char* substr, const int substr_idx, const int capitalize)
 {
   int idx;
@@ -15,8 +16,8 @@ static void format_substring(char* substr, const int substr_idx, const int capit
   }
 }
 
-// finds occurences of EC2Thing or AWSThing and makes them into Ec2Thing and AwsThing so that underscore can be
-// simpler and just look for capitals
+// finds occurences of EC2Thing or AWSThing and makes them into Ec2Thing and
+// AwsThing so that underscore can be simpler and just look for capitals
 static void preprocess(char* str)
 {
   char substr[strlen(str)];
@@ -41,7 +42,8 @@ static void preprocess(char* str)
   }
 }
 
-// takes a string and returns a downcased version where capitals are now separated by underscores
+// takes a string and returns a downcased version where capitals are now
+// separated by underscores
 static VALUE underscore(VALUE self, VALUE str)
 {
   if (TYPE(str) == T_NIL) return Qnil;
@@ -52,7 +54,8 @@ static VALUE underscore(VALUE self, VALUE str)
   strcpy(orig_str, str_value);
   preprocess(orig_str);
 
-  // manually null-terminating the string because on Fedora for strings of length 16 this breaks otherwise
+  // manually null-terminating the string because on Fedora for strings of
+  // length 16 this breaks otherwise
   orig_str[strlen(str_value)] = '\0';
 
   char new_str[strlen(orig_str) * 2];

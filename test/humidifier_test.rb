@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class HumidifierTest < Minitest::Test
-
   def test_config
     assert_kind_of Humidifier::Configuration, Humidifier.config
   end

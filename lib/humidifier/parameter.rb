@@ -1,8 +1,6 @@
 module Humidifier
-
   # Represents a CFN stack parameter
   class Parameter
-
     # The allowed properties of all stack parameters
     PROPERTIES = Utils.underscored(%w[AllowedPattern AllowedValues ConstraintDescription Default Description
                                       MaxLength MaxValue MinLength MinValue NoEcho])

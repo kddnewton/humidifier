@@ -1,8 +1,6 @@
 module Humidifier
-
   # Represents a CFN stack output
   class Output
-
     attr_accessor :description, :value
 
     def initialize(opts = {})

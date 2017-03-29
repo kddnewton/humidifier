@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class BaseTest < Minitest::Test
-
   def test_validation_error
     create_payload = Object.new
     def create_payload.create_params

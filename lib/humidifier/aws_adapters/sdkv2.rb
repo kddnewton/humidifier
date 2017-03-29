@@ -1,9 +1,7 @@
 module Humidifier
   module AwsAdapters
-
     # The adapter for v2 of aws-sdk
     class SDKV2 < Base
-
       # Create a change set in CFN
       def create_change_set(payload)
         payload.merge(change_set_name: "changeset-#{Time.now.strftime('%Y-%m-%d-%H-%M-%S')}")

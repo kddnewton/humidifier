@@ -1,7 +1,9 @@
-# Humidifier defines all of its classes that represent CFN resources dynamically, so YARD has a hard time documenting
-# them because it can't find them. As such, this script loops through the registry of resources and builds a ruby
-# file called "magic.rb" that YARD will find. The file contains only comments and takes advantage of the fact that
-# YARD will parse a block of comments as code if it has the @!parse directive.
+# Humidifier defines all of its classes that represent CFN resources
+# dynamically, so YARD has a hard time documenting them because it can't find
+# them. As such, this script loops through the registry of resources and builds
+# a ruby file called "magic.rb" that YARD will find. The file contains only
+# comments and takes advantage of the fact that YARD will parse a block of
+# comments as code if it has the @!parse directive.
 module Dynamic
   DOCS_BASE = 'http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-'
 

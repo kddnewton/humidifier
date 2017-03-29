@@ -1,8 +1,6 @@
 module Humidifier
-
   # Superclass for all AWS resources
   class Resource
-
     # Attributes that are available to every stack
     COMMON_ATTRIBUTES =
       Utils.underscored(%w[Condition CreationPolicy DeletionPolicy DependsOn Metadata UpdatePolicy])
@@ -35,7 +33,7 @@ module Humidifier
 
     # CFN stack syntax
     def to_cf
-      props_cf = Utils.enumerable_to_h(properties) { |(key, value)| self.class.props[key].to_cf(value) }
+      props_cf = properties.map { |key, value| self.class.props[key].to_cf(value) }.to_h
       { 'Type' => self.class.aws_name, 'Properties' => props_cf }.merge(common_attributes)
     end
 

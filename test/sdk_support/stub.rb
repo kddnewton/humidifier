@@ -1,6 +1,5 @@
 module SdkSupport
   class Stub
-
     attr_accessor :struct
 
     def initialize(struct)

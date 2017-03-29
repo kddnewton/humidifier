@@ -1,9 +1,9 @@
 language: ruby
 rvm:
-- 2.0.0-p648
-- 2.1.8
-- 2.2.4
-- 2.3.0
+- 2.1.10
+- 2.2.6
+- 2.3.3
+- 2.4.1
 cache: bundler
 branches:
   only:
@@ -11,8 +11,3 @@ branches:
 script:
 - bundle exec rake
 - bundle exec rubocop
-after_success:
-- bash bin/deploy
-env:
-  global:
-  - secure: oJb0KrnghrBAP96H/myoFg+WEPyk8axds76JdN/Srm9y7fIYCoytCA81rApsQdQ/zm0QTVu5XrweEI2UIBZvntUFb72OgrO+n4/14BElCeU64I5fGvbW0lswFB7vMHXEulW/yyVPTeo8bBxmEX275tk1AfaQdVnSonz9hgy8D8rE6Km4PTynLqow25I5TeoTSkDfq04BWiO3lNOFQ0UTiszMcgAHFfFU/lqiGQQF/69+vKRu3RPC0XujA8cQM0i5ZsLr6ztrdYkpOkpkUqGvuJFQOKj4uJmwIB6LEZWLzaPRJrad9828QtcxmQvjZqsOGyHnzMB5qWw3weEjI1J3VdpHttwvHXYk6OLGi5DQivNh75WBWUmnYtKI3avREIMLD96ke4e2AYljiQNTcqaal4QDBJkt35jyzNFyISasSjmaQ2SAvx8V78A7SemcHtHjOp2u8Rja+mY4DBvhoBNQ7gyORfMrJVAi3lK4jS5eEnSpwI2lDMAdOQDAXkF16/GVQtLAWhZNXA8RkaeR3msN1yRvRyYu9iQp56AJsZ0JIRC4Llzk5dKDralPxSYr8kaKf7ucFc8okshwfCij+V6XWtdXvOnykI7BLyWQwqzxR9jFcnitu/BaD1Ft4Vok8W/t2/BsAnfpyFEAZyOG+5OBH9TpUa7Bb89aEEvGiMfgt1A=

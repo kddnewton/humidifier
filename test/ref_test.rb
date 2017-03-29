@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class RefTest < Minitest::Test
-
   def test_to_cf
     reference = Object.new
     ref = Humidifier::Ref.new(reference)

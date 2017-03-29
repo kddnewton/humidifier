@@ -2,7 +2,6 @@ module Humidifier
   module Props
     # Superclass for all CFN properties
     class Base
-
       # The list of classes that are valid beyond the normal values for each prop
       WHITELIST = [Fn, Ref].freeze
 

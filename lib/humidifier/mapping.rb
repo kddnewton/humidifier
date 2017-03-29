@@ -1,8 +1,6 @@
 module Humidifier
-
   # Represents a CFN stack mapping
   class Mapping
-
     attr_accessor :opts
 
     def initialize(opts = {})

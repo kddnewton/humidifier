@@ -6,19 +6,16 @@ module Humidifier
 
       # converts the value through mapping using the subprop unless it is valid
       def convert(map)
-        valid?(map) ? map : Utils.enumerable_to_h(map) { |(key, value)| [key, subprop.convert(value)] }
+        valid?(map) ? map : map.map { |key, value| [key, subprop.convert(value)] }.to_h
       end
 
       # CFN stack syntax
       def to_cf(map)
-        dumped =
-          Utils.enumerable_to_h(map) do |(subkey, subvalue)|
-            [subkey, subprop.to_cf(subvalue).last]
-          end
-        [key, dumped]
+        [key, map.map { |subkey, subvalue| [subkey, subprop.to_cf(subvalue).last] }.to_h]
       end
 
-      # Valid if the value is whitelisted or every value in the map is valid on the subprop
+      # Valid if the value is whitelisted or every value in the map is valid on
+      # the subprop
       def valid?(map)
         whitelisted_value?(map) || (map.is_a?(Hash) && map.values.all? { |value| subprop.valid?(value) })
       end

@@ -1,8 +1,6 @@
 module Humidifier
-
   # Represents a CFN stack condition
   class Condition
-
     attr_accessor :opts
 
     def initialize(opts)

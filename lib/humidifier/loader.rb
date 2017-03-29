@@ -1,17 +1,20 @@
 module Humidifier
-  # Pre-setting this module because AWS has a "Config" module and the below register method dynamically looks up the
-  # module to see whether or not it exists, which before ruby 2.2 would result in the warning:
+  # Pre-setting this module because AWS has a "Config" module and the below
+  # register method dynamically looks up the module to see whether or not it
+  # exists, which before ruby 2.2 would result in the warning:
   #   `const_defined?': Use RbConfig instead of obsolete and deprecated Config.
   # @aws AWS::Config
   module Config
   end
 
-  # Reads the specs/CloudFormationResourceSpecification.json file and load each resource as a class
+  # Reads the specs/CloudFormationResourceSpecification.json file and load each
+  # resource as a class
   class Loader
     # The path to the specification file
     SPECPATH = File.expand_path(File.join('..', '..', '..', 'CloudFormationResourceSpecification.json'), __FILE__)
 
-    # Handles searching the PropertyTypes specifications for a specific resource type
+    # Handles searching the PropertyTypes specifications for a specific
+    # resource type
     class StructureContainer
       attr_reader :structs
 
@@ -28,7 +31,7 @@ module Humidifier
       private
 
       def global
-        @global ||= structs.select { |key, _| !key.match(/AWS/) }
+        @global ||= structs.reject { |key, _| key.match(/AWS/) }
       end
     end
 
@@ -54,10 +57,10 @@ module Humidifier
       Class.new(Resource) do
         self.aws_name = aws_name
         self.props =
-          Utils.enumerable_to_h(spec['Properties']) do |(key, config)|
+          spec['Properties'].map do |(key, config)|
             prop = Props.from(key, config, substructs)
             [prop.name, prop]
-          end
+          end.to_h
       end
     end
 

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class SDKV2Test < Minitest::Test
-
   def test_create_change_set
     with_sdk_v2_loaded do |sdk|
       SdkSupport.expect(:create_change_set, [change_set_options])

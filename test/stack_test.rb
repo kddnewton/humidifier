@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class StackTest < Minitest::Test
-
   def test_defaults
     reset_stack_count
     stack = Humidifier::Stack.new

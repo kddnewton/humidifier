@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class MappingTest < Minitest::Test
-
   def test_to_cf
     with_mocked_serializer({}) do |value|
       assert_equal value, Humidifier::Mapping.new(value).to_cf

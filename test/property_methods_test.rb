@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class PropertyMethodsTest < Minitest::Test
-
   def test_build_property_reader
     slate = build_slate
     slate.build_property_reader(:foo)

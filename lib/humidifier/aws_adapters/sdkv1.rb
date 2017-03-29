@@ -1,9 +1,7 @@
 module Humidifier
   module AwsAdapters
-
     # The adapter for v1 of aws-sdk
     class SDKV1 < Base
-
       # Cannot create change sets in V1
       def create_change_set(*)
         unsupported('create change set')

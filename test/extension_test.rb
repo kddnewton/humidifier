@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class ExtensionTest < Minitest::Test
-
   def test_basic
     assert_equal 'foo',               Humidifier::Utils.underscore('Foo')
     assert_equal 'foo_bar',           Humidifier::Utils.underscore('FooBar')

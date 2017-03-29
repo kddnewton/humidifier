@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class ConfigurationTest < Minitest::Test
-
   def test_ensure_upload_configured!
     error =
       assert_raises RuntimeError do

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class ParameterTest < Minitest::Test
-
   def test_to_cf
     assert_equal ({ 'Type' => 'String' }), Humidifier::Parameter.new.to_cf
   end

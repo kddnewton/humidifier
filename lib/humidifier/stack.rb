@@ -1,8 +1,6 @@
 module Humidifier
-
   # Represents a CFN stack
   class Stack
-
     # Single settings on the stack
     STATIC_RESOURCES     = Utils.underscored(%w[AWSTemplateFormatVersion Description Metadata])
 
@@ -67,9 +65,10 @@ module Humidifier
       ENUMERABLE_RESOURCES.each_with_object({}) do |(name, prop), list|
         resources = send(prop)
         next if resources.empty?
-        list[name] = Utils.enumerable_to_h(resources) do |resource_name, resource|
-          [resource_name, resource.to_cf]
-        end
+        list[name] =
+          resources.map do |resource_name, resource|
+            [resource_name, resource.to_cf]
+          end.to_h
       end
     end
 

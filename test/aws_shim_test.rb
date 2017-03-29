@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class AwsShimTest < Minitest::Test
-
   def test_forwarding
     stack = Object.new
     mock = Minitest::Mock.new
