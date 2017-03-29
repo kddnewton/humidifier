@@ -80,7 +80,7 @@ end
 
 ## Development
 
-To get started, ensure you have ruby installed, version 2.0 or later. From there, install the `bundler` gem: `gem install bundler` and then `bundle install` in the root of the repository.
+To get started, ensure you have ruby installed, version 2.1 or later. From there, install the `bundler` gem: `gem install bundler` and then `bundle install` in the root of the repository.
 
 ### Testing
 
