@@ -7,6 +7,9 @@ AllCops:
   - 'vendor/**/*'
   - 'yard/**/*'
 
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
 Metrics/LineLength:
   Max: 117
 
