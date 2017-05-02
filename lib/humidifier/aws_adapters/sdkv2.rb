@@ -8,9 +8,17 @@ module Humidifier
         try_valid { client.create_change_set(payload.create_change_set_params) }
       end
 
+      # Wrap the result from create_stack so it responds to :id in addition to
+      # :stack_id
+      class ResponseWrapper < SimpleDelegator
+        def id
+          stack_id
+        end
+      end
+
       # Create a change set if the stack exists, otherwise create the stack
       def deploy_change_set(payload)
-        exists?(payload) ? create_change_set(payload) : create(payload)
+        exists?(payload) ? create_change_set(payload) : ResponseWrapper.new(create(payload))
       end
 
       # True if the stack exists in CFN
