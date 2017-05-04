@@ -10,7 +10,7 @@ class ExtensionTest < Minitest::Test
 
   Humidifier.registry.each do |_, clazz|
     clazz.props.each do |name, prop|
-      define_method(:"test_#{name}") do
+      define_method(:"test_#{clazz.name}_#{name}") do
         assert_equal expected_for(prop.key), name
       end
     end

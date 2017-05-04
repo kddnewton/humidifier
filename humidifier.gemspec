@@ -22,13 +22,13 @@ Gem::Specification.new do |spec|
   spec.extensions    = ['ext/humidifier/extconf.rb']
   spec.required_ruby_version = '>= 2.1'
 
-  spec.add_development_dependency 'bundler', '~> 1.11'
-  spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'minitest', '~> 5.9'
-  spec.add_development_dependency 'nokogiri', '~> 1.6'
-  spec.add_development_dependency 'simplecov', '~> 0.11'
+  spec.add_development_dependency 'benchmark-ips', '~> 2.7'
+  spec.add_development_dependency 'bundler', '~> 1.14'
   spec.add_development_dependency 'coveralls', '~> 0.8'
-  spec.add_development_dependency 'rubocop', '~> 0.39'
-  spec.add_development_dependency 'rake-compiler', '~> 0.9'
-  spec.add_development_dependency 'benchmark-ips', '~> 2.6'
+  spec.add_development_dependency 'minitest', '~> 5.10'
+  spec.add_development_dependency 'nokogiri', '~> 1.7'
+  spec.add_development_dependency 'rake', '~> 12.0'
+  spec.add_development_dependency 'rake-compiler', '~> 1.0'
+  spec.add_development_dependency 'rubocop', '~> 0.48'
+  spec.add_development_dependency 'simplecov', '~> 0.14'
 end
