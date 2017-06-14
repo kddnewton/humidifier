@@ -4,7 +4,7 @@ module Humidifier
     # The message that gets displayed when the stack body is too large to use
     # the template_body option
     UPLOAD_MESSAGE = <<-MSG.freeze
-The %{identifier} stack's body is too large to be use the template_body option, and therefore must use the
+The %<identifier>s stack's body is too large to be use the template_body option, and therefore must use the
 template_url option instead. You can configure Humidifier to do this automatically by setting up the s3 config
 on the top-level Humidifier object like so:
 
@@ -24,7 +24,7 @@ MSG
 
     # raise an error unless the s3_bucket field is set
     def ensure_upload_configured!(payload)
-      raise UPLOAD_MESSAGE.gsub('%{identifier}', payload.identifier) if s3_bucket.nil?
+      raise UPLOAD_MESSAGE.gsub('%<identifier>s', payload.identifier) if s3_bucket.nil?
     end
 
     # true if the sdk_version option is set to 1 or '1'

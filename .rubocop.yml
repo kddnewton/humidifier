@@ -10,11 +10,11 @@ AllCops:
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 
+Layout/IndentHeredoc:
+  Enabled: false
+
 Metrics/LineLength:
   Max: 117
-
-Style/IndentHeredoc:
-  Enabled: false
 
 Style/PerlBackrefs:
   Enabled: false
