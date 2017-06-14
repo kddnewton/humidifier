@@ -133,7 +133,7 @@ template_body option</p>
 </div>
         </dt>
         <dd><pre class="code"><span class='heredoc_beg'>&lt;&lt;-MSG</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
-<span class='tstring_content'>The %{identifier} stack&#39;s body is too large to be use the template_body option, and therefore must use the
+<span class='tstring_content'>The %&lt;identifier&gt;s stack&#39;s body is too large to be use the template_body option, and therefore must use the
 template_url option instead. You can configure Humidifier to do this automatically by setting up the s3 config
 on the top-level Humidifier object like so:
 
@@ -570,7 +570,7 @@ on the top-level Humidifier object like so:
       <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ensure_upload_configured!'>ensure_upload_configured!</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>UPLOAD_MESSAGE</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%{identifier}</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_s3_bucket'>s3_bucket</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>UPLOAD_MESSAGE</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%&lt;identifier&gt;s</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_s3_bucket'>s3_bucket</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
