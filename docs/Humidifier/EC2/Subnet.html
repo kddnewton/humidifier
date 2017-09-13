@@ -158,6 +158,54 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#assign_ipv6_address_on_creation-instance_method" title="#assign_ipv6_address_on_creation (instance method)">#<strong>assign_ipv6_address_on_creation</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>returns the AssignIpv6AddressOnCreation property.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#assign_ipv6_address_on_creation%3D-instance_method" title="#assign_ipv6_address_on_creation= (instance method)">#<strong>assign_ipv6_address_on_creation=</strong>(value)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>sets the AssignIpv6AddressOnCreation property (Boolean).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#availability_zone-instance_method" title="#availability_zone (instance method)">#<strong>availability_zone</strong>  &#x21d2; Object </a>
     
 
@@ -246,6 +294,54 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
   
     <span class="summary_desc"><div class='inline'>
 <p>sets the CidrBlock property (String).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ipv6_cidr_block-instance_method" title="#ipv6_cidr_block (instance method)">#<strong>ipv6_cidr_block</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>returns the Ipv6CidrBlock property.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ipv6_cidr_block%3D-instance_method" title="#ipv6_cidr_block= (instance method)">#<strong>ipv6_cidr_block=</strong>(value)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>sets the Ipv6CidrBlock property (String).</p>
 </div></span>
   
 </li>
@@ -432,7 +528,89 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="availability_zone-instance_method">
+  <h3 class="signature first" id="assign_ipv6_address_on_creation-instance_method">
+  
+    #<strong>assign_ipv6_address_on_creation</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns the AssignIpv6AddressOnCreation property</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_assign_ipv6_address_on_creation'>assign_ipv6_address_on_creation</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>assign_ipv6_address_on_creation</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="assign_ipv6_address_on_creation=-instance_method">
+  
+    #<strong>assign_ipv6_address_on_creation=</strong>(value)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>sets the AssignIpv6AddressOnCreation property (Boolean)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_assign_ipv6_address_on_creation='>assign_ipv6_address_on_creation=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>assign_ipv6_address_on_creation</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="availability_zone-instance_method">
   
     #<strong>availability_zone</strong>  &#x21d2; <tt>Object</tt> 
   
@@ -457,12 +635,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-10
-11
-12</pre>
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_availability_zone'>availability_zone</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>availability_zone</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -498,12 +676,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-15
-16
-17</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_availability_zone='>availability_zone=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>availability_zone</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -539,12 +717,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-20
-21
-22</pre>
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cidr_block'>cidr_block</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cidr_block</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -580,15 +758,97 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-25
-26
-27</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cidr_block='>cidr_block=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cidr_block</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ipv6_cidr_block-instance_method">
+  
+    #<strong>ipv6_cidr_block</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns the Ipv6CidrBlock property</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ipv6_cidr_block'>ipv6_cidr_block</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ipv6_cidr_block</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ipv6_cidr_block=-instance_method">
+  
+    #<strong>ipv6_cidr_block=</strong>(value)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>sets the Ipv6CidrBlock property (String)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ipv6_cidr_block='>ipv6_cidr_block=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ipv6_cidr_block</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -621,12 +881,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-30
-31
-32</pre>
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_public_ip_on_launch'>map_public_ip_on_launch</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>map_public_ip_on_launch</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -662,12 +922,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-35
-36
-37</pre>
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_map_public_ip_on_launch='>map_public_ip_on_launch=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>map_public_ip_on_launch</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -703,12 +963,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-40
-41
-42</pre>
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tags'>tags</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tags</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -744,12 +1004,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-45
-46
-47</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tags='>tags=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tags</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -785,12 +1045,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-50
-51
-52</pre>
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_vpc_id'>vpc_id</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vpc_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -826,12 +1086,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-55
-56
-57</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_vpc_id='>vpc_id=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vpc_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
