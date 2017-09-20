@@ -20,7 +20,7 @@ class ResourceTest < Minitest::Test
 
   def test_respond_to_missing?
     resource = build
-    Humidifier::Resource.props.keys.each do |key|
+    Humidifier::Resource.props.each_key do |key|
       assert resource.respond_to?(key)
       assert resource.respond_to?("#{key}=")
     end

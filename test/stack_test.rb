@@ -6,10 +6,10 @@ class StackTest < Minitest::Test
     stack = Humidifier::Stack.new
 
     assert_match(/1\z/, stack.identifier)
-    Humidifier::Stack::STATIC_RESOURCES.values.each do |prop|
+    Humidifier::Stack::STATIC_RESOURCES.each_value do |prop|
       assert_nil stack.send(prop)
     end
-    Humidifier::Stack::ENUMERABLE_RESOURCES.values.each do |prop|
+    Humidifier::Stack::ENUMERABLE_RESOURCES.each_value do |prop|
       assert_equal ({}), stack.send(prop)
     end
   end
