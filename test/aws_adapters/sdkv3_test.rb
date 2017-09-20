@@ -4,7 +4,7 @@ class SDKV3Test < Minitest::Test
   def test_upload_raises_no_s3
     with_config(s3_bucket: 'test.s3.bucket') do
       with_sdk_v3_loaded do |sdk|
-        sdk.stub(:require, -> (name) { raise LoadError }) do
+        sdk.stub(:require, ->(_) { raise LoadError }) do
           assert_raises do
             sdk.upload(payload(identifier: 'identifier', to_cf: 'body'))
           end
@@ -14,15 +14,23 @@ class SDKV3Test < Minitest::Test
   end
 
   def test_upload_with_s3
+    with_valid_upload do |sdk|
+      SdkSupport.expect(:config, [], SdkSupport.double)
+      SdkSupport.expect(:update, [region: Humidifier::AwsShim::REGION])
+      SdkSupport.expect(:put_object, [body: 'body', bucket: 'test.s3.bucket', key: 'identifier.json'])
+      SdkSupport.expect(:presigned_url, [:get])
+      sdk.upload(payload(identifier: 'identifier', to_cf: 'body'))
+      SdkSupport.verify
+    end
+  end
+
+  private
+
+  def with_valid_upload
     with_config(s3_bucket: 'test.s3.bucket') do
       with_sdk_v3_loaded do |sdk|
         sdk.stub(:require, true) do
-          SdkSupport.expect(:config, [], SdkSupport.double)
-          SdkSupport.expect(:update, [region: Humidifier::AwsShim::REGION])
-          SdkSupport.expect(:put_object, [body: 'body', bucket: 'test.s3.bucket', key: 'identifier.json'])
-          SdkSupport.expect(:presigned_url, [:get])
-          sdk.upload(payload(identifier: 'identifier', to_cf: 'body'))
-          SdkSupport.verify
+          yield sdk
         end
       end
     end

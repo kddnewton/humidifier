@@ -53,9 +53,7 @@ module Humidifier
     private
 
     def guess_sdk
-      try_require_sdk('aws-sdk-cloudformation') ||
-        try_require_sdk('aws-sdk') ||
-        try_require_sdk('aws-sdk-v1')
+      try_requiring_sdks
 
       if defined?(Aws) && Aws::CORE_GEM_VERSION[0] == '3'
         AwsAdapters::SDKV3.new
@@ -72,6 +70,12 @@ module Humidifier
       require name || true
     rescue LoadError
       false
+    end
+
+    def try_requiring_sdks
+      try_require_sdk('aws-sdk-cloudformation') ||
+        try_require_sdk('aws-sdk') ||
+        try_require_sdk('aws-sdk-v1')
     end
   end
 end

@@ -43,20 +43,25 @@ module SdkSupport
     end
 
     def with_sdk_v3_loaded
-      previous_gem_version = AwsDouble::CORE_GEM_VERSION
+      with_core_gem_version do
+        begin
+          Object.const_set(:Aws, AwsDouble)
+          unset_shim
+          yield Humidifier::AwsShim.shim
+        ensure
+          Object.send(:remove_const, :Aws)
+        end
+      end
+    end
 
-      Object.const_set(:Aws, AwsDouble)
+    def with_core_gem_version
+      previous_gem_version = AwsDouble::CORE_GEM_VERSION
       AwsDouble.send(:remove_const, :CORE_GEM_VERSION)
       AwsDouble.const_set(:CORE_GEM_VERSION, '3.0.0')
-
-      begin
-        unset_shim
-        yield Humidifier::AwsShim.shim
-      ensure
-        Object.send(:remove_const, :Aws)
-        AwsDouble.send(:remove_const, :CORE_GEM_VERSION)
-        AwsDouble.const_set(:CORE_GEM_VERSION, previous_gem_version)
-      end
+      yield
+    ensure
+      AwsDouble.send(:remove_const, :CORE_GEM_VERSION)
+      AwsDouble.const_set(:CORE_GEM_VERSION, previous_gem_version)
     end
   end
 end

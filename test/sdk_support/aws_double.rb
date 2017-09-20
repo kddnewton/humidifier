@@ -11,7 +11,7 @@ module SdkSupport
   end
 
   module AwsDouble
-    CORE_GEM_VERSION = '2.0.0'
+    CORE_GEM_VERSION = '2.0.0'.freeze
     extend ForwardMissing
 
     module CloudFormation
