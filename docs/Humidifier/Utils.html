@@ -80,9 +80,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/humidifier/utils.rb<span class="defines">,<br />
-  ext/humidifier/humidifier.c</span>
-</dd>
+    <dd>lib/humidifier/utils.rb</dd>
   </dl>
   
 </div>
@@ -116,7 +114,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#underscore-class_method" title="underscore (class method)">.<strong>underscore</strong>  &#x21d2; Object </a>
+      <a href="#underscore-class_method" title="underscore (class method)">.<strong>underscore</strong>(name)  &#x21d2; Object </a>
     
 
     
@@ -131,7 +129,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>separated by underscores.</p>
+<p>convert from UpperCamelCase to lower_snake_case.</p>
 </div></span>
   
 </li>
@@ -173,7 +171,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="underscore-class_method">
   
-    .<strong>underscore</strong>  &#x21d2; <tt>Object</tt> 
+    .<strong>underscore</strong>(name)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -182,7 +180,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>separated by underscores</p>
+<p>convert from UpperCamelCase to lower_snake_case</p>
 
 
   </div>
@@ -196,66 +194,20 @@
       <pre class="lines">
 
 
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74</pre>
+5
+6
+7
+8
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'ext/humidifier/humidifier.c', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/utils.rb', line 5</span>
 
-static VALUE underscore(VALUE self, VALUE str)
-{
-  if (TYPE(str) == T_NIL) return Qnil;
-
-  char *str_value = rb_string_value_cstr(&amp;str);
-  char orig_str[strlen(str_value) + 1];
-
-  strcpy(orig_str, str_value);
-  preprocess(orig_str);
-
-  // manually null-terminating the string because on Fedora for strings of
-  // length 16 this breaks otherwise
-  orig_str[strlen(str_value)] = &#39;\0&#39;;
-
-  char new_str[strlen(orig_str) * 2];
-  char prev;
-  int orig_idx, new_idx;
-
-  for (orig_idx = 0, new_idx = 0; orig_str[orig_idx] != &#39;\0&#39;; orig_idx++) {
-    if (orig_idx != 0 &amp;&amp; isupper(orig_str[orig_idx])) {
-      new_str[new_idx++] = &#39;_&#39;;
-    }
-    new_str[new_idx++] = tolower(orig_str[orig_idx]);
-    prev = tolower(orig_str[orig_idx]);
-  }
-
-  return rb_str_new(new_str, new_idx);
-}</pre>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_underscore'>underscore</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>([A-Z]+)([0-9]|[A-Z]|\z)</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='backref'>$1</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='backref'>$2</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+      <span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(.)([A-Z])</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\1_\2</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -287,12 +239,12 @@ static VALUE underscore(VALUE self, VALUE str)
       <pre class="lines">
 
 
-5
-6
-7</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/utils.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/utils.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_underscored'>underscored</span><span class='lparen'>(</span><span class='id identifier rubyid_names'>names</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_names'>names</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_underscore'>underscore</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
