@@ -3,7 +3,6 @@ AllCops:
   DisplayStyleGuide: true
   TargetRubyVersion: 2.1
   Exclude:
-  - 'specs/**/*'
   - 'vendor/**/*'
   - 'yard/**/*'
 
