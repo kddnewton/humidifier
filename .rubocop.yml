@@ -3,12 +3,8 @@ AllCops:
   DisplayStyleGuide: true
   TargetRubyVersion: 2.1
   Exclude:
-  - 'specs/**/*'
   - 'vendor/**/*'
   - 'yard/**/*'
-
-Lint/AmbiguousBlockAssociation:
-  Enabled: false
 
 Layout/IndentHeredoc:
   Enabled: false

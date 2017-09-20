@@ -3,9 +3,7 @@ require 'json'
 require 'pathname'
 require 'yaml'
 
-require 'humidifier/humidifier'
 require 'humidifier/utils'
-
 require 'humidifier/fn'
 require 'humidifier/ref'
 require 'humidifier/props'

@@ -94,10 +94,6 @@ The default rake task runs the tests. Coverage is reported on the command line, 
 
 The specs pulled from the CFN docs is saved to `CloudFormationResourceSpecification.json`. You can update it by running `bundle exec rake specs`. This script will pull down the latest [resource specification](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html) to be used with Humidifier.
 
-### Extension
-
-The `underscore` string utility method does a lot of the heavy lifting of changing AWS property names over to ruby method names. As such, it's been extracted to a native extension to increase speed and efficiency. To compile it locally run `rake compile`.
-
 ### Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/localytics/humidifier.

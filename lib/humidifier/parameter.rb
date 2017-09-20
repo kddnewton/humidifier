@@ -8,7 +8,7 @@ module Humidifier
     attr_accessor :type, *PROPERTIES.values
 
     def initialize(opts = {})
-      PROPERTIES.values.each { |prop| send(:"#{prop}=", opts[prop]) }
+      PROPERTIES.each_value { |prop| send(:"#{prop}=", opts[prop]) }
       self.type = opts.fetch(:type, 'String')
     end
 

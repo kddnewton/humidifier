@@ -20,7 +20,7 @@ class ResourceTest < Minitest::Test
 
   def test_respond_to_missing?
     resource = build
-    Humidifier::Resource.props.keys.each do |key|
+    Humidifier::Resource.props.each_key do |key|
       assert resource.respond_to?(key)
       assert resource.respond_to?("#{key}=")
     end
@@ -104,7 +104,7 @@ class ResourceTest < Minitest::Test
     resource.metadata = 'bar'
 
     expected = { 'DependsOn' => 'foo', 'Metadata' => 'bar' }
-    assert_equal expected, resource.to_cf.reject { |key| %w[Type Properties].include?(key) }
+    assert_equal(expected, resource.to_cf.reject { |key| %w[Type Properties].include?(key) })
   end
 
   private

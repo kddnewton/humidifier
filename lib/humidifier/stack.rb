@@ -14,8 +14,8 @@ module Humidifier
       self.id   = opts[:id]
       self.default_identifier = self.class.next_default_identifier
 
-      ENUMERABLE_RESOURCES.values.each { |prop| send(:"#{prop}=", opts.fetch(prop, {})) }
-      STATIC_RESOURCES.values.each { |prop| send(:"#{prop}=", opts[prop]) }
+      ENUMERABLE_RESOURCES.each_value { |prop| send(:"#{prop}=", opts.fetch(prop, {})) }
+      STATIC_RESOURCES.each_value { |prop| send(:"#{prop}=", opts[prop]) }
     end
 
     # Add a resource to the stack and optionally set its attributes
