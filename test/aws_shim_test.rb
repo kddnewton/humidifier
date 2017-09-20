@@ -1,15 +1,22 @@
 require 'test_helper'
 
 class AwsShimTest < Minitest::Test
+  class FakeShim
+    attr_reader :stack
+
+    def create(stack)
+      @stack = stack
+    end
+  end
+
   def test_forwarding
     stack = Object.new
-    mock = Minitest::Mock.new
-    mock.expect(:valid?, nil, [stack])
+    shim = FakeShim.new
 
-    Humidifier::AwsShim.stub(:shim, mock) do
-      Humidifier::AwsShim.valid?(stack)
+    Humidifier::AwsShim.stub(:shim, shim) do
+      Humidifier::AwsShim.create(stack)
     end
-    mock.verify
+    assert_equal stack, shim.stack
   end
 
   def test_initialize_sdk_version_1?
