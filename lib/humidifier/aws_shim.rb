@@ -2,6 +2,7 @@ require 'humidifier/aws_adapters/base'
 require 'humidifier/aws_adapters/noop'
 require 'humidifier/aws_adapters/sdkv1'
 require 'humidifier/aws_adapters/sdkv2'
+require 'humidifier/aws_adapters/sdkv3'
 
 module Humidifier
   # Optionally provides aws-sdk functionality if the gem is loaded
@@ -27,6 +28,8 @@ module Humidifier
           AwsAdapters::SDKV1.new
         elsif Humidifier.config.sdk_version_2?
           AwsAdapters::SDKV2.new
+        elsif Humidifier.config.sdk_version_3?
+          AwsAdapters::SDKV3.new
         else
           guess_sdk
         end
@@ -50,10 +53,13 @@ module Humidifier
     private
 
     def guess_sdk
-      try_require_sdk('aws-sdk-v1')
-      try_require_sdk('aws-sdk')
+      try_require_sdk('aws-sdk-cloudformation') ||
+        try_require_sdk('aws-sdk') ||
+        try_require_sdk('aws-sdk-v1')
 
-      if Object.const_defined?(:Aws)
+      if defined?(Aws) && Aws::CORE_GEM_VERSION[0] == '3'
+        AwsAdapters::SDKV3.new
+      elsif defined?(Aws)
         AwsAdapters::SDKV2.new
       elsif Object.const_defined?(:AWS)
         AwsAdapters::SDKV1.new
@@ -63,8 +69,9 @@ module Humidifier
     end
 
     def try_require_sdk(name)
-      require name
-    rescue LoadError # rubocop:disable Lint/HandleExceptions
+      require name || true
+    rescue LoadError
+      false
     end
   end
 end
