@@ -6,9 +6,6 @@ AllCops:
   - 'vendor/**/*'
   - 'yard/**/*'
 
-Lint/AmbiguousBlockAssociation:
-  Enabled: false
-
 Layout/IndentHeredoc:
   Enabled: false
 

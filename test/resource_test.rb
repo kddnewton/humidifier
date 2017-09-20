@@ -104,7 +104,7 @@ class ResourceTest < Minitest::Test
     resource.metadata = 'bar'
 
     expected = { 'DependsOn' => 'foo', 'Metadata' => 'bar' }
-    assert_equal expected, resource.to_cf.reject { |key| %w[Type Properties].include?(key) }
+    assert_equal(expected, resource.to_cf.reject { |key| %w[Type Properties].include?(key) })
   end
 
   private
