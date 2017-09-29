@@ -27,6 +27,10 @@ class AwsShimTest < Minitest::Test
     with_config(sdk_version: 2) { assert_shim(:SDKV2) }
   end
 
+  def test_initialize_sdk_version_3?
+    with_config(sdk_version: 3) { assert_shim(:SDKV3) }
+  end
+
   def test_guess_sdk_noop
     assert_shim(:Noop)
   end
@@ -37,6 +41,10 @@ class AwsShimTest < Minitest::Test
 
   def test_guess_sdk_sdk_v2
     with_sdk_v2_loaded { assert_shim(:SDKV2) }
+  end
+
+  def test_guess_sdk_sdk_v3
+    with_sdk_v3_loaded { assert_shim(:SDKV3) }
   end
 
   private

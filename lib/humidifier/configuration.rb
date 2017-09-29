@@ -36,5 +36,10 @@ MSG
     def sdk_version_2?
       sdk_version.to_s == '2'
     end
+
+    # true if the sdk_version option is set to 3 or '3'
+    def sdk_version_3?
+      sdk_version.to_s == '3'
+    end
   end
 end
