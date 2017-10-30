@@ -54,8 +54,8 @@ module Humidifier
       def try_valid
         yield || true
       rescue base_module::CloudFormation::Errors::ValidationError => error
-        $stderr.puts error.message
-        $stderr.puts error.backtrace
+        warn(error.message)
+        warn(error.backtrace)
         false
       end
     end

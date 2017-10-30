@@ -8,7 +8,7 @@ module Humidifier
           value
         else
           puts "WARNING: Property #{name} should be a Date or Time"
-          DateTime.parse(value)
+          DateTime.parse(value) # rubocop:disable Style/DateTime
         end
       end
 

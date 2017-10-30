@@ -3,7 +3,10 @@ require 'test_helper'
 module Props
   class TimestampPropTest < Minitest::Test
     def test_valid?
-      assert build.valid?(DateTime.now)
+      assert build.valid?(Time.now.to_datetime)
+    end
+
+    def test_valid_humidifier_structures
       assert build.valid?(Humidifier.ref(Object.new))
       assert build.valid?(Humidifier.fn.base64(Object.new))
     end
@@ -16,7 +19,7 @@ module Props
     end
 
     def test_convert_valid
-      value = DateTime.now
+      value = Time.now.to_datetime
       assert_equal value, build.convert(value)
     end
 

@@ -19,11 +19,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.1'
 
-  spec.add_development_dependency 'bundler', '~> 1.15'
-  spec.add_development_dependency 'coveralls', '~> 0.8'
+  spec.add_development_dependency 'bundler', '~> 1.16.a'
   spec.add_development_dependency 'minitest', '~> 5.10'
   spec.add_development_dependency 'nokogiri', '~> 1.8'
-  spec.add_development_dependency 'rake', '~> 12.0'
-  spec.add_development_dependency 'rubocop', '~> 0.49'
-  spec.add_development_dependency 'simplecov', '~> 0.14'
+  spec.add_development_dependency 'rake', '~> 12.2'
+  spec.add_development_dependency 'rubocop', '~> 0.51'
+  spec.add_development_dependency 'simplecov', '~> 0.15'
 end
