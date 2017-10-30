@@ -1,7 +1,6 @@
 # Humidifier
 
 [![Build Status](https://travis-ci.org/localytics/humidifier.svg?branch=master)](https://travis-ci.org/localytics/humidifier)
-[![Coverage Status](https://coveralls.io/repos/github/localytics/humidifier/badge.svg?branch=master&t=52zybb)](https://coveralls.io/github/localytics/humidifier?branch=master)
 [![Gem Version](https://img.shields.io/gem/v/humidifier.svg?maxAge=3600)](https://rubygems.org/gems/humidifier)
 
 Humidifier allows you to build AWS CloudFormation (CFN) templates programmatically. CFN stacks and resources are represented as Ruby objects with accessors for all their supported properties. Stacks and resources have `to_cf` methods that allow you to quickly inspect what will be uploaded.
@@ -84,7 +83,7 @@ To get started, ensure you have ruby installed, version 2.1 or later. From there
 
 ### Testing
 
-The default rake task runs the tests. Coverage is reported on the command line, and to coveralls.io in CI. Styling is governed by rubocop. The docs are generated with yard. To run all three of these, run:
+The default rake task runs the tests. Styling is governed by rubocop. The docs are generated with yard. To run all three of these, run:
 
     $ bundle exec rake
     $ bundle exec rubocop

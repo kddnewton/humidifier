@@ -39,7 +39,13 @@ task :specs do
 
   response = Net::HTTP.get_response(URI.parse(href)).body
   filepath = File.expand_path(File.join('..', 'CloudFormationResourceSpecification.json'), __FILE__)
-  size     = File.write(filepath, JSON.pretty_generate(JSON.parse(response)))
+
+  content = JSON.parse(response)
+  JSON.parse(File.read('CloudFormationResourceSpecification.missing.json')).each do |key, values|
+    content[key].merge!(values)
+  end
+
+  size = File.write(filepath, JSON.pretty_generate(content))
   puts "  wrote #{filepath} (#{(size / 1024.0).round(2)}K)"
 end
 

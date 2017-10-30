@@ -13,4 +13,11 @@ class OutputTest < Minitest::Test
       assert_equal ({ 'Value' => value, 'Description' => 'foobar' }), output.to_cf
     end
   end
+
+  def test_to_cf_with_export_name
+    with_mocked_serializer(Object.new) do |value|
+      output = Humidifier::Output.new(value: value, export_name: 'foobar')
+      assert_equal ({ 'Value' => value, 'Export' => { 'Name' => 'foobar' } }), output.to_cf
+    end
+  end
 end
