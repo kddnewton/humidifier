@@ -326,7 +326,6 @@ based on what successfully loaded</p>
       <pre class="lines">
 
 
-24
 25
 26
 27
@@ -335,10 +334,13 @@ based on what successfully loaded</p>
 30
 31
 32
-33</pre>
+33
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_shim'>shim</span> <span class='op'>=</span>
@@ -346,6 +348,8 @@ based on what successfully loaded</p>
       <span class='const'>AwsAdapters</span><span class='op'>::</span><span class='const'>SDKV1</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
     <span class='kw'>elsif</span> <span class='const'>Humidifier</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_sdk_version_2?'>sdk_version_2?</span>
       <span class='const'>AwsAdapters</span><span class='op'>::</span><span class='const'>SDKV2</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='kw'>elsif</span> <span class='const'>Humidifier</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_sdk_version_3?'>sdk_version_3?</span>
+      <span class='const'>AwsAdapters</span><span class='op'>::</span><span class='const'>SDKV3</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_guess_sdk'>guess_sdk</span>
     <span class='kw'>end</span>
@@ -388,12 +392,12 @@ based on what successfully loaded</p>
       <pre class="lines">
 
 
-19
 20
-21</pre>
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_shim'>shim</span>
   <span class='ivar'>@shim</span>
@@ -436,12 +440,12 @@ based on what successfully loaded</p>
       <pre class="lines">
 
 
-40
-41
-42</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_instance'>instance</span>
   <span class='ivar'>@instance</span> <span class='op'>||=</span> <span class='id identifier rubyid_new'>new</span>
@@ -477,12 +481,12 @@ based on what successfully loaded</p>
       <pre class="lines">
 
 
-45
-46
-47</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_shim'>shim</span>
   <span class='id identifier rubyid_instance'>instance</span><span class='period'>.</span><span class='id identifier rubyid_shim'>shim</span>

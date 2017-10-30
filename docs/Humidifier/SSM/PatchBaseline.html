@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: Humidifier::EC2::SecurityGroupEgress
+  Class: Humidifier::SSM::PatchBaseline
   
     &mdash; Humidifier
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  pathId = "Humidifier::EC2::SecurityGroupEgress";
+  pathId = "Humidifier::SSM::PatchBaseline";
   relpath = '../../';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="../../_index.html">Index (S)</a> &raquo;
-    <span class='title'><span class='object_link'><a href="../../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../EC2.html" title="Humidifier::EC2 (module)">EC2</a></span></span>
+    <a href="../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../SSM.html" title="Humidifier::SSM (module)">SSM</a></span></span>
      &raquo; 
-    <span class="title">SecurityGroupEgress</span>
+    <span class="title">PatchBaseline</span>
   
 </div>
 
@@ -61,7 +61,7 @@
 
       <iframe id="search_frame" src="../../class_list.html"></iframe>
 
-      <div id="content"><h1>Class: Humidifier::EC2::SecurityGroupEgress
+      <div id="content"><h1>Class: Humidifier::SSM::PatchBaseline
   
   
   
@@ -78,7 +78,7 @@
           
             <li class="next"><span class='object_link'><a href="../Resource.html" title="Humidifier::Resource (class)">Resource</a></span></li>
           
-            <li class="next">Humidifier::EC2::SecurityGroupEgress</li>
+            <li class="next">Humidifier::SSM::PatchBaseline</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -106,8 +106,8 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>A dynamically-defined class that represents an
-AWS::EC2::SecurityGroupEgress resource</p>
+<p>A dynamically-defined class that represents an AWS::SSM::PatchBaseline
+resource</p>
 
 
   </div>
@@ -125,7 +125,7 @@ AWS::EC2::SecurityGroupEgress resource</p>
         
         <div class='inline'>
 <p><a
-href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-securitygroupegress.html">AWS::EC2::SecurityGroupEgress</a></p>
+href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-patchbaseline.html">AWS::SSM::PatchBaseline</a></p>
 </div>
       
     </li>
@@ -159,7 +159,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#cidr_ip-instance_method" title="#cidr_ip (instance method)">#<strong>cidr_ip</strong>  &#x21d2; Object </a>
+      <a href="#approval_rules-instance_method" title="#approval_rules (instance method)">#<strong>approval_rules</strong>  &#x21d2; Object </a>
     
 
     
@@ -174,7 +174,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the CidrIp property.</p>
+<p>returns the ApprovalRules property.</p>
 </div></span>
   
 </li>
@@ -183,7 +183,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#cidr_ip%3D-instance_method" title="#cidr_ip= (instance method)">#<strong>cidr_ip=</strong>(value)  &#x21d2; Object </a>
+      <a href="#approval_rules%3D-instance_method" title="#approval_rules= (instance method)">#<strong>approval_rules=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -198,7 +198,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the CidrIp property (String).</p>
+<p>sets the ApprovalRules property (Structure).</p>
 </div></span>
   
 </li>
@@ -207,7 +207,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#cidr_ipv6-instance_method" title="#cidr_ipv6 (instance method)">#<strong>cidr_ipv6</strong>  &#x21d2; Object </a>
+      <a href="#approved_patches-instance_method" title="#approved_patches (instance method)">#<strong>approved_patches</strong>  &#x21d2; Object </a>
     
 
     
@@ -222,7 +222,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the CidrIpv6 property.</p>
+<p>returns the ApprovedPatches property.</p>
 </div></span>
   
 </li>
@@ -231,7 +231,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#cidr_ipv6%3D-instance_method" title="#cidr_ipv6= (instance method)">#<strong>cidr_ipv6=</strong>(value)  &#x21d2; Object </a>
+      <a href="#approved_patches%3D-instance_method" title="#approved_patches= (instance method)">#<strong>approved_patches=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -246,7 +246,55 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the CidrIpv6 property (String).</p>
+<p>sets the ApprovedPatches property (List).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#approved_patches_compliance_level-instance_method" title="#approved_patches_compliance_level (instance method)">#<strong>approved_patches_compliance_level</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>returns the ApprovedPatchesComplianceLevel property.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#approved_patches_compliance_level%3D-instance_method" title="#approved_patches_compliance_level= (instance method)">#<strong>approved_patches_compliance_level=</strong>(value)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>sets the ApprovedPatchesComplianceLevel property (String).</p>
 </div></span>
   
 </li>
@@ -303,7 +351,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#destination_prefix_list_id-instance_method" title="#destination_prefix_list_id (instance method)">#<strong>destination_prefix_list_id</strong>  &#x21d2; Object </a>
+      <a href="#global_filters-instance_method" title="#global_filters (instance method)">#<strong>global_filters</strong>  &#x21d2; Object </a>
     
 
     
@@ -318,7 +366,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the DestinationPrefixListId property.</p>
+<p>returns the GlobalFilters property.</p>
 </div></span>
   
 </li>
@@ -327,7 +375,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#destination_prefix_list_id%3D-instance_method" title="#destination_prefix_list_id= (instance method)">#<strong>destination_prefix_list_id=</strong>(value)  &#x21d2; Object </a>
+      <a href="#global_filters%3D-instance_method" title="#global_filters= (instance method)">#<strong>global_filters=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -342,7 +390,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the DestinationPrefixListId property (String).</p>
+<p>sets the GlobalFilters property (Structure).</p>
 </div></span>
   
 </li>
@@ -351,7 +399,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#destination_security_group_id-instance_method" title="#destination_security_group_id (instance method)">#<strong>destination_security_group_id</strong>  &#x21d2; Object </a>
+      <a href="#name-instance_method" title="#name (instance method)">#<strong>name</strong>  &#x21d2; Object </a>
     
 
     
@@ -366,7 +414,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the DestinationSecurityGroupId property.</p>
+<p>returns the Name property.</p>
 </div></span>
   
 </li>
@@ -375,7 +423,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#destination_security_group_id%3D-instance_method" title="#destination_security_group_id= (instance method)">#<strong>destination_security_group_id=</strong>(value)  &#x21d2; Object </a>
+      <a href="#name%3D-instance_method" title="#name= (instance method)">#<strong>name=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -390,7 +438,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the DestinationSecurityGroupId property (String).</p>
+<p>sets the Name property (String).</p>
 </div></span>
   
 </li>
@@ -399,7 +447,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#from_port-instance_method" title="#from_port (instance method)">#<strong>from_port</strong>  &#x21d2; Object </a>
+      <a href="#operating_system-instance_method" title="#operating_system (instance method)">#<strong>operating_system</strong>  &#x21d2; Object </a>
     
 
     
@@ -414,7 +462,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the FromPort property.</p>
+<p>returns the OperatingSystem property.</p>
 </div></span>
   
 </li>
@@ -423,7 +471,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#from_port%3D-instance_method" title="#from_port= (instance method)">#<strong>from_port=</strong>(value)  &#x21d2; Object </a>
+      <a href="#operating_system%3D-instance_method" title="#operating_system= (instance method)">#<strong>operating_system=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -438,7 +486,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the FromPort property (Integer).</p>
+<p>sets the OperatingSystem property (String).</p>
 </div></span>
   
 </li>
@@ -447,7 +495,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#group_id-instance_method" title="#group_id (instance method)">#<strong>group_id</strong>  &#x21d2; Object </a>
+      <a href="#patch_groups-instance_method" title="#patch_groups (instance method)">#<strong>patch_groups</strong>  &#x21d2; Object </a>
     
 
     
@@ -462,7 +510,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the GroupId property.</p>
+<p>returns the PatchGroups property.</p>
 </div></span>
   
 </li>
@@ -471,7 +519,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#group_id%3D-instance_method" title="#group_id= (instance method)">#<strong>group_id=</strong>(value)  &#x21d2; Object </a>
+      <a href="#patch_groups%3D-instance_method" title="#patch_groups= (instance method)">#<strong>patch_groups=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -486,7 +534,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the GroupId property (String).</p>
+<p>sets the PatchGroups property (List).</p>
 </div></span>
   
 </li>
@@ -495,7 +543,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#ip_protocol-instance_method" title="#ip_protocol (instance method)">#<strong>ip_protocol</strong>  &#x21d2; Object </a>
+      <a href="#rejected_patches-instance_method" title="#rejected_patches (instance method)">#<strong>rejected_patches</strong>  &#x21d2; Object </a>
     
 
     
@@ -510,7 +558,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the IpProtocol property.</p>
+<p>returns the RejectedPatches property.</p>
 </div></span>
   
 </li>
@@ -519,7 +567,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#ip_protocol%3D-instance_method" title="#ip_protocol= (instance method)">#<strong>ip_protocol=</strong>(value)  &#x21d2; Object </a>
+      <a href="#rejected_patches%3D-instance_method" title="#rejected_patches= (instance method)">#<strong>rejected_patches=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -534,55 +582,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the IpProtocol property (String).</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#to_port-instance_method" title="#to_port (instance method)">#<strong>to_port</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>returns the ToPort property.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#to_port%3D-instance_method" title="#to_port= (instance method)">#<strong>to_port=</strong>(value)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>sets the ToPort property (Integer).</p>
+<p>sets the RejectedPatches property (List).</p>
 </div></span>
   
 </li>
@@ -625,9 +625,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="cidr_ip-instance_method">
+  <h3 class="signature first" id="approval_rules-instance_method">
   
-    #<strong>cidr_ip</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>approval_rules</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -636,7 +636,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the CidrIp property</p>
+<p>returns the ApprovalRules property</p>
 
 
   </div>
@@ -657,8 +657,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 10</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_cidr_ip'>cidr_ip</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cidr_ip</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_approval_rules'>approval_rules</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>approval_rules</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -666,9 +666,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="cidr_ip=-instance_method">
+  <h3 class="signature " id="approval_rules=-instance_method">
   
-    #<strong>cidr_ip=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>approval_rules=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -677,7 +677,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the CidrIp property (String)</p>
+<p>sets the ApprovalRules property (Structure)</p>
 
 
   </div>
@@ -698,8 +698,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 15</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_cidr_ip='>cidr_ip=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cidr_ip</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_approval_rules='>approval_rules=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>approval_rules</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -707,9 +707,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="cidr_ipv6-instance_method">
+  <h3 class="signature " id="approved_patches-instance_method">
   
-    #<strong>cidr_ipv6</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>approved_patches</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -718,7 +718,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the CidrIpv6 property</p>
+<p>returns the ApprovedPatches property</p>
 
 
   </div>
@@ -739,8 +739,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 20</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_cidr_ipv6'>cidr_ipv6</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cidr_ipv6</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_approved_patches'>approved_patches</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>approved_patches</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -748,9 +748,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="cidr_ipv6=-instance_method">
+  <h3 class="signature " id="approved_patches=-instance_method">
   
-    #<strong>cidr_ipv6=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>approved_patches=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -759,7 +759,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the CidrIpv6 property (String)</p>
+<p>sets the ApprovedPatches property (List)</p>
 
 
   </div>
@@ -780,8 +780,90 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 25</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_cidr_ipv6='>cidr_ipv6=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cidr_ipv6</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_approved_patches='>approved_patches=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>approved_patches</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="approved_patches_compliance_level-instance_method">
+  
+    #<strong>approved_patches_compliance_level</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns the ApprovedPatchesComplianceLevel property</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 30</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_approved_patches_compliance_level'>approved_patches_compliance_level</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>approved_patches_compliance_level</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="approved_patches_compliance_level=-instance_method">
+  
+    #<strong>approved_patches_compliance_level=</strong>(value)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>sets the ApprovedPatchesComplianceLevel property (String)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_approved_patches_compliance_level='>approved_patches_compliance_level=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>approved_patches_compliance_level</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -814,12 +896,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-30
-31
-32</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_description'>description</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>description</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -855,12 +937,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-35
-36
-37</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_description='>description=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>description</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -871,50 +953,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="destination_prefix_list_id-instance_method">
+  <h3 class="signature " id="global_filters-instance_method">
   
-    #<strong>destination_prefix_list_id</strong>  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>returns the DestinationPrefixListId property</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-40
-41
-42</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 40</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_destination_prefix_list_id'>destination_prefix_list_id</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>destination_prefix_list_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="destination_prefix_list_id=-instance_method">
-  
-    #<strong>destination_prefix_list_id=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>global_filters</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -923,48 +964,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the DestinationPrefixListId property (String)</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-45
-46
-47</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 45</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_destination_prefix_list_id='>destination_prefix_list_id=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>destination_prefix_list_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="destination_security_group_id-instance_method">
-  
-    #<strong>destination_security_group_id</strong>  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>returns the DestinationSecurityGroupId property</p>
+<p>returns the GlobalFilters property</p>
 
 
   </div>
@@ -985,8 +985,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 50</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_destination_security_group_id'>destination_security_group_id</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>destination_security_group_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_global_filters'>global_filters</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>global_filters</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -994,9 +994,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="destination_security_group_id=-instance_method">
+  <h3 class="signature " id="global_filters=-instance_method">
   
-    #<strong>destination_security_group_id=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>global_filters=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1005,7 +1005,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the DestinationSecurityGroupId property (String)</p>
+<p>sets the GlobalFilters property (Structure)</p>
 
 
   </div>
@@ -1026,8 +1026,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 55</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_destination_security_group_id='>destination_security_group_id=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>destination_security_group_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_global_filters='>global_filters=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>global_filters</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1035,9 +1035,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="from_port-instance_method">
+  <h3 class="signature " id="name-instance_method">
   
-    #<strong>from_port</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>name</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1046,7 +1046,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the FromPort property</p>
+<p>returns the Name property</p>
 
 
   </div>
@@ -1067,8 +1067,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 60</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_from_port'>from_port</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>from_port</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1076,9 +1076,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="from_port=-instance_method">
+  <h3 class="signature " id="name=-instance_method">
   
-    #<strong>from_port=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>name=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1087,7 +1087,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the FromPort property (Integer)</p>
+<p>sets the Name property (String)</p>
 
 
   </div>
@@ -1108,8 +1108,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 65</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_from_port='>from_port=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>from_port</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_name='>name=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1117,9 +1117,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="group_id-instance_method">
+  <h3 class="signature " id="operating_system-instance_method">
   
-    #<strong>group_id</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>operating_system</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1128,7 +1128,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the GroupId property</p>
+<p>returns the OperatingSystem property</p>
 
 
   </div>
@@ -1149,8 +1149,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 70</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_group_id'>group_id</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>group_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_operating_system'>operating_system</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>operating_system</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1158,9 +1158,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="group_id=-instance_method">
+  <h3 class="signature " id="operating_system=-instance_method">
   
-    #<strong>group_id=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>operating_system=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1169,7 +1169,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the GroupId property (String)</p>
+<p>sets the OperatingSystem property (String)</p>
 
 
   </div>
@@ -1190,8 +1190,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 75</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_group_id='>group_id=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>group_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_operating_system='>operating_system=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>operating_system</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1199,9 +1199,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="ip_protocol-instance_method">
+  <h3 class="signature " id="patch_groups-instance_method">
   
-    #<strong>ip_protocol</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>patch_groups</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1210,7 +1210,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the IpProtocol property</p>
+<p>returns the PatchGroups property</p>
 
 
   </div>
@@ -1231,8 +1231,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 80</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_ip_protocol'>ip_protocol</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ip_protocol</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_patch_groups'>patch_groups</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>patch_groups</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1240,9 +1240,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="ip_protocol=-instance_method">
+  <h3 class="signature " id="patch_groups=-instance_method">
   
-    #<strong>ip_protocol=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>patch_groups=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1251,7 +1251,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the IpProtocol property (String)</p>
+<p>sets the PatchGroups property (List)</p>
 
 
   </div>
@@ -1272,8 +1272,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 85</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_ip_protocol='>ip_protocol=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ip_protocol</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_patch_groups='>patch_groups=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>patch_groups</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1281,9 +1281,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="to_port-instance_method">
+  <h3 class="signature " id="rejected_patches-instance_method">
   
-    #<strong>to_port</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>rejected_patches</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1292,7 +1292,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the ToPort property</p>
+<p>returns the RejectedPatches property</p>
 
 
   </div>
@@ -1313,8 +1313,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 90</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_to_port'>to_port</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>to_port</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_rejected_patches'>rejected_patches</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>rejected_patches</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1322,9 +1322,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="to_port=-instance_method">
+  <h3 class="signature " id="rejected_patches=-instance_method">
   
-    #<strong>to_port=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>rejected_patches=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1333,7 +1333,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the ToPort property (Integer)</p>
+<p>sets the RejectedPatches property (List)</p>
 
 
   </div>
@@ -1354,8 +1354,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 95</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_to_port='>to_port=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>to_port</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_rejected_patches='>rejected_patches=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>rejected_patches</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>

@@ -2,6 +2,7 @@ module Humidifier
   module AwsAdapters
     # The adapter for v3 of aws-sdk
     class SDKV3 < SDKV2
+      # The notice to add the `aws-sdk-s3` gem when it is needed.
       S3_SDK_MESSAGE = <<-MSG.freeze
 The AWS SDK for versions 3+ have broken out individual AWS modules into their
 own gems. Since the stack that you're attempting to use is large enough that it

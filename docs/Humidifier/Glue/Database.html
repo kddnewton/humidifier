@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: Humidifier::EC2::NatGateway
+  Class: Humidifier::Glue::Database
   
     &mdash; Humidifier
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  pathId = "Humidifier::EC2::NatGateway";
+  pathId = "Humidifier::Glue::Database";
   relpath = '../../';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="../../_index.html">Index (N)</a> &raquo;
-    <span class='title'><span class='object_link'><a href="../../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../EC2.html" title="Humidifier::EC2 (module)">EC2</a></span></span>
+    <a href="../../_index.html">Index (D)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Glue.html" title="Humidifier::Glue (module)">Glue</a></span></span>
      &raquo; 
-    <span class="title">NatGateway</span>
+    <span class="title">Database</span>
   
 </div>
 
@@ -61,7 +61,7 @@
 
       <iframe id="search_frame" src="../../class_list.html"></iframe>
 
-      <div id="content"><h1>Class: Humidifier::EC2::NatGateway
+      <div id="content"><h1>Class: Humidifier::Glue::Database
   
   
   
@@ -78,7 +78,7 @@
           
             <li class="next"><span class='object_link'><a href="../Resource.html" title="Humidifier::Resource (class)">Resource</a></span></li>
           
-            <li class="next">Humidifier::EC2::NatGateway</li>
+            <li class="next">Humidifier::Glue::Database</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -106,8 +106,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>A dynamically-defined class that represents an AWS::EC2::NatGateway
-resource</p>
+<p>A dynamically-defined class that represents an AWS::Glue::Database resource</p>
 
 
   </div>
@@ -125,7 +124,7 @@ resource</p>
         
         <div class='inline'>
 <p><a
-href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html">AWS::EC2::NatGateway</a></p>
+href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-glue-database.html">AWS::Glue::Database</a></p>
 </div>
       
     </li>
@@ -159,7 +158,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#allocation_id-instance_method" title="#allocation_id (instance method)">#<strong>allocation_id</strong>  &#x21d2; Object </a>
+      <a href="#catalog_id-instance_method" title="#catalog_id (instance method)">#<strong>catalog_id</strong>  &#x21d2; Object </a>
     
 
     
@@ -174,7 +173,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the AllocationId property.</p>
+<p>returns the CatalogId property.</p>
 </div></span>
   
 </li>
@@ -183,7 +182,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#allocation_id%3D-instance_method" title="#allocation_id= (instance method)">#<strong>allocation_id=</strong>(value)  &#x21d2; Object </a>
+      <a href="#catalog_id%3D-instance_method" title="#catalog_id= (instance method)">#<strong>catalog_id=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -198,7 +197,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the AllocationId property (String).</p>
+<p>sets the CatalogId property (String).</p>
 </div></span>
   
 </li>
@@ -207,7 +206,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#subnet_id-instance_method" title="#subnet_id (instance method)">#<strong>subnet_id</strong>  &#x21d2; Object </a>
+      <a href="#database_input-instance_method" title="#database_input (instance method)">#<strong>database_input</strong>  &#x21d2; Object </a>
     
 
     
@@ -222,7 +221,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the SubnetId property.</p>
+<p>returns the DatabaseInput property.</p>
 </div></span>
   
 </li>
@@ -231,7 +230,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#subnet_id%3D-instance_method" title="#subnet_id= (instance method)">#<strong>subnet_id=</strong>(value)  &#x21d2; Object </a>
+      <a href="#database_input%3D-instance_method" title="#database_input= (instance method)">#<strong>database_input=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -246,55 +245,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the SubnetId property (String).</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#tags-instance_method" title="#tags (instance method)">#<strong>tags</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>returns the Tags property.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#tags%3D-instance_method" title="#tags= (instance method)">#<strong>tags=</strong>(value)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>sets the Tags property (List).</p>
+<p>sets the DatabaseInput property (Structure).</p>
 </div></span>
   
 </li>
@@ -337,9 +288,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="allocation_id-instance_method">
+  <h3 class="signature first" id="catalog_id-instance_method">
   
-    #<strong>allocation_id</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>catalog_id</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -348,7 +299,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the AllocationId property</p>
+<p>returns the CatalogId property</p>
 
 
   </div>
@@ -369,8 +320,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 10</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_allocation_id'>allocation_id</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>allocation_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_catalog_id'>catalog_id</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>catalog_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -378,9 +329,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="allocation_id=-instance_method">
+  <h3 class="signature " id="catalog_id=-instance_method">
   
-    #<strong>allocation_id=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>catalog_id=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -389,7 +340,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the AllocationId property (String)</p>
+<p>sets the CatalogId property (String)</p>
 
 
   </div>
@@ -410,8 +361,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 15</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_allocation_id='>allocation_id=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>allocation_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_catalog_id='>catalog_id=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>catalog_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -419,9 +370,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="subnet_id-instance_method">
+  <h3 class="signature " id="database_input-instance_method">
   
-    #<strong>subnet_id</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>database_input</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -430,7 +381,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the SubnetId property</p>
+<p>returns the DatabaseInput property</p>
 
 
   </div>
@@ -451,8 +402,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 20</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_subnet_id'>subnet_id</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>subnet_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_database_input'>database_input</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>database_input</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -460,9 +411,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="subnet_id=-instance_method">
+  <h3 class="signature " id="database_input=-instance_method">
   
-    #<strong>subnet_id=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>database_input=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -471,7 +422,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the SubnetId property (String)</p>
+<p>sets the DatabaseInput property (Structure)</p>
 
 
   </div>
@@ -492,90 +443,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 25</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_subnet_id='>subnet_id=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>subnet_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="tags-instance_method">
-  
-    #<strong>tags</strong>  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>returns the Tags property</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-30
-31
-32</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 30</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_tags'>tags</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tags</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="tags=-instance_method">
-  
-    #<strong>tags=</strong>(value)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>sets the Tags property (List)</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-35
-36
-37</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 35</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_tags='>tags=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tags</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_database_input='>database_input=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>database_input</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
