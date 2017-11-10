@@ -24,7 +24,8 @@ module Props
     end
 
     def test_documentation
-      assert_equal 'documentation', build('Test', 'Documentation' => 'documentation').documentation
+      prop = build('Test', 'Documentation' => 'documentation')
+      assert_equal 'documentation', prop.documentation
     end
 
     def test_required?
@@ -32,7 +33,8 @@ module Props
     end
 
     def test_update_type
-      assert_equal 'update_type', build('Test', 'UpdateType' => 'update_type').update_type
+      prop = build('Test', 'UpdateType' => 'update_type')
+      assert_equal 'update_type', prop.update_type
     end
 
     def test_whitelisted_value?

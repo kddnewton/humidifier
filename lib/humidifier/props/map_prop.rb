@@ -6,18 +6,29 @@ module Humidifier
 
       # converts the value through mapping using the subprop unless it is valid
       def convert(map)
-        valid?(map) ? map : map.map { |key, value| [key, subprop.convert(value)] }.to_h
+        return map if valid?(map)
+        map.map { |key, value| [key, subprop.convert(value)] }.to_h
       end
 
       # CFN stack syntax
       def to_cf(map)
-        [key, map.map { |subkey, subvalue| [subkey, subprop.to_cf(subvalue).last] }.to_h]
+        cf_value =
+          if map.respond_to?(:to_cf)
+            map.to_cf
+          else
+            map.each_with_object({}) do |(subkey, subvalue), serialized|
+              serialized[subkey] = subprop.to_cf(subvalue).last
+            end
+          end
+
+        [key, cf_value]
       end
 
       # Valid if the value is whitelisted or every value in the map is valid on
       # the subprop
       def valid?(map)
-        whitelisted_value?(map) || (map.is_a?(Hash) && map.values.all? { |value| subprop.valid?(value) })
+        return true if whitelisted_value?(map)
+        map.is_a?(Hash) && map.values.all? { |value| subprop.valid?(value) }
       end
 
       private

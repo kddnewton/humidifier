@@ -24,6 +24,11 @@ module Props
       assert_equal ['Test', [1, 2]], build.to_cf([1, 2])
     end
 
+    def test_to_cf_ref
+      actual = build.to_cf(Humidifier.ref('Foo'))
+      assert_equal ['Test', { 'Ref' => 'Foo' }], actual
+    end
+
     def test_convert_valid
       assert_equal [5], build.convert([5])
     end

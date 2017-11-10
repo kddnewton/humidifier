@@ -25,7 +25,8 @@ module Props
 
     def test_convert_invalid
       value = Time.at(0).utc.to_datetime
-      out, * = capture_io { assert_equal value, build.convert(value.iso8601.to_s) }
+      out, * =
+        capture_io { assert_equal value, build.convert(value.iso8601.to_s) }
       assert_match(/WARNING: Property test/, out)
     end
 

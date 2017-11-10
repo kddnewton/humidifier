@@ -9,9 +9,9 @@ require 'humidifier/ref'
 require 'humidifier/props'
 
 require 'humidifier/props/base'
-%w[boolean double integer json list map string structure timestamp].each do |type|
-  require "humidifier/props/#{type}_prop"
-end
+
+prop_types = %w[boolean double integer json list map string structure timestamp]
+prop_types.each { |type| require "humidifier/props/#{type}_prop" }
 
 require 'humidifier/aws_shim'
 require 'humidifier/condition'

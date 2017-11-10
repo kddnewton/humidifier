@@ -21,7 +21,10 @@ module SdkSupport
   end
 end
 
-Dir[File.expand_path('../sdk_support/*.rb', __FILE__)].each { |file| require file }
+Dir[File.expand_path('../sdk_support/*.rb', __FILE__)].each do |file|
+  require file
+end
+
 Minitest::Test.send(:include, SdkSupport::Helpers)
 
 # extra methods for testing config and serializers

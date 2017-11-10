@@ -2,13 +2,15 @@ require 'test_helper'
 
 class PropsTest < Minitest::Test
   def test_list
-    prop = Humidifier::Props.from('list', 'Type' => 'List', 'PrimitiveType' => 'Integer')
+    config = { 'Type' => 'List', 'PrimitiveType' => 'Integer' }
+    prop = Humidifier::Props.from('list', config)
     assert_kind_of Humidifier::Props::ListProp, prop
     assert_equal 'list', prop.key
   end
 
   def test_map
-    prop = Humidifier::Props.from('map', 'Type' => 'Map', 'PrimitiveType' => 'Integer')
+    config = { 'Type' => 'Map', 'PrimitiveType' => 'Integer' }
+    prop = Humidifier::Props.from('map', config)
     assert_kind_of Humidifier::Props::MapProp, prop
     assert_equal 'map', prop.key
   end
@@ -44,8 +46,12 @@ class PropsTest < Minitest::Test
   end
 
   def test_structure
-    substructs = { 'Foobar' => { 'Properties' => { 'Alpha' => { 'PrimitiveType' => 'String' } } } }
-    prop = Humidifier::Props.from('structure', { 'Type' => 'Foobar' }, substructs)
+    substructs = { 'Foobar' => {
+      'Properties' => { 'Alpha' => { 'PrimitiveType' => 'String' } }
+    } }
+
+    config = { 'Type' => 'Foobar' }
+    prop = Humidifier::Props.from('structure', config, substructs)
     assert_kind_of Humidifier::Props::StructureProp, prop
     assert_equal 'structure', prop.key
   end

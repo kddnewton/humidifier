@@ -27,9 +27,12 @@ task :specs do
   require 'net/http'
   require 'nokogiri'
 
-  url = URI.parse('http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html')
+  SPEC_URL = 'http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-resource-specification.html'.freeze
+  url = URI.parse(SPEC_URL)
+
+  response_body = Net::HTTP.get_response(url).body
   row =
-    Nokogiri::HTML(Net::HTTP.get_response(url).body).css('table tr').detect do |tr|
+    Nokogiri::HTML(response_body).css('table tr').detect do |tr|
       name_container = tr.at_css('td:first-child p')
       (name_container && name_container.text.strip) == 'US East (N. Virginia)'
     end
@@ -38,7 +41,8 @@ task :specs do
   puts "Downloading from #{href}..."
 
   response = Net::HTTP.get_response(URI.parse(href)).body
-  filepath = File.expand_path(File.join('..', 'CloudFormationResourceSpecification.json'), __FILE__)
+  filename = 'CloudFormationResourceSpecification.json'
+  filepath = File.expand_path(File.join('..', filename), __FILE__)
 
   size = File.write(filepath, JSON.pretty_generate(JSON.parse(response)))
   puts "  wrote #{filepath} (#{(size / 1024.0).round(2)}K)"

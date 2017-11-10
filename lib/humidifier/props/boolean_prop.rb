@@ -14,7 +14,8 @@ module Humidifier
 
       # true if it is a boolean
       def valid?(value)
-        whitelisted_value?(value) || value.is_a?(TrueClass) || value.is_a?(FalseClass)
+        return true if whitelisted_value?(value)
+        value.is_a?(TrueClass) || value.is_a?(FalseClass)
       end
     end
   end

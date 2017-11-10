@@ -1,10 +1,10 @@
 module Humidifier
   # Builds CFN references
   class Ref
-    attr_accessor :reference
+    attr_reader :reference
 
     def initialize(reference)
-      self.reference = reference
+      @reference = reference
     end
 
     # Builds CFN syntax

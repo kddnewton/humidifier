@@ -11,7 +11,8 @@ module Humidifier
   # resource as a class
   class Loader
     # The path to the specification file
-    SPECPATH = File.expand_path(File.join('..', '..', '..', 'CloudFormationResourceSpecification.json'), __FILE__)
+    filename = 'CloudFormationResourceSpecification.json'
+    SPECPATH = File.expand_path(File.join('..', '..', '..', filename), __FILE__)
 
     # Handles searching the PropertyTypes specifications for a specific
     # resource type
@@ -25,7 +26,8 @@ module Humidifier
       # find the substructures necessary for the given resource key
       def search(key)
         results = structs.keys.grep(/#{key}/)
-        Hash[results.map { |result| result.gsub("#{key}.", '') }.zip(structs.values_at(*results))].merge(global)
+        shortened_names = results.map { |result| result.gsub("#{key}.", '') }
+        shortened_names.zip(structs.values_at(*results)).to_h.merge(global)
       end
 
       private
@@ -37,8 +39,8 @@ module Humidifier
 
     # loop through the specs and register each class
     def load
-      parsed   = JSON.parse(File.read(SPECPATH))
-      structs  = StructureContainer.new(parsed['PropertyTypes'])
+      parsed = JSON.parse(File.read(SPECPATH))
+      structs = StructureContainer.new(parsed['PropertyTypes'])
 
       parsed['ResourceTypes'].each do |key, spec|
         match = key.match(/\AAWS::(\w+)::(\w+)\z/)
@@ -68,7 +70,10 @@ module Humidifier
       aws_name = "AWS::#{group}::#{resource}"
       resource_class = build_class(aws_name, spec, substructs)
 
-      Humidifier.const_set(group, Module.new) unless Humidifier.const_defined?(group)
+      unless Humidifier.const_defined?(group)
+        Humidifier.const_set(group, Module.new)
+      end
+
       Humidifier.const_get(group).const_set(resource, resource_class)
       Humidifier.registry[aws_name] = resource_class
     end

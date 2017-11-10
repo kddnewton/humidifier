@@ -33,11 +33,16 @@ class SDKV1Test < Minitest::Test
 
   def test_create_and_wait
     with_sdk_v1_loaded do |sdk|
-      SdkSupport.expect(:create_stack, [{ stack_name: 'name', template_body: 'body' }], stub(stack_id: 'test-id'))
-      describe_response = stub(stacks: [stub(stack_status: 'CREATE_COMPLETE')])
-      SdkSupport.expect(:describe_stacks, [{ stack_name: 'test-id' }], describe_response)
+      arguments = [{ stack_name: 'name', template_body: 'body' }]
+      SdkSupport.expect(:create_stack, arguments, stub(stack_id: 'tid'))
 
-      sdk.create_and_wait(payload(name: 'name', to_cf: 'body', identifier: 'test-id', max_wait: 10))
+      response = stub(stacks: [stub(stack_status: 'CREATE_COMPLETE')])
+      SdkSupport.expect(:describe_stacks, [{ stack_name: 'tid' }], response)
+
+      create_payload =
+        payload(name: 'name', to_cf: 'body', identifier: 'tid', max_wait: 10)
+
+      sdk.create_and_wait(create_payload)
       SdkSupport.verify
     end
   end
@@ -45,7 +50,8 @@ class SDKV1Test < Minitest::Test
   def test_create_and_wait_failure
     with_sdk_v1_loaded do |sdk|
       create_and_wait_failure_expectations
-      create_payload = payload(name: 'name', to_cf: 'body', identifier: 'test-id', max_wait: 10)
+      create_payload =
+        payload(name: 'name', to_cf: 'body', identifier: 'tid', max_wait: 10)
 
       error = assert_raises { sdk.create_and_wait(create_payload) }
       assert_equal "name stack failed:\nfailure", error.message
@@ -66,13 +72,19 @@ class SDKV1Test < Minitest::Test
   private
 
   def create_and_wait_failure_expectations
-    SdkSupport.expect(:create_stack, [{ stack_name: 'name', template_body: 'body' }], stub(stack_id: 'test-id'))
+    arguments = [{ stack_name: 'name', template_body: 'body' }]
+    SdkSupport.expect(:create_stack, arguments, stub(stack_id: 'tid'))
 
     describe_response = stub(stacks: [stub(stack_status: 'FAILED')])
-    SdkSupport.expect(:describe_stacks, [{ stack_name: 'test-id' }], describe_response)
+    arguments = [{ stack_name: 'tid' }]
+    SdkSupport.expect(:describe_stacks, arguments, describe_response)
 
-    events_response = stub(stack_events: [stub(resource_status: 'FAILED', resource_status_reason: 'failure')])
-    SdkSupport.expect(:describe_stack_events, [{ stack_name: 'test-id' }], events_response)
+    stack_events =
+      [stub(resource_status: 'FAILED', resource_status_reason: 'failure')]
+    events_response = stub(stack_events: stack_events)
+
+    arguments = [{ stack_name: 'tid' }]
+    SdkSupport.expect(:describe_stack_events, arguments, events_response)
   end
 
   def upload_expectations

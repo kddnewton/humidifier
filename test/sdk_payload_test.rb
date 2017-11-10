@@ -31,14 +31,9 @@ class SdkPayloadTest < Minitest::Test
   end
 
   def test_param_sets
-    {
-      create_change_set_params: { stack_name: 'identifier', template_body: 'to_cf' },
-      create_params: { stack_name: 'name', template_body: 'to_cf' },
-      delete_params: { stack_name: 'identifier' },
-      update_params: { stack_name: 'identifier', template_body: 'to_cf' },
-      validate_params: { template_body: 'to_cf' }
-    }.each do |method, expected|
-      assert_equal expected.merge(foo: 'bar'), build.public_send(method), "Not equal for method: #{method}"
+    param_sets.each do |method, expected|
+      assert_equal expected.merge(foo: 'bar'), build.public_send(method),
+                   "Not equal for method: #{method}"
     end
   end
 
@@ -49,7 +44,8 @@ class SdkPayloadTest < Minitest::Test
   def test_template_param_large
     template_body = 'a' * (Humidifier::SdkPayload::MAX_TEMPLATE_BODY_SIZE + 1)
     Humidifier::AwsShim.stub(:upload, 'foobar') do
-      assert_equal ({ template_url: 'foobar' }), build(template_body).send(:template_param)
+      assert_equal ({ template_url: 'foobar' }),
+                   build(template_body).send(:template_param)
     end
   end
 
@@ -59,12 +55,28 @@ class SdkPayloadTest < Minitest::Test
       assert_raises Humidifier::SdkPayload::TemplateTooLargeError do
         build(template_body).send(:template_param)
       end
-    assert_match(/#{Humidifier::SdkPayload::MAX_TEMPLATE_URL_SIZE + 1} bytes/, error.message)
+
+    expected = /#{Humidifier::SdkPayload::MAX_TEMPLATE_URL_SIZE + 1} bytes/
+    assert_match expected, error.message
   end
 
   private
 
   def build(template_body = 'to_cf')
-    Humidifier::SdkPayload.new(StackDouble.new('identifier', 'name', template_body), foo: 'bar')
+    stack = StackDouble.new('identifier', 'name', template_body)
+    Humidifier::SdkPayload.new(stack, foo: 'bar')
+  end
+
+  def param_sets
+    {
+      create_change_set_params: {
+        stack_name: 'identifier',
+        template_body: 'to_cf'
+      },
+      create_params: { stack_name: 'name', template_body: 'to_cf' },
+      delete_params: { stack_name: 'identifier' },
+      update_params: { stack_name: 'identifier', template_body: 'to_cf' },
+      validate_params: { template_body: 'to_cf' }
+    }
   end
 end

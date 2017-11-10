@@ -24,21 +24,33 @@ module Props
       assert_equal ['Alpha', { 'Beta' => 'gamma' }], build.to_cf(beta: 'gamma')
     end
 
+    def test_to_cf_ref
+      actual = build.to_cf(Humidifier.ref('Foo'))
+      assert_equal ['Alpha', { 'Ref' => 'Foo' }], actual
+    end
+
     def test_convert_valid
       value = { beta: 'gamma' }
       assert_equal value, build.convert(value)
     end
 
     def test_convert_invalid
-      out, * = capture_io { assert_equal ({ beta: 'gamma' }), build.convert(beta: :gamma) }
+      out, * =
+        capture_io do
+          assert_equal ({ beta: 'gamma' }), build.convert(beta: :gamma)
+        end
       assert_match(/WARNING: Property beta/, out)
     end
 
     private
 
     def build
-      substructs = { 'Sub' => { 'Properties' => { 'Beta' => { 'PrimitiveType' => 'String' } } } }
-      Humidifier::Props::StructureProp.new('Alpha', { 'Type' => 'Sub' }, substructs)
+      substructs = { 'Sub' => {
+        'Properties' => { 'Beta' => { 'PrimitiveType' => 'String' } }
+      } }
+
+      config = { 'Type' => 'Sub' }
+      Humidifier::Props::StructureProp.new('Alpha', config, substructs)
     end
   end
 end

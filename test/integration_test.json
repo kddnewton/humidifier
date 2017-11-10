@@ -8,7 +8,7 @@
             "DomainName" : "mybucket.s3.amazonaws.com",
             "Id" : "myS3Origin",
             "S3OriginConfig" : {
-              "OriginAccessIdentity" : "origin-access-identity/cloudfront/E127EXAMPLE51Z"
+              "OriginAccessIdentity" : "oai/cloudfront/E127EXAMPLE51Z"
             }
           }],
           "Enabled" : true,

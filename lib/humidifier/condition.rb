@@ -1,10 +1,10 @@
 module Humidifier
   # Represents a CFN stack condition
   class Condition
-    attr_accessor :opts
+    attr_reader :opts
 
     def initialize(opts)
-      self.opts = opts
+      @opts = opts
     end
 
     # CFN stack syntax
