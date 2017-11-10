@@ -441,15 +441,13 @@ href="http://docs.aws.amazon.com">docs.aws.amazon.com</a>
 
 18
 19
-20
-21</pre>
+20</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span>
-  <span class='id identifier rubyid_cf_value'>cf_value</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:cf</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_to_cf'>to_cf</span> <span class='op'>:</span> <span class='id identifier rubyid_value'>value</span>
-  <span class='lbrace'>{</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_cf_value'>cf_value</span> <span class='rbrace'>}</span>
+  <span class='lbrace'>{</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=&gt;</span> <span class='const'>Serializer</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>

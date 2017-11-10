@@ -7,4 +7,10 @@ class RefTest < Minitest::Test
 
     assert_equal ({ 'Ref' => reference }), ref.to_cf
   end
+
+  def test_to_cf_nested_objects
+    ref = Humidifier.ref(Humidifier.fn.get_att(%w[Foo Bar]))
+    expected = { 'Ref' => { 'Fn::GetAtt' => %w[Foo Bar] } }
+    assert_equal expected, ref.to_cf
+  end
 end

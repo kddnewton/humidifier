@@ -16,8 +16,7 @@ module Humidifier
 
     # CFN stack syntax
     def to_cf
-      cf_value = value.respond_to?(:cf) ? value.to_cf : value
-      { name => cf_value }
+      { name => Serializer.dump(value) }
     end
 
     class << self
