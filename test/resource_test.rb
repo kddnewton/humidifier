@@ -35,7 +35,12 @@ class ResourceTest < Minitest::Test
 
   def test_to_cf
     resource = build
-    assert_equal ({ 'Type' => 'AWS::Resource', 'Properties' => { 'One' => 'one', 'Two' => 2 } }), resource.to_cf
+    expected = {
+      'Type' => 'AWS::Resource',
+      'Properties' => { 'One' => 'one', 'Two' => 2 }
+    }
+
+    assert_equal expected, resource.to_cf
   end
 
   def test_initialize_raw
@@ -61,6 +66,14 @@ class ResourceTest < Minitest::Test
     assert_equal 'bar', resource.creation_policy
   end
 
+  def test_update_attributes_invalid
+    resource = build
+
+    assert_raises ArgumentError do
+      resource.update_attributes(foo: 'bar')
+    end
+  end
+
   def test_update_property
     resource = build
     resource.update_property('one', 'three')
@@ -74,16 +87,14 @@ class ResourceTest < Minitest::Test
   end
 
   def test_update_property_invalid_property
-    resource = build
     assert_raises ArgumentError do
-      resource.update_property('three', 3)
+      build.update_property('three', 3)
     end
   end
 
   def test_update_property_invalid_value
-    resource = build
     assert_raises ArgumentError do
-      resource.update_property('one', 1)
+      build.update_property('one', 1)
     end
   end
 
@@ -104,7 +115,9 @@ class ResourceTest < Minitest::Test
     resource.metadata = 'bar'
 
     expected = { 'DependsOn' => 'foo', 'Metadata' => 'bar' }
-    assert_equal(expected, resource.to_cf.reject { |key| %w[Type Properties].include?(key) })
+    actual = resource.to_cf.reject { |key| %w[Type Properties].include?(key) }
+
+    assert_equal expected, actual
   end
 
   private

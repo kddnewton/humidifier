@@ -31,7 +31,8 @@ module Humidifier
       # Upload a CFN stack to S3 so that it can be referenced via template_url
       def upload(payload)
         Humidifier.config.ensure_upload_configured!(payload)
-        upload_object(payload, "#{Humidifier.config.s3_prefix}#{payload.identifier}.json")
+        filename = "#{Humidifier.config.s3_prefix}#{payload.identifier}.json"
+        upload_object(payload, filename)
       end
 
       # Validate a template in CFN
@@ -48,7 +49,8 @@ module Humidifier
       private
 
       def client
-        @client ||= base_module::CloudFormation::Client.new(region: AwsShim::REGION)
+        @client ||=
+          base_module::CloudFormation::Client.new(region: AwsShim::REGION)
       end
 
       def try_valid

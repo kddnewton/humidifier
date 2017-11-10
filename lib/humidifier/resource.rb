@@ -3,7 +3,8 @@ module Humidifier
   class Resource
     # Attributes that are available to every stack
     COMMON_ATTRIBUTES =
-      Utils.underscored(%w[Condition CreationPolicy DeletionPolicy DependsOn Metadata UpdatePolicy])
+      Utils.underscored(%w[Condition CreationPolicy DeletionPolicy DependsOn
+                           Metadata UpdatePolicy])
 
     attr_accessor :properties, *COMMON_ATTRIBUTES.values
 
@@ -13,7 +14,8 @@ module Humidifier
     end
 
     # Patches method_missing to include property accessors
-    # After the first method call, builds the accessor methods to get a speed boost
+    # After the first method call, builds the accessor methods to get a speed
+    # boost
     def method_missing(name, *args)
       if !valid_accessor?(name)
         super
@@ -33,19 +35,31 @@ module Humidifier
 
     # CFN stack syntax
     def to_cf
-      props_cf = properties.map { |key, value| self.class.props[key].to_cf(value) }.to_h
-      { 'Type' => self.class.aws_name, 'Properties' => props_cf }.merge(common_attributes)
+      props_cf =
+        properties.map do |key, value|
+          self.class.props[key].to_cf(value)
+        end
+
+      common_attributes.merge!(
+        'Type' => self.class.aws_name,
+        'Properties' => props_cf.to_h
+      )
     end
 
     # Update a set of properties defined by the given properties hash
     def update(properties, raw = false)
-      properties.each { |property, value| update_property(property, value, raw) }
+      properties.each do |property, value|
+        update_property(property, value, raw)
+      end
     end
 
     # Update the attributes of the resource defined by COMMON_ATTRIBUTES
     def update_attributes(attributes)
       attributes.each do |attribute, value|
-        raise ArgumentError, "Invalid attribute: #{attribute}" unless COMMON_ATTRIBUTES.value?(attribute)
+        unless COMMON_ATTRIBUTES.value?(attribute)
+          raise ArgumentError, "Invalid attribute: #{attribute}"
+        end
+
         public_send(:"#{attribute}=", value)
       end
     end
@@ -96,18 +110,23 @@ module Humidifier
 
     def validate_property(property, raw)
       property = Utils.underscore(property) if raw
+
       unless self.class.prop?(property)
-        raise ArgumentError, "Attempting to set invalid property for #{self.class.name}: #{property}"
+        raise ArgumentError, 'Attempting to set invalid property for ' \
+                             "#{self.class.name}: #{property}"
       end
+
       property
     end
 
     def validate_value(property, value, raw)
       prop = self.class.props[property]
       value = prop.convert(value) if raw
+
       unless prop.valid?(value)
         raise ArgumentError, "Invalid value for #{property}: #{value.inspect}"
       end
+
       value
     end
   end

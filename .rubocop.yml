@@ -9,13 +9,5 @@ AllCops:
 Layout/IndentHeredoc:
   Enabled: false
 
-Metrics/LineLength:
-  Max: 117
-
 Style/PerlBackrefs:
   Enabled: false
-
-Style/PercentLiteralDelimiters:
-  PreferredDelimiters:
-    default: '[]'
-    '%r': '{}'

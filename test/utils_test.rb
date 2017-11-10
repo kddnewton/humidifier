@@ -6,7 +6,6 @@ class UtilsTest < Minitest::Test
     assert_equal 'foo', Humidifier::Utils.underscore('Foo')
     assert_equal 'foo_bar', Humidifier::Utils.underscore('FooBar')
     assert_equal 'foo_bar_baz', Humidifier::Utils.underscore('FooBarBaz')
-    assert_equal 'foofoofoofoo_baar', Humidifier::Utils.underscore('FoofoofoofooBaar')
     assert_equal 'foo2_bar', Humidifier::Utils.underscore('FOO2Bar')
   end
 

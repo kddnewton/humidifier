@@ -178,6 +178,8 @@
   
   
     
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -343,7 +345,7 @@ based on what successfully loaded</p>
       <pre class="code"><span class="info file"># File 'lib/humidifier/aws_shim.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_shim'>shim</span> <span class='op'>=</span>
+  <span class='ivar'>@shim</span> <span class='op'>=</span>
     <span class='kw'>if</span> <span class='const'>Humidifier</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_sdk_version_1?'>sdk_version_1?</span>
       <span class='const'>AwsAdapters</span><span class='op'>::</span><span class='const'>SDKV1</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
     <span class='kw'>elsif</span> <span class='const'>Humidifier</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_sdk_version_2?'>sdk_version_2?</span>
@@ -365,11 +367,11 @@ based on what successfully loaded</p>
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="shim=-instance_method"></span>
+      <span id=""></span>
       <div class="method_details first">
   <h3 class="signature first" id="shim-instance_method">
   
-    #<strong>shim</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>shim</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
   
 
   

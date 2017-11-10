@@ -2,20 +2,28 @@ module Humidifier
   # Represents a CFN stack
   class Stack
     # Single settings on the stack
-    STATIC_RESOURCES     = Utils.underscored(%w[AWSTemplateFormatVersion Description Metadata])
+    STATIC_RESOURCES =
+      Utils.underscored(%w[AWSTemplateFormatVersion Description Metadata])
 
     # Lists of objects linked to the stack
-    ENUMERABLE_RESOURCES = Utils.underscored(%w[Conditions Mappings Outputs Parameters Resources])
+    ENUMERABLE_RESOURCES =
+      Utils.underscored(%w[Conditions Mappings Outputs Parameters Resources])
 
-    attr_accessor :id, :name, *ENUMERABLE_RESOURCES.values, *STATIC_RESOURCES.values
+    attr_reader :id, :name
+    attr_reader(*ENUMERABLE_RESOURCES.values, *STATIC_RESOURCES.values)
 
     def initialize(opts = {})
-      self.name = opts[:name]
-      self.id   = opts[:id]
-      self.default_identifier = self.class.next_default_identifier
+      @name = opts[:name]
+      @id = opts[:id]
+      @default_identifier = self.class.next_default_identifier
 
-      ENUMERABLE_RESOURCES.each_value { |prop| send(:"#{prop}=", opts.fetch(prop, {})) }
-      STATIC_RESOURCES.each_value { |prop| send(:"#{prop}=", opts[prop]) }
+      ENUMERABLE_RESOURCES.each_value do |property|
+        instance_variable_set(:"@#{property}", opts.fetch(property, {}))
+      end
+
+      STATIC_RESOURCES.each_value do |property|
+        instance_variable_set(:"@#{property}", opts[property])
+      end
     end
 
     # Add a resource to the stack and optionally set its attributes
@@ -25,7 +33,8 @@ module Humidifier
       resource
     end
 
-    # The identifier used by the shim to find the stack in CFN, prefers id to name
+    # The identifier used by the shim to find the stack in CFN, prefers id to
+    # name
     def identifier
       id || name || default_identifier
     end
@@ -42,12 +51,15 @@ module Humidifier
 
     %i[condition mapping output parameter].each do |resource_type|
       define_method(:"add_#{resource_type}") do |name, opts = {}|
-        send(:"#{resource_type}s")[name] = Humidifier.const_get(resource_type.capitalize).new(opts)
+        send(:"#{resource_type}s")[name] =
+          Humidifier.const_get(resource_type.capitalize).new(opts)
       end
     end
 
     AwsShim::STACK_METHODS.each do |method|
-      define_method(method) { |opts = {}| AwsShim.send(method, SdkPayload.new(self, opts)) }
+      define_method(method) do |opts = {}|
+        AwsShim.send(method, SdkPayload.new(self, opts))
+      end
     end
 
     # Increment the default identifier
@@ -59,12 +71,13 @@ module Humidifier
 
     private
 
-    attr_accessor :default_identifier
+    attr_reader :default_identifier
 
     def enumerable_resources
       ENUMERABLE_RESOURCES.each_with_object({}) do |(name, prop), list|
         resources = send(prop)
         next if resources.empty?
+
         list[name] =
           resources.map do |resource_name, resource|
             [resource_name, resource.to_cf]

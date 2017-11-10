@@ -1,6 +1,6 @@
 module SdkSupport
   class Tracker
-    attr_accessor :stubs
+    attr_reader :stubs
 
     def initialize
       reset
@@ -24,10 +24,8 @@ module SdkSupport
       return if stubs.empty?
 
       message = "Expected calls to:\n"
-      stubs.map do |method, method_stubs|
-        message << "  #{method} with args:\n"
-        message << method_stubs.map { |(stub_args, _)| "    #{stub_args.inspect}" }.join("\n")
-        message << "\n"
+      stubs.each do |method, method_stubs|
+        message << "  #{method} with args:\n#{messages_from(method_stubs)}"
       end
 
       reset
@@ -43,8 +41,14 @@ module SdkSupport
       found
     end
 
+    def messages_from(method_stubs)
+      method_stubs.map do |(stub_args, _)|
+        "    #{stub_args.inspect}\n"
+      end
+    end
+
     def reset
-      self.stubs = {}
+      @stubs = {}
     end
   end
 end

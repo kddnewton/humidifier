@@ -1,9 +1,9 @@
 module SdkSupport
   class Stub
-    attr_accessor :struct
+    attr_reader :struct
 
     def initialize(struct)
-      self.struct = struct || {}
+      @struct = struct || {}
     end
 
     def method_missing(method, *)

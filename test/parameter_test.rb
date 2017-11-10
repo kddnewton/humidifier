@@ -8,7 +8,8 @@ class ParameterTest < Minitest::Test
   def test_to_cf_with_description
     with_mocked_serializer('foobar') do |value|
       output = Humidifier::Parameter.new(description: value)
-      assert_equal ({ 'Type' => 'String', 'Description' => value }), output.to_cf
+      expected = { 'Type' => 'String', 'Description' => value }
+      assert_equal expected, output.to_cf
     end
   end
 end

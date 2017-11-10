@@ -119,6 +119,29 @@
   <p class="children"><span class='object_link'><a href="SDKV3.html" title="Humidifier::AwsAdapters::SDKV3 (class)">SDKV3</a></span></p>
 </div>
 
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="TIME_FORMAT-constant" class="">TIME_FORMAT =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Format of the timestamp used in changeset naming</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%Y-%m-%d-%H-%M-%S</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+      
+    </dl>
+  
+
 
 
 
@@ -251,16 +274,18 @@
       <pre class="lines">
 
 
-6
-7
-8
-9</pre>
+9
+10
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/sdkv2.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/sdkv2.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_change_set'>create_change_set</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>change_set_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>changeset-</span><span class='embexpr_beg'>#{</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%Y-%m-%d-%H-%M-%S</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_change_set_name'>change_set_name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>changeset-</span><span class='embexpr_beg'>#{</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='const'>TIME_FORMAT</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>change_set_name:</span> <span class='id identifier rubyid_change_set_name'>change_set_name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_try_valid'>try_valid</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_create_change_set'>create_change_set</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_create_change_set_params'>create_change_set_params</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -294,12 +319,12 @@
       <pre class="lines">
 
 
-12
-13
-14</pre>
+16
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/sdkv2.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/sdkv2.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_deploy_change_set'>deploy_change_set</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_create_change_set'>create_change_set</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
@@ -348,12 +373,12 @@
       <pre class="lines">
 
 
-17
-18
-19</pre>
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/sdkv2.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/sdkv2.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_base_module'>base_module</span><span class='op'>::</span><span class='const'>CloudFormation</span><span class='op'>::</span><span class='const'>Stack</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>name:</span> <span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span>

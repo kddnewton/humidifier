@@ -9,13 +9,13 @@ Gem::Specification.new do |spec|
   spec.email         = ['oss@localytics.com']
 
   spec.summary       = 'CloudFormation made easy'
-  spec.description   = 'Programmatically generate and manage AWS CloudFormation templates, stacks, and change sets.'
+  spec.description   = 'Programmatically generate and manage AWS ' \
+                       'CloudFormation templates, stacks, and change sets.'
   spec.homepage      = 'https://github.com/localytics/humidifier'
   spec.license       = 'MIT'
 
-  files = Dir['LICENSE', 'README.md', 'lib/**/*', 'CloudFormationResourceSpecification.json']
-  spec.files         = files
-
+  spec.files         = Dir['LICENSE', 'README.md', 'lib/**/*',
+                           'CloudFormationResourceSpecification.json']
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.1'
 

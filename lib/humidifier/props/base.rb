@@ -2,7 +2,8 @@ module Humidifier
   module Props
     # Superclass for all CFN properties
     class Base
-      # The list of classes that are valid beyond the normal values for each prop
+      # The list of classes that are valid beyond the normal values for each
+      # prop
       WHITELIST = [Fn, Ref].freeze
 
       attr_reader :key, :name, :spec, :substructs
@@ -29,7 +30,8 @@ module Humidifier
         [key, Serializer.dump(value)]
       end
 
-      # the type of update that occurs when this property is updated on its associated resource
+      # the type of update that occurs when this property is updated on its
+      # associated resource
       def update_type
         spec['UpdateType']
       end

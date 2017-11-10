@@ -11,12 +11,21 @@ module Humidifier
 
       # CFN stack syntax
       def to_cf(list)
-        [key, list.map { |value| subprop.to_cf(value).last }]
+        cf_value =
+          if list.respond_to?(:to_cf)
+            list.to_cf
+          else
+            list.map { |value| subprop.to_cf(value).last }
+          end
+
+        [key, cf_value]
       end
 
-      # Valid if the value is whitelisted or every value in the list is valid on the subprop
+      # Valid if the value is whitelisted or every value in the list is valid
+      # on the subprop
       def valid?(list)
-        whitelisted_value?(list) || (list.is_a?(Enumerable) && list.all? { |value| subprop.valid?(value) })
+        return true if whitelisted_value?(list)
+        list.is_a?(Enumerable) && list.all? { |value| subprop.valid?(value) }
       end
 
       private

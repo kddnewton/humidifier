@@ -122,7 +122,8 @@
   <div class="discussion">
     
 <p>The list of all internal functions provided by AWS from <a
-href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html">docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html</a></p>
+href="http://docs.aws.amazon.com">docs.aws.amazon.com</a> 
+/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html</p>
 
 
   </div>
@@ -156,6 +157,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-fu
   
   
     
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -182,6 +185,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-fu
   
   
   
+    
+      <span class="note title readonly">readonly</span>
     
     
   
@@ -293,17 +298,17 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-fu
       <pre class="lines">
 
 
-11
 12
 13
-14</pre>
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Fn::</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+  <span class='ivar'>@name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Fn::</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='ivar'>@value</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -316,11 +321,11 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-fu
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="name=-instance_method"></span>
+      <span id=""></span>
       <div class="method_details first">
   <h3 class="signature first" id="name-instance_method">
   
-    #<strong>name</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>name</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
   
 
   
@@ -343,12 +348,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-fu
       <pre class="lines">
 
 
-9
 10
-11</pre>
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -359,11 +364,11 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-fu
 </div>
     
       
-      <span id="value=-instance_method"></span>
+      <span id=""></span>
       <div class="method_details ">
   <h3 class="signature " id="value-instance_method">
   
-    #<strong>value</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>value</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
   
 
   
@@ -386,12 +391,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-fu
       <pre class="lines">
 
 
-9
 10
-11</pre>
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_value'>value</span>
   <span class='ivar'>@value</span>
@@ -434,15 +439,17 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-fu
       <pre class="lines">
 
 
-17
 18
-19</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span>
-  <span class='lbrace'>{</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_cf_value'>cf_value</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:cf</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_to_cf'>to_cf</span> <span class='op'>:</span> <span class='id identifier rubyid_value'>value</span>
+  <span class='lbrace'>{</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_cf_value'>cf_value</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>

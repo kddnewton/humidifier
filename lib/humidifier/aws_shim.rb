@@ -17,13 +17,13 @@ module Humidifier
       create_change_set deploy_change_set
     ].freeze
 
-    attr_accessor :shim
+    attr_reader :shim
 
     # Either set the SDK based on the configured option or guess the SDK
     # version by attempting to require both aws-sdk-v1 and aws-sdk, then setting
     # the shim based on what successfully loaded
     def initialize
-      self.shim =
+      @shim =
         if Humidifier.config.sdk_version_1?
           AwsAdapters::SDKV1.new
         elsif Humidifier.config.sdk_version_2?

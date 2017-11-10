@@ -25,7 +25,10 @@ module Props
     end
 
     def test_convert_invalid
-      out, * = capture_io { assert_equal ({ 'foo' => 'bar' }), build.convert([%w[foo bar]]) }
+      out, * =
+        capture_io do
+          assert_equal ({ 'foo' => 'bar' }), build.convert([%w[foo bar]])
+        end
       assert_match(/WARNING: Property test/, out)
     end
 

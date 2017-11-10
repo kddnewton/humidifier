@@ -12,14 +12,17 @@ class IntegrationTest < Minitest::Test
 
   private
 
-  # from http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-cloudfront.html
+  # http://docs.aws.amazon.com
+  #   /AWSCloudFormation/latest/UserGuide/quickref-cloudfront.html
   def distribution
     Humidifier::CloudFront::Distribution.new(
       distribution_config: {
         origins: [{
           domain_name: 'mybucket.s3.amazonaws.com',
           id: 'myS3Origin',
-          s3_origin_config: { origin_access_identity: 'origin-access-identity/cloudfront/E127EXAMPLE51Z' }
+          s3_origin_config: {
+            origin_access_identity: 'oai/cloudfront/E127EXAMPLE51Z'
+          }
         }],
         enabled: true,
         comment: 'Some comment',
@@ -53,10 +56,12 @@ class IntegrationTest < Minitest::Test
   end
 
   def launch_specification
+    mapped = ['AWSInstanceType2Arch', Humidifier.ref('InstanceType'), 'Arch']
+
     image_id = [
       'AWSRegionArch2AMI',
       Humidifier.ref('AWS::Region'),
-      Humidifier.fn.find_in_map(['AWSInstanceType2Arch', Humidifier.ref('InstanceType'), 'Arch'])
+      Humidifier.fn.find_in_map(mapped)
     ]
 
     {
@@ -66,7 +71,8 @@ class IntegrationTest < Minitest::Test
     }
   end
 
-  # from http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-spotfleet.html
+  # http://docs.aws.amazon.com
+  #   /AWSCloudFormation/latest/UserGuide/aws-resource-ec2-spotfleet.html
   def spot_fleet
     Humidifier::EC2::SpotFleet.new(
       spot_fleet_request_config_data: {
@@ -81,9 +87,13 @@ class IntegrationTest < Minitest::Test
           launch_specification.merge(
             ebs_optimized: true,
             monitoring: { enabled: true },
-            security_groups: [{ group_id: Humidifier.fn.get_att(%w[SG0 GroupId]) }],
+            security_groups: [
+              { group_id: Humidifier.fn.get_att(%w[SG0 GroupId]) }
+            ],
             subnet_id: Humidifier.ref('Subnet0'),
-            iam_instance_profile: { arn: Humidifier.fn.get_att(%w[RootInstanceProfile Arn]) }
+            iam_instance_profile: {
+              arn: Humidifier.fn.get_att(%w[RootInstanceProfile Arn])
+            }
           )
         ]
       }

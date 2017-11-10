@@ -25,13 +25,21 @@ module Props
       assert_equal ['Test', value], build.to_cf(value)
     end
 
+    def test_to_cf_ref
+      actual = build.to_cf(Humidifier.ref('Foo'))
+      assert_equal ['Test', { 'Ref' => 'Foo' }], actual
+    end
+
     def test_convert_valid
       value = { 'Foo' => 5 }
       assert value, build.convert(value)
     end
 
     def test_convert_invalid
-      out, * = capture_io { assert_equal ({ 'Foo' => 5 }), build.convert('Foo' => '5') }
+      out, * =
+        capture_io do
+          assert_equal ({ 'Foo' => 5 }), build.convert('Foo' => '5')
+        end
       assert_match(/WARNING: Property test/, out)
     end
 

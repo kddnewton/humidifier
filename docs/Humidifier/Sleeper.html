@@ -131,6 +131,8 @@
   
   
     
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -226,7 +228,7 @@
       <pre class="code"><span class="info file"># File 'lib/humidifier/sleeper.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_attempts'>attempts</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_attempts'>attempts</span> <span class='op'>=</span> <span class='id identifier rubyid_attempts'>attempts</span>
+  <span class='ivar'>@attempts</span> <span class='op'>=</span> <span class='id identifier rubyid_attempts'>attempts</span>
   <span class='id identifier rubyid_hibernate_until'>hibernate_until</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -240,11 +242,11 @@
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="attempts=-instance_method"></span>
+      <span id=""></span>
       <div class="method_details first">
   <h3 class="signature first" id="attempts-instance_method">
   
-    #<strong>attempts</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>attempts</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
   
 
   

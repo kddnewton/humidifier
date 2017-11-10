@@ -23,12 +23,20 @@ module Humidifier
         AWS
       end
 
+      def failure_event_filtered?(event)
+        !event.resource_status.include?('FAILED') ||
+          !event.key?(:resource_status_reason)
+      end
+
       def handle_failure(payload)
         reasons = []
-        client.describe_stack_events(stack_name: payload.identifier).stack_events.each do |event|
-          next unless event.resource_status.include?('FAILED') && event.key?(:resource_status_reason)
+        response = client.describe_stack_events(stack_name: payload.identifier)
+
+        response.stack_events.each do |event|
+          next if failure_event_filtered?(event)
           reasons.unshift(event.resource_status_reason)
         end
+
         raise "#{payload.name} stack failed:\n#{reasons.join("\n")}"
       end
 
@@ -37,7 +45,8 @@ module Humidifier
 
         aws_stack = nil
         Sleeper.new(payload.max_wait) do
-          aws_stack = client.describe_stacks(stack_name: payload.identifier).stacks.first
+          response = client.describe_stacks(stack_name: payload.identifier)
+          aws_stack = response.stacks.first
           !aws_stack.stack_status.end_with?('IN_PROGRESS')
         end
 
@@ -48,11 +57,14 @@ module Humidifier
       def upload_object(payload, key)
         base_module.config(region: AwsShim::REGION)
         @s3 ||= base_module::S3.new
-        @s3.buckets[Humidifier.config.s3_bucket].objects.create(key, payload.template_body).url_for(:read)
+
+        objects = @s3.buckets[Humidifier.config.s3_bucket].objects
+        objects.create(key, payload.template_body).url_for(:read)
       end
 
       def unsupported(method)
-        puts "WARNING: Cannot #{method} because that functionality is not supported in V1 of aws-sdk."
+        puts "WARNING: Cannot #{method} because that functionality is not " \
+             'supported in V1 of aws-sdk.'
         false
       end
     end

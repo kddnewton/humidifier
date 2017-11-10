@@ -212,17 +212,17 @@ to them.</p>
       <pre class="lines">
 
 
-6
 7
 8
 9
 10
 11
 12
-13</pre>
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/noop.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/noop.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='const'>AwsShim</span><span class='op'>::</span><span class='const'>STACK_METHODS</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span>
@@ -284,12 +284,12 @@ to them</p>
       <pre class="lines">
 
 
-17
 18
-19</pre>
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/noop.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/noop.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_respond_to_missing?'>respond_to_missing?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='rparen'>)</span>
   <span class='const'>AwsShim</span><span class='op'>::</span><span class='const'>STACK_METHODS</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='kw'>false</span> <span class='op'>:</span> <span class='kw'>super</span>
