@@ -9,8 +9,8 @@ module Humidifier
     ENUMERABLE_RESOURCES =
       Utils.underscored(%w[Conditions Mappings Outputs Parameters Resources])
 
-    attr_reader :id, :name
-    attr_reader(*ENUMERABLE_RESOURCES.values, *STATIC_RESOURCES.values)
+    attr_accessor :id
+    attr_reader(:name, *ENUMERABLE_RESOURCES.values, *STATIC_RESOURCES.values)
 
     def initialize(opts = {})
       @name = opts[:name]
