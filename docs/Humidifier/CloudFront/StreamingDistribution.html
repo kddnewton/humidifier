@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: Humidifier::CloudFront::Distribution
+  Class: Humidifier::CloudFront::StreamingDistribution
   
     &mdash; Humidifier
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  pathId = "Humidifier::CloudFront::Distribution";
+  pathId = "Humidifier::CloudFront::StreamingDistribution";
   relpath = '../../';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="../../_index.html">Index (D)</a> &raquo;
+    <a href="../../_index.html">Index (S)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../CloudFront.html" title="Humidifier::CloudFront (module)">CloudFront</a></span></span>
      &raquo; 
-    <span class="title">Distribution</span>
+    <span class="title">StreamingDistribution</span>
   
 </div>
 
@@ -61,7 +61,7 @@
 
       <iframe id="search_frame" src="../../class_list.html"></iframe>
 
-      <div id="content"><h1>Class: Humidifier::CloudFront::Distribution
+      <div id="content"><h1>Class: Humidifier::CloudFront::StreamingDistribution
   
   
   
@@ -78,7 +78,7 @@
           
             <li class="next"><span class='object_link'><a href="../Resource.html" title="Humidifier::Resource (class)">Resource</a></span></li>
           
-            <li class="next">Humidifier::CloudFront::Distribution</li>
+            <li class="next">Humidifier::CloudFront::StreamingDistribution</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -107,7 +107,7 @@
   <div class="discussion">
     
 <p>A dynamically-defined class that represents an
-AWS::CloudFront::Distribution resource</p>
+AWS::CloudFront::StreamingDistribution resource</p>
 
 
   </div>
@@ -125,7 +125,7 @@ AWS::CloudFront::Distribution resource</p>
         
         <div class='inline'>
 <p><a
-href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distribution.html">AWS::CloudFront::Distribution</a></p>
+href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-streamingdistribution.html">AWS::CloudFront::StreamingDistribution</a></p>
 </div>
       
     </li>
@@ -159,7 +159,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#distribution_config-instance_method" title="#distribution_config (instance method)">#<strong>distribution_config</strong>  &#x21d2; Object </a>
+      <a href="#streaming_distribution_config-instance_method" title="#streaming_distribution_config (instance method)">#<strong>streaming_distribution_config</strong>  &#x21d2; Object </a>
     
 
     
@@ -174,7 +174,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the DistributionConfig property.</p>
+<p>returns the StreamingDistributionConfig property.</p>
 </div></span>
   
 </li>
@@ -183,7 +183,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#distribution_config%3D-instance_method" title="#distribution_config= (instance method)">#<strong>distribution_config=</strong>(value)  &#x21d2; Object </a>
+      <a href="#streaming_distribution_config%3D-instance_method" title="#streaming_distribution_config= (instance method)">#<strong>streaming_distribution_config=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -198,7 +198,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the DistributionConfig property (Structure).</p>
+<p>sets the StreamingDistributionConfig property (Structure).</p>
 </div></span>
   
 </li>
@@ -289,9 +289,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="distribution_config-instance_method">
+  <h3 class="signature first" id="streaming_distribution_config-instance_method">
   
-    #<strong>distribution_config</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>streaming_distribution_config</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -300,7 +300,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the DistributionConfig property</p>
+<p>returns the StreamingDistributionConfig property</p>
 
 
   </div>
@@ -321,8 +321,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 10</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_distribution_config'>distribution_config</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>distribution_config</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_streaming_distribution_config'>streaming_distribution_config</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>streaming_distribution_config</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -330,9 +330,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="distribution_config=-instance_method">
+  <h3 class="signature " id="streaming_distribution_config=-instance_method">
   
-    #<strong>distribution_config=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>streaming_distribution_config=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -341,7 +341,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the DistributionConfig property (Structure)</p>
+<p>sets the StreamingDistributionConfig property (Structure)</p>
 
 
   </div>
@@ -362,8 +362,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 15</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_distribution_config='>distribution_config=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>distribution_config</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_streaming_distribution_config='>streaming_distribution_config=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>streaming_distribution_config</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
