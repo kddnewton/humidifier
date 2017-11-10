@@ -204,6 +204,8 @@ complete a CRUD operation</p>
   
   
     
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -231,6 +233,8 @@ complete a CRUD operation</p>
   
   
     
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -257,6 +261,8 @@ complete a CRUD operation</p>
   
   
   
+    
+      <span class="note title readonly">readonly</span>
     
     
   
@@ -537,19 +543,19 @@ complete a CRUD operation</p>
       <pre class="lines">
 
 
-29
-30
-31
 32
-33</pre>
+33
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_stack'>stack</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_stack'>stack</span>    <span class='op'>=</span> <span class='id identifier rubyid_stack'>stack</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span>  <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_max_wait'>max_wait</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:max_wait</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='const'>MAX_WAIT</span>
+  <span class='ivar'>@stack</span> <span class='op'>=</span> <span class='id identifier rubyid_stack'>stack</span>
+  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='ivar'>@max_wait</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:max_wait</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='const'>MAX_WAIT</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -562,11 +568,11 @@ complete a CRUD operation</p>
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="max_wait=-instance_method"></span>
+      <span id=""></span>
       <div class="method_details first">
   <h3 class="signature first" id="max_wait-instance_method">
   
-    #<strong>max_wait</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>max_wait</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
   
 
   
@@ -589,12 +595,12 @@ complete a CRUD operation</p>
       <pre class="lines">
 
 
-24
-25
-26</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_max_wait'>max_wait</span>
   <span class='ivar'>@max_wait</span>
@@ -605,11 +611,11 @@ complete a CRUD operation</p>
 </div>
     
       
-      <span id="options=-instance_method"></span>
+      <span id=""></span>
       <div class="method_details ">
   <h3 class="signature " id="options-instance_method">
   
-    #<strong>options</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>options</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
   
 
   
@@ -632,12 +638,12 @@ complete a CRUD operation</p>
       <pre class="lines">
 
 
-24
-25
-26</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -648,11 +654,11 @@ complete a CRUD operation</p>
 </div>
     
       
-      <span id="stack=-instance_method"></span>
+      <span id=""></span>
       <div class="method_details ">
   <h3 class="signature " id="stack-instance_method">
   
-    #<strong>stack</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>stack</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
   
 
   
@@ -675,12 +681,12 @@ complete a CRUD operation</p>
       <pre class="lines">
 
 
-24
-25
-26</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stack'>stack</span>
   <span class='ivar'>@stack</span>
@@ -723,12 +729,12 @@ complete a CRUD operation</p>
       <pre class="lines">
 
 
-36
-37
-38</pre>
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_stack'>stack</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_stack'>stack</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span>
@@ -764,12 +770,12 @@ complete a CRUD operation</p>
       <pre class="lines">
 
 
-55
-56
-57</pre>
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_change_set_params'>create_change_set_params</span>
   <span class='lbrace'>{</span> <span class='label'>stack_name:</span> <span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_template_param'>template_param</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -805,12 +811,12 @@ complete a CRUD operation</p>
       <pre class="lines">
 
 
-60
-61
-62</pre>
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_params'>create_params</span>
   <span class='lbrace'>{</span> <span class='label'>stack_name:</span> <span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_template_param'>template_param</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -846,12 +852,12 @@ complete a CRUD operation</p>
       <pre class="lines">
 
 
-65
-66
-67</pre>
+68
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_params'>delete_params</span>
   <span class='lbrace'>{</span> <span class='label'>stack_name:</span> <span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -887,15 +893,15 @@ complete a CRUD operation</p>
       <pre class="lines">
 
 
-41
-42
-43</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_new_options'>new_options</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_new_options'>new_options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_new_options'>new_options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -928,12 +934,12 @@ complete a CRUD operation</p>
       <pre class="lines">
 
 
-46
-47
-48</pre>
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_template_body'>template_body</span>
   <span class='ivar'>@template_body</span> <span class='op'>||=</span> <span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_to_cf'>to_cf</span>
@@ -969,12 +975,12 @@ complete a CRUD operation</p>
       <pre class="lines">
 
 
-70
-71
-72</pre>
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_params'>update_params</span>
   <span class='lbrace'>{</span> <span class='label'>stack_name:</span> <span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_template_param'>template_param</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -1010,12 +1016,12 @@ complete a CRUD operation</p>
       <pre class="lines">
 
 
-75
-76
-77</pre>
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate_params'>validate_params</span>
   <span class='id identifier rubyid_template_param'>template_param</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>

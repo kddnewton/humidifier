@@ -133,9 +133,10 @@ template_body option</p>
 </div>
         </dt>
         <dd><pre class="code"><span class='heredoc_beg'>&lt;&lt;-MSG</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
-<span class='tstring_content'>The %&lt;identifier&gt;s stack&#39;s body is too large to be use the template_body option, and therefore must use the
-template_url option instead. You can configure Humidifier to do this automatically by setting up the s3 config
-on the top-level Humidifier object like so:
+<span class='tstring_content'>The %&lt;identifier&gt;s stack&#39;s body is too large to be use the template_body option,
+and therefore must use the template_url option instead. You can configure
+Humidifier to do this automatically by setting up the s3 config on the top-level
+Humidifier object like so:
 
     Humidifier.configure do |config|
       config.s3_bucket = &#39;my.s3.bucket&#39;
@@ -400,14 +401,14 @@ on the top-level Humidifier object like so:
       <pre class="lines">
 
 
-19
 20
 21
 22
-23</pre>
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_s3_bucket'>s3_bucket</span>   <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:s3_bucket</span><span class='rbracket'>]</span>
@@ -452,12 +453,12 @@ on the top-level Humidifier object like so:
       <pre class="lines">
 
 
-17
 18
-19</pre>
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_s3_bucket'>s3_bucket</span>
   <span class='ivar'>@s3_bucket</span>
@@ -495,12 +496,12 @@ on the top-level Humidifier object like so:
       <pre class="lines">
 
 
-17
 18
-19</pre>
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_s3_prefix'>s3_prefix</span>
   <span class='ivar'>@s3_prefix</span>
@@ -538,12 +539,12 @@ on the top-level Humidifier object like so:
       <pre class="lines">
 
 
-17
 18
-19</pre>
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sdk_version'>sdk_version</span>
   <span class='ivar'>@sdk_version</span>
@@ -586,15 +587,17 @@ on the top-level Humidifier object like so:
       <pre class="lines">
 
 
-26
 27
-28</pre>
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ensure_upload_configured!'>ensure_upload_configured!</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>UPLOAD_MESSAGE</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%&lt;identifier&gt;s</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_s3_bucket'>s3_bucket</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_s3_bucket'>s3_bucket</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>UPLOAD_MESSAGE</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%&lt;identifier&gt;s</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -640,12 +643,12 @@ on the top-level Humidifier object like so:
       <pre class="lines">
 
 
-31
-32
-33</pre>
+33
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sdk_version_1?'>sdk_version_1?</span>
   <span class='id identifier rubyid_sdk_version'>sdk_version</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1</span><span class='tstring_end'>&#39;</span></span>
@@ -694,12 +697,12 @@ on the top-level Humidifier object like so:
       <pre class="lines">
 
 
-36
-37
-38</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sdk_version_2?'>sdk_version_2?</span>
   <span class='id identifier rubyid_sdk_version'>sdk_version</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2</span><span class='tstring_end'>&#39;</span></span>
@@ -748,12 +751,12 @@ on the top-level Humidifier object like so:
       <pre class="lines">
 
 
-41
-42
-43</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sdk_version_3?'>sdk_version_3?</span>
   <span class='id identifier rubyid_sdk_version'>sdk_version</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>3</span><span class='tstring_end'>&#39;</span></span>

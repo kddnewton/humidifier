@@ -2,6 +2,7 @@ module Humidifier
   module AwsAdapters
     # The adapter for v2 of aws-sdk
     class SDKV2 < Base
+      # Format of the timestamp used in changeset naming
       TIME_FORMAT = '%Y-%m-%d-%H-%M-%S'.freeze
 
       # Create a change set in CFN

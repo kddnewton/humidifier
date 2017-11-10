@@ -10,8 +10,9 @@ module Humidifier
   # Reads the specs/CloudFormationResourceSpecification.json file and load each
   # resource as a class
   class Loader
-    # The path to the specification file
     filename = 'CloudFormationResourceSpecification.json'
+
+    # The path to the specification file
     SPECPATH = File.expand_path(File.join('..', '..', '..', filename), __FILE__)
 
     # Handles searching the PropertyTypes specifications for a specific
