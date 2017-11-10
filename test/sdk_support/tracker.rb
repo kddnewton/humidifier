@@ -1,6 +1,6 @@
 module SdkSupport
   class Tracker
-    attr_accessor :stubs
+    attr_reader :stubs
 
     def initialize
       reset
@@ -48,7 +48,7 @@ module SdkSupport
     end
 
     def reset
-      self.stubs = {}
+      @stubs = {}
     end
   end
 end
