@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="../class_list.html"></iframe>
+      <iframe id="nav" src="../class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="../class_list.html"></iframe>
 
       <div id="content"><h1>Class: Humidifier::Parameter
   
@@ -114,11 +112,10 @@
 
 </div>
   <h2>Constant Summary</h2>
-  
-    <dl class="constants">
-      
-        <dt id="PROPERTIES-constant" class="">PROPERTIES =
-          <div class="docstring">
+  <dl class="constants">
+    
+      <dt id="PROPERTIES-constant" class="">PROPERTIES =
+        <div class="docstring">
   <div class="discussion">
     
 <p>The allowed properties of all stack parameters</p>
@@ -130,13 +127,12 @@
   
 
 </div>
-        </dt>
-        <dd><pre class="code"><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_underscored'>underscored</span><span class='lparen'>(</span><span class='qwords_beg'>%w[</span><span class='tstring_content'>AllowedPattern</span><span class='words_sep'> </span><span class='tstring_content'>AllowedValues</span><span class='words_sep'> </span><span class='tstring_content'>ConstraintDescription</span><span class='words_sep'>
+      </dt>
+      <dd><pre class="code"><span class='const'><span class='object_link'><a href="Utils.html" title="Humidifier::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_underscored'><span class='object_link'><a href="Utils.html#underscored-class_method" title="Humidifier::Utils.underscored (method)">underscored</a></span></span><span class='lparen'>(</span><span class='qwords_beg'>%w[</span><span class='tstring_content'>AllowedPattern</span><span class='words_sep'> </span><span class='tstring_content'>AllowedValues</span><span class='words_sep'> </span><span class='tstring_content'>ConstraintDescription</span><span class='words_sep'>
 </span><span class='tstring_content'>Default</span><span class='words_sep'> </span><span class='tstring_content'>Description</span><span class='words_sep'> </span><span class='tstring_content'>MaxLength</span><span class='words_sep'> </span><span class='tstring_content'>MaxValue</span><span class='words_sep'> </span><span class='tstring_content'>MinLength</span><span class='words_sep'>
 </span><span class='tstring_content'>MinValue</span><span class='words_sep'> </span><span class='tstring_content'>NoEcho</span><span class='words_sep'>]</span><span class='rparen'>)</span></pre></dd>
-      
-    </dl>
-  
+    
+  </dl>
 
 
 
@@ -246,7 +242,7 @@
       <pre class="code"><span class="info file"># File 'lib/humidifier/parameter.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='const'>PROPERTIES</span><span class='period'>.</span><span class='id identifier rubyid_each_value'>each_value</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_property'>property</span><span class='op'>|</span>
+  <span class='const'><span class='object_link'><a href="#PROPERTIES-constant" title="Humidifier::Parameter::PROPERTIES (constant)">PROPERTIES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each_value'>each_value</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_property'>property</span><span class='op'>|</span>
     <span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_property'>property</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='id identifier rubyid_property'>property</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
@@ -304,9 +300,9 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span>
   <span class='id identifier rubyid_cf'>cf</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Type</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_type'>type</span> <span class='rbrace'>}</span>
-  <span class='const'>PROPERTIES</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_prop'>prop</span><span class='op'>|</span>
+  <span class='const'><span class='object_link'><a href="#PROPERTIES-constant" title="Humidifier::Parameter::PROPERTIES (constant)">PROPERTIES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_prop'>prop</span><span class='op'>|</span>
     <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_prop'>prop</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_cf'>cf</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Serializer</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_val'>val</span>
+    <span class='id identifier rubyid_cf'>cf</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Serializer.html" title="Humidifier::Serializer (class)">Serializer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_dump'><span class='object_link'><a href="Serializer.html#dump-class_method" title="Humidifier::Serializer.dump (method)">dump</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_val'>val</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_cf'>cf</span>
 <span class='kw'>end</span></pre>

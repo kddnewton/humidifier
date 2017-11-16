@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="../class_list.html"></iframe>
+      <iframe id="nav" src="../class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="../class_list.html"></iframe>
 
       <div id="content"><h1>Class: Humidifier::AwsShim
   
@@ -119,11 +117,10 @@
 
 </div>
   <h2>Constant Summary</h2>
-  
-    <dl class="constants">
-      
-        <dt id="REGION-constant" class="">REGION =
-          <div class="docstring">
+  <dl class="constants">
+    
+      <dt id="REGION-constant" class="">REGION =
+        <div class="docstring">
   <div class="discussion">
     
 <p>The AWS region, can be set through the environment, defaults to us-east-1</p>
@@ -135,11 +132,11 @@
   
 
 </div>
-        </dt>
-        <dd><pre class="code"><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>AWS_REGION</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>us-east-1</span><span class='tstring_end'>&#39;</span></span></pre></dd>
-      
-        <dt id="STACK_METHODS-constant" class="">STACK_METHODS =
-          <div class="docstring">
+      </dt>
+      <dd><pre class="code"><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>AWS_REGION</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>us-east-1</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+    
+      <dt id="STACK_METHODS-constant" class="">STACK_METHODS =
+        <div class="docstring">
   <div class="discussion">
     
 <p>Methods that are sent over to the aws adapter from the stack</p>
@@ -151,14 +148,14 @@
   
 
 </div>
-        </dt>
-        <dd><pre class="code">create delete deploy exists? update upload valid?
-  create_and_wait delete_and_wait deploy_and_wait update_and_wait
-  create_change_set deploy_change_set
-].freeze</pre></dd>
-      
-    </dl>
-  
+      </dt>
+      <dd><pre class="code"><span class='qsymbols_beg'>%i[
+</span><span class='tstring_content'>  create</span><span class='words_sep'> </span><span class='tstring_content'>delete</span><span class='words_sep'> </span><span class='tstring_content'>deploy</span><span class='words_sep'> </span><span class='tstring_content'>exists?</span><span class='words_sep'> </span><span class='tstring_content'>update</span><span class='words_sep'> </span><span class='tstring_content'>upload</span><span class='words_sep'> </span><span class='tstring_content'>valid?</span><span class='words_sep'>
+</span><span class='tstring_content'>  create_and_wait</span><span class='words_sep'> </span><span class='tstring_content'>delete_and_wait</span><span class='words_sep'> </span><span class='tstring_content'>deploy_and_wait</span><span class='words_sep'> </span><span class='tstring_content'>update_and_wait</span><span class='words_sep'>
+</span><span class='tstring_content'>  create_change_set</span><span class='words_sep'> </span><span class='tstring_content'>deploy_change_set</span><span class='words_sep'>
+</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+    
+  </dl>
 
 
 
@@ -346,12 +343,12 @@ based on what successfully loaded</p>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@shim</span> <span class='op'>=</span>
-    <span class='kw'>if</span> <span class='const'>Humidifier</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_sdk_version_1?'>sdk_version_1?</span>
-      <span class='const'>AwsAdapters</span><span class='op'>::</span><span class='const'>SDKV1</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-    <span class='kw'>elsif</span> <span class='const'>Humidifier</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_sdk_version_2?'>sdk_version_2?</span>
-      <span class='const'>AwsAdapters</span><span class='op'>::</span><span class='const'>SDKV2</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-    <span class='kw'>elsif</span> <span class='const'>Humidifier</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_sdk_version_3?'>sdk_version_3?</span>
-      <span class='const'>AwsAdapters</span><span class='op'>::</span><span class='const'>SDKV3</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_config'><span class='object_link'><a href="../Humidifier.html#config-class_method" title="Humidifier.config (method)">config</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sdk_version_1?'>sdk_version_1?</span>
+      <span class='const'><span class='object_link'><a href="AwsAdapters.html" title="Humidifier::AwsAdapters (module)">AwsAdapters</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AwsAdapters/SDKV1.html" title="Humidifier::AwsAdapters::SDKV1 (class)">SDKV1</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='kw'>elsif</span> <span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_config'><span class='object_link'><a href="../Humidifier.html#config-class_method" title="Humidifier.config (method)">config</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sdk_version_2?'>sdk_version_2?</span>
+      <span class='const'><span class='object_link'><a href="AwsAdapters.html" title="Humidifier::AwsAdapters (module)">AwsAdapters</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AwsAdapters/SDKV2.html" title="Humidifier::AwsAdapters::SDKV2 (class)">SDKV2</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='kw'>elsif</span> <span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_config'><span class='object_link'><a href="../Humidifier.html#config-class_method" title="Humidifier.config (method)">config</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sdk_version_3?'>sdk_version_3?</span>
+      <span class='const'><span class='object_link'><a href="AwsAdapters.html" title="Humidifier::AwsAdapters (module)">AwsAdapters</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AwsAdapters/SDKV3.html" title="Humidifier::AwsAdapters::SDKV3 (class)">SDKV3</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_guess_sdk'>guess_sdk</span>
     <span class='kw'>end</span>

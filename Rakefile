@@ -9,7 +9,7 @@ Rake::TestTask.new(:test) do |t|
   t.test_files = FileList['test/**/*_test.rb']
 end
 
-YARD::Rake::YardocTask.new do |t|
+YARD::Rake::YardocTask.new(:yard) do |t|
   filepath = File.join('lib', 'humidifier', 'magic.rb')
 
   t.stats_options = ['--list-undoc']
