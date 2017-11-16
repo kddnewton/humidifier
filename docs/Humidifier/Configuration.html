@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="../class_list.html"></iframe>
+      <iframe id="nav" src="../class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="../class_list.html"></iframe>
 
       <div id="content"><h1>Class: Humidifier::Configuration
   
@@ -114,11 +112,10 @@
 
 </div>
   <h2>Constant Summary</h2>
-  
-    <dl class="constants">
-      
-        <dt id="UPLOAD_MESSAGE-constant" class="">UPLOAD_MESSAGE =
-          <div class="docstring">
+  <dl class="constants">
+    
+      <dt id="UPLOAD_MESSAGE-constant" class="">UPLOAD_MESSAGE =
+        <div class="docstring">
   <div class="discussion">
     
 <p>The message that gets displayed when the stack body is too large to use the
@@ -131,8 +128,8 @@ template_body option</p>
   
 
 </div>
-        </dt>
-        <dd><pre class="code"><span class='heredoc_beg'>&lt;&lt;-MSG</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
+      </dt>
+      <dd><pre class="code"><span class='heredoc_beg'>&lt;&lt;-MSG</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
 <span class='tstring_content'>The %&lt;identifier&gt;s stack&#39;s body is too large to be use the template_body option,
 and therefore must use the template_url option instead. You can configure
 Humidifier to do this automatically by setting up the s3 config on the top-level
@@ -143,9 +140,8 @@ Humidifier object like so:
       config.s3_prefix = &#39;my-prefix/&#39; # optional
     end
 </span><span class='heredoc_end'>MSG</span></pre></dd>
-      
-    </dl>
-  
+    
+  </dl>
 
 
 
@@ -250,7 +246,7 @@ Humidifier object like so:
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#ensure_upload_configured%21-instance_method" title="#ensure_upload_configured! (instance method)">#<strong>ensure_upload_configured!</strong>(payload)  &#x21d2; Object </a>
+      <a href="#ensure_upload_configured!-instance_method" title="#ensure_upload_configured! (instance method)">#<strong>ensure_upload_configured!</strong>(payload)  &#x21d2; Object </a>
     
 
     
@@ -597,7 +593,7 @@ Humidifier object like so:
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ensure_upload_configured!'>ensure_upload_configured!</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_s3_bucket'>s3_bucket</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>UPLOAD_MESSAGE</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%&lt;identifier&gt;s</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="#UPLOAD_MESSAGE-constant" title="Humidifier::Configuration::UPLOAD_MESSAGE (constant)">UPLOAD_MESSAGE</a></span></span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%&lt;identifier&gt;s</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>

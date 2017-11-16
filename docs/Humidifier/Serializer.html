@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="../class_list.html"></iframe>
+      <iframe id="nav" src="../class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="../class_list.html"></iframe>
 
       <div id="content"><h1>Class: Humidifier::Serializer
   
@@ -204,7 +202,7 @@
   <span class='kw'>case</span> <span class='id identifier rubyid_node'>node</span>
   <span class='kw'>when</span> <span class='const'>Hash</span>    <span class='kw'>then</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>
   <span class='kw'>when</span> <span class='const'>Array</span>   <span class='kw'>then</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span> <span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-  <span class='kw'>when</span> <span class='const'>Ref</span><span class='comma'>,</span> <span class='const'>Fn</span> <span class='kw'>then</span> <span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_to_cf'>to_cf</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Ref.html" title="Humidifier::Ref (class)">Ref</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Fn.html" title="Humidifier::Fn (class)">Fn</a></span></span> <span class='kw'>then</span> <span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_to_cf'>to_cf</span><span class='rparen'>)</span>
   <span class='kw'>when</span> <span class='const'>Date</span>    <span class='kw'>then</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_iso8601'>iso8601</span>
   <span class='kw'>when</span> <span class='const'>Time</span>    <span class='kw'>then</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_to_datetime'>to_datetime</span><span class='period'>.</span><span class='id identifier rubyid_iso8601'>iso8601</span>
   <span class='kw'>else</span> <span class='id identifier rubyid_node'>node</span>

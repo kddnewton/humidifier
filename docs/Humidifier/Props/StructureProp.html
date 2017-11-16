@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="../../class_list.html"></iframe>
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="../../class_list.html"></iframe>
 
       <div id="content"><h1>Class: Humidifier::Props::StructureProp
   
@@ -115,9 +113,6 @@
   
 
 </div>
-  <h2>Constant Summary</h2>
-  
-
 
 
   <h2>Constant Summary</h2>
@@ -369,7 +364,7 @@ corresponding props.</p>
     <span class='id identifier rubyid_struct'>struct</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_subkey'>subkey</span><span class='comma'>,</span> <span class='id identifier rubyid_subvalue'>subvalue</span><span class='op'>|</span>
-      <span class='id identifier rubyid_subkey'>subkey</span> <span class='op'>=</span> <span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_underscore'>underscore</span><span class='lparen'>(</span><span class='id identifier rubyid_subkey'>subkey</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_subkey'>subkey</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Utils.html" title="Humidifier::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_underscore'><span class='object_link'><a href="../Utils.html#underscore-class_method" title="Humidifier::Utils.underscore (method)">underscore</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_subkey'>subkey</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
       <span class='lbracket'>[</span><span class='id identifier rubyid_subkey'>subkey</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='comma'>,</span> <span class='id identifier rubyid_subprops'>subprops</span><span class='lbracket'>[</span><span class='id identifier rubyid_subkey'>subkey</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_convert'>convert</span><span class='lparen'>(</span><span class='id identifier rubyid_subvalue'>subvalue</span><span class='rparen'>)</span><span class='rbracket'>]</span>
     <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>
   <span class='kw'>end</span>

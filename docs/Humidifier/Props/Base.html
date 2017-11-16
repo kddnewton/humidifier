@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="../../class_list.html"></iframe>
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="../../class_list.html"></iframe>
 
       <div id="content"><h1>Class: Humidifier::Props::Base
   
@@ -118,11 +116,10 @@
 </div>
 
   <h2>Constant Summary</h2>
-  
-    <dl class="constants">
-      
-        <dt id="WHITELIST-constant" class="">WHITELIST =
-          <div class="docstring">
+  <dl class="constants">
+    
+      <dt id="WHITELIST-constant" class="">WHITELIST =
+        <div class="docstring">
   <div class="discussion">
     
 <p>The list of classes that are valid beyond the normal values for each prop</p>
@@ -134,11 +131,10 @@
   
 
 </div>
-        </dt>
-        <dd><pre class="code"><span class='lbracket'>[</span><span class='const'>Fn</span><span class='comma'>,</span> <span class='const'>Ref</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
-      
-    </dl>
-  
+      </dt>
+      <dd><pre class="code"><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../Fn.html" title="Humidifier::Fn (class)">Fn</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Ref.html" title="Humidifier::Ref (class)">Ref</a></span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+    
+  </dl>
 
 
 
@@ -466,7 +462,7 @@ associated resource.</p>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@key</span>  <span class='op'>=</span> <span class='id identifier rubyid_key'>key</span>
-  <span class='ivar'>@name</span> <span class='op'>=</span> <span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_underscore'>underscore</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='ivar'>@name</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Utils.html" title="Humidifier::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_underscore'><span class='object_link'><a href="../Utils.html#underscore-class_method" title="Humidifier::Utils.underscore (method)">underscore</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='ivar'>@spec</span> <span class='op'>=</span> <span class='id identifier rubyid_spec'>spec</span>
   <span class='id identifier rubyid_after_initialize'>after_initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_substructs'>substructs</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:after_initialize</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -788,7 +784,7 @@ associated resource.</p>
       <pre class="code"><span class="info file"># File 'lib/humidifier/props/base.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='const'>Serializer</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span><span class='rbracket'>]</span>
+  <span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../Serializer.html" title="Humidifier::Serializer (class)">Serializer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_dump'><span class='object_link'><a href="../Serializer.html#dump-class_method" title="Humidifier::Serializer.dump (method)">dump</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -884,7 +880,7 @@ associated resource</p>
       <pre class="code"><span class="info file"># File 'lib/humidifier/props/base.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_whitelisted_value?'>whitelisted_value?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='const'>WHITELIST</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_clazz'>clazz</span><span class='op'>|</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='id identifier rubyid_clazz'>clazz</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='const'><span class='object_link'><a href="#WHITELIST-constant" title="Humidifier::Props::Base::WHITELIST (constant)">WHITELIST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_clazz'>clazz</span><span class='op'>|</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='id identifier rubyid_clazz'>clazz</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
