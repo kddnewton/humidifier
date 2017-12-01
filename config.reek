@@ -1,5 +1,3 @@
 exclude_paths:
-  - benchmarks
-  - specs
   - test
   - yard

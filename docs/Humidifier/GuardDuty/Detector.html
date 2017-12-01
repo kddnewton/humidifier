@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: Humidifier::CodeDeploy::Application
+  Class: Humidifier::GuardDuty::Detector
   
     &mdash; Humidifier
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  pathId = "Humidifier::CodeDeploy::Application";
+  pathId = "Humidifier::GuardDuty::Detector";
   relpath = '../../';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="../../_index.html">Index (A)</a> &raquo;
-    <span class='title'><span class='object_link'><a href="../../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../CodeDeploy.html" title="Humidifier::CodeDeploy (module)">CodeDeploy</a></span></span>
+    <a href="../../_index.html">Index (D)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../GuardDuty.html" title="Humidifier::GuardDuty (module)">GuardDuty</a></span></span>
      &raquo; 
-    <span class="title">Application</span>
+    <span class="title">Detector</span>
   
 </div>
 
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Class: Humidifier::CodeDeploy::Application
+      <div id="content"><h1>Class: Humidifier::GuardDuty::Detector
   
   
   
@@ -76,7 +76,7 @@
           
             <li class="next"><span class='object_link'><a href="../Resource.html" title="Humidifier::Resource (class)">Resource</a></span></li>
           
-            <li class="next">Humidifier::CodeDeploy::Application</li>
+            <li class="next">Humidifier::GuardDuty::Detector</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -104,7 +104,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>A dynamically-defined class that represents an AWS::CodeDeploy::Application
+<p>A dynamically-defined class that represents an AWS::GuardDuty::Detector
 resource</p>
 
 
@@ -123,7 +123,7 @@ resource</p>
         
         <div class='inline'>
 <p><a
-href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-application.html">AWS::CodeDeploy::Application</a></p>
+href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-detector.html">AWS::GuardDuty::Detector</a></p>
 </div>
       
     </li>
@@ -154,7 +154,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#application_name-instance_method" title="#application_name (instance method)">#<strong>application_name</strong>  &#x21d2; Object </a>
+      <a href="#enable-instance_method" title="#enable (instance method)">#<strong>enable</strong>  &#x21d2; Object </a>
     
 
     
@@ -169,7 +169,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the ApplicationName property.</p>
+<p>returns the Enable property.</p>
 </div></span>
   
 </li>
@@ -178,7 +178,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#application_name=-instance_method" title="#application_name= (instance method)">#<strong>application_name=</strong>(value)  &#x21d2; Object </a>
+      <a href="#enable=-instance_method" title="#enable= (instance method)">#<strong>enable=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -193,55 +193,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the ApplicationName property (String).</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#compute_platform-instance_method" title="#compute_platform (instance method)">#<strong>compute_platform</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>returns the ComputePlatform property.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#compute_platform=-instance_method" title="#compute_platform= (instance method)">#<strong>compute_platform=</strong>(value)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>sets the ComputePlatform property (String).</p>
+<p>sets the Enable property (Boolean).</p>
 </div></span>
   
 </li>
@@ -284,9 +236,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="application_name-instance_method">
+  <h3 class="signature first" id="enable-instance_method">
   
-    #<strong>application_name</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>enable</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -295,7 +247,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the ApplicationName property</p>
+<p>returns the Enable property</p>
 
 
   </div>
@@ -316,8 +268,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 10</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_application_name'>application_name</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>application_name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_enable'>enable</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>enable</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -325,9 +277,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="application_name=-instance_method">
+  <h3 class="signature " id="enable=-instance_method">
   
-    #<strong>application_name=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>enable=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -336,7 +288,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the ApplicationName property (String)</p>
+<p>sets the Enable property (Boolean)</p>
 
 
   </div>
@@ -357,90 +309,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 15</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_application_name='>application_name=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>application_name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="compute_platform-instance_method">
-  
-    #<strong>compute_platform</strong>  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>returns the ComputePlatform property</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-20
-21
-22</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 20</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_compute_platform'>compute_platform</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>compute_platform</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="compute_platform=-instance_method">
-  
-    #<strong>compute_platform=</strong>(value)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>sets the ComputePlatform property (String)</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-25
-26
-27</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 25</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_compute_platform='>compute_platform=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>compute_platform</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_enable='>enable=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>enable</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
