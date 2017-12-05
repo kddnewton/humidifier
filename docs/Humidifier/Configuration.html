@@ -152,6 +152,34 @@ Humidifier object like so:
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#force_upload-instance_method" title="#force_upload (instance method)">#<strong>force_upload</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>If true, always upload the CloudFormation template to the configured S3
+destination.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#s3_bucket-instance_method" title="#s3_bucket (instance method)">#<strong>s3_bucket</strong>  &#x21d2; Object </a>
     
 
@@ -170,7 +198,9 @@ Humidifier object like so:
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute s3_bucket.</p>
+<p>The S3 bucket to which to deploy CloudFormation templates when
+<code>always_upload</code> is set to true or the template is too big for a
+string literal.</p>
 </div></span>
   
 </li>
@@ -197,7 +227,7 @@ Humidifier object like so:
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute s3_prefix.</p>
+<p>An optional prefix for the stack names.</p>
 </div></span>
   
 </li>
@@ -224,7 +254,8 @@ Humidifier object like so:
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute sdk_version.</p>
+<p>By default, <code>humidifier</code> will attempt to determine which SDK you
+have loaded.</p>
 </div></span>
   
 </li>
@@ -397,19 +428,21 @@ Humidifier object like so:
       <pre class="lines">
 
 
-20
-21
-22
-23
-24</pre>
+38
+39
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_s3_bucket'>s3_bucket</span>   <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:s3_bucket</span><span class='rbracket'>]</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_s3_prefix'>s3_prefix</span>   <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:s3_prefix</span><span class='rbracket'>]</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sdk_version'>sdk_version</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:sdk_version</span><span class='rbracket'>]</span>
+  <span class='ivar'>@force_upload</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:force_upload</span><span class='rbracket'>]</span>
+  <span class='ivar'>@s3_bucket</span>    <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:s3_bucket</span><span class='rbracket'>]</span>
+  <span class='ivar'>@s3_prefix</span>    <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:s3_prefix</span><span class='rbracket'>]</span>
+  <span class='ivar'>@sdk_version</span>  <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:sdk_version</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -422,11 +455,11 @@ Humidifier object like so:
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="s3_bucket=-instance_method"></span>
+      <span id="force_upload=-instance_method"></span>
       <div class="method_details first">
-  <h3 class="signature first" id="s3_bucket-instance_method">
+  <h3 class="signature first" id="force_upload-instance_method">
   
-    #<strong>s3_bucket</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>force_upload</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -435,7 +468,9 @@ Humidifier object like so:
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute s3_bucket</p>
+<p>If true, always upload the CloudFormation template to the configured S3
+destination. A useful option if you&#39;re going to be deploying multiple
+copies of a template or you just generally want a backup.</p>
 
 
   </div>
@@ -449,12 +484,57 @@ Humidifier object like so:
       <pre class="lines">
 
 
-18
-19
-20</pre>
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_force_upload'>force_upload</span>
+  <span class='ivar'>@force_upload</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="s3_bucket=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="s3_bucket-instance_method">
+  
+    #<strong>s3_bucket</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The S3 bucket to which to deploy CloudFormation templates when
+<code>always_upload</code> is set to true or the template is too big for a
+string literal.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_s3_bucket'>s3_bucket</span>
   <span class='ivar'>@s3_bucket</span>
@@ -478,7 +558,7 @@ Humidifier object like so:
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute s3_prefix</p>
+<p>An optional prefix for the stack names.</p>
 
 
   </div>
@@ -492,12 +572,12 @@ Humidifier object like so:
       <pre class="lines">
 
 
-18
-19
-20</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_s3_prefix'>s3_prefix</span>
   <span class='ivar'>@s3_prefix</span>
@@ -521,7 +601,11 @@ Humidifier object like so:
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute sdk_version</p>
+<p>By default, <code>humidifier</code> will attempt to determine which SDK you
+have loaded. (There&#39;s not really a story for peer dependencies with
+bundler). If you want to enforce a specific version (for instance if you
+have both <code>aws-sdk-v1</code> and <code>aws-sdk</code> but want to use
+the former) you can set this variable to <code>1</code>.</p>
 
 
   </div>
@@ -535,12 +619,12 @@ Humidifier object like so:
       <pre class="lines">
 
 
-18
-19
-20</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sdk_version'>sdk_version</span>
   <span class='ivar'>@sdk_version</span>
@@ -583,13 +667,13 @@ Humidifier object like so:
       <pre class="lines">
 
 
-27
-28
-29
-30</pre>
+46
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ensure_upload_configured!'>ensure_upload_configured!</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_s3_bucket'>s3_bucket</span>
@@ -639,12 +723,12 @@ Humidifier object like so:
       <pre class="lines">
 
 
-33
-34
-35</pre>
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sdk_version_1?'>sdk_version_1?</span>
   <span class='id identifier rubyid_sdk_version'>sdk_version</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1</span><span class='tstring_end'>&#39;</span></span>
@@ -693,12 +777,12 @@ Humidifier object like so:
       <pre class="lines">
 
 
-38
-39
-40</pre>
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sdk_version_2?'>sdk_version_2?</span>
   <span class='id identifier rubyid_sdk_version'>sdk_version</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2</span><span class='tstring_end'>&#39;</span></span>
@@ -747,12 +831,12 @@ Humidifier object like so:
       <pre class="lines">
 
 
-43
-44
-45</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/configuration.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sdk_version_3?'>sdk_version_3?</span>
   <span class='id identifier rubyid_sdk_version'>sdk_version</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>3</span><span class='tstring_end'>&#39;</span></span>

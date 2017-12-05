@@ -192,6 +192,23 @@ instead by:</p>
 </span><span class='kw'>end</span>
 </code></pre>
 
+<h3 id="label-Forcing+uploading">Forcing uploading</h3>
+
+<p>You can force a stack to upload its template to S3 regardless of the size
+of the template. This is a useful option if you&#39;re going to be
+deploying multiple copies of a template or you just generally want a
+backup. You can set this option on a per-stack basis:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_deploy'>deploy</span><span class='lparen'>(</span><span class='label'>force_upload:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>or globally, but setting the configuration option:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_configure'><span class='object_link'><a href="Humidifier.html#configure-class_method" title="Humidifier.configure (method)">configure</a></span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_config'>config</span><span class='op'>|</span>
+  <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_force_upload'>force_upload</span> <span class='op'>=</span> <span class='kw'>true</span>
+<span class='kw'>end</span>
+</code></pre>
+
 <h2 id="label-Development">Development</h2>
 
 <p>To get started, ensure you have ruby installed, version 2.1 or later. From
