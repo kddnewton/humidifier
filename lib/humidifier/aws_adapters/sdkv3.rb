@@ -18,7 +18,8 @@ MSG
       end
 
       def s3_sdk_loaded?
-        require 'aws-sdk-s3' || true
+        require 'aws-sdk-s3'
+        true
       rescue LoadError
         false
       end
