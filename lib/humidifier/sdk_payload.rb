@@ -24,7 +24,21 @@ module Humidifier
       end
     end
 
-    attr_reader :stack, :options, :max_wait
+    # The stack on which operations are going to be performed.
+    attr_reader :stack
+
+    # Options that should be passed through to CloudFormation when the desired
+    # operation is being performed. Particularly useful for the `capabilities`
+    # option for acknowledging IAM resource changes.
+    attr_reader :options
+
+    # The maximum amount of time that `humidifier` should wait for the stack to
+    # resolve to the desired state. If your stacks are particularly large, you
+    # may need to set this to wait longer than the default `MAX_WAIT`.
+    attr_accessor :max_wait
+
+    # Force the stack to upload to S3 regardless of the size of the stack.
+    attr_accessor :force_upload
 
     extend Forwardable
     def_delegators :stack, :id=, :identifier, :name
@@ -33,6 +47,7 @@ module Humidifier
       @stack = stack
       @options = options
       @max_wait = options.delete(:max_wait) || MAX_WAIT
+      @force_upload = options.delete(:force_upload)
     end
 
     # True if the stack and options are the same as the other (used for testing)
@@ -87,9 +102,14 @@ module Humidifier
       end
     end
 
+    def should_upload?
+      return force_upload unless force_upload.nil?
+      Humidifier.config.force_upload || bytesize > MAX_TEMPLATE_BODY_SIZE
+    end
+
     def template_param
       @template_param ||=
-        if bytesize > MAX_TEMPLATE_BODY_SIZE
+        if should_upload?
           { template_url: AwsShim.upload(self) }
         else
           { template_body: template_body }
