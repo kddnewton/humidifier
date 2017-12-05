@@ -41,11 +41,27 @@ class SdkPayloadTest < Minitest::Test
     assert_equal ({ template_body: 'to_cf' }), build.send(:template_param)
   end
 
+  def test_template_param_small_with_configure_force_upload
+    with_config(force_upload: true) do
+      Humidifier::AwsShim.stub(:upload, 'foobar') do
+        assert_equal ({ template_url: 'foobar' }), build.send(:template_param)
+      end
+    end
+  end
+
+  def test_template_param_small_with_force_upload
+    payload = build(options: { force_upload: true })
+
+    Humidifier::AwsShim.stub(:upload, 'foobar') do
+      assert_equal ({ template_url: 'foobar' }), payload.send(:template_param)
+    end
+  end
+
   def test_template_param_large
     template_body = 'a' * (Humidifier::SdkPayload::MAX_TEMPLATE_BODY_SIZE + 1)
     Humidifier::AwsShim.stub(:upload, 'foobar') do
       assert_equal ({ template_url: 'foobar' }),
-                   build(template_body).send(:template_param)
+                   build(template_body: template_body).send(:template_param)
     end
   end
 
@@ -53,7 +69,7 @@ class SdkPayloadTest < Minitest::Test
     template_body = 'a' * (Humidifier::SdkPayload::MAX_TEMPLATE_URL_SIZE + 1)
     error =
       assert_raises Humidifier::SdkPayload::TemplateTooLargeError do
-        build(template_body).send(:template_param)
+        build(template_body: template_body).send(:template_param)
       end
 
     expected = /#{Humidifier::SdkPayload::MAX_TEMPLATE_URL_SIZE + 1} bytes/
@@ -62,9 +78,9 @@ class SdkPayloadTest < Minitest::Test
 
   private
 
-  def build(template_body = 'to_cf')
+  def build(template_body: 'to_cf', options: { foo: 'bar' })
     stack = StackDouble.new('identifier', 'name', template_body)
-    Humidifier::SdkPayload.new(stack, foo: 'bar')
+    Humidifier::SdkPayload.new(stack, options)
   end
 
   def param_sets

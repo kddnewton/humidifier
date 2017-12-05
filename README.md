@@ -77,6 +77,23 @@ Humidifier.configure do |config|
 end
 ```
 
+### Forcing uploading
+
+You can force a stack to upload its template to S3 regardless of the size of the template. This is a useful option if you're going to be deploying multiple
+copies of a template or you just generally want a backup. You can set this option on a per-stack basis:
+
+```ruby
+stack.deploy(force_upload: true)
+```
+
+or globally, but setting the configuration option:
+
+```ruby
+Humidifier.configure do |config|
+  config.force_upload = true
+end
+```
+
 ## Development
 
 To get started, ensure you have ruby installed, version 2.1 or later. From there, install the `bundler` gem: `gem install bundler` and then `bundle install` in the root of the repository.
