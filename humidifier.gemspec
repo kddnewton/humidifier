@@ -22,8 +22,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'minitest', '~> 5.10'
   spec.add_development_dependency 'nokogiri', '~> 1.8'
-  spec.add_development_dependency 'rake', '~> 12.2'
-  spec.add_development_dependency 'rubocop', '~> 0.51'
+  spec.add_development_dependency 'rake', '~> 12.3'
+  spec.add_development_dependency 'rubocop', '~> 0.52'
   spec.add_development_dependency 'simplecov', '~> 0.15'
-  spec.add_development_dependency 'yard', '~> 0.9.9'
+  spec.add_development_dependency 'yard', '~> 0.9'
 end
