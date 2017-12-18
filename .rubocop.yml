@@ -9,5 +9,9 @@ AllCops:
 Layout/IndentHeredoc:
   Enabled: false
 
+# https://github.com/bbatsov/rubocop/pull/5230
+Style/FormatStringToken:
+  Enabled: false
+
 Style/PerlBackrefs:
   Enabled: false

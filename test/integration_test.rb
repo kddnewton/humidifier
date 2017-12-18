@@ -1,6 +1,5 @@
 require 'test_helper'
 
-# rubocop:disable Metrics/MethodLength
 class IntegrationTest < Minitest::Test
   def test_to_cf
     resources = { 'Distribution' => distribution, 'SpotFleet' => spot_fleet }
@@ -12,6 +11,7 @@ class IntegrationTest < Minitest::Test
 
   private
 
+  # rubocop:disable Metrics/MethodLength
   # http://docs.aws.amazon.com
   #   /AWSCloudFormation/latest/UserGuide/quickref-cloudfront.html
   def distribution
@@ -99,4 +99,5 @@ class IntegrationTest < Minitest::Test
       }
     )
   end
+  # rubocop:enable Metrics/MethodLength
 end

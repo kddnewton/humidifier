@@ -1,13 +1,14 @@
-# rubocop:disable Style/MethodMissing
 module SdkSupport
   def self.double
     AwsDouble
   end
 
   module ForwardMissing
+    # rubocop:disable Style/MethodMissing
     def method_missing(method, *args, &block)
       SdkSupport.call(method, args, &block)
     end
+    # rubocop:enable Style/MethodMissing
   end
 
   module AwsDouble
