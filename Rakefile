@@ -70,7 +70,7 @@ class SpecDownload
     end
   end
 
-  URL = 'http://docs.aws.amazon.com/AWSCloudFormation/latest' \
+  URL = 'https://docs.aws.amazon.com/AWSCloudFormation/latest' \
         '/UserGuide/cfn-resource-specification.html'.freeze
 
   filename = 'CloudFormationResourceSpecification.json'
