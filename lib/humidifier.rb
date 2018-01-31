@@ -1,3 +1,4 @@
+require 'date'
 require 'forwardable'
 require 'json'
 require 'pathname'
