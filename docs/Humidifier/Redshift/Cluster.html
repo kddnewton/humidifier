@@ -298,6 +298,54 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#cluster_identifier-instance_method" title="#cluster_identifier (instance method)">#<strong>cluster_identifier</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>returns the ClusterIdentifier property.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cluster_identifier=-instance_method" title="#cluster_identifier= (instance method)">#<strong>cluster_identifier=</strong>(value)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>sets the ClusterIdentifier property (String).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#cluster_parameter_group_name-instance_method" title="#cluster_parameter_group_name (instance method)">#<strong>cluster_parameter_group_name</strong>  &#x21d2; Object </a>
     
 
@@ -1778,6 +1826,88 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="cluster_identifier-instance_method">
+  
+    #<strong>cluster_identifier</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns the ClusterIdentifier property</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cluster_identifier'>cluster_identifier</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cluster_identifier</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cluster_identifier=-instance_method">
+  
+    #<strong>cluster_identifier=</strong>(value)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>sets the ClusterIdentifier property (String)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cluster_identifier='>cluster_identifier=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cluster_identifier</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="cluster_parameter_group_name-instance_method">
   
     #<strong>cluster_parameter_group_name</strong>  &#x21d2; <tt>Object</tt> 
@@ -1803,12 +1933,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-40
-41
-42</pre>
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster_parameter_group_name'>cluster_parameter_group_name</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cluster_parameter_group_name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1844,12 +1974,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-45
-46
-47</pre>
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster_parameter_group_name='>cluster_parameter_group_name=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cluster_parameter_group_name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1885,12 +2015,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-50
-51
-52</pre>
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster_security_groups'>cluster_security_groups</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cluster_security_groups</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1926,12 +2056,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-55
-56
-57</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster_security_groups='>cluster_security_groups=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cluster_security_groups</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1967,12 +2097,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-60
-61
-62</pre>
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster_subnet_group_name'>cluster_subnet_group_name</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cluster_subnet_group_name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2008,12 +2138,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-65
-66
-67</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster_subnet_group_name='>cluster_subnet_group_name=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cluster_subnet_group_name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2049,12 +2179,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-70
-71
-72</pre>
+80
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster_type'>cluster_type</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cluster_type</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2090,12 +2220,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-75
-76
-77</pre>
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster_type='>cluster_type=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cluster_type</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2131,12 +2261,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-80
-81
-82</pre>
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster_version'>cluster_version</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cluster_version</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2172,12 +2302,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-85
-86
-87</pre>
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cluster_version='>cluster_version=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cluster_version</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2213,12 +2343,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-90
-91
-92</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_db_name'>db_name</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>db_name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2254,12 +2384,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-95
-96
-97</pre>
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 105</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_db_name='>db_name=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>db_name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2295,12 +2425,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-100
-101
-102</pre>
+110
+111
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_elastic_ip'>elastic_ip</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>elastic_ip</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2336,12 +2466,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-105
-106
-107</pre>
+115
+116
+117</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_elastic_ip='>elastic_ip=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>elastic_ip</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2377,12 +2507,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-110
-111
-112</pre>
+120
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 120</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encrypted'>encrypted</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>encrypted</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2418,12 +2548,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-115
-116
-117</pre>
+125
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encrypted='>encrypted=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>encrypted</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2459,12 +2589,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-120
-121
-122</pre>
+130
+131
+132</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 130</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hsm_client_certificate_identifier'>hsm_client_certificate_identifier</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hsm_client_certificate_identifier</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2500,12 +2630,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-125
-126
-127</pre>
+135
+136
+137</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 125</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 135</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hsm_client_certificate_identifier='>hsm_client_certificate_identifier=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hsm_client_certificate_identifier</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2541,12 +2671,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-130
-131
-132</pre>
+140
+141
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 140</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hsm_configuration_identifier'>hsm_configuration_identifier</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hsm_configuration_identifier</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2582,12 +2712,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-135
-136
-137</pre>
+145
+146
+147</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 135</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 145</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hsm_configuration_identifier='>hsm_configuration_identifier=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hsm_configuration_identifier</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2623,12 +2753,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-140
-141
-142</pre>
+150
+151
+152</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 140</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 150</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_iam_roles'>iam_roles</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>iam_roles</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2664,12 +2794,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-145
-146
-147</pre>
+155
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 145</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 155</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_iam_roles='>iam_roles=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>iam_roles</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2705,12 +2835,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-150
-151
-152</pre>
+160
+161
+162</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 150</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 160</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_kms_key_id'>kms_key_id</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>kms_key_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2746,12 +2876,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-155
-156
-157</pre>
+165
+166
+167</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 155</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 165</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_kms_key_id='>kms_key_id=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>kms_key_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2787,12 +2917,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-160
-161
-162</pre>
+170
+171
+172</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 160</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 170</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_logging_properties'>logging_properties</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>logging_properties</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2828,12 +2958,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-165
-166
-167</pre>
+175
+176
+177</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 165</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_logging_properties='>logging_properties=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>logging_properties</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2869,12 +2999,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-170
-171
-172</pre>
+180
+181
+182</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 180</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_master_user_password'>master_user_password</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>master_user_password</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2910,12 +3040,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-175
-176
-177</pre>
+185
+186
+187</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 175</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 185</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_master_user_password='>master_user_password=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>master_user_password</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -2951,12 +3081,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-180
-181
-182</pre>
+190
+191
+192</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 180</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 190</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_master_username'>master_username</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>master_username</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -2992,12 +3122,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-185
-186
-187</pre>
+195
+196
+197</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 185</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 195</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_master_username='>master_username=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>master_username</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -3033,12 +3163,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-190
-191
-192</pre>
+200
+201
+202</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 190</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 200</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_node_type'>node_type</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>node_type</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -3074,12 +3204,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-195
-196
-197</pre>
+205
+206
+207</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 195</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 205</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_node_type='>node_type=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>node_type</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -3115,12 +3245,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-200
-201
-202</pre>
+210
+211
+212</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 200</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 210</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_number_of_nodes'>number_of_nodes</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>number_of_nodes</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -3156,12 +3286,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-205
-206
-207</pre>
+215
+216
+217</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 205</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 215</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_number_of_nodes='>number_of_nodes=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>number_of_nodes</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -3197,12 +3327,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-210
-211
-212</pre>
+220
+221
+222</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 210</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 220</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_owner_account'>owner_account</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>owner_account</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -3238,12 +3368,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-215
-216
-217</pre>
+225
+226
+227</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 215</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 225</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_owner_account='>owner_account=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>owner_account</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -3279,12 +3409,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-220
-221
-222</pre>
+230
+231
+232</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 220</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 230</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_port'>port</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>port</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -3320,12 +3450,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-225
-226
-227</pre>
+235
+236
+237</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 225</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 235</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_port='>port=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>port</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -3361,12 +3491,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-230
-231
-232</pre>
+240
+241
+242</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 230</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 240</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_preferred_maintenance_window'>preferred_maintenance_window</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>preferred_maintenance_window</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -3402,12 +3532,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-235
-236
-237</pre>
+245
+246
+247</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 235</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 245</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_preferred_maintenance_window='>preferred_maintenance_window=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>preferred_maintenance_window</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -3443,12 +3573,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-240
-241
-242</pre>
+250
+251
+252</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 240</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 250</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_publicly_accessible'>publicly_accessible</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>publicly_accessible</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -3484,12 +3614,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-245
-246
-247</pre>
+255
+256
+257</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 245</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 255</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_publicly_accessible='>publicly_accessible=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>publicly_accessible</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -3525,12 +3655,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-250
-251
-252</pre>
+260
+261
+262</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 250</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 260</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_snapshot_cluster_identifier'>snapshot_cluster_identifier</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>snapshot_cluster_identifier</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -3566,12 +3696,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-255
-256
-257</pre>
+265
+266
+267</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 255</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 265</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_snapshot_cluster_identifier='>snapshot_cluster_identifier=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>snapshot_cluster_identifier</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -3607,12 +3737,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-260
-261
-262</pre>
+270
+271
+272</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 260</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 270</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_snapshot_identifier'>snapshot_identifier</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>snapshot_identifier</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -3648,12 +3778,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-265
-266
-267</pre>
+275
+276
+277</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 265</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 275</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_snapshot_identifier='>snapshot_identifier=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>snapshot_identifier</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -3689,12 +3819,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-270
-271
-272</pre>
+280
+281
+282</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 270</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 280</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tags'>tags</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tags</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -3730,12 +3860,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-275
-276
-277</pre>
+285
+286
+287</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 275</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 285</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tags='>tags=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tags</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -3771,12 +3901,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-280
-281
-282</pre>
+290
+291
+292</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 280</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 290</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_vpc_security_group_ids'>vpc_security_group_ids</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vpc_security_group_ids</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -3812,12 +3942,12 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
       <pre class="lines">
 
 
-285
-286
-287</pre>
+295
+296
+297</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 285</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 295</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_vpc_security_group_ids='>vpc_security_group_ids=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vpc_security_group_ids</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
