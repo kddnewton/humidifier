@@ -72,7 +72,7 @@ class BaseTest < Minitest::Test
 
   def test_upload_configured
     fake_sdk = Class.new(Humidifier::AwsAdapters::Base) do
-      def upload_object(_, key)
+      def upload_object(_bucket, key)
         key
       end
     end

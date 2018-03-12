@@ -3,7 +3,7 @@ SimpleCov.start do
   add_filter '/test/'
 end
 
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'humidifier'
 
 require 'fileutils'
@@ -21,7 +21,7 @@ module SdkSupport
   end
 end
 
-Dir[File.expand_path('../sdk_support/*.rb', __FILE__)].each do |file|
+Dir[File.expand_path('sdk_support/*.rb', __dir__)].each do |file|
   require file
 end
 
