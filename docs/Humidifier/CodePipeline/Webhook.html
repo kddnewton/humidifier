@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: Humidifier::EC2::VPCEndpoint
+  Class: Humidifier::CodePipeline::Webhook
   
     &mdash; Humidifier
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  pathId = "Humidifier::EC2::VPCEndpoint";
+  pathId = "Humidifier::CodePipeline::Webhook";
   relpath = '../../';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="../../_index.html">Index (V)</a> &raquo;
-    <span class='title'><span class='object_link'><a href="../../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../EC2.html" title="Humidifier::EC2 (module)">EC2</a></span></span>
+    <a href="../../_index.html">Index (W)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../CodePipeline.html" title="Humidifier::CodePipeline (module)">CodePipeline</a></span></span>
      &raquo; 
-    <span class="title">VPCEndpoint</span>
+    <span class="title">Webhook</span>
   
 </div>
 
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Class: Humidifier::EC2::VPCEndpoint
+      <div id="content"><h1>Class: Humidifier::CodePipeline::Webhook
   
   
   
@@ -76,7 +76,7 @@
           
             <li class="next"><span class='object_link'><a href="../Resource.html" title="Humidifier::Resource (class)">Resource</a></span></li>
           
-            <li class="next">Humidifier::EC2::VPCEndpoint</li>
+            <li class="next">Humidifier::CodePipeline::Webhook</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -104,7 +104,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>A dynamically-defined class that represents an AWS::EC2::VPCEndpoint
+<p>A dynamically-defined class that represents an AWS::CodePipeline::Webhook
 resource</p>
 
 
@@ -123,7 +123,7 @@ resource</p>
         
         <div class='inline'>
 <p><a
-href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcendpoint.html">AWS::EC2::VPCEndpoint</a></p>
+href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-webhook.html">AWS::CodePipeline::Webhook</a></p>
 </div>
       
     </li>
@@ -154,7 +154,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#is_private_dns_enabled-instance_method" title="#is_private_dns_enabled (instance method)">#<strong>is_private_dns_enabled</strong>  &#x21d2; Object </a>
+      <a href="#authentication-instance_method" title="#authentication (instance method)">#<strong>authentication</strong>  &#x21d2; Object </a>
     
 
     
@@ -169,7 +169,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the IsPrivateDnsEnabled property.</p>
+<p>returns the Authentication property.</p>
 </div></span>
   
 </li>
@@ -178,7 +178,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#is_private_dns_enabled=-instance_method" title="#is_private_dns_enabled= (instance method)">#<strong>is_private_dns_enabled=</strong>(value)  &#x21d2; Object </a>
+      <a href="#authentication=-instance_method" title="#authentication= (instance method)">#<strong>authentication=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -193,7 +193,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the IsPrivateDnsEnabled property (Boolean).</p>
+<p>sets the Authentication property (String).</p>
 </div></span>
   
 </li>
@@ -202,7 +202,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#policy_document-instance_method" title="#policy_document (instance method)">#<strong>policy_document</strong>  &#x21d2; Object </a>
+      <a href="#authentication_configuration-instance_method" title="#authentication_configuration (instance method)">#<strong>authentication_configuration</strong>  &#x21d2; Object </a>
     
 
     
@@ -217,7 +217,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the PolicyDocument property.</p>
+<p>returns the AuthenticationConfiguration property.</p>
 </div></span>
   
 </li>
@@ -226,7 +226,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#policy_document=-instance_method" title="#policy_document= (instance method)">#<strong>policy_document=</strong>(value)  &#x21d2; Object </a>
+      <a href="#authentication_configuration=-instance_method" title="#authentication_configuration= (instance method)">#<strong>authentication_configuration=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -241,7 +241,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the PolicyDocument property (Json).</p>
+<p>sets the AuthenticationConfiguration property (Structure).</p>
 </div></span>
   
 </li>
@@ -250,7 +250,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#route_table_ids-instance_method" title="#route_table_ids (instance method)">#<strong>route_table_ids</strong>  &#x21d2; Object </a>
+      <a href="#filters-instance_method" title="#filters (instance method)">#<strong>filters</strong>  &#x21d2; Object </a>
     
 
     
@@ -265,7 +265,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the RouteTableIds property.</p>
+<p>returns the Filters property.</p>
 </div></span>
   
 </li>
@@ -274,7 +274,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#route_table_ids=-instance_method" title="#route_table_ids= (instance method)">#<strong>route_table_ids=</strong>(value)  &#x21d2; Object </a>
+      <a href="#filters=-instance_method" title="#filters= (instance method)">#<strong>filters=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -289,7 +289,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the RouteTableIds property (List).</p>
+<p>sets the Filters property (List).</p>
 </div></span>
   
 </li>
@@ -298,7 +298,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#security_group_ids-instance_method" title="#security_group_ids (instance method)">#<strong>security_group_ids</strong>  &#x21d2; Object </a>
+      <a href="#name-instance_method" title="#name (instance method)">#<strong>name</strong>  &#x21d2; Object </a>
     
 
     
@@ -313,7 +313,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the SecurityGroupIds property.</p>
+<p>returns the Name property.</p>
 </div></span>
   
 </li>
@@ -322,7 +322,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#security_group_ids=-instance_method" title="#security_group_ids= (instance method)">#<strong>security_group_ids=</strong>(value)  &#x21d2; Object </a>
+      <a href="#name=-instance_method" title="#name= (instance method)">#<strong>name=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -337,7 +337,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the SecurityGroupIds property (List).</p>
+<p>sets the Name property (String).</p>
 </div></span>
   
 </li>
@@ -346,7 +346,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#service_name-instance_method" title="#service_name (instance method)">#<strong>service_name</strong>  &#x21d2; Object </a>
+      <a href="#register_with_third_party-instance_method" title="#register_with_third_party (instance method)">#<strong>register_with_third_party</strong>  &#x21d2; Object </a>
     
 
     
@@ -361,7 +361,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the ServiceName property.</p>
+<p>returns the RegisterWithThirdParty property.</p>
 </div></span>
   
 </li>
@@ -370,7 +370,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#service_name=-instance_method" title="#service_name= (instance method)">#<strong>service_name=</strong>(value)  &#x21d2; Object </a>
+      <a href="#register_with_third_party=-instance_method" title="#register_with_third_party= (instance method)">#<strong>register_with_third_party=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -385,7 +385,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the ServiceName property (String).</p>
+<p>sets the RegisterWithThirdParty property (Boolean).</p>
 </div></span>
   
 </li>
@@ -394,7 +394,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#subnet_ids-instance_method" title="#subnet_ids (instance method)">#<strong>subnet_ids</strong>  &#x21d2; Object </a>
+      <a href="#target_action-instance_method" title="#target_action (instance method)">#<strong>target_action</strong>  &#x21d2; Object </a>
     
 
     
@@ -409,7 +409,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the SubnetIds property.</p>
+<p>returns the TargetAction property.</p>
 </div></span>
   
 </li>
@@ -418,7 +418,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#subnet_ids=-instance_method" title="#subnet_ids= (instance method)">#<strong>subnet_ids=</strong>(value)  &#x21d2; Object </a>
+      <a href="#target_action=-instance_method" title="#target_action= (instance method)">#<strong>target_action=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -433,7 +433,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the SubnetIds property (List).</p>
+<p>sets the TargetAction property (String).</p>
 </div></span>
   
 </li>
@@ -442,7 +442,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#vpc_endpoint_type-instance_method" title="#vpc_endpoint_type (instance method)">#<strong>vpc_endpoint_type</strong>  &#x21d2; Object </a>
+      <a href="#target_pipeline-instance_method" title="#target_pipeline (instance method)">#<strong>target_pipeline</strong>  &#x21d2; Object </a>
     
 
     
@@ -457,7 +457,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the VPCEndpointType property.</p>
+<p>returns the TargetPipeline property.</p>
 </div></span>
   
 </li>
@@ -466,7 +466,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#vpc_endpoint_type=-instance_method" title="#vpc_endpoint_type= (instance method)">#<strong>vpc_endpoint_type=</strong>(value)  &#x21d2; Object </a>
+      <a href="#target_pipeline=-instance_method" title="#target_pipeline= (instance method)">#<strong>target_pipeline=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -481,7 +481,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the VPCEndpointType property (String).</p>
+<p>sets the TargetPipeline property (String).</p>
 </div></span>
   
 </li>
@@ -490,7 +490,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#vpc_id-instance_method" title="#vpc_id (instance method)">#<strong>vpc_id</strong>  &#x21d2; Object </a>
+      <a href="#target_pipeline_version-instance_method" title="#target_pipeline_version (instance method)">#<strong>target_pipeline_version</strong>  &#x21d2; Object </a>
     
 
     
@@ -505,7 +505,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>returns the VpcId property.</p>
+<p>returns the TargetPipelineVersion property.</p>
 </div></span>
   
 </li>
@@ -514,7 +514,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#vpc_id=-instance_method" title="#vpc_id= (instance method)">#<strong>vpc_id=</strong>(value)  &#x21d2; Object </a>
+      <a href="#target_pipeline_version=-instance_method" title="#target_pipeline_version= (instance method)">#<strong>target_pipeline_version=</strong>(value)  &#x21d2; Object </a>
     
 
     
@@ -529,7 +529,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets the VpcId property (String).</p>
+<p>sets the TargetPipelineVersion property (Integer).</p>
 </div></span>
   
 </li>
@@ -572,9 +572,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="is_private_dns_enabled-instance_method">
+  <h3 class="signature first" id="authentication-instance_method">
   
-    #<strong>is_private_dns_enabled</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>authentication</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -583,7 +583,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the IsPrivateDnsEnabled property</p>
+<p>returns the Authentication property</p>
 
 
   </div>
@@ -604,8 +604,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 10</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_is_private_dns_enabled'>is_private_dns_enabled</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>is_private_dns_enabled</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_authentication'>authentication</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>authentication</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -613,9 +613,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="is_private_dns_enabled=-instance_method">
+  <h3 class="signature " id="authentication=-instance_method">
   
-    #<strong>is_private_dns_enabled=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>authentication=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -624,7 +624,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the IsPrivateDnsEnabled property (Boolean)</p>
+<p>sets the Authentication property (String)</p>
 
 
   </div>
@@ -645,8 +645,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 15</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_is_private_dns_enabled='>is_private_dns_enabled=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>is_private_dns_enabled</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_authentication='>authentication=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>authentication</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -654,9 +654,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="policy_document-instance_method">
+  <h3 class="signature " id="authentication_configuration-instance_method">
   
-    #<strong>policy_document</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>authentication_configuration</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -665,7 +665,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the PolicyDocument property</p>
+<p>returns the AuthenticationConfiguration property</p>
 
 
   </div>
@@ -686,8 +686,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 20</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_policy_document'>policy_document</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>policy_document</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_authentication_configuration'>authentication_configuration</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>authentication_configuration</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -695,9 +695,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="policy_document=-instance_method">
+  <h3 class="signature " id="authentication_configuration=-instance_method">
   
-    #<strong>policy_document=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>authentication_configuration=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -706,7 +706,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the PolicyDocument property (Json)</p>
+<p>sets the AuthenticationConfiguration property (Structure)</p>
 
 
   </div>
@@ -727,8 +727,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 25</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_policy_document='>policy_document=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>policy_document</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_authentication_configuration='>authentication_configuration=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>authentication_configuration</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -736,9 +736,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="route_table_ids-instance_method">
+  <h3 class="signature " id="filters-instance_method">
   
-    #<strong>route_table_ids</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>filters</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -747,7 +747,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the RouteTableIds property</p>
+<p>returns the Filters property</p>
 
 
   </div>
@@ -768,8 +768,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 30</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_route_table_ids'>route_table_ids</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>route_table_ids</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_filters'>filters</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>filters</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -777,9 +777,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="route_table_ids=-instance_method">
+  <h3 class="signature " id="filters=-instance_method">
   
-    #<strong>route_table_ids=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>filters=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -788,7 +788,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the RouteTableIds property (List)</p>
+<p>sets the Filters property (List)</p>
 
 
   </div>
@@ -809,8 +809,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 35</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_route_table_ids='>route_table_ids=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>route_table_ids</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_filters='>filters=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>filters</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -818,9 +818,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="security_group_ids-instance_method">
+  <h3 class="signature " id="name-instance_method">
   
-    #<strong>security_group_ids</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>name</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -829,7 +829,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the SecurityGroupIds property</p>
+<p>returns the Name property</p>
 
 
   </div>
@@ -850,8 +850,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 40</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_security_group_ids'>security_group_ids</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>security_group_ids</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -859,9 +859,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="security_group_ids=-instance_method">
+  <h3 class="signature " id="name=-instance_method">
   
-    #<strong>security_group_ids=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>name=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -870,7 +870,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the SecurityGroupIds property (List)</p>
+<p>sets the Name property (String)</p>
 
 
   </div>
@@ -891,8 +891,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 45</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_security_group_ids='>security_group_ids=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>security_group_ids</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_name='>name=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -900,9 +900,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="service_name-instance_method">
+  <h3 class="signature " id="register_with_third_party-instance_method">
   
-    #<strong>service_name</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>register_with_third_party</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -911,7 +911,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the ServiceName property</p>
+<p>returns the RegisterWithThirdParty property</p>
 
 
   </div>
@@ -932,8 +932,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 50</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_service_name'>service_name</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>service_name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_register_with_third_party'>register_with_third_party</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>register_with_third_party</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -941,9 +941,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="service_name=-instance_method">
+  <h3 class="signature " id="register_with_third_party=-instance_method">
   
-    #<strong>service_name=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>register_with_third_party=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -952,7 +952,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the ServiceName property (String)</p>
+<p>sets the RegisterWithThirdParty property (Boolean)</p>
 
 
   </div>
@@ -973,8 +973,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 55</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_service_name='>service_name=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>service_name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_register_with_third_party='>register_with_third_party=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>register_with_third_party</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -982,9 +982,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="subnet_ids-instance_method">
+  <h3 class="signature " id="target_action-instance_method">
   
-    #<strong>subnet_ids</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>target_action</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -993,7 +993,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the SubnetIds property</p>
+<p>returns the TargetAction property</p>
 
 
   </div>
@@ -1014,8 +1014,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 60</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_subnet_ids'>subnet_ids</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>subnet_ids</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_target_action'>target_action</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>target_action</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1023,9 +1023,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="subnet_ids=-instance_method">
+  <h3 class="signature " id="target_action=-instance_method">
   
-    #<strong>subnet_ids=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>target_action=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1034,7 +1034,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the SubnetIds property (List)</p>
+<p>sets the TargetAction property (String)</p>
 
 
   </div>
@@ -1055,8 +1055,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 65</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_subnet_ids='>subnet_ids=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>subnet_ids</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_target_action='>target_action=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>target_action</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1064,9 +1064,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="vpc_endpoint_type-instance_method">
+  <h3 class="signature " id="target_pipeline-instance_method">
   
-    #<strong>vpc_endpoint_type</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>target_pipeline</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1075,7 +1075,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the VPCEndpointType property</p>
+<p>returns the TargetPipeline property</p>
 
 
   </div>
@@ -1096,8 +1096,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 70</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_vpc_endpoint_type'>vpc_endpoint_type</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vpc_endpoint_type</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_target_pipeline'>target_pipeline</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>target_pipeline</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1105,9 +1105,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="vpc_endpoint_type=-instance_method">
+  <h3 class="signature " id="target_pipeline=-instance_method">
   
-    #<strong>vpc_endpoint_type=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>target_pipeline=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1116,7 +1116,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the VPCEndpointType property (String)</p>
+<p>sets the TargetPipeline property (String)</p>
 
 
   </div>
@@ -1137,8 +1137,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 75</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_vpc_endpoint_type='>vpc_endpoint_type=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vpc_endpoint_type</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_target_pipeline='>target_pipeline=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>target_pipeline</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1146,9 +1146,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="vpc_id-instance_method">
+  <h3 class="signature " id="target_pipeline_version-instance_method">
   
-    #<strong>vpc_id</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>target_pipeline_version</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1157,7 +1157,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>returns the VpcId property</p>
+<p>returns the TargetPipelineVersion property</p>
 
 
   </div>
@@ -1178,8 +1178,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 80</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_vpc_id'>vpc_id</span>
-  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vpc_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_target_pipeline_version'>target_pipeline_version</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>target_pipeline_version</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1187,9 +1187,9 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="vpc_id=-instance_method">
+  <h3 class="signature " id="target_pipeline_version=-instance_method">
   
-    #<strong>vpc_id=</strong>(value)  &#x21d2; <tt>Object</tt> 
+    #<strong>target_pipeline_version=</strong>(value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1198,7 +1198,7 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets the VpcId property (String)</p>
+<p>sets the TargetPipelineVersion property (Integer)</p>
 
 
   </div>
@@ -1219,8 +1219,8 @@ href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 85</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_vpc_id='>vpc_id=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vpc_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_target_pipeline_version='>target_pipeline_version=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>target_pipeline_version</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
