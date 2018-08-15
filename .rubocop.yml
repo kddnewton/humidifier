@@ -16,6 +16,9 @@ Style/PerlBackrefs:
 Gemspec/RequiredRubyVersion:
   Enabled: false
 
+Layout/ClosingHeredocIndentation:
+  Enabled: false
+
 Style/RedundantBegin:
   Enabled: false
 
