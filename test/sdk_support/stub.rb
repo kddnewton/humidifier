@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SdkSupport
   class Stub
     attr_reader :struct

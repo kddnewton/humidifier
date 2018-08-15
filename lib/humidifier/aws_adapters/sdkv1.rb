@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Humidifier
   module AwsAdapters
     # The adapter for v1 of aws-sdk

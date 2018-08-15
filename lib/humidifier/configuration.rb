@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Humidifier
   # a container for user params
   class Configuration
     # The message that gets displayed when the stack body is too large to use
     # the template_body option
-    UPLOAD_MESSAGE = <<-MSG.freeze
+    UPLOAD_MESSAGE = <<-MSG
 The %<identifier>s stack's body is too large to be use the template_body option,
 and therefore must use the template_url option instead. You can configure
 Humidifier to do this automatically by setting up the s3 config on the top-level

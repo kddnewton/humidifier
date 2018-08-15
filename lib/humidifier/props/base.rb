@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Humidifier
   module Props
     # Superclass for all CFN properties

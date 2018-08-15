@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bundler/gem_tasks'
 require 'fileutils'
 require 'rake/testtask'
@@ -71,7 +73,7 @@ class SpecDownload
   end
 
   URL = 'https://docs.aws.amazon.com/AWSCloudFormation/latest' \
-        '/UserGuide/cfn-resource-specification.html'.freeze
+        '/UserGuide/cfn-resource-specification.html'
 
   filename = 'CloudFormationResourceSpecification.json'
   PATH = File.expand_path(File.join('..', filename), __FILE__)

@@ -297,12 +297,12 @@ corresponding props.</p>
       <pre class="lines">
 
 
-5
-6
-7</pre>
+7
+8
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/structure_prop.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props/structure_prop.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_subprops'>subprops</span>
   <span class='ivar'>@subprops</span>
@@ -345,8 +345,6 @@ corresponding props.</p>
       <pre class="lines">
 
 
-8
-9
 10
 11
 12
@@ -354,10 +352,12 @@ corresponding props.</p>
 14
 15
 16
-17</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/structure_prop.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props/structure_prop.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_convert'>convert</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
@@ -400,8 +400,6 @@ corresponding props.</p>
       <pre class="lines">
 
 
-20
-21
 22
 23
 24
@@ -411,10 +409,12 @@ corresponding props.</p>
 28
 29
 30
-31</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/structure_prop.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props/structure_prop.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cf_value'>cf_value</span> <span class='op'>=</span>
@@ -473,13 +473,13 @@ corresponding props</p>
       <pre class="lines">
 
 
-35
-36
 37
-38</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/structure_prop.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props/structure_prop.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_whitelisted_value?'>whitelisted_value?</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>

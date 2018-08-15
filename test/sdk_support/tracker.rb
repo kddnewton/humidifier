@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SdkSupport
   class Tracker
     attr_reader :stubs

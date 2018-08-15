@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Humidifier
   # Represents a CFN stack parameter
   class Parameter

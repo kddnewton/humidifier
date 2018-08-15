@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Humidifier
   # A container module for all adapters for the SDK
   module AwsAdapters

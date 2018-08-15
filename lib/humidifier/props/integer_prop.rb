@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Humidifier
   module Props
     # An integer property

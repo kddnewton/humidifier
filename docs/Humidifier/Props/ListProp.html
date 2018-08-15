@@ -297,12 +297,12 @@ the subprop.</p>
       <pre class="lines">
 
 
-5
-6
-7</pre>
+7
+8
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/list_prop.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props/list_prop.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_subprop'>subprop</span>
   <span class='ivar'>@subprop</span>
@@ -345,12 +345,12 @@ the subprop.</p>
       <pre class="lines">
 
 
-8
-9
-10</pre>
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/list_prop.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props/list_prop.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_convert'>convert</span><span class='lparen'>(</span><span class='id identifier rubyid_list'>list</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_list'>list</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_list'>list</span> <span class='op'>:</span> <span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span> <span class='id identifier rubyid_subprop'>subprop</span><span class='period'>.</span><span class='id identifier rubyid_convert'>convert</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -386,8 +386,6 @@ the subprop.</p>
       <pre class="lines">
 
 
-13
-14
 15
 16
 17
@@ -395,10 +393,12 @@ the subprop.</p>
 19
 20
 21
-22</pre>
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/list_prop.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props/list_prop.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span><span class='lparen'>(</span><span class='id identifier rubyid_list'>list</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cf_value'>cf_value</span> <span class='op'>=</span>
@@ -455,13 +455,13 @@ the subprop</p>
       <pre class="lines">
 
 
-26
-27
 28
-29</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/list_prop.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props/list_prop.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_list'>list</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_whitelisted_value?'>whitelisted_value?</span><span class='lparen'>(</span><span class='id identifier rubyid_list'>list</span><span class='rparen'>)</span>

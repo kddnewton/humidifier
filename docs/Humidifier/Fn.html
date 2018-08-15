@@ -294,13 +294,13 @@ href="http://docs.aws.amazon.com">docs.aws.amazon.com</a>
       <pre class="lines">
 
 
-12
-13
 14
-15</pre>
+15
+16
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='ivar'>@name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Fn::</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -344,12 +344,12 @@ href="http://docs.aws.amazon.com">docs.aws.amazon.com</a>
       <pre class="lines">
 
 
-10
-11
-12</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -387,12 +387,12 @@ href="http://docs.aws.amazon.com">docs.aws.amazon.com</a>
       <pre class="lines">
 
 
-10
-11
-12</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_value'>value</span>
   <span class='ivar'>@value</span>
@@ -435,12 +435,12 @@ href="http://docs.aws.amazon.com">docs.aws.amazon.com</a>
       <pre class="lines">
 
 
-18
-19
-20</pre>
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/fn.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span>
   <span class='lbrace'>{</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Serializer.html" title="Humidifier::Serializer (class)">Serializer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_dump'><span class='object_link'><a href="Serializer.html#dump-class_method" title="Humidifier::Serializer.dump (method)">dump</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='rbrace'>}</span>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SdkSupport
   def self.double
     AwsDouble
@@ -16,7 +18,7 @@ module SdkSupport
   end
 
   module AwsDouble
-    CORE_GEM_VERSION = '2.0.0'.freeze
+    CORE_GEM_VERSION = '2.0.0'
     extend ForwardMissing
 
     module CloudFormation

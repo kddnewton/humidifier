@@ -308,16 +308,16 @@
       <pre class="lines">
 
 
-7
-8
 9
 10
 11
 12
-13</pre>
+13
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/base.rb', line 7</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/base.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_try_valid'>try_valid</span> <span class='kw'>do</span>
@@ -357,13 +357,13 @@
       <pre class="lines">
 
 
-16
-17
 18
-19</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/base.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/base.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_delete_stack'>delete_stack</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_delete_params'>delete_params</span><span class='rparen'>)</span>
@@ -400,12 +400,12 @@
       <pre class="lines">
 
 
-22
-23
-24</pre>
+24
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/base.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/base.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_deploy'>deploy</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
@@ -441,12 +441,12 @@
       <pre class="lines">
 
 
-27
-28
-29</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/base.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/base.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_try_valid'>try_valid</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_update_stack'>update_stack</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_update_params'>update_params</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -482,14 +482,14 @@
       <pre class="lines">
 
 
-32
-33
 34
 35
-36</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/base.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/base.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_upload'>upload</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="../../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_config'><span class='object_link'><a href="../../Humidifier.html#config-class_method" title="Humidifier.config (method)">config</a></span></span><span class='period'>.</span><span class='id identifier rubyid_ensure_upload_configured!'>ensure_upload_configured!</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
@@ -540,12 +540,12 @@
       <pre class="lines">
 
 
-39
-40
-41</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/base.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/aws_adapters/base.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_try_valid'>try_valid</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_validate_template'>validate_template</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_validate_params'>validate_params</span><span class='rparen'>)</span> <span class='rbrace'>}</span>

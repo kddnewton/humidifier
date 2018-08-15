@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Humidifier
   # Dumps an object to CFN syntax
   class Serializer

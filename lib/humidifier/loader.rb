@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Humidifier
   # Pre-setting this module because AWS has a "Config" module and the below
   # register method dynamically looks up the module to see whether or not it

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Humidifier
   # Manages waiting for stack events for v1 of the SDK
   class Sleeper

@@ -358,8 +358,6 @@ name.</p>
       <pre class="lines">
 
 
-15
-16
 17
 18
 19
@@ -370,10 +368,12 @@ name.</p>
 24
 25
 26
-27</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span>
@@ -426,12 +426,12 @@ name.</p>
       <pre class="lines">
 
 
-12
-13
-14</pre>
+14
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
   <span class='ivar'>@id</span>
@@ -474,14 +474,14 @@ name.</p>
       <pre class="lines">
 
 
-66
-67
 68
 69
-70</pre>
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_next_default_identifier'>next_default_identifier</span>
   <span class='ivar'>@count</span> <span class='op'>||=</span> <span class='int'>0</span>
@@ -525,14 +525,14 @@ name.</p>
       <pre class="lines">
 
 
-30
-31
 32
 33
-34</pre>
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_resource'>resource</span><span class='comma'>,</span> <span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_resources'>resources</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_resource'>resource</span>
@@ -571,12 +571,12 @@ name</p>
       <pre class="lines">
 
 
-38
-39
-40</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_identifier'>identifier</span>
   <span class='id identifier rubyid_id'>id</span> <span class='op'>||</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>||</span> <span class='id identifier rubyid_default_identifier'>default_identifier</span>
@@ -612,17 +612,17 @@ name</p>
       <pre class="lines">
 
 
-43
-44
 45
 46
 47
 48
 49
-50</pre>
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span><span class='lparen'>(</span><span class='id identifier rubyid_serializer'>serializer</span> <span class='op'>=</span> <span class='symbol'>:json</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_resources'>resources</span> <span class='op'>=</span> <span class='id identifier rubyid_static_resources'>static_resources</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_enumerable_resources'>enumerable_resources</span><span class='rparen'>)</span>

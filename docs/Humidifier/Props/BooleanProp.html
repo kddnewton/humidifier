@@ -240,17 +240,17 @@ is valid</p>
       <pre class="lines">
 
 
-6
-7
 8
 9
 10
 11
 12
-13</pre>
+13
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/boolean_prop.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props/boolean_prop.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_convert'>convert</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='op'>!</span><span class='qwords_beg'>%w[</span><span class='tstring_content'>true</span><span class='words_sep'> </span><span class='tstring_content'>false</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -304,13 +304,13 @@ is valid</p>
       <pre class="lines">
 
 
-16
-17
 18
-19</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/boolean_prop.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props/boolean_prop.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_whitelisted_value?'>whitelisted_value?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>

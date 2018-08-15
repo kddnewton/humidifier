@@ -566,15 +566,15 @@ operation is being performed.</p>
       <pre class="lines">
 
 
-46
-47
 48
 49
 50
-51</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_stack'>stack</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
   <span class='ivar'>@stack</span> <span class='op'>=</span> <span class='id identifier rubyid_stack'>stack</span>
@@ -620,12 +620,12 @@ operation is being performed.</p>
       <pre class="lines">
 
 
-41
-42
-43</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_force_upload'>force_upload</span>
   <span class='ivar'>@force_upload</span>
@@ -666,12 +666,12 @@ large, you may need to set this to wait longer than the default
       <pre class="lines">
 
 
-38
-39
-40</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_max_wait'>max_wait</span>
   <span class='ivar'>@max_wait</span>
@@ -711,12 +711,12 @@ operation is being performed. Particularly useful for the
       <pre class="lines">
 
 
-33
-34
-35</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span>
   <span class='ivar'>@options</span>
@@ -754,12 +754,12 @@ operation is being performed. Particularly useful for the
       <pre class="lines">
 
 
-28
-29
-30</pre>
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stack'>stack</span>
   <span class='ivar'>@stack</span>
@@ -802,12 +802,12 @@ operation is being performed. Particularly useful for the
       <pre class="lines">
 
 
-54
-55
-56</pre>
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_stack'>stack</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_stack'>stack</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span>
@@ -843,12 +843,12 @@ operation is being performed. Particularly useful for the
       <pre class="lines">
 
 
-73
-74
-75</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_change_set_params'>create_change_set_params</span>
   <span class='lbrace'>{</span> <span class='label'>stack_name:</span> <span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_template_param'>template_param</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -884,12 +884,12 @@ operation is being performed. Particularly useful for the
       <pre class="lines">
 
 
-78
-79
-80</pre>
+80
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_params'>create_params</span>
   <span class='lbrace'>{</span> <span class='label'>stack_name:</span> <span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_template_param'>template_param</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -925,12 +925,12 @@ operation is being performed. Particularly useful for the
       <pre class="lines">
 
 
-83
-84
-85</pre>
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_params'>delete_params</span>
   <span class='lbrace'>{</span> <span class='label'>stack_name:</span> <span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -966,12 +966,12 @@ operation is being performed. Particularly useful for the
       <pre class="lines">
 
 
-59
-60
-61</pre>
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_new_options'>new_options</span><span class='rparen'>)</span>
   <span class='ivar'>@options</span> <span class='op'>=</span> <span class='id identifier rubyid_new_options'>new_options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -1007,12 +1007,12 @@ operation is being performed. Particularly useful for the
       <pre class="lines">
 
 
-64
-65
-66</pre>
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_template_body'>template_body</span>
   <span class='ivar'>@template_body</span> <span class='op'>||=</span> <span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_to_cf'>to_cf</span>
@@ -1048,12 +1048,12 @@ operation is being performed. Particularly useful for the
       <pre class="lines">
 
 
-88
-89
-90</pre>
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_params'>update_params</span>
   <span class='lbrace'>{</span> <span class='label'>stack_name:</span> <span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_identifier'>identifier</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_template_param'>template_param</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -1089,12 +1089,12 @@ operation is being performed. Particularly useful for the
       <pre class="lines">
 
 
-93
-94
-95</pre>
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/sdk_payload.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate_params'>validate_params</span>
   <span class='id identifier rubyid_template_param'>template_param</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>

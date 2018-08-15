@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Humidifier
   # Superclass for all AWS resources
   class Resource

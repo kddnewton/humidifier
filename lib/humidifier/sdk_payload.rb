@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Humidifier
   # The payload sent to the shim methods, representing the stack and the options
   class SdkPayload

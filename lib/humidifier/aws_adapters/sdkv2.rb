@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Humidifier
   module AwsAdapters
     # The adapter for v2 of aws-sdk
     class SDKV2 < Base
       # Format of the timestamp used in changeset naming
-      TIME_FORMAT = '%Y-%m-%d-%H-%M-%S'.freeze
+      TIME_FORMAT = '%Y-%m-%d-%H-%M-%S'
 
       # Create a change set in CFN
       def create_change_set(payload)

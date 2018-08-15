@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Humidifier
   # Container for property of CFN resources
   module Props

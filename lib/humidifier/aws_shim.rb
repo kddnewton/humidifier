@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'humidifier/aws_adapters/base'
 require 'humidifier/aws_adapters/noop'
 require 'humidifier/aws_adapters/sdkv1'

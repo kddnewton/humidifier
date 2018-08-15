@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Humidifier
   module AwsAdapters
     # An adapter used when neither SDK is loaded
