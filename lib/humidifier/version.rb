@@ -2,5 +2,5 @@
 
 module Humidifier
   # Gem version
-  VERSION = '2.6.0'
+  VERSION = '2.15.0'
 end
