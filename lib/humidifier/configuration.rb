@@ -47,6 +47,7 @@ MSG
     # raise an error unless the s3_bucket field is set
     def ensure_upload_configured!(payload)
       return if s3_bucket
+
       raise UPLOAD_MESSAGE.gsub('%<identifier>s', payload.identifier)
     end
 

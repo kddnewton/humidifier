@@ -61,6 +61,7 @@ class PropsTest < Minitest::Test
   def test_api
     ObjectSpace.each_object(Humidifier::Props::Base.singleton_class) do |clazz|
       next if %w[Base TestProp].include?(clazz.name.split('::').last)
+
       assert_respond_to clazz.new('Foo'), :convert
       assert_respond_to clazz.new('Bar'), :valid?
     end

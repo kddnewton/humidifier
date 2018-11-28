@@ -106,6 +106,7 @@ module Humidifier
 
     def should_upload?
       return force_upload unless force_upload.nil?
+
       Humidifier.config.force_upload || bytesize > MAX_TEMPLATE_BODY_SIZE
     end
 

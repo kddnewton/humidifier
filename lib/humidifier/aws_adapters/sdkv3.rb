@@ -16,6 +16,7 @@ MSG
 
       def upload_object(payload, key)
         raise S3_SDK_MESSAGE unless s3_sdk_loaded?
+
         super
       end
 

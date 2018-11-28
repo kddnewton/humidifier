@@ -9,6 +9,7 @@ module Humidifier
       # converts the value through mapping using the subprop unless it is valid
       def convert(map)
         return map if valid?(map)
+
         map.map { |key, value| [key, subprop.convert(value)] }.to_h
       end
 
@@ -30,6 +31,7 @@ module Humidifier
       # the subprop
       def valid?(map)
         return true if whitelisted_value?(map)
+
         map.is_a?(Hash) && map.values.all? { |value| subprop.valid?(value) }
       end
 

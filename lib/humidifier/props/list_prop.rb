@@ -27,6 +27,7 @@ module Humidifier
       # on the subprop
       def valid?(list)
         return true if whitelisted_value?(list)
+
         list.is_a?(Enumerable) && list.all? { |value| subprop.valid?(value) }
       end
 

@@ -36,6 +36,7 @@ module Humidifier
       # their corresponding props
       def valid?(struct)
         return true if whitelisted_value?(struct)
+
         struct.is_a?(Hash) && valid_struct?(struct)
       end
 

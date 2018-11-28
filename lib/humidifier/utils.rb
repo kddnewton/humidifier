@@ -6,6 +6,7 @@ module Humidifier
     # convert from UpperCamelCase to lower_snake_case
     def self.underscore(name)
       return nil unless name
+
       name.gsub(/([A-Z]+)([0-9]|[A-Z]|\z)/) { "#{$1.capitalize}#{$2}" }
           .gsub(/(.)([A-Z])/, '\1_\2').downcase
     end

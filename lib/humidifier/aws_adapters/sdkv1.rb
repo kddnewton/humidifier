@@ -36,6 +36,7 @@ module Humidifier
 
         response.stack_events.each do |event|
           next if failure_event_filtered?(event)
+
           reasons.unshift(event.resource_status_reason)
         end
 

@@ -38,8 +38,10 @@ module SdkSupport
 
     def find_stub(method, args)
       raise "Unexpected call to #{method}" unless stubs.key?(method)
+
       found = stubs[method].detect { |(stub_args, _)| stub_args == args }
       raise "Unexpected call to #{method} with args #{args}" if found.nil?
+
       found
     end
 
