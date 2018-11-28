@@ -46,8 +46,9 @@ module Humidifier
       structs = StructureContainer.new(parsed['PropertyTypes'])
 
       parsed['ResourceTypes'].each do |key, spec|
-        match = key.match(/\AAWS::(\w+)::(\w+)\z/)
-        register(match[1], match[2], spec, structs.search(key))
+        match = key.match(/\A(\w+)::(\w+)::(\w+)\z/)
+
+        register(match[1], match[2], match[3], spec, structs.search(key))
       end
     end
 
@@ -69,8 +70,8 @@ module Humidifier
       end
     end
 
-    def register(group, resource, spec, substructs)
-      aws_name = "AWS::#{group}::#{resource}"
+    def register(top, group, resource, spec, substructs)
+      aws_name = "#{top}::#{group}::#{resource}"
       resource_class = build_class(aws_name, spec, substructs)
 
       unless Humidifier.const_defined?(group)
