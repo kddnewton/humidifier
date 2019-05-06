@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class SdkPayloadTest < Minitest::Test
-  StackDouble = Struct.new(:identifier, :name, :to_cf)
+  StackDouble = Struct.new(:identifier, :name, :to_cf, :upload)
 
   def test_forwarding
     assert_equal 'identifier', build.identifier
@@ -45,8 +45,10 @@ class SdkPayloadTest < Minitest::Test
 
   def test_template_param_small_with_configure_force_upload
     with_config(force_upload: true) do
-      Humidifier::AwsShim.stub(:upload, 'foobar') do
-        assert_equal ({ template_url: 'foobar' }), build.send(:template_param)
+      payload = build
+
+      payload.stack.stub(:upload, 'foobar') do
+        assert_equal ({ template_url: 'foobar' }), payload.send(:template_param)
       end
     end
   end
@@ -54,16 +56,17 @@ class SdkPayloadTest < Minitest::Test
   def test_template_param_small_with_force_upload
     payload = build(options: { force_upload: true })
 
-    Humidifier::AwsShim.stub(:upload, 'foobar') do
+    payload.stack.stub(:upload, 'foobar') do
       assert_equal ({ template_url: 'foobar' }), payload.send(:template_param)
     end
   end
 
   def test_template_param_large
     template_body = 'a' * (Humidifier::SdkPayload::MAX_TEMPLATE_BODY_SIZE + 1)
-    Humidifier::AwsShim.stub(:upload, 'foobar') do
-      assert_equal ({ template_url: 'foobar' }),
-                   build(template_body: template_body).send(:template_param)
+    payload = build(template_body: template_body)
+
+    payload.stack.stub(:upload, 'foobar') do
+      assert_equal ({ template_url: 'foobar' }), payload.send(:template_param)
     end
   end
 

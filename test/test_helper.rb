@@ -32,7 +32,7 @@ Minitest::Test.send(:include, SdkSupport::Helpers)
 # extra methods for testing config and serializers
 Minitest::Test.send(:include, Module.new do
   def with_config(options = {}, &block)
-    config = Humidifier::Configuration.new(options)
+    config = Humidifier::Config.new(options)
     Humidifier.stub(:config, config, &block)
   end
 
@@ -43,9 +43,4 @@ Minitest::Test.send(:include, Module.new do
     Humidifier::Serializer.stub(:dump, mock) { yield value }
     mock.verify
   end
-end)
-
-# stub the sleep method so that the tests can run faster
-Humidifier::Sleeper.send(:prepend, Module.new do
-  def sleep(count); end
 end)

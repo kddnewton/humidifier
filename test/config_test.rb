@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class ConfigurationTest < Minitest::Test
+class ConfigTest < Minitest::Test
   def test_ensure_upload_configured!
     error =
       assert_raises RuntimeError do
@@ -19,6 +19,6 @@ class ConfigurationTest < Minitest::Test
   private
 
   def build(options = {})
-    Humidifier::Configuration.new(options)
+    Humidifier::Config.new(options)
   end
 end

@@ -1,3 +1,4 @@
+=begin
 # frozen_string_literal: true
 
 require 'test_helper'
@@ -42,3 +43,4 @@ class SDKV3Test < Minitest::Test
     end
   end
 end
+=end

@@ -4,12 +4,12 @@ require 'test_helper'
 
 class HumidifierTest < Minitest::Test
   def test_config
-    assert_kind_of Humidifier::Configuration, Humidifier.config
+    assert_kind_of Humidifier::Config, Humidifier.config
   end
 
   def test_configure
     Humidifier.configure do |config|
-      assert_kind_of Humidifier::Configuration, config
+      assert_kind_of Humidifier::Config, config
     end
   end
 
@@ -19,6 +19,7 @@ class HumidifierTest < Minitest::Test
 
   def test_ref
     reference = Object.new
+
     assert_kind_of Humidifier::Ref, Humidifier.ref(reference)
     assert_equal reference, Humidifier.ref(reference).reference
   end

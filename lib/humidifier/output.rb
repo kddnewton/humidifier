@@ -13,10 +13,10 @@ module Humidifier
 
     # CFN stack syntax
     def to_cf
-      cf = { 'Value' => Serializer.dump(value) }
-      cf['Description'] = description if description
-      cf['Export'] = { 'Name' => export_name } if export_name
-      cf
+      { 'Value' => Serializer.dump(value) }.tap do |cf|
+        cf['Description'] = description if description
+        cf['Export'] = { 'Name' => export_name } if export_name
+      end
     end
   end
 end

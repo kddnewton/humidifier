@@ -29,7 +29,7 @@ module SdkSupport
         begin
           Object.const_set(:Aws, AwsDouble)
           unset_shim
-          yield Humidifier::AwsShim.shim
+          yield Humidifier::Client.instance
         ensure
           Object.send(:remove_const, :Aws)
         end

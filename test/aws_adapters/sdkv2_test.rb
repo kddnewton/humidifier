@@ -1,3 +1,4 @@
+=begin
 # frozen_string_literal: true
 
 require 'test_helper'
@@ -109,3 +110,4 @@ class SDKV2Test < Minitest::Test
     SdkSupport.expect(:presigned_url, [:get])
   end
 end
+=end

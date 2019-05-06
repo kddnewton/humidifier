@@ -113,7 +113,7 @@ module Humidifier
     def template_param
       @template_param ||=
         if should_upload?
-          { template_url: AwsShim.upload(self) }
+          { template_url: stack.upload(self) }
         else
           { template_body: template_body }
         end

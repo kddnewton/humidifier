@@ -1,14 +1,6 @@
 # frozen_string_literal: true
 
 module Humidifier
-  # Pre-setting this module because AWS has a "Config" module and the below
-  # register method dynamically looks up the module to see whether or not it
-  # exists, which before ruby 2.2 would result in the warning:
-  #   `const_defined?': Use RbConfig instead of obsolete and deprecated Config.
-  # @aws AWS::Config
-  module Config
-  end
-
   # Reads the specs/CloudFormationResourceSpecification.json file and load each
   # resource as a class
   class Loader

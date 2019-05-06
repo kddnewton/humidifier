@@ -1,3 +1,4 @@
+=begin
 # frozen_string_literal: true
 
 require 'test_helper'
@@ -99,3 +100,4 @@ class BaseTest < Minitest::Test
     with_sdk_v2_loaded(&block)
   end
 end
+=end

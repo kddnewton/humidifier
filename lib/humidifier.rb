@@ -12,13 +12,18 @@ require 'humidifier/ref'
 require 'humidifier/props'
 
 require 'humidifier/props/base'
+require 'humidifier/props/boolean_prop'
+require 'humidifier/props/double_prop'
+require 'humidifier/props/integer_prop'
+require 'humidifier/props/json_prop'
+require 'humidifier/props/list_prop'
+require 'humidifier/props/map_prop'
+require 'humidifier/props/string_prop'
+require 'humidifier/props/structure_prop'
+require 'humidifier/props/timestamp_prop'
 
-prop_types = %w[boolean double integer json list map string structure timestamp]
-prop_types.each { |type| require "humidifier/props/#{type}_prop" }
-
-require 'humidifier/aws_shim'
 require 'humidifier/condition'
-require 'humidifier/configuration'
+require 'humidifier/config'
 require 'humidifier/loader'
 require 'humidifier/mapping'
 require 'humidifier/output'
@@ -26,7 +31,6 @@ require 'humidifier/parameter'
 require 'humidifier/resource'
 require 'humidifier/sdk_payload'
 require 'humidifier/serializer'
-require 'humidifier/sleeper'
 require 'humidifier/stack'
 require 'humidifier/version'
 
@@ -35,7 +39,7 @@ module Humidifier
   class << self
     # the configuration instance
     def config
-      @config ||= Configuration.new
+      @config ||= Config.new
     end
 
     # yield the config object to the block for setting user params
