@@ -96,7 +96,6 @@ class BaseTest < Minitest::Test
   private
 
   def with_both_sdks(&block)
-    with_sdk_v1_loaded(&block)
     with_sdk_v2_loaded(&block)
   end
 end

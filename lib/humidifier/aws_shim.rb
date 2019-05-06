@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'humidifier/aws_adapters/base'
-require 'humidifier/aws_adapters/noop'
-require 'humidifier/aws_adapters/sdkv1'
 require 'humidifier/aws_adapters/sdkv2'
 require 'humidifier/aws_adapters/sdkv3'
 
@@ -25,16 +23,7 @@ module Humidifier
     # version by attempting to require both aws-sdk-v1 and aws-sdk, then setting
     # the shim based on what successfully loaded
     def initialize
-      @shim =
-        if Humidifier.config.sdk_version_1?
-          AwsAdapters::SDKV1.new
-        elsif Humidifier.config.sdk_version_2?
-          AwsAdapters::SDKV2.new
-        elsif Humidifier.config.sdk_version_3?
-          AwsAdapters::SDKV3.new
-        else
-          guess_sdk
-        end
+      @shim = AwsAdapters::SDKV3.new
     end
 
     class << self
@@ -50,34 +39,6 @@ module Humidifier
       def shim
         instance.shim
       end
-    end
-
-    private
-
-    def guess_sdk
-      try_requiring_sdks
-
-      if defined?(Aws) && Aws::CORE_GEM_VERSION[0] == '3'
-        AwsAdapters::SDKV3.new
-      elsif defined?(Aws)
-        AwsAdapters::SDKV2.new
-      elsif Object.const_defined?(:AWS)
-        AwsAdapters::SDKV1.new
-      else
-        AwsAdapters::Noop.new
-      end
-    end
-
-    def try_require_sdk(name)
-      require name || true
-    rescue LoadError
-      false
-    end
-
-    def try_requiring_sdks
-      try_require_sdk('aws-sdk-cloudformation') ||
-        try_require_sdk('aws-sdk') ||
-        try_require_sdk('aws-sdk-v1')
     end
   end
 end

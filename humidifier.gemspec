@@ -21,6 +21,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.1'
 
+  spec.add_development_dependency 'aws-sdk-cloudformation', '~> 1.19'
+  spec.add_development_dependency 'aws-sdk-s3'
+
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'minitest', '~> 5.11'
   spec.add_development_dependency 'nokogiri', '~> 1.10'

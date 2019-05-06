@@ -30,18 +30,10 @@ MSG
     # An optional prefix for the stack names.
     attr_accessor :s3_prefix
 
-    # By default, `humidifier` will attempt to determine which SDK you have
-    # loaded. (There's not really a story for peer dependencies with bundler).
-    # If you want to enforce a specific version (for instance if you have both
-    # `aws-sdk-v1` and `aws-sdk` but want to use the former) you can set this
-    # variable to `1`.
-    attr_accessor :sdk_version
-
     def initialize(opts = {})
       @force_upload = opts[:force_upload]
       @s3_bucket    = opts[:s3_bucket]
       @s3_prefix    = opts[:s3_prefix]
-      @sdk_version  = opts[:sdk_version]
     end
 
     # raise an error unless the s3_bucket field is set
@@ -49,21 +41,6 @@ MSG
       return if s3_bucket
 
       raise UPLOAD_MESSAGE.gsub('%<identifier>s', payload.identifier)
-    end
-
-    # true if the sdk_version option is set to 1 or '1'
-    def sdk_version_1?
-      sdk_version.to_s == '1'
-    end
-
-    # true if the sdk_version option is set to 2 or '2'
-    def sdk_version_2?
-      sdk_version.to_s == '2'
-    end
-
-    # true if the sdk_version option is set to 3 or '3'
-    def sdk_version_3?
-      sdk_version.to_s == '3'
     end
   end
 end

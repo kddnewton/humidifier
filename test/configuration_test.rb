@@ -16,18 +16,6 @@ class ConfigurationTest < Minitest::Test
     config.ensure_upload_configured!(payload(identifier: 'foobar'))
   end
 
-  def test_sdk_version_1?
-    assert build(sdk_version: 1).sdk_version_1?
-    assert build(sdk_version: '1').sdk_version_1?
-    refute build(sdk_version: 'foobar').sdk_version_1?
-  end
-
-  def test_sdk_version_2?
-    assert build(sdk_version: 2).sdk_version_2?
-    assert build(sdk_version: '2').sdk_version_2?
-    refute build(sdk_version: 'foobar').sdk_version_2?
-  end
-
   private
 
   def build(options = {})
