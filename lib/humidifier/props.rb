@@ -19,7 +19,7 @@ module Humidifier
       def singular_from(key, spec, substructs)
         primitive = spec['PrimitiveItemType'] || spec['PrimitiveType']
 
-        if primitive
+        if primitive && !%w[List Map].include?(primitive)
           primitive = 'Integer' if primitive == 'Long'
           const_get(:"#{primitive}Prop").new(key, spec)
         else
