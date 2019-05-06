@@ -39,7 +39,7 @@ module Humidifier
 
       # Finds the subprop that's specified in the spec
       def after_initialize(substructs)
-        @subprop = Props.singular_from(key, spec, substructs)
+        @subprop = Props.singular_from(key, spec, substructs) if substructs.any?
       end
     end
   end

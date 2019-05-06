@@ -87,7 +87,7 @@ class SpecDownload
   private
 
   def download
-    url = spec_row.at_css('td:nth-child(2) p a').attr('href')
+    url = spec_row.at_css('td:nth-child(3) p a').attr('href')
     puts "Downloading from #{url}..."
 
     response = Net::HTTP.get_response(URI.parse(url)).body
