@@ -9,7 +9,7 @@ module Humidifier
         if valid?(value) || !value.respond_to?(:to_i)
           value
         else
-          puts "WARNING: Property #{name} should be an integer"
+          warn("WARNING: Property #{name} should be an integer")
           value.to_i
         end
       end

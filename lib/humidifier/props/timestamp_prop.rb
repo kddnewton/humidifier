@@ -9,7 +9,7 @@ module Humidifier
         if valid?(value) || !value.is_a?(String)
           value
         else
-          puts "WARNING: Property #{name} should be a Date or Time"
+          warn("WARNING: Property #{name} should be a Date or Time")
           DateTime.parse(value)
         end
       end

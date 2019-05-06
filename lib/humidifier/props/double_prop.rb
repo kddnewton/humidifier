@@ -9,7 +9,7 @@ module Humidifier
         if valid?(value) || !value.respond_to?(:to_f)
           value
         else
-          puts "WARNING: Property #{name} should be a double"
+          warn("WARNING: Property #{name} should be a double")
           value.to_f
         end
       end

@@ -9,7 +9,7 @@ module Humidifier
         if valid?(value)
           value
         else
-          puts "WARNING: Property #{name} should be a string"
+          warn("WARNING: Property #{name} should be a string")
           value.to_s
         end
       end

@@ -9,7 +9,7 @@ module Humidifier
         if valid?(value) || !convertable?(value)
           value
         else
-          puts "WARNING: Property #{name} should be a Hash"
+          warn("WARNING: Property #{name} should be a Hash")
           Hash[value]
         end
       end

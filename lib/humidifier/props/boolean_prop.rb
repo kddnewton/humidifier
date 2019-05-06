@@ -9,7 +9,7 @@ module Humidifier
         if valid?(value) || !%w[true false].include?(value)
           value
         else
-          puts "WARNING: Property #{name} should be a boolean, not a string"
+          warn("WARNING: Property #{name} should be a boolean, not a string")
           value == 'true'
         end
       end
