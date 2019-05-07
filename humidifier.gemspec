@@ -24,6 +24,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'aws-sdk-cloudformation', '~> 1.19'
   spec.add_dependency 'aws-sdk-s3', '~> 1.36'
   spec.add_dependency 'fast_underscore', '~> 0.3'
+  spec.add_dependency 'thor', '~> 0.20'
+  spec.add_dependency 'thor-hollaback', '~> 0.1'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'minitest', '~> 5.11'
