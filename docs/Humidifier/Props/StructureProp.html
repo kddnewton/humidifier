@@ -69,12 +69,12 @@
   <dl>
     <dt>Inherits:</dt>
     <dd>
-      <span class="inheritName"><span class='object_link'><a href="Base.html" title="Humidifier::Props::Base (class)">Base</a></span></span>
+      <span class="inheritName"><span class='object_link'><a href="Prop.html" title="Humidifier::Props::Prop (class)">Prop</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next"><span class='object_link'><a href="Base.html" title="Humidifier::Props::Base (class)">Base</a></span></li>
+            <li class="next"><span class='object_link'><a href="Prop.html" title="Humidifier::Props::Prop (class)">Prop</a></span></li>
           
             <li class="next">Humidifier::Props::StructureProp</li>
           
@@ -96,30 +96,19 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/humidifier/props/structure_prop.rb</dd>
+    <dd>lib/humidifier/props.rb</dd>
   </dl>
   
 </div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    
-<p>A structure property that references a structure from the specification</p>
 
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
 
 
   <h2>Constant Summary</h2>
   
   <h3 class="inherited">Constants inherited
-     from <span class='object_link'><a href="Base.html" title="Humidifier::Props::Base (class)">Base</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Base.html#WHITELIST-constant" title="Humidifier::Props::Base::WHITELIST (constant)">Base::WHITELIST</a></span></p>
+     from <span class='object_link'><a href="Prop.html" title="Humidifier::Props::Prop (class)">Prop</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Prop.html#WHITELIST-constant" title="Humidifier::Props::Prop::WHITELIST (constant)">Prop::WHITELIST</a></span></p>
 
 
   <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
@@ -160,8 +149,8 @@
 
   
   
-  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Base.html" title="Humidifier::Props::Base (class)">Base</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Base.html#key-instance_method" title="Humidifier::Props::Base#key (method)">#key</a></span>, <span class='object_link'><a href="Base.html#name-instance_method" title="Humidifier::Props::Base#name (method)">#name</a></span>, <span class='object_link'><a href="Base.html#spec-instance_method" title="Humidifier::Props::Base#spec (method)">#spec</a></span>, <span class='object_link'><a href="Base.html#substructs-instance_method" title="Humidifier::Props::Base#substructs (method)">#substructs</a></span></p>
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Prop.html" title="Humidifier::Props::Prop (class)">Prop</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Prop.html#key-instance_method" title="Humidifier::Props::Prop#key (method)">#key</a></span>, <span class='object_link'><a href="Prop.html#name-instance_method" title="Humidifier::Props::Prop#name (method)">#name</a></span>, <span class='object_link'><a href="Prop.html#spec-instance_method" title="Humidifier::Props::Prop#spec (method)">#spec</a></span></p>
 
 
   
@@ -175,12 +164,14 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#convert-instance_method" title="#convert (instance method)">#<strong>convert</strong>(struct)  &#x21d2; Object </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(key, spec = {}, substructs = {})  &#x21d2; StructureProp </a>
     
 
     
   </span>
   
+  
+    <span class="note title constructor">constructor</span>
   
   
   
@@ -190,7 +181,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>converts the value through mapping using the subprop unless it is valid.</p>
+<p>A new instance of StructureProp.</p>
 </div></span>
   
 </li>
@@ -213,9 +204,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>CFN stack syntax.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -237,10 +226,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>true if the value is whitelisted or Hash and all keys are valid for their
-corresponding props.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -257,12 +243,53 @@ corresponding props.</p>
   
   
   
-  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Base.html" title="Humidifier::Props::Base (class)">Base</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Base.html#documentation-instance_method" title="Humidifier::Props::Base#documentation (method)">#documentation</a></span>, <span class='object_link'><a href="Base.html#initialize-instance_method" title="Humidifier::Props::Base#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Base.html#required%3F-instance_method" title="Humidifier::Props::Base#required? (method)">#required?</a></span>, <span class='object_link'><a href="Base.html#update_type-instance_method" title="Humidifier::Props::Base#update_type (method)">#update_type</a></span>, <span class='object_link'><a href="Base.html#whitelisted_value%3F-instance_method" title="Humidifier::Props::Base#whitelisted_value? (method)">#whitelisted_value?</a></span></p>
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Prop.html" title="Humidifier::Props::Prop (class)">Prop</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Prop.html#allow_type-class_method" title="Humidifier::Props::Prop.allow_type (method)">allow_type</a></span>, <span class='object_link'><a href="Prop.html#allowed_types-class_method" title="Humidifier::Props::Prop.allowed_types (method)">allowed_types</a></span>, <span class='object_link'><a href="Prop.html#documentation-instance_method" title="Humidifier::Props::Prop#documentation (method)">#documentation</a></span>, <span class='object_link'><a href="Prop.html#required%3F-instance_method" title="Humidifier::Props::Prop#required? (method)">#required?</a></span>, <span class='object_link'><a href="Prop.html#update_type-instance_method" title="Humidifier::Props::Prop#update_type (method)">#update_type</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
-    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="Base.html#initialize-instance_method" title="Humidifier::Props::Base#initialize (method)">Humidifier::Props::Base</a></span></p>
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(key, spec = {}, substructs = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Humidifier::Props::StructureProp (class)">StructureProp</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of StructureProp</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 137</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
+  <span class='ivar'>@subprops</span> <span class='op'>=</span> <span class='id identifier rubyid_subprops_from'>subprops_from</span><span class='lparen'>(</span><span class='id identifier rubyid_substructs'>substructs</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ItemType</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Type</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
   
 </div>
 
@@ -297,12 +324,12 @@ corresponding props.</p>
       <pre class="lines">
 
 
-7
-8
-9</pre>
+135
+136
+137</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/structure_prop.rb', line 7</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 135</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_subprops'>subprops</span>
   <span class='ivar'>@subprops</span>
@@ -320,62 +347,7 @@ corresponding props.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="convert-instance_method">
-  
-    #<strong>convert</strong>(struct)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>converts the value through mapping using the subprop unless it is valid</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/structure_prop.rb', line 10</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_convert'>convert</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_struct'>struct</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_subkey'>subkey</span><span class='comma'>,</span> <span class='id identifier rubyid_subvalue'>subvalue</span><span class='op'>|</span>
-      <span class='id identifier rubyid_subkey'>subkey</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Utils.html" title="Humidifier::Utils (module)">Utils</a></span></span><span class='period'>.</span><span class='id identifier rubyid_underscore'><span class='object_link'><a href="../Utils.html#underscore-class_method" title="Humidifier::Utils.underscore (method)">underscore</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_subkey'>subkey</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
-      <span class='lbracket'>[</span><span class='id identifier rubyid_subkey'>subkey</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='comma'>,</span> <span class='id identifier rubyid_subprops'>subprops</span><span class='lbracket'>[</span><span class='id identifier rubyid_subkey'>subkey</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_convert'>convert</span><span class='lparen'>(</span><span class='id identifier rubyid_subvalue'>subvalue</span><span class='rparen'>)</span><span class='rbracket'>]</span>
-    <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="to_cf-instance_method">
+  <h3 class="signature first" id="to_cf-instance_method">
   
     #<strong>to_cf</strong>(struct)  &#x21d2; <tt>Object</tt> 
   
@@ -383,38 +355,27 @@ corresponding props.</p>
   
 
   
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>CFN stack syntax</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33</pre>
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/structure_prop.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 142</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cf_value'>cf_value</span> <span class='op'>=</span>
@@ -445,9 +406,6 @@ corresponding props.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>true if the value is whitelisted or Hash and all keys are valid for their
-corresponding props</p>
-
 
   </div>
 </div>
@@ -473,19 +431,15 @@ corresponding props</p>
       <pre class="lines">
 
 
-37
-38
-39
-40
-41</pre>
+155
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/structure_prop.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 155</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_whitelisted_value?'>whitelisted_value?</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_valid_struct?'>valid_struct?</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_valid_struct?'>valid_struct?</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>

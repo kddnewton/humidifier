@@ -9,6 +9,7 @@ Rake::TestTask.new(:test) do |t|
   t.libs << 'test'
   t.libs << 'lib'
   t.test_files = FileList['test/**/*_test.rb']
+  t.warning = false
 end
 
 YARD::Rake::YardocTask.new(:yard) do |t|
@@ -87,7 +88,7 @@ class SpecDownload
   private
 
   def download
-    url = spec_row.at_css('td:nth-child(2) p a').attr('href')
+    url = spec_row.at_css('td:nth-child(3) p a').attr('href')
     puts "Downloading from #{url}..."
 
     response = Net::HTTP.get_response(URI.parse(url)).body
@@ -107,7 +108,9 @@ class SpecDownload
   def spec_row
     Nokogiri::HTML(spec_page).css('table tr').detect do |tr|
       name_container = tr.at_css('td:first-child p')
-      (name_container && name_container.text.strip) == 'US East (N. Virginia)'
+      next unless name_container
+
+      name_container.text.strip == 'US East (N. Virginia)'
     end
   end
 end

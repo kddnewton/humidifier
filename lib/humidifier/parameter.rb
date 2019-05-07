@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 module Humidifier
-  # Represents a CFN stack parameter
   class Parameter
-    # The allowed properties of all stack parameters
     PROPERTIES =
-      Utils.underscored(%w[AllowedPattern AllowedValues ConstraintDescription
-                           Default Description MaxLength MaxValue MinLength
-                           MinValue NoEcho])
+      Humidifier.underscore(
+        %w[AllowedPattern AllowedValues ConstraintDescription Default
+           Description MaxLength MaxValue MinLength MinValue NoEcho]
+      )
 
     attr_reader :type, *PROPERTIES.values
 
@@ -21,12 +20,12 @@ module Humidifier
 
     # CFN stack syntax
     def to_cf
-      cf = { 'Type' => type }
-      PROPERTIES.each do |name, prop|
-        val = send(prop)
-        cf[name] = Serializer.dump(val) if val
+      { 'Type' => type }.tap do |cf|
+        PROPERTIES.each do |name, prop|
+          value = public_send(prop)
+          cf[name] = Serializer.dump(value) if value
+        end
       end
-      cf
     end
   end
 end

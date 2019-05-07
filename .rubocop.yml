@@ -1,29 +1,27 @@
+require: rubocop-performance
+
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.4
   Exclude:
   - 'vendor/**/*'
   - 'yard/**/*'
 
-Layout/IndentHeredoc:
+Metrics/ClassLength:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/MutableConstant:
   Enabled: false
 
 Style/PerlBackrefs:
-  Enabled: false
-
-# The following are disabled until we drop support for the older ruby versions
-Gemspec/RequiredRubyVersion:
-  Enabled: false
-
-Layout/ClosingHeredocIndentation:
-  Enabled: false
-
-Style/DateTime:
-  Enabled: false
-
-Style/RedundantBegin:
-  Enabled: false
-
-Style/SafeNavigation:
   Enabled: false

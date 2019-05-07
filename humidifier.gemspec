@@ -19,13 +19,18 @@ Gem::Specification.new do |spec|
   spec.files         = Dir['LICENSE', 'README.md', 'lib/**/*',
                            'CloudFormationResourceSpecification.json']
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '>= 2.1'
+  spec.required_ruby_version = '>= 2.4'
 
-  spec.add_development_dependency 'bundler', '~> 1.16'
+  spec.add_development_dependency 'aws-sdk-cloudformation', '~> 1.19'
+  spec.add_development_dependency 'aws-sdk-s3', '~> 1.36'
+  spec.add_development_dependency 'fast_underscore', '~> 0.3'
+
+  spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'minitest', '~> 5.11'
-  spec.add_development_dependency 'nokogiri', '~> 1.8'
+  spec.add_development_dependency 'nokogiri', '~> 1.10'
   spec.add_development_dependency 'rake', '~> 12.3'
-  spec.add_development_dependency 'rubocop', '~> 0.60'
+  spec.add_development_dependency 'rubocop', '~> 0.68'
+  spec.add_development_dependency 'rubocop-performance', '~> 1.2'
   spec.add_development_dependency 'simplecov', '~> 0.16'
   spec.add_development_dependency 'yard', '~> 0.9'
 end

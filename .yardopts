@@ -6,4 +6,5 @@
 --quiet
 --output-dir docs
 -
+CHANGELOG.md
 LICENSE

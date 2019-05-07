@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module Humidifier
-  # Represents a CFN stack mapping
   class Mapping
     attr_reader :opts
 
@@ -9,7 +8,6 @@ module Humidifier
       @opts = opts
     end
 
-    # CFN stack syntax
     def to_cf
       Serializer.dump(opts)
     end

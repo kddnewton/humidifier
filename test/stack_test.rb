@@ -80,12 +80,6 @@ class StackTest < Minitest::Test
     assert_equal 'bar', stack.parameters.values.first.type
   end
 
-  Humidifier::AwsShim::STACK_METHODS.each do |method|
-    define_method(:"test_#{method}") do
-      with_mocked_aws_shim(method) { |stack| stack.send(method) }
-    end
-  end
-
   def test_class_next_default_identifier
     reset_stack_count
     (1..5).each do |num|
@@ -97,16 +91,5 @@ class StackTest < Minitest::Test
 
   def reset_stack_count
     Humidifier::Stack.instance_variable_set(:@count, nil)
-  end
-
-  def with_mocked_aws_shim(method)
-    stack = Humidifier::Stack.new(name: 'test-stack')
-    mock = Minitest::Mock.new
-    mock.expect(:call, nil, [Humidifier::SdkPayload.new(stack, {})])
-
-    Humidifier::AwsShim.stub(method, mock) do
-      yield stack
-    end
-    mock.verify
   end
 end

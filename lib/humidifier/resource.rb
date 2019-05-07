@@ -5,14 +5,16 @@ module Humidifier
   class Resource
     # Attributes that are available to every stack
     COMMON_ATTRIBUTES =
-      Utils.underscored(%w[Condition CreationPolicy DeletionPolicy DependsOn
-                           Metadata UpdatePolicy])
+      Humidifier.underscore(
+        %w[Condition CreationPolicy DeletionPolicy DependsOn Metadata
+           UpdatePolicy]
+      )
 
     attr_accessor :properties, *COMMON_ATTRIBUTES.values
 
-    def initialize(properties = {}, raw = false)
+    def initialize(properties = {})
       self.properties = {}
-      update(properties, raw)
+      update(properties)
     end
 
     # Patches method_missing to include property accessors
@@ -49,9 +51,9 @@ module Humidifier
     end
 
     # Update a set of properties defined by the given properties hash
-    def update(properties, raw = false)
+    def update(properties)
       properties.each do |property, value|
-        update_property(property, value, raw)
+        update_property(property, value)
       end
     end
 
@@ -67,10 +69,10 @@ module Humidifier
     end
 
     # Update an individual property on this resource
-    def update_property(property, value, raw = false)
+    def update_property(property, value)
       property = property.to_s
-      property = validate_property(property, raw)
-      value = validate_value(property, value, raw)
+      property = validate_property(property)
+      value = validate_value(property, value)
       properties[property] = value
     end
 
@@ -110,9 +112,7 @@ module Humidifier
       (self.class.props.keys & [method.to_s, method.to_s[0..-2]]).any?
     end
 
-    def validate_property(property, raw)
-      property = Utils.underscore(property) if raw
-
+    def validate_property(property)
       unless self.class.prop?(property)
         raise ArgumentError, 'Attempting to set invalid property for ' \
                              "#{self.class.name}: #{property}"
@@ -121,9 +121,8 @@ module Humidifier
       property
     end
 
-    def validate_value(property, value, raw)
+    def validate_value(property, value)
       prop = self.class.props[property]
-      value = prop.convert(value) if raw
 
       unless prop.valid?(value)
         raise ArgumentError, "Invalid value for #{property}: #{value.inspect}"

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Module: Humidifier::Config
+  Class: Humidifier::Config
   
     &mdash; Humidifier
   
@@ -59,12 +59,28 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Module: Humidifier::Config
+      <div id="content"><h1>Class: Humidifier::Config
   
   
   
 </h1>
 <div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Humidifier::Config</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
   
 
   
@@ -78,9 +94,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/humidifier/magic.rb<span class="defines">,<br />
-  lib/humidifier/loader.rb</span>
-</dd>
+    <dd>lib/humidifier/config.rb</dd>
   </dl>
   
 </div>
@@ -88,52 +102,436 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Pre-setting this module because AWS has a “Config” module and the below
-register method dynamically looks up the module to see whether or not it
-exists, which before ruby 2.2 would result in the warning: 
-`const_defined?&#39;: Use RbConfig instead of obsolete and deprecated
-Config.</p>
+<p>A container for user params</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-<p class="tag_title">AWS Resource:</p>
-<ul class="aws">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'>
-<p>AWS::Config</p>
+
 </div>
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#force_upload-instance_method" title="#force_upload (instance method)">#<strong>force_upload</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>If true, always upload the CloudFormation template to the configured S3
+destination.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#s3_bucket-instance_method" title="#s3_bucket (instance method)">#<strong>s3_bucket</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The S3 bucket to which to deploy CloudFormation templates when
+<code>always_upload</code> is set to true or the template is too big for a
+string literal.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#s3_prefix-instance_method" title="#s3_prefix (instance method)">#<strong>s3_prefix</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>An optional prefix for the JSON file names.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
       
-    </li>
-  
-</ul>
-
-</div><h2>Defined Under Namespace</h2>
-<p class="children">
-  
+        <li class="public ">
+  <span class="summary_signature">
     
-  
+      <a href="#ensure_upload_configured!-instance_method" title="#ensure_upload_configured! (instance method)">#<strong>ensure_upload_configured!</strong>(identifier)  &#x21d2; Object </a>
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Config/AggregationAuthorization.html" title="Humidifier::Config::AggregationAuthorization (class)">AggregationAuthorization</a></span>, <span class='object_link'><a href="Config/ConfigRule.html" title="Humidifier::Config::ConfigRule (class)">ConfigRule</a></span>, <span class='object_link'><a href="Config/ConfigurationAggregator.html" title="Humidifier::Config::ConfigurationAggregator (class)">ConfigurationAggregator</a></span>, <span class='object_link'><a href="Config/ConfigurationRecorder.html" title="Humidifier::Config::ConfigurationRecorder (class)">ConfigurationRecorder</a></span>, <span class='object_link'><a href="Config/DeliveryChannel.html" title="Humidifier::Config::DeliveryChannel (class)">DeliveryChannel</a></span>
+
     
+  </span>
   
-</p>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>raise an error unless the s3_bucket field is set rubocop:disable
+Metrics/MethodLength.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(opts = {})  &#x21d2; Config </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Config.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(opts = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Humidifier::Config (class)">Config</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Config</p>
 
 
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
+19
+20
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 19</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@force_upload</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:force_upload</span><span class='rbracket'>]</span>
+  <span class='ivar'>@s3_bucket</span>    <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:s3_bucket</span><span class='rbracket'>]</span>
+  <span class='ivar'>@s3_prefix</span>    <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:s3_prefix</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="force_upload=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="force_upload-instance_method">
+  
+    #<strong>force_upload</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>If true, always upload the CloudFormation template to the configured S3
+destination. A useful option if you&#39;re going to be deploying multiple
+copies of a template or you just generally want a backup.</p>
 
 
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 9</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_force_upload'>force_upload</span>
+  <span class='ivar'>@force_upload</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="s3_bucket=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="s3_bucket-instance_method">
+  
+    #<strong>s3_bucket</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The S3 bucket to which to deploy CloudFormation templates when
+<code>always_upload</code> is set to true or the template is too big for a
+string literal.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 14</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_s3_bucket'>s3_bucket</span>
+  <span class='ivar'>@s3_bucket</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="s3_prefix=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="s3_prefix-instance_method">
+  
+    #<strong>s3_prefix</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>An optional prefix for the JSON file names.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 17</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_s3_prefix'>s3_prefix</span>
+  <span class='ivar'>@s3_prefix</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="ensure_upload_configured!-instance_method">
+  
+    #<strong>ensure_upload_configured!</strong>(identifier)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>raise an error unless the s3_bucket field is set rubocop:disable
+Metrics/MethodLength</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ensure_upload_configured!'>ensure_upload_configured!</span><span class='lparen'>(</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_s3_bucket'>s3_bucket</span>
+
+  <span class='id identifier rubyid_upload_message'>upload_message</span> <span class='op'>=</span> <span class='heredoc_beg'>&lt;&lt;~MSG</span>
+<span class='tstring_content'>    The %&lt;identifier&gt;s stack&#39;s body is too large to be use the template_body
+</span><span class='tstring_content'>    option, and therefore must use the template_url option instead. You can
+</span><span class='tstring_content'>    configure Humidifier to do this automatically by setting up the s3
+</span><span class='tstring_content'>    config on the top-level Humidifier object like so:
+</span><span class='tstring_content'>
+</span><span class='tstring_content'>        Humidifier.configure do |config|
+</span><span class='tstring_content'>          config.s3_bucket = &#39;my.s3.bucket&#39;
+</span><span class='tstring_content'>          config.s3_prefix = &#39;my-prefix/&#39; # optional
+</span><span class='tstring_content'>        end
+</span><span class='heredoc_end'>  MSG
+</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_upload_message'>upload_message</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%&lt;identifier&gt;s</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 </div>
 

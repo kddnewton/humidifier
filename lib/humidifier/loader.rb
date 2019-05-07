@@ -1,25 +1,12 @@
 # frozen_string_literal: true
 
 module Humidifier
-  # Pre-setting this module because AWS has a "Config" module and the below
-  # register method dynamically looks up the module to see whether or not it
-  # exists, which before ruby 2.2 would result in the warning:
-  #   `const_defined?': Use RbConfig instead of obsolete and deprecated Config.
-  # @aws AWS::Config
-  module Config
-  end
-
   # Reads the specs/CloudFormationResourceSpecification.json file and load each
   # resource as a class
-  class Loader
-    filename = 'CloudFormationResourceSpecification.json'
-
-    # The path to the specification file
-    SPECPATH = File.expand_path(File.join('..', '..', '..', filename), __FILE__)
-
+  module Loader
     # Handles searching the PropertyTypes specifications for a specific
     # resource type
-    class StructureContainer
+    class PropertyTypes
       attr_reader :structs
 
       def initialize(structs)
@@ -40,46 +27,51 @@ module Humidifier
       end
     end
 
-    # loop through the specs and register each class
-    def load
-      parsed = JSON.parse(File.read(SPECPATH))
-      structs = StructureContainer.new(parsed['PropertyTypes'])
+    class << self
+      # loop through the specs and register each class
+      def load
+        parsed = parse_spec
+        types = PropertyTypes.new(parsed['PropertyTypes'])
 
-      parsed['ResourceTypes'].each do |key, spec|
-        match = key.match(/\A(\w+)::(\w+)::(\w+)\z/)
+        parsed['ResourceTypes'].each do |key, spec|
+          match = key.match(/\A(\w+)::(\w+)::(\w+)\z/)
+          register(match[1], match[2], match[3], spec, types.search(key))
+        end
 
-        register(match[1], match[2], match[3], spec, structs.search(key))
-      end
-    end
-
-    # convenience class method to build a new loader and call load
-    def self.load
-      new.load
-    end
-
-    private
-
-    def build_class(aws_name, spec, substructs)
-      Class.new(Resource) do
-        self.aws_name = aws_name
-        self.props =
-          spec['Properties'].map do |(key, config)|
-            prop = Props.from(key, config, substructs)
-            [prop.name, prop]
-          end.to_h
-      end
-    end
-
-    def register(top, group, resource, spec, substructs)
-      aws_name = "#{top}::#{group}::#{resource}"
-      resource_class = build_class(aws_name, spec, substructs)
-
-      unless Humidifier.const_defined?(group)
-        Humidifier.const_set(group, Module.new)
+        Humidifier.registry.freeze
       end
 
-      Humidifier.const_get(group).const_set(resource, resource_class)
-      Humidifier.registry[aws_name] = resource_class
+      private
+
+      def build_class(aws_name, spec, substructs)
+        Class.new(Resource) do
+          self.aws_name = aws_name
+          self.props =
+            spec['Properties'].map do |(key, config)|
+              prop = Props.from(key, config, substructs)
+              [prop.name, prop]
+            end.to_h
+        end
+      end
+
+      def parse_spec
+        relative =
+          File.join('..', '..', 'CloudFormationResourceSpecification.json')
+
+        JSON.parse(File.read(File.expand_path(relative, __dir__)))
+      end
+
+      def register(top, group, resource, spec, substructs)
+        aws_name = "#{top}::#{group}::#{resource}"
+        resource_class = build_class(aws_name, spec, substructs)
+
+        unless Humidifier.const_defined?(group)
+          Humidifier.const_set(group, Module.new)
+        end
+
+        Humidifier.const_get(group).const_set(resource, resource_class)
+        Humidifier.registry[aws_name] = resource_class
+      end
     end
   end
 end
