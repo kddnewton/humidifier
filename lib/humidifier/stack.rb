@@ -36,9 +36,6 @@ module Humidifier
     STATIC_RESOURCES =
       Utils.underscored(%w[AWSTemplateFormatVersion Description Metadata])
 
-    # Format of the timestamp used in changeset naming
-    TIME_FORMAT = '%Y-%m-%d-%H-%M-%S'
-
     attr_accessor :id
     attr_writer :client
 
@@ -112,7 +109,7 @@ module Humidifier
     def create_change_set(opts = {})
       params = {
         stack_name: identifier,
-        change_set_name: "changeset-#{Time.now.strftime(TIME_FORMAT)}"
+        change_set_name: "changeset-#{Time.now.strftime('%Y-%m-%d-%H-%M-%S')}"
       }
       params.merge!(template_for(opts)).merge!(opts)
 
