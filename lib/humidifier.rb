@@ -5,6 +5,9 @@ require 'json'
 require 'pathname'
 require 'yaml'
 
+require 'aws-sdk-cloudformation'
+require 'aws-sdk-s3'
+
 require 'humidifier/utils'
 require 'humidifier/fn'
 require 'humidifier/ref'
