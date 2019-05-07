@@ -98,8 +98,7 @@ module Humidifier
     end
 
     def create(opts = {})
-      params = { stack_name: name }
-      params.merge!(template_param_for(opts)).merge!(opts)
+      params = { stack_name: name }.merge!(template_for(opts)).merge!(opts)
 
       try_valid do
         client.create_stack(params).tap { |response| @id = response.stack_id }
@@ -115,7 +114,7 @@ module Humidifier
         stack_name: identifier,
         change_set_name: "changeset-#{Time.now.strftime(TIME_FORMAT)}"
       }
-      params.merge!(template_param_for(opts)).merge!(opts)
+      params.merge!(template_for(opts)).merge!(opts)
 
       try_valid { client.create_change_set(params) }
     end
@@ -146,8 +145,8 @@ module Humidifier
     end
 
     def update(opts = {})
-      params = { stack_name: identifier }
-      params.merge!(template_param_for(opts)).merge!(opts)
+      params =
+        { stack_name: identifier }.merge!(template_for(opts)).merge!(opts)
 
       try_valid { client.update_stack(params) }
     end
@@ -162,7 +161,7 @@ module Humidifier
     end
 
     def valid?(opts = {})
-      params = template_param_for(opts).merge!(opts)
+      params = template_for(opts).merge!(opts)
 
       try_valid { client.validate_template(params) }
     end
@@ -229,7 +228,7 @@ module Humidifier
       end
     end
 
-    def template_param_for(opts)
+    def template_for(opts)
       @template_param ||=
         if opts.delete(:force_upload) ||
            Humidifier.config.force_upload ||
