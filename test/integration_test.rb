@@ -8,7 +8,9 @@ class IntegrationTest < Minitest::Test
     resources = { 'Distribution' => distribution, 'SpotFleet' => spot_fleet }
     stack = Humidifier::Stack.new(name: 'Test-Stack', resources: resources)
 
-    expected = JSON.parse(File.read(File.expand_path('integration_test.json', __dir__)))
+    expected =
+      JSON.parse(File.read(File.expand_path('integration_test.json', __dir__)))
+
     assert_equal expected, JSON.parse(stack.to_cf)
   end
 
@@ -60,11 +62,15 @@ class IntegrationTest < Minitest::Test
   def launch_specification
     {
       instance_type: Humidifier.ref('InstanceType'),
-      image_id: Humidifier.fn.find_in_map([
-        'AWSRegionArch2AMI',
-        Humidifier.ref('AWS::Region'),
-        Humidifier.fn.find_in_map(['AWSInstanceType2Arch', Humidifier.ref('InstanceType'), 'Arch'])
-      ]),
+      image_id: Humidifier.fn.find_in_map(
+        [
+          'AWSRegionArch2AMI',
+          Humidifier.ref('AWS::Region'),
+          Humidifier.fn.find_in_map(
+            ['AWSInstanceType2Arch', Humidifier.ref('InstanceType'), 'Arch']
+          )
+        ]
+      ),
       weighted_capacity: 8
     }
   end

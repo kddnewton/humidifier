@@ -8,7 +8,10 @@ AllCops:
   - 'vendor/**/*'
   - 'yard/**/*'
 
-Layout/IndentHeredoc:
+Metrics/ClassLength:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
   Enabled: false
 
 Naming/RescuedExceptionsVariableName:

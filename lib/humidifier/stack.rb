@@ -177,7 +177,7 @@ module Humidifier
     attr_reader :default_identifier
 
     def perform_and_wait(method, opts)
-      public_send(method, opts).tap do |response|
+      public_send(method, opts).tap do
         signal = :"stack_#{method}_complete"
 
         client.wait_until(signal, stack_name: identifier) do |waiter|
@@ -229,7 +229,7 @@ module Humidifier
     end
 
     def template_for(opts)
-      @template_param ||=
+      @template ||=
         if opts.delete(:force_upload) ||
            Humidifier.config.force_upload ||
            bytesize > MAX_TEMPLATE_BODY_SIZE

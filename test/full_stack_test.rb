@@ -15,7 +15,7 @@ class FullStackTest < Minitest::Test
     'Conditions' => { 'Six' => 'Six' }
   }.freeze
 
-  def test_to_cf
+  def test_to_cf # rubocop:disable Metrics/MethodLength
     stack =
       Humidifier::Stack.new(
         aws_template_format_version: 'foo',

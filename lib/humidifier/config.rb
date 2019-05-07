@@ -23,22 +23,24 @@ module Humidifier
     end
 
     # raise an error unless the s3_bucket field is set
+    # rubocop:disable Metrics/MethodLength
     def ensure_upload_configured!(identifier)
       return if s3_bucket
 
-      upload_message = <<-MSG
-The %<identifier>s stack's body is too large to be use the template_body option,
-and therefore must use the template_url option instead. You can configure
-Humidifier to do this automatically by setting up the s3 config on the top-level
-Humidifier object like so:
+      upload_message = <<~MSG
+        The %<identifier>s stack's body is too large to be use the template_body
+        option, and therefore must use the template_url option instead. You can
+        configure Humidifier to do this automatically by setting up the s3
+        config on the top-level Humidifier object like so:
 
-    Humidifier.configure do |config|
-      config.s3_bucket = 'my.s3.bucket'
-      config.s3_prefix = 'my-prefix/' # optional
-    end
-MSG
+            Humidifier.configure do |config|
+              config.s3_bucket = 'my.s3.bucket'
+              config.s3_prefix = 'my-prefix/' # optional
+            end
+      MSG
 
       raise upload_message.gsub('%<identifier>s', identifier)
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

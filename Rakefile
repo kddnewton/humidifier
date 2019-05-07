@@ -108,7 +108,9 @@ class SpecDownload
   def spec_row
     Nokogiri::HTML(spec_page).css('table tr').detect do |tr|
       name_container = tr.at_css('td:first-child p')
-      (name_container && name_container.text.strip) == 'US East (N. Virginia)'
+      next unless name_container
+
+      name_container.text.strip == 'US East (N. Virginia)'
     end
   end
 end

@@ -143,11 +143,11 @@ class ClientTest < Minitest::Test
       stub_responses: { validate_template: error.new(nil, 'foobar') }
     }
 
-    stdout, stderr, = capture_io { refute build_stack.valid? }
+    _stdout, stderr, = capture_io { refute build_stack.valid? }
     assert stderr.start_with?('foobar')
   end
 
-  def test_valid_upload_necessary
+  def test_valid_upload_necessary # rubocop:disable Metrics/MethodLength
     Aws.config.merge!(
       s3: {
         stub_responses: { get_object: true, put_object: true }

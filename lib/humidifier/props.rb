@@ -8,9 +8,9 @@ module Humidifier
       # prop
       WHITELIST = [Fn, Ref].freeze
 
-      attr_reader :key, :name, :spec, :substructs
+      attr_reader :key, :name, :spec
 
-      def initialize(key, spec = {}, substructs = {})
+      def initialize(key, spec = {})
         @key  = key
         @name = Utils.underscore(key)
         @spec = spec
@@ -81,7 +81,7 @@ module Humidifier
       attr_reader :subprop
 
       def initialize(key, spec = {}, substructs = {})
-        super(key, spec, substructs)
+        super(key, spec)
         @subprop = Props.singular_from(key, spec, substructs)
       end
 
@@ -98,6 +98,7 @@ module Humidifier
 
       def valid?(list)
         return true if super(list)
+
         list.is_a?(Enumerable) && list.all? { |value| subprop.valid?(value) }
       end
     end
@@ -106,7 +107,7 @@ module Humidifier
       attr_reader :subprop
 
       def initialize(key, spec = {}, substructs = {})
-        super(key, spec, substructs)
+        super(key, spec)
         @subprop = Props.singular_from(key, spec, substructs)
       end
 
@@ -134,7 +135,7 @@ module Humidifier
       attr_reader :subprops
 
       def initialize(key, spec = {}, substructs = {})
-        super(key, spec, substructs)
+        super(key, spec)
         @subprops = subprops_from(substructs, spec['ItemType'] || spec['Type'])
       end
 
