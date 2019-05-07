@@ -92,15 +92,4 @@ class StackTest < Minitest::Test
   def reset_stack_count
     Humidifier::Stack.instance_variable_set(:@count, nil)
   end
-
-  def with_mocked_aws_client(method)
-    stack = Humidifier::Stack.new(name: 'test-stack')
-    mock = Minitest::Mock.new
-    mock.expect(:call, nil, [Humidifier::SdkPayload.new(stack, {})])
-
-    Humidifier::Client.stub(method, mock) do
-      yield stack
-    end
-    mock.verify
-  end
 end

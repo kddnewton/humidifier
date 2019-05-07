@@ -2,18 +2,18 @@
 
 require 'test_helper'
 
+# rubocop:disable Metrics/MethodLength
 class IntegrationTest < Minitest::Test
   def test_to_cf
     resources = { 'Distribution' => distribution, 'SpotFleet' => spot_fleet }
     stack = Humidifier::Stack.new(name: 'Test-Stack', resources: resources)
 
-    expected = JSON.parse(File.read('test/integration_test.json'))
+    expected = JSON.parse(File.read(File.expand_path('integration_test.json', __dir__)))
     assert_equal expected, JSON.parse(stack.to_cf)
   end
 
   private
 
-  # rubocop:disable Metrics/MethodLength
   # http://docs.aws.amazon.com
   #   /AWSCloudFormation/latest/UserGuide/quickref-cloudfront.html
   def distribution
@@ -58,17 +58,13 @@ class IntegrationTest < Minitest::Test
   end
 
   def launch_specification
-    mapped = ['AWSInstanceType2Arch', Humidifier.ref('InstanceType'), 'Arch']
-
-    image_id = [
-      'AWSRegionArch2AMI',
-      Humidifier.ref('AWS::Region'),
-      Humidifier.fn.find_in_map(mapped)
-    ]
-
     {
       instance_type: Humidifier.ref('InstanceType'),
-      image_id: Humidifier.fn.find_in_map(image_id),
+      image_id: Humidifier.fn.find_in_map([
+        'AWSRegionArch2AMI',
+        Humidifier.ref('AWS::Region'),
+        Humidifier.fn.find_in_map(['AWSInstanceType2Arch', Humidifier.ref('InstanceType'), 'Arch'])
+      ]),
       weighted_capacity: 8
     }
   end
@@ -101,5 +97,5 @@ class IntegrationTest < Minitest::Test
       }
     )
   end
-  # rubocop:enable Metrics/MethodLength
 end
+# rubocop:enable Metrics/MethodLength
