@@ -31,5 +31,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ### Changed
 - Update to CloudFormation specs v2.15.0
 
-[Unreleased]: https://github.com/localytics/humidifier/compare/v2.15.0...HEAD
+[Unreleased]: https://github.com/localytics/humidifier/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/localytics/humidifier/compare/v2.15.0...v3.0.0
 [2.15.0]: https://github.com/localytics/humidifier/compare/v2.6.0...v2.15.0

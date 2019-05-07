@@ -78,31 +78,18 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/humidifier/props.rb<span class="defines">,<br />
-  lib/humidifier/props/base.rb,<br /> lib/humidifier/props/map_prop.rb,<br /> lib/humidifier/props/json_prop.rb,<br /> lib/humidifier/props/list_prop.rb,<br /> lib/humidifier/props/double_prop.rb,<br /> lib/humidifier/props/string_prop.rb,<br /> lib/humidifier/props/boolean_prop.rb,<br /> lib/humidifier/props/integer_prop.rb,<br /> lib/humidifier/props/structure_prop.rb,<br /> lib/humidifier/props/timestamp_prop.rb</span>
-</dd>
+    <dd>lib/humidifier/props.rb</dd>
   </dl>
   
 </div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    
-<p>Container for property of CFN resources</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><h2>Defined Under Namespace</h2>
+<h2>Defined Under Namespace</h2>
 <p class="children">
   
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Props/Base.html" title="Humidifier::Props::Base (class)">Base</a></span>, <span class='object_link'><a href="Props/BooleanProp.html" title="Humidifier::Props::BooleanProp (class)">BooleanProp</a></span>, <span class='object_link'><a href="Props/DoubleProp.html" title="Humidifier::Props::DoubleProp (class)">DoubleProp</a></span>, <span class='object_link'><a href="Props/IntegerProp.html" title="Humidifier::Props::IntegerProp (class)">IntegerProp</a></span>, <span class='object_link'><a href="Props/JsonProp.html" title="Humidifier::Props::JsonProp (class)">JsonProp</a></span>, <span class='object_link'><a href="Props/ListProp.html" title="Humidifier::Props::ListProp (class)">ListProp</a></span>, <span class='object_link'><a href="Props/MapProp.html" title="Humidifier::Props::MapProp (class)">MapProp</a></span>, <span class='object_link'><a href="Props/StringProp.html" title="Humidifier::Props::StringProp (class)">StringProp</a></span>, <span class='object_link'><a href="Props/StructureProp.html" title="Humidifier::Props::StructureProp (class)">StructureProp</a></span>, <span class='object_link'><a href="Props/TimestampProp.html" title="Humidifier::Props::TimestampProp (class)">TimestampProp</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Props/BooleanProp.html" title="Humidifier::Props::BooleanProp (class)">BooleanProp</a></span>, <span class='object_link'><a href="Props/DoubleProp.html" title="Humidifier::Props::DoubleProp (class)">DoubleProp</a></span>, <span class='object_link'><a href="Props/IntegerProp.html" title="Humidifier::Props::IntegerProp (class)">IntegerProp</a></span>, <span class='object_link'><a href="Props/JsonProp.html" title="Humidifier::Props::JsonProp (class)">JsonProp</a></span>, <span class='object_link'><a href="Props/ListProp.html" title="Humidifier::Props::ListProp (class)">ListProp</a></span>, <span class='object_link'><a href="Props/MapProp.html" title="Humidifier::Props::MapProp (class)">MapProp</a></span>, <span class='object_link'><a href="Props/Prop.html" title="Humidifier::Props::Prop (class)">Prop</a></span>, <span class='object_link'><a href="Props/StringProp.html" title="Humidifier::Props::StringProp (class)">StringProp</a></span>, <span class='object_link'><a href="Props/StructureProp.html" title="Humidifier::Props::StructureProp (class)">StructureProp</a></span>, <span class='object_link'><a href="Props/TimestampProp.html" title="Humidifier::Props::TimestampProp (class)">TimestampProp</a></span>
     
   
 </p>
@@ -205,21 +192,21 @@ Boolean, Double, Integer, Json, String, or Timestamp.</p>
       <pre class="lines">
 
 
-8
-9
-10
-11
-12
-13
-14</pre>
+183
+184
+185
+186
+187
+188
+189</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 183</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_from'>from</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Type</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>List</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Props/ListProp.html" title="Humidifier::Props::ListProp (class)">ListProp</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Props/Base.html#initialize-instance_method" title="Humidifier::Props::Base#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Map</span><span class='tstring_end'>&#39;</span></span>  <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Props/MapProp.html" title="Humidifier::Props::MapProp (class)">MapProp</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Props/Base.html#initialize-instance_method" title="Humidifier::Props::Base#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>List</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Props/ListProp.html" title="Humidifier::Props::ListProp (class)">ListProp</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Props/ListProp.html#initialize-instance_method" title="Humidifier::Props::ListProp#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Map</span><span class='tstring_end'>&#39;</span></span>  <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Props/MapProp.html" title="Humidifier::Props::MapProp (class)">MapProp</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Props/MapProp.html#initialize-instance_method" title="Humidifier::Props::MapProp#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span><span class='rparen'>)</span>
   <span class='kw'>else</span>             <span class='id identifier rubyid_singular_from'>singular_from</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -255,28 +242,28 @@ Boolean, Double, Integer, Json, String, or Timestamp</p>
       <pre class="lines">
 
 
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28</pre>
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 194</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_singular_from'>singular_from</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_primitive'>primitive</span> <span class='op'>=</span> <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PrimitiveItemType</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PrimitiveType</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_primitive'>primitive</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_primitive'>primitive</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='qwords_beg'>%w[</span><span class='tstring_content'>List</span><span class='words_sep'> </span><span class='tstring_content'>Map</span><span class='words_sep'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_primitive'>primitive</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_primitive'>primitive</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Integer</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_primitive'>primitive</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Long</span><span class='tstring_end'>&#39;</span></span>
     <span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='symbol'>:&quot;#{</span><span class='id identifier rubyid_primitive'>primitive</span><span class='embexpr_end'>}</span><span class='tstring_content'>Prop</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='const'><span class='object_link'><a href="Props/StructureProp.html" title="Humidifier::Props::StructureProp (class)">StructureProp</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Props/Base.html#initialize-instance_method" title="Humidifier::Props::Base#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="Props/StructureProp.html" title="Humidifier::Props::StructureProp (class)">StructureProp</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Props/StructureProp.html#initialize-instance_method" title="Humidifier::Props::StructureProp#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>

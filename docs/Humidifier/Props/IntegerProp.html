@@ -69,12 +69,12 @@
   <dl>
     <dt>Inherits:</dt>
     <dd>
-      <span class="inheritName"><span class='object_link'><a href="Base.html" title="Humidifier::Props::Base (class)">Base</a></span></span>
+      <span class="inheritName"><span class='object_link'><a href="Prop.html" title="Humidifier::Props::Prop (class)">Prop</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next"><span class='object_link'><a href="Base.html" title="Humidifier::Props::Base (class)">Base</a></span></li>
+            <li class="next"><span class='object_link'><a href="Prop.html" title="Humidifier::Props::Prop (class)">Prop</a></span></li>
           
             <li class="next">Humidifier::Props::IntegerProp</li>
           
@@ -96,98 +96,28 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/humidifier/props/integer_prop.rb</dd>
+    <dd>lib/humidifier/props.rb</dd>
   </dl>
   
 </div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    
-<p>An integer property</p>
 
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
 
 
   <h2>Constant Summary</h2>
   
   <h3 class="inherited">Constants inherited
-     from <span class='object_link'><a href="Base.html" title="Humidifier::Props::Base (class)">Base</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Base.html#WHITELIST-constant" title="Humidifier::Props::Base::WHITELIST (constant)">Base::WHITELIST</a></span></p>
+     from <span class='object_link'><a href="Prop.html" title="Humidifier::Props::Prop (class)">Prop</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Prop.html#WHITELIST-constant" title="Humidifier::Props::Prop::WHITELIST (constant)">Prop::WHITELIST</a></span></p>
 
 
 
 
   <h2>Instance Attribute Summary</h2>
   
-  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Base.html" title="Humidifier::Props::Base (class)">Base</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Base.html#key-instance_method" title="Humidifier::Props::Base#key (method)">#key</a></span>, <span class='object_link'><a href="Base.html#name-instance_method" title="Humidifier::Props::Base#name (method)">#name</a></span>, <span class='object_link'><a href="Base.html#spec-instance_method" title="Humidifier::Props::Base#spec (method)">#spec</a></span>, <span class='object_link'><a href="Base.html#substructs-instance_method" title="Humidifier::Props::Base#substructs (method)">#substructs</a></span></p>
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Prop.html" title="Humidifier::Props::Prop (class)">Prop</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Prop.html#key-instance_method" title="Humidifier::Props::Prop#key (method)">#key</a></span>, <span class='object_link'><a href="Prop.html#name-instance_method" title="Humidifier::Props::Prop#name (method)">#name</a></span>, <span class='object_link'><a href="Prop.html#spec-instance_method" title="Humidifier::Props::Prop#spec (method)">#spec</a></span></p>
 
-
-  
-    <h2>
-      Instance Method Summary
-      <small><a href="#" class="summary_toggle">collapse</a></small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#convert-instance_method" title="#convert (instance method)">#<strong>convert</strong>(value)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>converts the value through #to_i unless it is valid.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#valid%3F-instance_method" title="#valid? (instance method)">#<strong>valid?</strong>(value)  &#x21d2; Boolean </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>true if it is whitelisted or a Integer.</p>
-</div></span>
-  
-</li>
-
-      
-    </ul>
-  
 
 
   
@@ -196,128 +126,17 @@
   
   
   
+  <h2>Method Summary</h2>
   
-  
-  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Base.html" title="Humidifier::Props::Base (class)">Base</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Base.html#documentation-instance_method" title="Humidifier::Props::Base#documentation (method)">#documentation</a></span>, <span class='object_link'><a href="Base.html#initialize-instance_method" title="Humidifier::Props::Base#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Base.html#required%3F-instance_method" title="Humidifier::Props::Base#required? (method)">#required?</a></span>, <span class='object_link'><a href="Base.html#to_cf-instance_method" title="Humidifier::Props::Base#to_cf (method)">#to_cf</a></span>, <span class='object_link'><a href="Base.html#update_type-instance_method" title="Humidifier::Props::Base#update_type (method)">#update_type</a></span>, <span class='object_link'><a href="Base.html#whitelisted_value%3F-instance_method" title="Humidifier::Props::Base#whitelisted_value? (method)">#whitelisted_value?</a></span></p>
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Prop.html" title="Humidifier::Props::Prop (class)">Prop</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Prop.html#allow_type-class_method" title="Humidifier::Props::Prop.allow_type (method)">allow_type</a></span>, <span class='object_link'><a href="Prop.html#allowed_types-class_method" title="Humidifier::Props::Prop.allowed_types (method)">allowed_types</a></span>, <span class='object_link'><a href="Prop.html#documentation-instance_method" title="Humidifier::Props::Prop#documentation (method)">#documentation</a></span>, <span class='object_link'><a href="Prop.html#initialize-instance_method" title="Humidifier::Props::Prop#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Prop.html#required%3F-instance_method" title="Humidifier::Props::Prop#required? (method)">#required?</a></span>, <span class='object_link'><a href="Prop.html#to_cf-instance_method" title="Humidifier::Props::Prop#to_cf (method)">#to_cf</a></span>, <span class='object_link'><a href="Prop.html#update_type-instance_method" title="Humidifier::Props::Prop#update_type (method)">#update_type</a></span>, <span class='object_link'><a href="Prop.html#valid%3F-instance_method" title="Humidifier::Props::Prop#valid? (method)">#valid?</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
-    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="Base.html#initialize-instance_method" title="Humidifier::Props::Base#initialize (method)">Humidifier::Props::Base</a></span></p>
+    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="Prop.html#initialize-instance_method" title="Humidifier::Props::Prop#initialize (method)">Humidifier::Props::Prop</a></span></p>
   
 </div>
 
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-
-    
-      <div class="method_details first">
-  <h3 class="signature first" id="convert-instance_method">
-  
-    #<strong>convert</strong>(value)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>converts the value through #to_i unless it is valid</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-8
-9
-10
-11
-12
-13
-14
-15</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/integer_prop.rb', line 8</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_convert'>convert</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='op'>!</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:to_i</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_value'>value</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>WARNING: Property </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'> should be an integer</span><span class='tstring_end'>&quot;</span></span>
-    <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="valid?-instance_method">
-  
-    #<strong>valid?</strong>(value)  &#x21d2; <tt>Boolean</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>true if it is whitelisted or a Integer</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-18
-19
-20</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props/integer_prop.rb', line 18</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_whitelisted_value?'>whitelisted_value?</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
 
 </div>
 
