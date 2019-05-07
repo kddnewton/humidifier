@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'date'
-require 'forwardable'
 require 'json'
 require 'pathname'
 require 'yaml'
@@ -18,7 +17,6 @@ require 'humidifier/mapping'
 require 'humidifier/output'
 require 'humidifier/parameter'
 require 'humidifier/resource'
-require 'humidifier/sdk_payload'
 require 'humidifier/serializer'
 require 'humidifier/stack'
 require 'humidifier/version'

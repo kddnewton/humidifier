@@ -12,10 +12,6 @@ module SdkSupport
 
     private
 
-    def payload(opts = {})
-      Humidifier::SdkPayload.new(PayloadStack.new(opts), {})
-    end
-
     def stub(value)
       Stub.new(value)
     end

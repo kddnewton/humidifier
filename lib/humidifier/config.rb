@@ -23,7 +23,7 @@ module Humidifier
     end
 
     # raise an error unless the s3_bucket field is set
-    def ensure_upload_configured!(payload)
+    def ensure_upload_configured!(identifier)
       return if s3_bucket
 
       upload_message = <<-MSG
@@ -38,7 +38,7 @@ Humidifier object like so:
     end
 MSG
 
-      raise upload_message.gsub('%<identifier>s', payload.identifier)
+      raise upload_message.gsub('%<identifier>s', identifier)
     end
   end
 end

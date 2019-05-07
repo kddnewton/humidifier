@@ -3,6 +3,29 @@
 module Humidifier
   # Represents a CFN stack
   class Stack
+    # Thrown when a template is too large to use the template_url option
+    class TemplateTooLargeError < StandardError
+      def initialize(bytesize)
+        super(
+          "Cannot use a template > #{MAX_TEMPLATE_URL_SIZE} bytes " \
+          "(currently #{bytesize} bytes), consider using nested stacks " \
+          '(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide' \
+          '/aws-properties-stack.html)'
+        )
+      end
+    end
+
+    # The maximum size a template body can be before it has to be put somewhere
+    # and referenced through a URL
+    MAX_TEMPLATE_BODY_SIZE = 51_200
+
+    # The maximum size a template body can be inside of an S3 bucket
+    MAX_TEMPLATE_URL_SIZE = 460_800
+
+    # The maximum amount of time that Humidifier should wait for a stack to
+    # complete a CRUD operation
+    MAX_WAIT = 600
+
     # The AWS region, can be set through the environment, defaults to us-east-1
     REGION = ENV['AWS_REGION'] || 'us-east-1'
 
@@ -69,74 +92,75 @@ module Humidifier
       end
     end
 
-    # Create a CFN stack
-    def create(payload)
+    def create(opts = {})
+      params = { stack_name: name }
+      params.merge!(template_param_for(opts)).merge!(opts)
+
       try_valid do
-        response = client.create_stack(payload.create_params)
-        payload.id = response.stack_id
-        response
+        client.create_stack(params).tap { |response| @id = response.stack_id }
       end
     end
 
-    def create_and_wait(payload)
-      perform_and_wait(:create, payload)
+    def create_and_wait(opts = {})
+      perform_and_wait(:create, opts)
     end
 
-    # Create a change set in CFN
-    def create_change_set(payload)
-      change_set_name = "changeset-#{Time.now.strftime(TIME_FORMAT)}"
-      payload.merge(change_set_name: change_set_name)
-      try_valid { client.create_change_set(payload.create_change_set_params) }
+    def create_change_set(opts = {})
+      params = {
+        stack_name: identifier,
+        change_set_name: "changeset-#{Time.now.strftime(TIME_FORMAT)}"
+      }
+      params.merge!(template_param_for(opts)).merge!(opts)
+
+      try_valid { client.create_change_set(params) }
     end
 
-    # Delete a CFN stack
-    def delete(payload)
-      client.delete_stack(payload.delete_params)
+    def delete(opts = {})
+      client.delete_stack({ stack_name: identifier }.merge!(opts))
       true
     end
 
-    def delete_and_wait(payload)
-      perform_and_wait(:delete, payload)
+    def delete_and_wait(opts = {})
+      perform_and_wait(:delete, opts)
     end
 
-    # Update a CFN stack if it exists, otherwise create it
-    def deploy(payload)
-      exists?(payload) ? update(payload) : create(payload)
+    def deploy(opts = {})
+      exists? ? update(opts) : create(opts)
     end
 
-    def deploy_and_wait(payload)
-      perform_and_wait(exists?(payload) ? :update : :create, payload)
+    def deploy_and_wait(opts = {})
+      perform_and_wait(exists? ? :update : :create, opts)
     end
 
-    # Create a change set if the stack exists, otherwise create the stack
-    def deploy_change_set(payload)
-      exists?(payload) ? create_change_set(payload) : create(payload)
+    def deploy_change_set(opts = {})
+      exists? ? create_change_set(opts) : create(opts)
     end
 
-    # True if the stack exists in CFN
-    def exists?(payload)
-      Aws::CloudFormation::Stack.new(name: payload.identifier).exists?
+    def exists?
+      Aws::CloudFormation::Stack.new(name: identifier).exists?
     end
 
-    # Update a CFN stack
-    def update(payload)
-      try_valid { client.update_stack(payload.update_params) }
+    def update(opts = {})
+      params = { stack_name: stack.identifier }
+      params.merge!(template_param_for(opts)).merge!(opts)
+
+      try_valid { client.update_stack(params) }
     end
 
-    def update_and_wait(payload)
-      perform_and_wait(:update, payload)
+    def update_and_wait(opts = {})
+      perform_and_wait(:update, opts)
     end
 
-    # Upload a CFN stack to S3 so that it can be referenced via template_url
-    def upload(payload)
-      Humidifier.config.ensure_upload_configured!(payload)
-      filename = "#{Humidifier.config.s3_prefix}#{payload.identifier}.json"
-      upload_object(payload, filename)
+    def upload
+      Humidifier.config.ensure_upload_configured!(identifier)
+      upload_object("#{Humidifier.config.s3_prefix}#{identifier}.json")
     end
 
     # Validate a template in CFN
-    def valid?(payload)
-      try_valid { client.validate_template(payload.validate_params) }
+    def valid?(opts = {})
+      params = template_param_for(opts).merge!(opts)
+
+      try_valid { client.validate_template(params) }
     end
 
     # Increment the default identifier
@@ -154,16 +178,15 @@ module Humidifier
       @client ||= Aws::CloudFormation::Client.new(region: REGION)
     end
 
-    def perform_and_wait(method, payload)
-      response = public_send(method, payload)
-      signal = :"stack_#{method}_complete"
+    def perform_and_wait(method, opts)
+      public_send(method, opts).tap do |response|
+        signal = :"stack_#{method}_complete"
 
-      client.wait_until(signal, stack_name: payload.identifier) do |waiter|
-        waiter.max_attempts = payload.max_wait / 5
-        waiter.delay = 5
+        client.wait_until(signal, stack_name: identifier) do |waiter|
+          waiter.max_attempts = (opts.delete(:max_wait) || MAX_WAIT) / 5
+          waiter.delay = 5
+        end
       end
-
-      response
     end
 
     def try_valid
@@ -174,23 +197,17 @@ module Humidifier
       false
     end
 
-    def upload_object(payload, key)
+    def upload_object(key)
       Aws.config.update(region: REGION)
-      @s3_client ||= Aws::S3::Client.new
+      bucket = Humidifier.config.s3_bucket
 
-      @s3_client.put_object(
-        body: payload.template_body,
-        bucket: Humidifier.config.s3_bucket,
-        key: key
-      )
-
-      object = Aws::S3::Object.new(Humidifier.config.s3_bucket, key)
-      object.presigned_url(:get)
+      Aws::S3::Client.new.put_object(body: to_cf, bucket: bucket, key: key)
+      Aws::S3::Object.new(bucket, key).presigned_url(:get)
     end
 
     def enumerable_resources
       ENUMERABLE_RESOURCES.each_with_object({}) do |(name, prop), list|
-        resources = send(prop)
+        resources = public_send(prop)
         next if resources.empty?
 
         list[name] =
@@ -202,9 +219,26 @@ module Humidifier
 
     def static_resources
       STATIC_RESOURCES.each_with_object({}) do |(name, prop), list|
-        resource = send(prop)
+        resource = public_send(prop)
         list[name] = resource if resource
       end
+    end
+
+    def bytesize
+      to_cf.bytesize.tap do |size|
+        raise TemplateTooLargeError, size if size > MAX_TEMPLATE_URL_SIZE
+      end
+    end
+
+    def template_param_for(opts)
+      @template_param ||=
+        begin
+          if opts.delete(:force_upload) || Humidifier.config.force_upload || bytesize > MAX_TEMPLATE_BODY_SIZE
+            { template_url: upload }
+          else
+            { template_body: to_cf }
+          end
+        end
     end
   end
 end

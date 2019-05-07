@@ -11,6 +11,8 @@ require 'humidifier'
 require 'fileutils'
 require 'minitest/autorun'
 
+require 'forwardable'
+
 # load the sdk helper files used for stubbing sdk responses/calls
 module SdkSupport
   class << self

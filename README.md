@@ -86,7 +86,7 @@ copies of a template or you just generally want a backup. You can set this optio
 stack.deploy(force_upload: true)
 ```
 
-or globally, but setting the configuration option:
+or globally, by setting the configuration option:
 
 ```ruby
 Humidifier.configure do |config|
