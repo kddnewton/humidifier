@@ -46,6 +46,33 @@ class ClientTest < Minitest::Test
     build_stack.delete_and_wait
   end
 
+  def test_deploy_exists
+    Aws.config[:cloudformation] = {
+      stub_responses: { update_stack: true }
+    }
+
+    with_stack_status(true) { build_stack.deploy }
+  end
+
+  def test_deploy_does_not_exists
+    Aws.config[:cloudformation] = {
+      stub_responses: { create_stack: { stack_id: 'test-id' } }
+    }
+
+    stack = build_stack
+    with_stack_status(false) { stack.deploy }
+
+    assert_equal 'test-id', stack.id
+  end
+
+  def test_deploy_and_wait
+    Aws.config[:cloudformation] = {
+      stub_responses: { update_stack: true }
+    }
+
+    with_stack_status(true) { build_stack.deploy_and_wait }
+  end
+
   def test_update
     Aws.config[:cloudformation] = {
       stub_responses: { update_stack: true }
@@ -74,14 +101,14 @@ class ClientTest < Minitest::Test
 
   def build_stack
     Humidifier::Stack.new(name: 'stack-name').tap do |stack|
-      asg =
-        Humidifier::AutoScaling::AutoScalingGroup.new(
-          min_size: '1',
-          max_size: '20'
-        )
-
-      stack.add('asg', asg)
+      asg = Humidifier::AutoScaling::AutoScalingGroup
+      stack.add('asg', asg.new(min_size: '1', max_size: '20'))
       stack.client = WaitingClient.new(stack.client)
     end
+  end
+
+  def with_stack_status(exists, &block)
+    stack = Struct.new(:exists?).new(exists)
+    Aws::CloudFormation::Stack.stub(:new, stack, &block)
   end
 end
