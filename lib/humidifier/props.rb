@@ -115,8 +115,8 @@ module Humidifier
           if map.respond_to?(:to_cf)
             map.to_cf
           else
-            map.each_with_object({}) do |(subkey, subvalue), serialized|
-              serialized[subkey] = subprop.to_cf(subvalue).last
+            map.to_h do |subkey, subvalue|
+              [subkey, subprop.to_cf(subvalue).last]
             end
           end
 
@@ -143,9 +143,9 @@ module Humidifier
           if struct.respond_to?(:to_cf)
             struct.to_cf
           else
-            struct.map do |subkey, subvalue|
+            struct.to_h do |subkey, subvalue|
               subprops[subkey.to_s].to_cf(subvalue)
-            end.to_h
+            end
           end
 
         [key, cf_value]

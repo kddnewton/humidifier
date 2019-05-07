@@ -3,7 +3,6 @@
 module Humidifier
   # Represents a CFN stack
   class Stack
-    # Thrown when a template is too large to use the template_url option
     class TemplateTooLargeError < StandardError
       def initialize(bytesize)
         super(
@@ -141,7 +140,7 @@ module Humidifier
     end
 
     def update(opts = {})
-      params = { stack_name: stack.identifier }
+      params = { stack_name: identifier }
       params.merge!(template_param_for(opts)).merge!(opts)
 
       try_valid { client.update_stack(params) }
@@ -156,14 +155,12 @@ module Humidifier
       upload_object("#{Humidifier.config.s3_prefix}#{identifier}.json")
     end
 
-    # Validate a template in CFN
     def valid?(opts = {})
       params = template_param_for(opts).merge!(opts)
 
       try_valid { client.validate_template(params) }
     end
 
-    # Increment the default identifier
     def self.next_default_identifier
       @count ||= 0
       @count += 1
