@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module Humidifier
-  # Represents a CFN stack output
   class Output
     attr_reader :description, :value, :export_name
 
@@ -11,7 +10,6 @@ module Humidifier
       @export_name = opts[:export_name]
     end
 
-    # CFN stack syntax
     def to_cf
       { 'Value' => Serializer.dump(value) }.tap do |cf|
         cf['Description'] = description if description
