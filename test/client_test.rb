@@ -113,6 +113,22 @@ class ClientTest < Minitest::Test
     build_stack.update_and_wait
   end
 
+  def test_upload_no_config
+    error = assert_raises(RuntimeError) { build_stack.upload }
+
+    assert_includes error.message, 'stack-name'
+  end
+
+  def test_upload_with_config
+    Aws.config[:s3] = {
+      stub_responses: { get_object: true, put_object: true }
+    }
+
+    with_config s3_bucket: 'foobar' do
+      build_stack.upload
+    end
+  end
+
   def test_valid?
     Aws.config[:cloudformation] = {
       stub_responses: { validate_template: true }
@@ -131,6 +147,39 @@ class ClientTest < Minitest::Test
     assert stderr.start_with?('foobar')
   end
 
+  def test_valid_upload_necessary
+    Aws.config.merge!(
+      s3: {
+        stub_responses: { get_object: true, put_object: true }
+      },
+      cloudformation: {
+        stub_responses: { validate_template: true }
+      }
+    )
+
+    stack = build_stack
+    stack.add(
+      'a' * Humidifier::Stack::MAX_TEMPLATE_BODY_SIZE,
+      stack.resources.delete('asg')
+    )
+
+    with_config s3_bucket: 'foobar' do
+      assert stack.valid?
+    end
+  end
+
+  def test_valid_stack_too_large
+    stack = build_stack
+    stack.add(
+      'a' * Humidifier::Stack::MAX_TEMPLATE_URL_SIZE,
+      stack.resources.delete('asg')
+    )
+
+    assert_raises Humidifier::Stack::TemplateTooLargeError do
+      stack.valid?
+    end
+  end
+
   private
 
   def build_stack
@@ -139,6 +188,17 @@ class ClientTest < Minitest::Test
       stack.add('asg', asg.new(min_size: '1', max_size: '20'))
       stack.client = WaitingClient.new(stack.client)
     end
+  end
+
+  def with_config(opts)
+    config = Humidifier.config.dup
+    opts.each do |key, value|
+      Humidifier.config.public_send(:"#{key}=", value)
+    end
+
+    yield
+  ensure
+    Humidifier.instance_variable_set(:@config, config)
   end
 
   def with_stack_status(exists, &block)
