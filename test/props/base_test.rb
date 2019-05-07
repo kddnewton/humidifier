@@ -4,9 +4,7 @@ require 'test_helper'
 
 module Props
   class BaseTest < Minitest::Test
-    class TestProp < Humidifier::Props::Base
-      def convert; end
-    end
+    class TestProp < Humidifier::Props::Base; end
 
     def test_name_conversion
       assert_equal 'my_test_key', build('MyTestKey').name

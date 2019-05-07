@@ -31,19 +31,6 @@ module Props
       assert_equal ['Alpha', { 'Ref' => 'Foo' }], actual
     end
 
-    def test_convert_valid
-      value = { beta: 'gamma' }
-      assert_equal value, build.convert(value)
-    end
-
-    def test_convert_invalid
-      out, * =
-        capture_io do
-          assert_equal ({ beta: 'gamma' }), build.convert(beta: :gamma)
-        end
-      assert_match(/WARNING: Property beta/, out)
-    end
-
     private
 
     def build

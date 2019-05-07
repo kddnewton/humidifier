@@ -45,19 +45,8 @@ class ResourceTest < Minitest::Test
     assert_equal expected, resource.to_cf
   end
 
-  def test_initialize_raw
-    resource = Humidifier::Resource.new({ 'One' => 'one', 'Two' => 2 }, true)
-    assert_equal ({ 'one' => 'one', 'two' => 2 }), resource.properties
-  end
-
   def test_update
     assert_equal ({ 'one' => 'one', 'two' => 2 }), build.properties
-  end
-
-  def test_update_raw
-    resource = build
-    resource.update({ 'One' => 'three', 'Two' => 4 }, true)
-    assert_equal ({ 'one' => 'three', 'two' => 4 }), resource.properties
   end
 
   def test_update_attributes
@@ -79,12 +68,6 @@ class ResourceTest < Minitest::Test
   def test_update_property
     resource = build
     resource.update_property('one', 'three')
-    assert_equal ({ 'one' => 'three', 'two' => 2 }), resource.properties
-  end
-
-  def test_update_property_raw
-    resource = build
-    resource.update_property('One', 'three', true)
     assert_equal ({ 'one' => 'three', 'two' => 2 }), resource.properties
   end
 

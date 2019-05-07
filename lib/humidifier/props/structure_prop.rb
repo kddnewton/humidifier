@@ -6,18 +6,6 @@ module Humidifier
     class StructureProp < Base
       attr_reader :subprops
 
-      # converts the value through mapping using the subprop unless it is valid
-      def convert(struct)
-        if valid?(struct)
-          struct
-        else
-          struct.map do |subkey, subvalue|
-            subkey = Utils.underscore(subkey.to_s)
-            [subkey.to_sym, subprops[subkey].convert(subvalue)]
-          end.to_h
-        end
-      end
-
       # CFN stack syntax
       def to_cf(struct)
         cf_value =

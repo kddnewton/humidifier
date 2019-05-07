@@ -16,24 +16,6 @@ module Props
       refute build.valid?(1)
     end
 
-    def test_convert_valid
-      value = { 'alpha' => 'beta' }
-      assert_equal value, build.convert(value)
-    end
-
-    def test_convert_invalid_bad_value
-      value = Object.new
-      assert_equal value, build.convert(value)
-    end
-
-    def test_convert_invalid
-      out, * =
-        capture_io do
-          assert_equal ({ 'foo' => 'bar' }), build.convert([%w[foo bar]])
-        end
-      assert_match(/WARNING: Property test/, out)
-    end
-
     private
 
     def build

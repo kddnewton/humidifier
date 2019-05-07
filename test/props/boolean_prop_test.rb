@@ -19,15 +19,6 @@ module Props
       refute build.valid?(1)
     end
 
-    def test_convert_valid
-      assert build.convert(true)
-    end
-
-    def test_convert_invalid
-      out, * = capture_io { assert build.convert('true') }
-      assert_match(/WARNING: Property test/, out)
-    end
-
     private
 
     def build

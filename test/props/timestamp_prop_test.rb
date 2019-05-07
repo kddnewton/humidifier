@@ -20,18 +20,6 @@ module Props
       refute build.valid?(1.0)
     end
 
-    def test_convert_valid
-      value = Time.now.to_datetime
-      assert_equal value, build.convert(value)
-    end
-
-    def test_convert_invalid
-      value = Time.at(0).utc.to_datetime
-      out, * =
-        capture_io { assert_equal value, build.convert(value.iso8601.to_s) }
-      assert_match(/WARNING: Property test/, out)
-    end
-
     private
 
     def build
