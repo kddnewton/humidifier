@@ -40,6 +40,8 @@ module Humidifier
       Utils.underscored(%w[Conditions Mappings Outputs Parameters Resources])
 
     attr_accessor :id
+    attr_writer :client
+
     attr_reader(:name, *ENUMERABLE_RESOURCES.values, *STATIC_RESOURCES.values)
 
     def initialize(opts = {})
@@ -76,6 +78,10 @@ module Humidifier
 
     def add_parameter(name, opts = {})
       parameters[name] = Parameter.new(opts)
+    end
+
+    def client
+      @client ||= Aws::CloudFormation::Client.new(region: REGION)
     end
 
     def identifier
@@ -170,10 +176,6 @@ module Humidifier
     private
 
     attr_reader :default_identifier
-
-    def client
-      @client ||= Aws::CloudFormation::Client.new(region: REGION)
-    end
 
     def perform_and_wait(method, opts)
       public_send(method, opts).tap do |response|

@@ -3,6 +3,14 @@
 require 'test_helper'
 
 class ClientTest < Minitest::Test
+  class WaitingClient < SimpleDelegator
+    attr_accessor :max_attempts, :delay
+
+    def wait_until(*)
+      yield self
+    end
+  end
+
   def test_create
     Aws.config[:cloudformation] = {
       stub_responses: { create_stack: { stack_id: 'test-id' } }
@@ -14,6 +22,14 @@ class ClientTest < Minitest::Test
     assert_equal 'test-id', stack.id
   end
 
+  def test_create_and_wait
+    Aws.config[:cloudformation] = {
+      stub_responses: { create_stack: { stack_id: 'test-id' } }
+    }
+
+    build_stack.create_and_wait
+  end
+
   def test_delete
     Aws.config[:cloudformation] = {
       stub_responses: { delete_stack: true }
@@ -22,12 +38,28 @@ class ClientTest < Minitest::Test
     build_stack.delete
   end
 
+  def test_delete_and_wait
+    Aws.config[:cloudformation] = {
+      stub_responses: { delete_stack: true }
+    }
+
+    build_stack.delete_and_wait
+  end
+
   def test_update
     Aws.config[:cloudformation] = {
       stub_responses: { update_stack: true }
     }
 
     build_stack.update
+  end
+
+  def test_update_and_wait
+    Aws.config[:cloudformation] = {
+      stub_responses: { update_stack: true }
+    }
+
+    build_stack.update_and_wait
   end
 
   def test_valid?
@@ -41,12 +73,15 @@ class ClientTest < Minitest::Test
   private
 
   def build_stack
-    asg =
-      Humidifier::AutoScaling::AutoScalingGroup.new(
-        min_size: '1',
-        max_size: '20'
-      )
+    Humidifier::Stack.new(name: 'stack-name').tap do |stack|
+      asg =
+        Humidifier::AutoScaling::AutoScalingGroup.new(
+          min_size: '1',
+          max_size: '20'
+        )
 
-    Humidifier::Stack.new(name: 'stack-name', resources: { 'asg' => asg })
+      stack.add('asg', asg)
+      stack.client = WaitingClient.new(stack.client)
+    end
   end
 end
