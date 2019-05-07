@@ -34,7 +34,6 @@ module Humidifier
       end
     end
 
-    # Add a resource to the stack and optionally set its attributes
     def add(name, resource, attributes = {})
       resources[name] = resource
       resource.update_attributes(attributes) if attributes.any?
@@ -57,12 +56,10 @@ module Humidifier
       parameters[name] = Parameter.new(opts)
     end
 
-    # The identifier used to find the stack in CFN, prefers id to name
     def identifier
       id || name || default_identifier
     end
 
-    # A string representation of the stack that's valid for CFN
     def to_cf(serializer = :json)
       resources = static_resources.merge(enumerable_resources)
 
@@ -81,6 +78,10 @@ module Humidifier
       end
     end
 
+    def create_and_wait(payload)
+      perform_and_wait(:create, payload)
+    end
+
     # Create a change set in CFN
     def create_change_set(payload)
       change_set_name = "changeset-#{Time.now.strftime(TIME_FORMAT)}"
@@ -94,9 +95,17 @@ module Humidifier
       true
     end
 
+    def delete_and_wait(payload)
+      perform_and_wait(:delete, payload)
+    end
+
     # Update a CFN stack if it exists, otherwise create it
     def deploy(payload)
       exists?(payload) ? update(payload) : create(payload)
+    end
+
+    def deploy_and_wait(payload)
+      perform_and_wait(exists?(payload) ? :update : :create, payload)
     end
 
     # Create a change set if the stack exists, otherwise create the stack
@@ -114,6 +123,10 @@ module Humidifier
       try_valid { client.update_stack(payload.update_params) }
     end
 
+    def update_and_wait(payload)
+      perform_and_wait(:update, payload)
+    end
+
     # Upload a CFN stack to S3 so that it can be referenced via template_url
     def upload(payload)
       Humidifier.config.ensure_upload_configured!(payload)
@@ -124,12 +137,6 @@ module Humidifier
     # Validate a template in CFN
     def valid?(payload)
       try_valid { client.validate_template(payload.validate_params) }
-    end
-
-    %i[create delete deploy update].each do |method|
-      define_method(:"#{method}_and_wait") do |payload|
-        perform_and_wait(method, payload)
-      end
     end
 
     # Increment the default identifier
@@ -148,7 +155,6 @@ module Humidifier
     end
 
     def perform_and_wait(method, payload)
-      method = exists?(payload) ? :update : :create if method == :deploy
       response = public_send(method, payload)
       signal = :"stack_#{method}_complete"
 
