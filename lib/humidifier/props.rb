@@ -3,7 +3,7 @@
 module Humidifier
   module Props
     # Superclass for all CFN properties
-    class Base
+    class Prop
       # The list of classes that are valid beyond the normal values for each
       # prop
       WHITELIST = [Fn, Ref].freeze
@@ -53,31 +53,31 @@ module Humidifier
       end
     end
 
-    class BooleanProp < Base
+    class BooleanProp < Prop
       allow_type TrueClass, FalseClass
     end
 
-    class DoubleProp < Base
+    class DoubleProp < Prop
       allow_type Integer, Float
     end
 
-    class IntegerProp < Base
+    class IntegerProp < Prop
       allow_type Integer
     end
 
-    class JsonProp < Base
+    class JsonProp < Prop
       allow_type Hash
     end
 
-    class StringProp < Base
+    class StringProp < Prop
       allow_type String
     end
 
-    class TimestampProp < Base
+    class TimestampProp < Prop
       allow_type Time, Date
     end
 
-    class ListProp < Base
+    class ListProp < Prop
       attr_reader :subprop
 
       def initialize(key, spec = {}, substructs = {})
@@ -102,7 +102,7 @@ module Humidifier
       end
     end
 
-    class MapProp < Base
+    class MapProp < Prop
       attr_reader :subprop
 
       def initialize(key, spec = {}, substructs = {})
@@ -130,7 +130,7 @@ module Humidifier
       end
     end
 
-    class StructureProp < Base
+    class StructureProp < Prop
       attr_reader :subprops
 
       def initialize(key, spec = {}, substructs = {})
