@@ -30,6 +30,14 @@ class ClientTest < Minitest::Test
     build_stack.create_and_wait
   end
 
+  def test_create_change_set
+    Aws.config[:cloudformation] = {
+      stub_responses: { create_change_set: true }
+    }
+
+    build_stack.create_change_set
+  end
+
   def test_delete
     Aws.config[:cloudformation] = {
       stub_responses: { delete_stack: true }
@@ -71,6 +79,22 @@ class ClientTest < Minitest::Test
     }
 
     with_stack_status(true) { build_stack.deploy_and_wait }
+  end
+
+  def test_deploy_change_set_exists
+    Aws.config[:cloudformation] = {
+      stub_responses: { create_change_set: true }
+    }
+
+    with_stack_status(true) { build_stack.deploy_change_set }
+  end
+
+  def test_deploy_change_set_does_not_exist
+    Aws.config[:cloudformation] = {
+      stub_responses: { create_stack: { stack_id: 'stack-id' } }
+    }
+
+    with_stack_status(false) { build_stack.deploy_change_set }
   end
 
   def test_update
