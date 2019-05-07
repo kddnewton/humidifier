@@ -70,7 +70,6 @@ require 'humidifier/resource'
 require 'humidifier/serializer'
 require 'humidifier/stack'
 require 'humidifier/version'
-
 require 'humidifier/props'
 
 Humidifier::Loader.load
