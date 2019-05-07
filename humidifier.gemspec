@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.files         = Dir['LICENSE', 'README.md', 'lib/**/*',
                            'CloudFormationResourceSpecification.json']
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '>= 2.6'
+  spec.required_ruby_version = '>= 2.4'
 
   spec.add_development_dependency 'aws-sdk-cloudformation', '~> 1.19'
   spec.add_development_dependency 'aws-sdk-s3', '~> 1.36'

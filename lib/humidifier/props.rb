@@ -115,9 +115,9 @@ module Humidifier
           if map.respond_to?(:to_cf)
             map.to_cf
           else
-            map.to_h do |subkey, subvalue|
+            map.map do |subkey, subvalue|
               [subkey, subprop.to_cf(subvalue).last]
-            end
+            end.to_h
           end
 
         [key, cf_value]
@@ -143,9 +143,9 @@ module Humidifier
           if struct.respond_to?(:to_cf)
             struct.to_cf
           else
-            struct.to_h do |subkey, subvalue|
+            struct.map do |subkey, subvalue|
               subprops[subkey.to_s].to_cf(subvalue)
-            end
+            end.to_h
           end
 
         [key, cf_value]
