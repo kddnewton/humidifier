@@ -6,7 +6,7 @@ module Humidifier
     # http://docs.aws.amazon.com
     #   /AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html
     FUNCTIONS =
-      Utils.underscored(
+      Humidifier.underscore(
         %w[And Base64 Cidr Equals FindInMap GetAtt GetAZs If ImportValue Join
            Not Or Select Split Sub Transform]
       )

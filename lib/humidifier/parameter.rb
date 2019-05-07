@@ -3,7 +3,7 @@
 module Humidifier
   class Parameter
     PROPERTIES =
-      Utils.underscored(
+      Humidifier.underscore(
         %w[AllowedPattern AllowedValues ConstraintDescription Default
            Description MaxLength MaxValue MinLength MinValue NoEcho]
       )

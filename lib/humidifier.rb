@@ -7,22 +7,16 @@ require 'yaml'
 
 require 'aws-sdk-cloudformation'
 require 'aws-sdk-s3'
+require 'fast_underscore'
 
-require 'humidifier/utils'
-require 'humidifier/fn'
-require 'humidifier/ref'
-require 'humidifier/props'
-
-require 'humidifier/condition'
-require 'humidifier/config'
-require 'humidifier/loader'
-require 'humidifier/mapping'
-require 'humidifier/output'
-require 'humidifier/parameter'
-require 'humidifier/resource'
-require 'humidifier/serializer'
-require 'humidifier/stack'
-require 'humidifier/version'
+# Hook into the string extension and ensure it works for certain AWS acronyms
+String.prepend(
+  Module.new do
+    def underscore
+      FastUnderscore.underscore(gsub(/(ARNs|AZs|VPCs)/) { $1.capitalize })
+    end
+  end
+)
 
 # container module for all gem classes
 module Humidifier
@@ -56,7 +50,27 @@ module Humidifier
     def [](aws_name)
       registry[aws_name]
     end
+
+    # a frozen hash of the given names mapped to their underscored version
+    def underscore(names)
+      names.map { |name| [name, name.underscore.to_sym] }.to_h.freeze
+    end
   end
 end
+
+require 'humidifier/condition'
+require 'humidifier/config'
+require 'humidifier/fn'
+require 'humidifier/loader'
+require 'humidifier/mapping'
+require 'humidifier/output'
+require 'humidifier/parameter'
+require 'humidifier/ref'
+require 'humidifier/resource'
+require 'humidifier/serializer'
+require 'humidifier/stack'
+require 'humidifier/version'
+
+require 'humidifier/props'
 
 Humidifier::Loader.load

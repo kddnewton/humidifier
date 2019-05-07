@@ -12,7 +12,7 @@ module Humidifier
 
       def initialize(key, spec = {})
         @key  = key
-        @name = Utils.underscore(key)
+        @name = key.underscore
         @spec = spec
       end
 
@@ -162,14 +162,12 @@ module Humidifier
         subprop_names = substructs.fetch(type, {}).fetch('Properties', {})
 
         subprop_names.each_with_object({}) do |(key, config), subprops|
-          subprop =
+          subprops[key.underscore] =
             if config['ItemType'] == type
               self
             else
               Props.from(key, config, substructs)
             end
-
-          subprops[Utils.underscore(key)] = subprop
         end
       end
 

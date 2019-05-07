@@ -19,7 +19,9 @@ module Humidifier
 
     # Lists of objects linked to the stack
     ENUMERABLE_RESOURCES =
-      Utils.underscored(%w[Conditions Mappings Outputs Parameters Resources])
+      Humidifier.underscore(
+        %w[Conditions Mappings Outputs Parameters Resources]
+      )
 
     # The maximum size a template body can be before it has to be put somewhere
     # and referenced through a URL
@@ -34,7 +36,7 @@ module Humidifier
 
     # Single settings on the stack
     STATIC_RESOURCES =
-      Utils.underscored(%w[AWSTemplateFormatVersion Description Metadata])
+      Humidifier.underscore(%w[AWSTemplateFormatVersion Description Metadata])
 
     attr_accessor :id
     attr_writer :client
