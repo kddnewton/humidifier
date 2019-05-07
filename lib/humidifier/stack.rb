@@ -14,6 +14,13 @@ module Humidifier
       end
     end
 
+    # The AWS region, can be set through the environment, defaults to us-east-1
+    AWS_REGION = ENV['AWS_REGION'] || 'us-east-1'
+
+    # Lists of objects linked to the stack
+    ENUMERABLE_RESOURCES =
+      Utils.underscored(%w[Conditions Mappings Outputs Parameters Resources])
+
     # The maximum size a template body can be before it has to be put somewhere
     # and referenced through a URL
     MAX_TEMPLATE_BODY_SIZE = 51_200
@@ -25,24 +32,17 @@ module Humidifier
     # complete a CRUD operation
     MAX_WAIT = 600
 
-    # The AWS region, can be set through the environment, defaults to us-east-1
-    REGION = ENV['AWS_REGION'] || 'us-east-1'
-
-    # Format of the timestamp used in changeset naming
-    TIME_FORMAT = '%Y-%m-%d-%H-%M-%S'
-
     # Single settings on the stack
     STATIC_RESOURCES =
       Utils.underscored(%w[AWSTemplateFormatVersion Description Metadata])
 
-    # Lists of objects linked to the stack
-    ENUMERABLE_RESOURCES =
-      Utils.underscored(%w[Conditions Mappings Outputs Parameters Resources])
+    # Format of the timestamp used in changeset naming
+    TIME_FORMAT = '%Y-%m-%d-%H-%M-%S'
 
     attr_accessor :id
     attr_writer :client
 
-    attr_reader(:name, *ENUMERABLE_RESOURCES.values, *STATIC_RESOURCES.values)
+    attr_reader :name, *ENUMERABLE_RESOURCES.values, *STATIC_RESOURCES.values
 
     def initialize(opts = {})
       @name = opts[:name]
@@ -81,7 +81,7 @@ module Humidifier
     end
 
     def client
-      @client ||= Aws::CloudFormation::Client.new(region: REGION)
+      @client ||= Aws::CloudFormation::Client.new(region: AWS_REGION)
     end
 
     def identifier
@@ -89,7 +89,7 @@ module Humidifier
     end
 
     def to_cf(serializer = :json)
-      resources = static_resources.merge(enumerable_resources)
+      resources = static_resources.merge!(enumerable_resources)
 
       case serializer
       when :json then JSON.pretty_generate(resources)
@@ -197,7 +197,7 @@ module Humidifier
     end
 
     def upload_object(key)
-      Aws.config.update(region: REGION)
+      Aws.config.update(region: AWS_REGION)
       bucket = Humidifier.config.s3_bucket
 
       Aws::S3::Client.new.put_object(body: to_cf, bucket: bucket, key: key)
@@ -231,12 +231,13 @@ module Humidifier
 
     def template_param_for(opts)
       @template_param ||=
-        begin
-          if opts.delete(:force_upload) || Humidifier.config.force_upload || bytesize > MAX_TEMPLATE_BODY_SIZE
-            { template_url: upload }
-          else
-            { template_body: to_cf }
-          end
+        if opts.delete(:force_upload) ||
+           Humidifier.config.force_upload ||
+           bytesize > MAX_TEMPLATE_BODY_SIZE
+
+          { template_url: upload }
+        else
+          { template_body: to_cf }
         end
     end
   end
