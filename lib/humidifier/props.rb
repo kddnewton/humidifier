@@ -14,7 +14,6 @@ module Humidifier
         @key  = key
         @name = Utils.underscore(key)
         @spec = spec
-        after_initialize(substructs) if respond_to?(:after_initialize, true)
       end
 
       # the link to the AWS docs
@@ -81,6 +80,11 @@ module Humidifier
     class ListProp < Base
       attr_reader :subprop
 
+      def initialize(key, spec = {}, substructs = {})
+        super(key, spec, substructs)
+        @subprop = Props.singular_from(key, spec, substructs)
+      end
+
       def to_cf(list)
         cf_value =
           if list.respond_to?(:to_cf)
@@ -94,19 +98,17 @@ module Humidifier
 
       def valid?(list)
         return true if super(list)
-
         list.is_a?(Enumerable) && list.all? { |value| subprop.valid?(value) }
-      end
-
-      private
-
-      def after_initialize(substructs)
-        @subprop = Props.singular_from(key, spec, substructs)
       end
     end
 
     class MapProp < Base
       attr_reader :subprop
+
+      def initialize(key, spec = {}, substructs = {})
+        super(key, spec, substructs)
+        @subprop = Props.singular_from(key, spec, substructs)
+      end
 
       def to_cf(map)
         cf_value =
@@ -126,16 +128,15 @@ module Humidifier
 
         map.is_a?(Hash) && map.values.all? { |value| subprop.valid?(value) }
       end
-
-      private
-
-      def after_initialize(substructs)
-        @subprop = Props.singular_from(key, spec, substructs)
-      end
     end
 
     class StructureProp < Base
       attr_reader :subprops
+
+      def initialize(key, spec = {}, substructs = {})
+        super(key, spec, substructs)
+        @subprops = subprops_from(substructs, spec['ItemType'] || spec['Type'])
+      end
 
       def to_cf(struct)
         cf_value =
@@ -155,10 +156,6 @@ module Humidifier
       end
 
       private
-
-      def after_initialize(substructs)
-        @subprops = subprops_from(substructs, spec['ItemType'] || spec['Type'])
-      end
 
       def subprops_from(substructs, type)
         subprop_names = substructs.fetch(type, {}).fetch('Properties', {})
