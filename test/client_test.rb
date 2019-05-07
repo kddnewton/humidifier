@@ -121,6 +121,16 @@ class ClientTest < Minitest::Test
     assert build_stack.valid?
   end
 
+  def test_valid_false
+    error = Aws::CloudFormation::Errors::ValidationError
+    Aws.config[:cloudformation] = {
+      stub_responses: { validate_template: error.new(nil, 'foobar') }
+    }
+
+    stdout, stderr, = capture_io { refute build_stack.valid? }
+    assert stderr.start_with?('foobar')
+  end
+
   private
 
   def build_stack
