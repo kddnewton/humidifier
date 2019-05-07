@@ -37,21 +37,6 @@ module Props
       assert_equal 'update_type', prop.update_type
     end
 
-    def test_whitelisted_value?
-      base = build
-      original_whitelist = Humidifier::Props::Base::WHITELIST
-
-      suppress_warnings do
-        Humidifier::Props::Base.const_set(:WHITELIST, [])
-        refute base.whitelisted_value?('test')
-
-        Humidifier::Props::Base::WHITELIST << String
-        assert base.whitelisted_value?('test')
-
-        Humidifier::Props::Base.const_set(:WHITELIST, original_whitelist)
-      end
-    end
-
     private
 
     def build(key = 'Test', spec = {})

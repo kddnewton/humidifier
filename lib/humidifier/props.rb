@@ -1,8 +1,187 @@
 # frozen_string_literal: true
 
 module Humidifier
-  # Container for property of CFN resources
   module Props
+    # Superclass for all CFN properties
+    class Base
+      # The list of classes that are valid beyond the normal values for each
+      # prop
+      WHITELIST = [Fn, Ref].freeze
+
+      attr_reader :key, :name, :spec, :substructs
+
+      def initialize(key, spec = {}, substructs = {})
+        @key  = key
+        @name = Utils.underscore(key)
+        @spec = spec
+        after_initialize(substructs) if respond_to?(:after_initialize, true)
+      end
+
+      # the link to the AWS docs
+      def documentation
+        spec['Documentation']
+      end
+
+      # true if this property is required by the resource
+      def required?
+        spec['Required']
+      end
+
+      # CFN stack syntax
+      def to_cf(value)
+        [key, Serializer.dump(value)]
+      end
+
+      # the type of update that occurs when this property is updated on its
+      # associated resource
+      def update_type
+        spec['UpdateType']
+      end
+
+      def valid?(value)
+        self.class.allowed_types.any? { |type| value.is_a?(type) }
+      end
+
+      class << self
+        def allowed_types
+          @allowed_types ||= [Fn, Ref]
+        end
+
+        def allow_type(*types)
+          allowed_types
+          @allowed_types += types
+        end
+      end
+    end
+
+    class BooleanProp < Base
+      allow_type TrueClass, FalseClass
+    end
+
+    class DoubleProp < Base
+      allow_type Integer, Float
+    end
+
+    class IntegerProp < Base
+      allow_type Integer
+    end
+
+    class JsonProp < Base
+      allow_type Hash
+    end
+
+    class StringProp < Base
+      allow_type String
+    end
+
+    class TimestampProp < Base
+      allow_type Time, Date
+    end
+
+    class ListProp < Base
+      attr_reader :subprop
+
+      def to_cf(list)
+        cf_value =
+          if list.respond_to?(:to_cf)
+            list.to_cf
+          else
+            list.map { |value| subprop.to_cf(value).last }
+          end
+
+        [key, cf_value]
+      end
+
+      def valid?(list)
+        return true if super(list)
+
+        list.is_a?(Enumerable) && list.all? { |value| subprop.valid?(value) }
+      end
+
+      private
+
+      def after_initialize(substructs)
+        @subprop = Props.singular_from(key, spec, substructs)
+      end
+    end
+
+    class MapProp < Base
+      attr_reader :subprop
+
+      def to_cf(map)
+        cf_value =
+          if map.respond_to?(:to_cf)
+            map.to_cf
+          else
+            map.each_with_object({}) do |(subkey, subvalue), serialized|
+              serialized[subkey] = subprop.to_cf(subvalue).last
+            end
+          end
+
+        [key, cf_value]
+      end
+
+      def valid?(map)
+        return true if super(map)
+
+        map.is_a?(Hash) && map.values.all? { |value| subprop.valid?(value) }
+      end
+
+      private
+
+      def after_initialize(substructs)
+        @subprop = Props.singular_from(key, spec, substructs)
+      end
+    end
+
+    class StructureProp < Base
+      attr_reader :subprops
+
+      def to_cf(struct)
+        cf_value =
+          if struct.respond_to?(:to_cf)
+            struct.to_cf
+          else
+            struct.map do |subkey, subvalue|
+              subprops[subkey.to_s].to_cf(subvalue)
+            end.to_h
+          end
+
+        [key, cf_value]
+      end
+
+      def valid?(struct)
+        super(struct) || (struct.is_a?(Hash) && valid_struct?(struct))
+      end
+
+      private
+
+      def after_initialize(substructs)
+        @subprops = subprops_from(substructs, spec['ItemType'] || spec['Type'])
+      end
+
+      def subprops_from(substructs, type)
+        subprop_names = substructs.fetch(type, {}).fetch('Properties', {})
+
+        subprop_names.each_with_object({}) do |(key, config), subprops|
+          subprop =
+            if config['ItemType'] == type
+              self
+            else
+              Props.from(key, config, substructs)
+            end
+
+          subprops[Utils.underscore(key)] = subprop
+        end
+      end
+
+      def valid_struct?(struct)
+        struct.all? do |key, value|
+          subprops.key?(key.to_s) && subprops[key.to_s].valid?(value)
+        end
+      end
+    end
+
     class << self
       # builds the appropriate prop object from the given spec line
       def from(key, spec, substructs = {})
