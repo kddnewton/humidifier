@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 - Updated the specs to `v3.0.0`.
 - Bumped the minimum ruby version to `2.4`, which allows us to strip out some of the old code necessary to support the EOL'd versions.
 - `Humidifier::Utils::underscored` has been moved and renamed, so it is now `Humidifier::underscore`. The `Humidifier::Utils::underscore` has been moved directly into the `String` class because of `fast_underscore`.
+- Because of the removal of support for the other SDK versions, the test suite has been greatly simplified. We can now use the stub responses functionality from the AWS SDK itself.
 
 ### Removed
 
