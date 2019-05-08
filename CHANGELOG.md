@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased]
 
+## [3.2.0] - 2019-05-08
+
 ### Changed
 
 - Added some emoji to the CLI output.
@@ -47,7 +49,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ### Changed
 - Update to CloudFormation specs v2.15.0
 
-[Unreleased]: https://github.com/localytics/humidifier/compare/v3.1.0...HEAD
+[Unreleased]: https://github.com/localytics/humidifier/compare/v3.2.0...HEAD
+[3.2.0]: https://github.com/localytics/humidifier/compare/v3.1.0...v3.2.0
 [3.1.0]: https://github.com/localytics/humidifier/compare/v3.0.1...v3.1.0
 [3.0.1]: https://github.com/localytics/humidifier/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/localytics/humidifier/compare/v2.15.0...v3.0.0
