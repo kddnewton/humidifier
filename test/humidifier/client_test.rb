@@ -39,6 +39,12 @@ module Humidifier
       build_stack.create_change_set
     end
 
+    def test_create_change_set_no_resources
+      assert_raises Humidifier::Stack::NoResourcesError do
+        Stack.new(name: 'stack-name').create_change_set
+      end
+    end
+
     def test_delete
       Aws.config[:cloudformation] = {
         stub_responses: { delete_stack: true }
@@ -72,6 +78,12 @@ module Humidifier
       with_stack_status(false) { stack.deploy }
 
       assert_equal 'test-id', stack.id
+    end
+
+    def test_deploy_no_resources
+      assert_raises Humidifier::Stack::NoResourcesError do
+        Stack.new(name: 'stack-name').deploy
+      end
     end
 
     def test_deploy_and_wait
@@ -130,6 +142,12 @@ module Humidifier
 
       with_config s3_bucket: 'foobar' do
         build_stack.upload
+      end
+    end
+
+    def test_upload_no_resources
+      assert_raises Humidifier::Stack::NoResourcesError do
+        Stack.new(name: 'stack-name').upload
       end
     end
 
@@ -203,22 +221,6 @@ module Humidifier
         stack.add('asg', asg.new(min_size: '1', max_size: '20'))
         stack.client = WaitingClient.new(stack.client)
       end
-    end
-
-    def with_config(opts)
-      config = Humidifier.config.dup
-      opts.each do |key, value|
-        Humidifier.config.public_send(:"#{key}=", value)
-      end
-
-      yield
-    ensure
-      Humidifier.instance_variable_set(:@config, config)
-    end
-
-    def with_stack_status(exists, &block)
-      stack = Struct.new(:exists?).new(exists)
-      Aws::CloudFormation::Stack.stub(:new, stack, &block)
     end
   end
 end
