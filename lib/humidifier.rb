@@ -69,6 +69,7 @@ require 'humidifier/props'
 
 require 'humidifier/cli'
 require 'humidifier/condition'
+require 'humidifier/directory'
 require 'humidifier/loader'
 require 'humidifier/mapping'
 require 'humidifier/output'
@@ -79,7 +80,6 @@ require 'humidifier/stack'
 require 'humidifier/version'
 
 require 'humidifier/config'
-require 'humidifier/config/directory'
 require 'humidifier/config/mapper'
 require 'humidifier/config/mapping'
 

@@ -14,7 +14,7 @@ module Humidifier
     def test_change
       stdout, =
         capture_io do
-          Config::Directory.stub(:new, DirectoryDouble.new('alpha')) do
+          Directory.stub(:new, DirectoryDouble.new('alpha')) do
             execute('change')
           end
         end
@@ -25,7 +25,7 @@ module Humidifier
     def test_deploy
       stdout, =
         capture_io do
-          Config::Directory.stub(:new, DirectoryDouble.new('alpha')) do
+          Directory.stub(:new, DirectoryDouble.new('alpha')) do
             execute('deploy alpha ParameterOne=OneOne ParameterTwo=TwoTwo')
           end
         end
@@ -52,7 +52,7 @@ module Humidifier
     def test_upload
       stdout, =
         capture_io do
-          Config::Directory.stub(:new, DirectoryDouble.new('alpha')) do
+          Directory.stub(:new, DirectoryDouble.new('alpha')) do
             execute('upload')
           end
         end
@@ -61,7 +61,7 @@ module Humidifier
     end
 
     def test_validate
-      Config::Directory.stub(:new, DirectoryDouble.new('alpha', true)) do
+      Directory.stub(:new, DirectoryDouble.new('alpha', true)) do
         stdout, = capture_io { execute('validate alpha') }
 
         assert_equal "Validating... Valid.\n", stdout
@@ -69,7 +69,7 @@ module Humidifier
     end
 
     def test_validate_invalid
-      Config::Directory.stub(:new, DirectoryDouble.new('alpha', false)) do
+      Directory.stub(:new, DirectoryDouble.new('alpha', false)) do
         stdout, = capture_io { execute('validate alpha') }
         assert_equal "Validating... Invalid.\n", stdout
       end
