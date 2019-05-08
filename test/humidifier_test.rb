@@ -30,11 +30,11 @@ class HumidifierTest < Minitest::Test
     end
   end
 
-  def test_underscored_empty
+  def test_underscore_empty
     assert_equal ({}), Humidifier.underscore({})
   end
 
-  def test_underscored
+  def test_underscore
     response = Humidifier.underscore(%w[TestA TestB])
     assert_equal ({ 'TestA' => :test_a, 'TestB' => :test_b }), response
     assert response.frozen?

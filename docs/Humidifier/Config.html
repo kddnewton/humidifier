@@ -94,7 +94,9 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/humidifier/config.rb</dd>
+    <dd>lib/humidifier/config.rb<span class="defines">,<br />
+  lib/humidifier/config/mapper.rb,<br /> lib/humidifier/config/mapping.rb</span>
+</dd>
   </dl>
   
 </div>
@@ -110,7 +112,17 @@
 <div class="tags">
   
 
-</div>
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Config/Mapper.html" title="Humidifier::Config::Mapper (class)">Mapper</a></span>, <span class='object_link'><a href="Config/Mapping.html" title="Humidifier::Config::Mapping (class)">Mapping</a></span>
+    
+  
+</p>
+
 
 
 
@@ -198,6 +210,60 @@
 </li>
 
     
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stack_path-instance_method" title="#stack_path (instance method)">#<strong>stack_path</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The path to the various directories containing the YAML files representing stacks.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stack_prefix-instance_method" title="#stack_prefix (instance method)">#<strong>stack_prefix</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>An optional prefix for the stack names before they get uploaded to AWS.</p>
+</div></span>
+  
+</li>
+
+    
   </ul>
 
 
@@ -214,7 +280,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#ensure_upload_configured!-instance_method" title="#ensure_upload_configured! (instance method)">#<strong>ensure_upload_configured!</strong>(identifier)  &#x21d2; Object </a>
+      <a href="#files_for-instance_method" title="#files_for (instance method)">#<strong>files_for</strong>(name)  &#x21d2; Object </a>
     
 
     
@@ -228,9 +294,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>raise an error unless the s3_bucket field is set rubocop:disable Metrics/MethodLength.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -238,7 +302,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(opts = {})  &#x21d2; Config </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>  &#x21d2; Config </a>
     
 
     
@@ -261,6 +325,74 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#map-instance_method" title="#map (instance method)">#<strong>map</strong>(type, opts = {}, &amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p><code>#map</code> is a declaration of a link between a file name and a mapper configuration.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mapping_for-instance_method" title="#mapping_for (instance method)">#<strong>mapping_for</strong>(type)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stack_names-instance_method" title="#stack_names (instance method)">#<strong>stack_names</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -270,7 +402,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(opts = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Humidifier::Config (class)">Config</a></span></tt> 
+    #<strong>initialize</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Humidifier::Config (class)">Config</a></span></tt> 
   
 
   
@@ -293,19 +425,17 @@
       <pre class="lines">
 
 
-19
-20
-21
-22
-23</pre>
+27
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 27</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='ivar'>@force_upload</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:force_upload</span><span class='rbracket'>]</span>
-  <span class='ivar'>@s3_bucket</span>    <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:s3_bucket</span><span class='rbracket'>]</span>
-  <span class='ivar'>@s3_prefix</span>    <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:s3_prefix</span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
+  <span class='ivar'>@mappings</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='ivar'>@stack_path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -446,17 +576,12 @@
 </table>
 </div>
     
-  </div>
-
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-
-    
-      <div class="method_details first">
-  <h3 class="signature first" id="ensure_upload_configured!-instance_method">
+      
+      <span id="stack_path=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="stack_path-instance_method">
   
-    #<strong>ensure_upload_configured!</strong>(identifier)  &#x21d2; <tt>Object</tt> 
+    #<strong>stack_path</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -465,7 +590,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>raise an error unless the s3_bucket field is set rubocop:disable Metrics/MethodLength</p>
+<p>The path to the various directories containing the YAML files representing stacks. If blank, it&#39;s assumed to be the current working direction from which the CLI is executing.</p>
 
 
   </div>
@@ -479,43 +604,243 @@
       <pre class="lines">
 
 
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43</pre>
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 22</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_ensure_upload_configured!'>ensure_upload_configured!</span><span class='lparen'>(</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_s3_bucket'>s3_bucket</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_stack_path'>stack_path</span>
+  <span class='ivar'>@stack_path</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="stack_prefix=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="stack_prefix-instance_method">
+  
+    #<strong>stack_prefix</strong>  &#x21d2; <tt>Object</tt> 
+  
 
-  <span class='id identifier rubyid_upload_message'>upload_message</span> <span class='op'>=</span> <span class='heredoc_beg'>&lt;&lt;~MSG</span>
-<span class='tstring_content'>    The %&lt;identifier&gt;s stack&#39;s body is too large to be use the template_body
-</span><span class='tstring_content'>    option, and therefore must use the template_url option instead. You can
-</span><span class='tstring_content'>    configure Humidifier to do this automatically by setting up the s3
-</span><span class='tstring_content'>    config on the top-level Humidifier object like so:
-</span><span class='tstring_content'>
-</span><span class='tstring_content'>        Humidifier.configure do |config|
-</span><span class='tstring_content'>          config.s3_bucket = &#39;my.s3.bucket&#39;
-</span><span class='tstring_content'>          config.s3_prefix = &#39;my-prefix/&#39; # optional
-</span><span class='tstring_content'>        end
-</span><span class='heredoc_end'>  MSG
-</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_upload_message'>upload_message</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%&lt;identifier&gt;s</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>An optional prefix for the stack names before they get uploaded to AWS.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stack_prefix'>stack_prefix</span>
+  <span class='ivar'>@stack_prefix</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="files_for-instance_method">
+  
+    #<strong>files_for</strong>(name)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_files_for'>files_for</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='const'>Dir</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_stack_path'>stack_path</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>/*.yml</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="map-instance_method">
+  
+    #<strong>map</strong>(type, opts = {}, &amp;block)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p><code>#map</code> is a declaration of a link between a file name and a mapper configuration. It is used to declare the manner in which a set of attributes read from a resource file is converted into instantiations of that type.</p>
+
+<p>For more information about the mapping DSL and how attributes get converted into props, see the <code>Humidifier::Config::Mapper</code> class.</p>
+
+<p>== Basic mapping</p>
+
+<p>For the most basic of mappings, you can just map a file name to a resource, which effectively means that each attribute you provide must map directly to an AWS attribute for that resource, and that no additional attributes will be provided. For example, the following code indicates that files named <code>routes.yml</code> will contain <code>AWS::EC2::Route</code> resources, and that every attribute read will directly correspond to one from AWS:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_configure'><span class='object_link'><a href="../Humidifier.html#configure-class_method" title="Humidifier.configure (method)">configure</a></span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_config'>config</span><span class='op'>|</span>
+  <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='symbol'>:routes</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>EC2::Route</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>== Using the DSL</p>
+
+<p>For mappings for which you want to use the <code>Humidifier::Config::Mapper</code> DSL, you can pass a block which will get used to create a new mapper class. This is useful for shorter mapper declarations. For example, in the following code we map files named <code>instance_profiles.yml</code> to <code>AWS::IAM::InstanceProfile</code> resources. In that mapping we default the <code>path</code> prop to “/” and we allow the <code>roles</code> prop to just pass a list of roles as an array, which we then convert into CloudFormation references.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_configure'><span class='object_link'><a href="../Humidifier.html#configure-class_method" title="Humidifier.configure (method)">configure</a></span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_config'>config</span><span class='op'>|</span>
+  <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='symbol'>:instance_profiles</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>IAM::InstanceProfile</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_defaults'>defaults</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid__'>_</span><span class='op'>|</span>
+      <span class='lbrace'>{</span> <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_attribute'>attribute</span> <span class='symbol'>:roles</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_names'>names</span><span class='op'>|</span>
+      <span class='lbrace'>{</span> <span class='label'>roles:</span> <span class='id identifier rubyid_names'>names</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span> <span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_ref'><span class='object_link'><a href="../Humidifier.html#ref-class_method" title="Humidifier.ref (method)">ref</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>== Reusing mappers</p>
+
+<p>Finally, if you want to pull the mapper out for reuse, testing, or just separation of code, you can pass the <code>:using</code> key with a mapper as a value. This will cause the given file type to be mapped using whatever class you provided. For example, the following code creates a mapper that automatically tags the resource with the logical name from the stack. It then configures network ACLs to use that so that all network ACL resource declarations automatically have a tag on them with their name.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>NameToTag</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Humidifier::Config (class)">Config</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Config/Mapper.html" title="Humidifier::Config::Mapper (class)">Mapper</a></span></span>
+  <span class='id identifier rubyid_defaults'>defaults</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_logical_name'>logical_name</span><span class='op'>|</span>
+    <span class='lbrace'>{</span> <span class='label'>tags:</span> <span class='lbracket'>[</span><span class='lbrace'>{</span> <span class='label'>key:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>value:</span> <span class='id identifier rubyid_logical_name'>logical_name</span> <span class='rbrace'>}</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_configure'><span class='object_link'><a href="../Humidifier.html#configure-class_method" title="Humidifier.configure (method)">configure</a></span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_config'>config</span><span class='op'>|</span>
+  <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='symbol'>:network_acls</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>EC2::NetworkAcl</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>using:</span> <span class='const'>NameToTag</span>
+<span class='kw'>end</span>
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+99
+100
+101</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 99</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_mappings'>mappings</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Config/Mapping.html" title="Humidifier::Config::Mapping (class)">Mapping</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Config/Mapping.html#initialize-instance_method" title="Humidifier::Config::Mapping#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="mapping_for-instance_method">
+  
+    #<strong>mapping_for</strong>(type)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 103</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mapping_for'>mapping_for</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_mappings'>mappings</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stack_names-instance_method">
+  
+    #<strong>stack_names</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+115
+116
+117
+118
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/config.rb', line 115</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stack_names'>stack_names</span>
+  <span class='const'>Dir</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_stack_path'>stack_path</span><span class='embexpr_end'>}</span><span class='tstring_content'>/*</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each_with_object'>each_with_object</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_names'>names</span><span class='op'>|</span>
+    <span class='id identifier rubyid_names'>names</span> <span class='op'>&lt;&lt;</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_directory?'>directory?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>

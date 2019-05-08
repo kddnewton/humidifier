@@ -1,0 +1,7 @@
+ParameterOne:
+  type: String
+  default: One
+
+ParameterTwo:
+  type: String
+  default: Two

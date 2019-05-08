@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased]
 
+## [3.1.0] - 2019-05-08
+
+### Added
+
+- The CLI functionality from the `humidifier-reservoir` gem directly into `humidifier`.
+
 ## [3.0.1] - 2019-05-08
 
 ### Changed
@@ -37,7 +43,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ### Changed
 - Update to CloudFormation specs v2.15.0
 
-[Unreleased]: https://github.com/localytics/humidifier/compare/v3.0.1...HEAD
+[Unreleased]: https://github.com/localytics/humidifier/compare/v3.1.0...HEAD
+[3.1.0]: https://github.com/localytics/humidifier/compare/v3.0.1...v3.1.0
 [3.0.1]: https://github.com/localytics/humidifier/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/localytics/humidifier/compare/v2.15.0...v3.0.0
 [2.15.0]: https://github.com/localytics/humidifier/compare/v2.6.0...v2.15.0

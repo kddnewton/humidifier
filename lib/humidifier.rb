@@ -8,6 +8,8 @@ require 'yaml'
 require 'aws-sdk-cloudformation'
 require 'aws-sdk-s3'
 require 'fast_underscore'
+require 'thor'
+require 'thor/hollaback'
 
 # Hook into the string extension and ensure it works for certain AWS acronyms
 String.prepend(
@@ -20,6 +22,9 @@ String.prepend(
 
 # container module for all gem classes
 module Humidifier
+  # A parent class for all Humidifier errors for easier rescuing.
+  class Error < StandardError; end
+
   class << self
     # the configuration instance
     def config
@@ -58,18 +63,24 @@ module Humidifier
   end
 end
 
-require 'humidifier/condition'
-require 'humidifier/config'
 require 'humidifier/fn'
+require 'humidifier/ref'
+require 'humidifier/props'
+
+require 'humidifier/cli'
+require 'humidifier/condition'
+require 'humidifier/directory'
 require 'humidifier/loader'
 require 'humidifier/mapping'
 require 'humidifier/output'
 require 'humidifier/parameter'
-require 'humidifier/ref'
 require 'humidifier/resource'
 require 'humidifier/serializer'
 require 'humidifier/stack'
 require 'humidifier/version'
-require 'humidifier/props'
+
+require 'humidifier/config'
+require 'humidifier/config/mapper'
+require 'humidifier/config/mapping'
 
 Humidifier::Loader.load
