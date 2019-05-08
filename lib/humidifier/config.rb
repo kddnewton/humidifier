@@ -25,12 +25,8 @@ module Humidifier
     attr_accessor :stack_prefix
 
     def initialize(opts = {})
-      @force_upload = opts[:force_upload]
-      @mappings     = {}
-      @s3_bucket    = opts[:s3_bucket]
-      @s3_prefix    = opts[:s3_prefix]
-      @stack_path   = '.'
-      @stack_prefix = nil
+      @mappings = {}
+      @stack_path = '.'
     end
 
     def files_for(name)
