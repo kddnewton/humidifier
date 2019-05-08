@@ -7,8 +7,6 @@ Humidifier allows you to build AWS CloudFormation (CFN) templates programmatical
 
 For the full docs, go to [https://localytics.github.io/humidifier/](http://localytics.github.io/humidifier/). For local development instructions, see the [Development](https://localytics.github.io/humidifier/#label-Development) section.
 
-This project follows semantic versioning linked to AWS' CloudFormation resource specification version since `1.2.1`.
-
 ## Installation
 
 Add this line to your application's Gemfile:
