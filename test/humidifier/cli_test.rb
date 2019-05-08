@@ -7,7 +7,9 @@ module Humidifier
     DirectoryDouble =
       Struct.new(:stack_name, :valid?) do
         def create_change_set; end
+
         def deploy(*); end
+
         def upload; end
       end
 

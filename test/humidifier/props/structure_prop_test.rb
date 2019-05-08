@@ -24,7 +24,8 @@ module Humidifier
       end
 
       def test_to_cf
-        assert_equal ['Alpha', { 'Beta' => 'gamma' }], build.to_cf(beta: 'gamma')
+        actual = build.to_cf(beta: 'gamma')
+        assert_equal ['Alpha', { 'Beta' => 'gamma' }], actual
       end
 
       def test_to_cf_ref

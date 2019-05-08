@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 module Humidifier
@@ -28,12 +30,8 @@ module Humidifier
 
     def test_upload
       Aws.config.merge!(
-        s3: {
-          stub_responses: { get_object: true, put_object: true }
-        },
-        cloudformation: {
-          stub_responses: { validate_template: true }
-        }
+        s3: { stub_responses: { get_object: true, put_object: true } },
+        cloudformation: { stub_responses: { validate_template: true } }
       )
 
       with_config s3_bucket: 'foobar' do
@@ -62,9 +60,10 @@ module Humidifier
 
     def test_parameters
       parameters = JSON.parse(Directory.new('alpha').to_cf)['Parameters']
+      default_values = parameters.values.map { |value| value['Default'] }
 
       assert_equal 2, parameters.size
-      assert_equal %w[One Two], parameters.values.map { |value| value['Default'] }
+      assert_equal %w[One Two], default_values
     end
 
     def test_stack_name

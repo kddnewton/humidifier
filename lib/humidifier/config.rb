@@ -24,7 +24,7 @@ module Humidifier
     # An optional prefix for the stack names before they get uploaded to AWS.
     attr_accessor :stack_prefix
 
-    def initialize(opts = {})
+    def initialize
       @mappings = {}
       @stack_path = '.'
     end

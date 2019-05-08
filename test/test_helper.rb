@@ -7,23 +7,25 @@ $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'humidifier'
 require 'minitest/autorun'
 
-class Minitest::Test
-  private
+module Minitest
+  class Test
+    private
 
-  def with_config(opts)
-    config = Humidifier.config.dup
-    opts.each do |key, value|
-      Humidifier.config.public_send(:"#{key}=", value)
+    def with_config(opts)
+      config = Humidifier.config.dup
+      opts.each do |key, value|
+        Humidifier.config.public_send(:"#{key}=", value)
+      end
+
+      yield
+    ensure
+      Humidifier.instance_variable_set(:@config, config)
     end
 
-    yield
-  ensure
-    Humidifier.instance_variable_set(:@config, config)
-  end
-
-  def with_stack_status(exists, &block)
-    stack = Struct.new(:exists?).new(exists)
-    Aws::CloudFormation::Stack.stub(:new, stack, &block)
+    def with_stack_status(exists, &block)
+      stack = Struct.new(:exists?).new(exists)
+      Aws::CloudFormation::Stack.stub(:new, stack, &block)
+    end
   end
 end
 
