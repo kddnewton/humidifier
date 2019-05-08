@@ -7,6 +7,36 @@ Humidifier allows you to build AWS CloudFormation (CFN) templates programmatical
 
 For the full docs, go to [https://localytics.github.io/humidifier/](http://localytics.github.io/humidifier/). For local development instructions, see the [Development](https://localytics.github.io/humidifier/#label-Development) section.
 
+- [Installation](#installation)
+- [Getting started](#getting-started)
+  - [Example usage](#example-usage)
+  - [Interfacing with AWS](#interfacing-with-aws)
+    - [CloudFormation functions](#cloudformation-functions)
+    - [Change Sets](#change-sets)
+  - [Introspection](#introspection)
+  - [Large templates](#large-templates)
+  - [Forcing uploading](#forcing-uploading)
+- [CLI](#cli)
+  - [Resource files](#resource-files)
+  - [Mappers](#mappers)
+  - [Using the CLI](#using-the-cli)
+    - [`change [?stack]`](#change-stack)
+    - [`deploy [?stack] [*parameters]`](#deploy-stack-parameters)
+    - [`display [stack] [?pattern]`](#display-stack-pattern)
+    - [`stacks`](#stacks)
+    - [`upload [?stack]`](#upload-stack)
+    - [`validate [?stack]`](#validate-stack)
+  - [Parameters](#parameters)
+  - [Shortcuts](#shortcuts)
+    - [Automatic id properties](#automatic-id-properties)
+    - [Anonymous mappers](#anonymous-mappers)
+    - [Cross-stack references](#cross-stack-references)
+- [Development](#development)
+  - [Testing](#testing)
+  - [Specs](#specs)
+  - [Contributing](#contributing)
+  - [License](#license)
+
 ## Installation
 
 Add this line to your application's Gemfile:
