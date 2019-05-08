@@ -114,7 +114,10 @@ class ClientTest < Minitest::Test
   end
 
   def test_upload_no_config
-    error = assert_raises(RuntimeError) { build_stack.upload }
+    error =
+      assert_raises Humidifier::Stack::UploadNotConfiguredError do
+        build_stack.upload
+      end
 
     assert_includes error.message, 'stack-name'
   end
