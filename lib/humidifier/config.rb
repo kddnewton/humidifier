@@ -112,7 +112,7 @@ module Humidifier
       @stack_path = stack_path
     end
 
-    def stacks
+    def stack_names
       Dir["#{stack_path}/*"].each_with_object([]) do |name, names|
         names << File.basename(name) if File.directory?(name)
       end

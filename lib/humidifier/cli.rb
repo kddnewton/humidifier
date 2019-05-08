@@ -43,6 +43,11 @@ module Humidifier
       puts Directory.new(name, pattern: pattern && /#{pattern}/i).to_cf
     end
 
+    desc 'stacks', 'List the stacks known to Humidifier'
+    def stacks
+      puts Humidifier.config.stack_names.sort
+    end
+
     desc 'upload [?stack]', 'Upload one or all stacks to S3'
     def upload(name = nil)
       authorize
@@ -95,7 +100,7 @@ module Humidifier
       end
 
       def stack_names_from(name)
-        name ? [name] : Humidifier.config.stacks
+        name ? [name] : Humidifier.config.stack_names
       end
     end
   end

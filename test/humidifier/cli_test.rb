@@ -49,6 +49,12 @@ module Humidifier
       assert_equal %w[AlphaUser1], parsed['Resources'].keys
     end
 
+    def test_stacks
+      stdout, = capture_io { execute('stacks') }
+
+      assert_equal "alpha\nbeta\n", stdout
+    end
+
     def test_upload
       stdout, =
         capture_io do
