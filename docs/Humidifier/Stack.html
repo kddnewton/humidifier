@@ -116,7 +116,7 @@
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Stack/TemplateTooLargeError.html" title="Humidifier::Stack::TemplateTooLargeError (class)">TemplateTooLargeError</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Stack/NoResourcesError.html" title="Humidifier::Stack::NoResourcesError (class)">NoResourcesError</a></span>, <span class='object_link'><a href="Stack/TemplateTooLargeError.html" title="Humidifier::Stack::TemplateTooLargeError (class)">TemplateTooLargeError</a></span>, <span class='object_link'><a href="Stack/UploadNotConfiguredError.html" title="Humidifier::Stack::UploadNotConfiguredError (class)">UploadNotConfiguredError</a></span>
     
   
 </p>
@@ -771,7 +771,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>rubocop:disable Metrics/AbcSize.</p>
+</div></span>
   
 </li>
 
@@ -830,22 +832,22 @@
       <pre class="lines">
 
 
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58</pre>
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span>
@@ -887,12 +889,12 @@
       <pre class="lines">
 
 
-82
-83
-84</pre>
+104
+105
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_client'>client</span>
   <span class='ivar'>@client</span> <span class='op'>||=</span> <span class='const'>Aws</span><span class='op'>::</span><span class='const'>CloudFormation</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>region:</span> <span class='const'><span class='object_link'><a href="#AWS_REGION-constant" title="Humidifier::Stack::AWS_REGION (constant)">AWS_REGION</a></span></span><span class='rparen'>)</span>
@@ -930,12 +932,12 @@
       <pre class="lines">
 
 
-41
-42
-43</pre>
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
   <span class='ivar'>@id</span>
@@ -967,14 +969,14 @@
       <pre class="lines">
 
 
-168
-169
-170
-171
-172</pre>
+212
+213
+214
+215
+216</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 168</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 212</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_next_default_identifier'>next_default_identifier</span>
   <span class='ivar'>@count</span> <span class='op'>||=</span> <span class='int'>0</span>
@@ -1007,14 +1009,14 @@
       <pre class="lines">
 
 
-60
-61
-62
-63
-64</pre>
+82
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_resource'>resource</span><span class='comma'>,</span> <span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_resources'>resources</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_resource'>resource</span>
@@ -1041,12 +1043,12 @@
       <pre class="lines">
 
 
-66
-67
-68</pre>
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_condition'>add_condition</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_conditions'>conditions</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Condition.html" title="Humidifier::Condition (class)">Condition</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Condition.html#initialize-instance_method" title="Humidifier::Condition#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
@@ -1071,12 +1073,12 @@
       <pre class="lines">
 
 
-70
-71
-72</pre>
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_mapping'>add_mapping</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_mappings'>mappings</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Mapping.html" title="Humidifier::Mapping (class)">Mapping</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Mapping.html#initialize-instance_method" title="Humidifier::Mapping#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
@@ -1101,12 +1103,12 @@
       <pre class="lines">
 
 
-74
-75
-76</pre>
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_output'>add_output</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_outputs'>outputs</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Output.html" title="Humidifier::Output (class)">Output</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Output.html#initialize-instance_method" title="Humidifier::Output#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
@@ -1131,12 +1133,12 @@
       <pre class="lines">
 
 
-78
-79
-80</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_parameter'>add_parameter</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_parameters'>parameters</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Parameter.html" title="Humidifier::Parameter (class)">Parameter</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Parameter.html#initialize-instance_method" title="Humidifier::Parameter#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
@@ -1161,16 +1163,16 @@
       <pre class="lines">
 
 
-99
-100
-101
-102
-103
-104
-105</pre>
+121
+122
+123
+124
+125
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>stack_name:</span> <span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_template_for'>template_for</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
@@ -1199,12 +1201,12 @@
       <pre class="lines">
 
 
-107
-108
-109</pre>
+129
+130
+131</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 107</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 129</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_and_wait'>create_and_wait</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_perform_and_wait'>perform_and_wait</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
@@ -1223,26 +1225,52 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Stack/NoResourcesError.html" title="Humidifier::Stack::NoResourcesError (class)">NoResourcesError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-111
-112
-113
-114
-115
-116
-117
-118
-119</pre>
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 111</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 133</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_change_set'>create_change_set</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Stack/NoResourcesError.html" title="Humidifier::Stack::NoResourcesError (class)">NoResourcesError</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Stack/NoResourcesError.html#initialize-instance_method" title="Humidifier::Stack::NoResourcesError#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='symbol'>:change</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_resources'>resources</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
+
   <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span>
     <span class='label'>stack_name:</span> <span class='id identifier rubyid_identifier'>identifier</span><span class='comma'>,</span>
     <span class='label'>change_set_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>changeset-</span><span class='embexpr_beg'>#{</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%Y-%m-%d-%H-%M-%S</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -1271,13 +1299,13 @@
       <pre class="lines">
 
 
-121
-122
-123
-124</pre>
+145
+146
+147
+148</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 121</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 145</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_delete_stack'>delete_stack</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>stack_name:</span> <span class='id identifier rubyid_identifier'>identifier</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1303,12 +1331,12 @@
       <pre class="lines">
 
 
-126
-127
-128</pre>
+150
+151
+152</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 150</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_and_wait'>delete_and_wait</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_perform_and_wait'>perform_and_wait</span><span class='lparen'>(</span><span class='symbol'>:delete</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
@@ -1327,20 +1355,46 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Stack/NoResourcesError.html" title="Humidifier::Stack::NoResourcesError (class)">NoResourcesError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-130
-131
-132</pre>
+154
+155
+156
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 154</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_deploy'>deploy</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Stack/NoResourcesError.html" title="Humidifier::Stack::NoResourcesError (class)">NoResourcesError</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Stack/NoResourcesError.html#initialize-instance_method" title="Humidifier::Stack::NoResourcesError#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='symbol'>:deploy</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_resources'>resources</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
+
   <span class='id identifier rubyid_exists?'>exists?</span> <span class='op'>?</span> <span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1363,12 +1417,12 @@
       <pre class="lines">
 
 
-134
-135
-136</pre>
+160
+161
+162</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 160</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_deploy_and_wait'>deploy_and_wait</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_perform_and_wait'>perform_and_wait</span><span class='lparen'>(</span><span class='id identifier rubyid_exists?'>exists?</span> <span class='op'>?</span> <span class='symbol'>:update</span> <span class='op'>:</span> <span class='symbol'>:create</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
@@ -1393,12 +1447,12 @@
       <pre class="lines">
 
 
-138
-139
-140</pre>
+164
+165
+166</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 138</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 164</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_deploy_change_set'>deploy_change_set</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_exists?'>exists?</span> <span class='op'>?</span> <span class='id identifier rubyid_create_change_set'>create_change_set</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
@@ -1445,12 +1499,12 @@
       <pre class="lines">
 
 
-142
-143
-144</pre>
+168
+169
+170</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 142</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 168</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exists?'>exists?</span>
   <span class='const'>Aws</span><span class='op'>::</span><span class='const'>CloudFormation</span><span class='op'>::</span><span class='const'>Stack</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>name:</span> <span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span>
@@ -1475,12 +1529,12 @@
       <pre class="lines">
 
 
-86
-87
-88</pre>
+108
+109
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 108</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_identifier'>identifier</span>
   <span class='id identifier rubyid_id'>id</span> <span class='op'>||</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>||</span> <span class='id identifier rubyid_default_identifier'>default_identifier</span>
@@ -1505,17 +1559,17 @@
       <pre class="lines">
 
 
-90
-91
-92
-93
-94
-95
-96
-97</pre>
+112
+113
+114
+115
+116
+117
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span><span class='lparen'>(</span><span class='id identifier rubyid_serializer'>serializer</span> <span class='op'>=</span> <span class='symbol'>:json</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_resources'>resources</span> <span class='op'>=</span> <span class='id identifier rubyid_static_resources'>static_resources</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_enumerable_resources'>enumerable_resources</span><span class='rparen'>)</span>
@@ -1545,19 +1599,27 @@
       <pre class="lines">
 
 
-146
-147
-148
-149
-150
-151</pre>
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 172</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span>
-    <span class='lbrace'>{</span> <span class='label'>stack_name:</span> <span class='id identifier rubyid_identifier'>identifier</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_template_for'>template_for</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='label'>capabilities:</span> <span class='qwords_beg'>%w[</span><span class='tstring_content'>CAPABILITY_IAM</span><span class='words_sep'> </span><span class='tstring_content'>CAPABILITY_NAMED_IAM</span><span class='tstring_end'>]</span></span><span class='comma'>,</span>
+    <span class='label'>stack_name:</span> <span class='id identifier rubyid_identifier'>identifier</span>
+  <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_template_for'>template_for</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_try_valid'>try_valid</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_update_stack'>update_stack</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
@@ -1581,12 +1643,12 @@
       <pre class="lines">
 
 
-153
-154
-155</pre>
+183
+184
+185</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 153</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 183</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_and_wait'>update_and_wait</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_perform_and_wait'>perform_and_wait</span><span class='lparen'>(</span><span class='symbol'>:update</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
@@ -1605,23 +1667,63 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>rubocop:disable Metrics/AbcSize</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Stack/NoResourcesError.html" title="Humidifier::Stack::NoResourcesError (class)">NoResourcesError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-157
-158
-159
-160</pre>
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 157</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 187</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_upload'>upload</span>
-  <span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_config'><span class='object_link'><a href="../Humidifier.html#config-class_method" title="Humidifier.config (method)">config</a></span></span><span class='period'>.</span><span class='id identifier rubyid_ensure_upload_configured!'>ensure_upload_configured!</span><span class='lparen'>(</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_upload_object'>upload_object</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_config'><span class='object_link'><a href="../Humidifier.html#config-class_method" title="Humidifier.config (method)">config</a></span></span><span class='period'>.</span><span class='id identifier rubyid_s3_prefix'>s3_prefix</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_identifier'>identifier</span><span class='embexpr_end'>}</span><span class='tstring_content'>.json</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_upload'>upload</span> <span class='comment'># rubocop:disable Metrics/AbcSize
+</span>  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Stack/NoResourcesError.html" title="Humidifier::Stack::NoResourcesError (class)">NoResourcesError</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Stack/NoResourcesError.html#initialize-instance_method" title="Humidifier::Stack::NoResourcesError#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='symbol'>:upload</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_resources'>resources</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
+
+  <span class='id identifier rubyid_bucket'>bucket</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_config'><span class='object_link'><a href="../Humidifier.html#config-class_method" title="Humidifier.config (method)">config</a></span></span><span class='period'>.</span><span class='id identifier rubyid_s3_bucket'>s3_bucket</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Stack/UploadNotConfiguredError.html" title="Humidifier::Stack::UploadNotConfiguredError (class)">UploadNotConfiguredError</a></span></span><span class='comma'>,</span> <span class='id identifier rubyid_identifier'>identifier</span> <span class='kw'>unless</span> <span class='id identifier rubyid_bucket'>bucket</span>
+
+  <span class='const'>Aws</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='label'>region:</span> <span class='const'><span class='object_link'><a href="#AWS_REGION-constant" title="Humidifier::Stack::AWS_REGION (constant)">AWS_REGION</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_config'><span class='object_link'><a href="../Humidifier.html#config-class_method" title="Humidifier.config (method)">config</a></span></span><span class='period'>.</span><span class='id identifier rubyid_s3_prefix'>s3_prefix</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_identifier'>identifier</span><span class='embexpr_end'>}</span><span class='tstring_content'>.json</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='const'>Aws</span><span class='op'>::</span><span class='const'>S3</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='period'>.</span><span class='id identifier rubyid_put_object'>put_object</span><span class='lparen'>(</span><span class='label'>body:</span> <span class='id identifier rubyid_to_cf'>to_cf</span><span class='comma'>,</span> <span class='label'>bucket:</span> <span class='id identifier rubyid_bucket'>bucket</span><span class='comma'>,</span> <span class='label'>key:</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='const'>Aws</span><span class='op'>::</span><span class='const'>S3</span><span class='op'>::</span><span class='const'>Object</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_bucket'>bucket</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_presigned_url'>presigned_url</span><span class='lparen'>(</span><span class='symbol'>:get</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1665,20 +1767,32 @@
       <pre class="lines">
 
 
-162
-163
-164
-165
-166</pre>
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 162</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 200</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='id identifier rubyid_template_for'>template_for</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_try_valid'>try_valid</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_validate_template'>validate_template</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-<span class='kw'>end</span></pre>
+<span class='kw'>rescue</span> <span class='const'>Aws</span><span class='op'>::</span><span class='const'>CloudFormation</span><span class='op'>::</span><span class='const'>Errors</span><span class='op'>::</span><span class='const'>AccessDenied</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Error.html" title="Humidifier::Error (class)">Error</a></span></span><span class='comma'>,</span> <span class='heredoc_beg'>&lt;&lt;~MSG</span>
+<span class='tstring_content'>    The authenticated AWS profile does not have the requisite permissions
+</span><span class='tstring_content'>    to run this command. Ensure the profile has the
+</span><span class='tstring_content'>    &quot;cloudformation:ValidateTemplate&quot; IAM permission.
+</span><span class='heredoc_end'>  MSG
+</span><span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>

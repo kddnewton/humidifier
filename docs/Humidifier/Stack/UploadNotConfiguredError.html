@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Exception: Humidifier::Stack::TemplateTooLargeError
+  Exception: Humidifier::Stack::UploadNotConfiguredError
   
     &mdash; Humidifier
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  pathId = "Humidifier::Stack::TemplateTooLargeError";
+  pathId = "Humidifier::Stack::UploadNotConfiguredError";
   relpath = '../../';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="../../_index.html">Index (T)</a> &raquo;
+    <a href="../../_index.html">Index (U)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Stack.html" title="Humidifier::Stack (class)">Stack</a></span></span>
      &raquo; 
-    <span class="title">TemplateTooLargeError</span>
+    <span class="title">UploadNotConfiguredError</span>
   
 </div>
 
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Exception: Humidifier::Stack::TemplateTooLargeError
+      <div id="content"><h1>Exception: Humidifier::Stack::UploadNotConfiguredError
   
   
   
@@ -78,7 +78,7 @@
           
             <li class="next"><span class='object_link'><a href="../Error.html" title="Humidifier::Error (class)">Error</a></span></li>
           
-            <li class="next">Humidifier::Stack::TemplateTooLargeError</li>
+            <li class="next">Humidifier::Stack::UploadNotConfiguredError</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -121,7 +121,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(bytesize)  &#x21d2; TemplateTooLargeError </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(identifier)  &#x21d2; UploadNotConfiguredError </a>
     
 
     
@@ -138,7 +138,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of TemplateTooLargeError.</p>
+<p>A new instance of UploadNotConfiguredError.</p>
 </div></span>
   
 </li>
@@ -160,7 +160,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(bytesize)  &#x21d2; <tt><span class='object_link'><a href="" title="Humidifier::Stack::TemplateTooLargeError (class)">TemplateTooLargeError</a></span></tt> 
+    #<strong>initialize</strong>(identifier)  &#x21d2; <tt><span class='object_link'><a href="" title="Humidifier::Stack::UploadNotConfiguredError (class)">UploadNotConfiguredError</a></span></tt> 
   
 
   
@@ -169,7 +169,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of TemplateTooLargeError</p>
+<p>Returns a new instance of UploadNotConfiguredError</p>
 
 
   </div>
@@ -183,26 +183,36 @@
       <pre class="lines">
 
 
-13
-14
-15
-16
-17
-18
-19
-20</pre>
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 24</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_bytesize'>bytesize</span><span class='rparen'>)</span>
-  <span class='kw'>super</span><span class='lparen'>(</span>
-    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Cannot use a template &gt; </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../Stack.html#MAX_TEMPLATE_URL_SIZE-constant" title="Humidifier::Stack::MAX_TEMPLATE_URL_SIZE (constant)">MAX_TEMPLATE_URL_SIZE</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'> bytes </span><span class='tstring_end'>&quot;</span></span> \
-    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(currently </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bytesize'>bytesize</span><span class='embexpr_end'>}</span><span class='tstring_content'> bytes), consider using nested stacks </span><span class='tstring_end'>&quot;</span></span> \
-    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide</span><span class='tstring_end'>&#39;</span></span> \
-    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/aws-properties-stack.html)</span><span class='tstring_end'>&#39;</span></span>
-  <span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_identifier'>identifier</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='heredoc_beg'>&lt;&lt;~MSG</span><span class='rparen'>)</span>
+<span class='tstring_content'>    The </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_identifier'>identifier</span><span class='embexpr_end'>}</span><span class='tstring_content'> stack&#39;s body is too large to be use the
+</span><span class='tstring_content'>    template_body option, and therefore must use the template_url option
+</span><span class='tstring_content'>    instead. You can configure Humidifier to do this automatically by
+</span><span class='tstring_content'>    setting up the s3 config on the top-level Humidifier object like so:
+</span><span class='tstring_content'>
+</span><span class='tstring_content'>        Humidifier.configure do |config|
+</span><span class='tstring_content'>          config.s3_bucket = &#39;my.s3.bucket&#39;
+</span><span class='tstring_content'>          config.s3_prefix = &#39;my-prefix/&#39; # optional
+</span><span class='tstring_content'>        end
+</span><span class='heredoc_end'>  MSG
+</span><span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
