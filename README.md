@@ -5,8 +5,6 @@
 
 Humidifier allows you to build AWS CloudFormation (CFN) templates programmatically. CFN stacks and resources are represented as Ruby objects with accessors for all their supported properties. Stacks and resources have `to_cf` methods that allow you to quickly inspect what will be uploaded.
 
-For the full docs, go to [https://localytics.github.io/humidifier/](http://localytics.github.io/humidifier/). For local development instructions, see the [Development](https://localytics.github.io/humidifier/#label-Development) section.
-
 - [Installation](#installation)
 - [Getting started](#getting-started)
   - [Example usage](#example-usage)
@@ -102,7 +100,7 @@ There are additionally four functions on `Humidifier::Stack` that support waitin
 
 #### CloudFormation functions
 
-You can use CFN intrinsic functions and references using `Humidifier.fn.[name]` and `Humidifier.ref`. Those will build appropriate structures that know how to be dumped to CFN syntax appropriately.
+You can use CFN intrinsic functions and references using `Humidifier.fn.[name]` and `Humidifier.ref`. They will build appropriate structures that know how to be dumped to CFN syntax.
 
 #### Change Sets
 
