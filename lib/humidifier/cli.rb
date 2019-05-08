@@ -17,7 +17,7 @@ module Humidifier
       stack_names_from(name).each do |stack_name|
         directory = Directory.new(stack_name)
 
-        puts "Creating a changeset for #{directory.stack_name}"
+        puts "🛠 Creating a changeset for #{directory.stack_name}"
         directory.create_change_set
       end
     end
@@ -32,7 +32,7 @@ module Humidifier
       stack_names_from(name).each do |stack_name|
         directory = Directory.new(stack_name, prefix: options[:prefix])
 
-        puts "Deploying #{directory.stack_name}"
+        puts "🚀 Deploying #{directory.stack_name}"
         directory.deploy(options[:wait], parameters_from(parameters))
       end
     end
@@ -40,12 +40,16 @@ module Humidifier
     desc 'display [stack] [?pattern]',
          'Display the CloudFormation JSON for a given stack'
     def display(name, pattern = nil)
-      puts Directory.new(name, pattern: pattern && /#{pattern}/i).to_cf
+      directory = Directory.new(name, pattern: pattern && /#{pattern}/i)
+
+      puts "📄 Displaying #{directory.stack_name}"
+      puts directory.to_cf
     end
 
     desc 'stacks', 'List the stacks known to Humidifier'
     def stacks
-      puts Humidifier.config.stack_names.sort
+      puts '🗒  Listing stacks'
+      puts Humidifier.config.stack_names.sort.map { |name| "- #{name}" }
     end
 
     desc 'upload [?stack]', 'Upload one or all stacks to S3'
@@ -55,7 +59,7 @@ module Humidifier
       stack_names_from(name).each do |stack_name|
         directory = Directory.new(stack_name)
 
-        puts "Uploading #{directory.stack_name}"
+        puts "📬 Uploading #{directory.stack_name}"
         directory.upload
       end
     end
@@ -65,7 +69,7 @@ module Humidifier
     def validate(name = nil)
       authorize
 
-      print 'Validating... '
+      print '🔍 Validating... '
 
       valid =
         stack_names_from(name).all? do |stack_name|
@@ -75,7 +79,7 @@ module Humidifier
       puts valid ? 'Valid.' : 'Invalid.'
     end
 
-    no_commands do
+    no_commands do # rubocop:disable Metrics/BlockLength
       def authorize
         return unless options[:aws_profile]
 
@@ -90,13 +94,23 @@ module Humidifier
         end
       end
 
+      def prelude
+        command = @_invocations.values.dig(0, 0)
+        command = command ? "#{command} " : ''
+        puts "\033[1mhumidifier #{command}v#{VERSION}\033[0m"
+      end
+
       def safe_execute
+        prelude
+        start = Time.now.to_f
         yield
       rescue Error => error
         raise error if options[:debug]
 
         puts error.message
         exit 1
+      else
+        puts '✨ Done in %.2fs.' % (Time.now.to_f - start)
       end
 
       def stack_names_from(name)

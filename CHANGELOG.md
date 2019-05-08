@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased]
 
+### Changed
+
+- Added some emoji to the CLI output.
+
 ## [3.1.0] - 2019-05-08
 
 ### Added

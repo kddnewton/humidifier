@@ -14,72 +14,55 @@ module Humidifier
       end
 
     def test_change
-      stdout, =
-        capture_io do
-          Directory.stub(:new, DirectoryDouble.new('alpha')) do
-            execute('change')
-          end
-        end
-
-      assert_equal "Creating a changeset for alpha\n" * 2, stdout
+      Directory.stub(:new, DirectoryDouble.new('alpha')) do
+        assert_includes execute('change'), 'Creating a changeset for alpha'
+      end
     end
 
     def test_deploy
-      stdout, =
-        capture_io do
-          Directory.stub(:new, DirectoryDouble.new('alpha')) do
-            execute('deploy alpha ParameterOne=OneOne ParameterTwo=TwoTwo')
-          end
-        end
+      Directory.stub(:new, DirectoryDouble.new('alpha')) do
+        stdout = execute('deploy alpha ParameterOne=OneOne ParameterTwo=TwoTwo')
 
-      assert_equal "Deploying alpha\n", stdout
+        assert_includes stdout, 'Deploying alpha'
+      end
     end
 
     def test_display
-      stdout, = capture_io { execute('display alpha') }
-      parsed = JSON.parse(stdout)
+      parsed = parse_display(execute('display alpha'))
 
       assert_kind_of Hash, parsed
       assert_equal RESOURCE_NAMES, parsed['Resources'].keys
     end
 
     def test_display_with_pattern
-      stdout, = capture_io { execute('display alpha User1') }
-      parsed = JSON.parse(stdout)
+      parsed = parse_display(execute('display alpha User1'))
 
       assert_kind_of Hash, parsed
       assert_equal %w[AlphaUser1], parsed['Resources'].keys
     end
 
     def test_stacks
-      stdout, = capture_io { execute('stacks') }
+      stdout = execute('stacks')
 
-      assert_equal "alpha\nbeta\n", stdout
+      assert_includes stdout, 'alpha'
+      assert_includes stdout, 'beta'
     end
 
     def test_upload
-      stdout, =
-        capture_io do
-          Directory.stub(:new, DirectoryDouble.new('alpha')) do
-            execute('upload')
-          end
-        end
-
-      assert_equal "Uploading alpha\n" * 2, stdout
+      Directory.stub(:new, DirectoryDouble.new('alpha')) do
+        assert_includes execute('upload'), 'Uploading alpha'
+      end
     end
 
     def test_validate
       Directory.stub(:new, DirectoryDouble.new('alpha', true)) do
-        stdout, = capture_io { execute('validate alpha') }
-
-        assert_equal "Validating... Valid.\n", stdout
+        assert_includes execute('validate alpha'), 'Validating... Valid'
       end
     end
 
     def test_validate_invalid
       Directory.stub(:new, DirectoryDouble.new('alpha', false)) do
-        stdout, = capture_io { execute('validate alpha') }
-        assert_equal "Validating... Invalid.\n", stdout
+        assert_includes execute('validate alpha'), 'Validating... Invalid.'
       end
     end
 
@@ -99,7 +82,7 @@ module Humidifier
 
       cli.stub(:exit, nil) do
         assert_raises Error do
-          cli.safe_execute { raise Error }
+          capture_io { cli.safe_execute { raise Error } }
         end
       end
     end
@@ -110,14 +93,24 @@ module Humidifier
       cli.stub(:exit, nil) do
         stdout, = capture_io { cli.safe_execute { raise Error, 'foobar' } }
 
-        assert_equal "foobar\n", stdout
+        assert_includes stdout, 'foobar'
       end
     end
 
     private
 
     def execute(command)
-      CLI.start(command.split)
+      stdout, = capture_io { CLI.start(command.split) }
+      stdout
+    end
+
+    def parse_display(stdout)
+      lines = stdout.split("\n")
+
+      first = lines.index { |line| line.chomp == '{' }
+      last = lines.rindex { |line| line.chomp == '}' }
+
+      JSON.parse(lines[first..last].join)
     end
   end
 end
