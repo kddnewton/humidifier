@@ -151,6 +151,17 @@ module Humidifier
       assert stderr.start_with?('foobar')
     end
 
+    def test_valid_bad_permissions
+      error = Aws::CloudFormation::Errors::AccessDenied
+      Aws.config[:cloudformation] = {
+        stub_responses: { validate_template: error.new(nil, 'foobar') }
+      }
+
+      assert_raises Error do
+        build_stack.valid?
+      end
+    end
+
     def test_valid_upload_necessary # rubocop:disable Metrics/MethodLength
       Aws.config.merge!(
         s3: {
