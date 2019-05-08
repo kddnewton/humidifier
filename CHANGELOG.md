@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased]
 
+### Added
+
+- The CLI functionality from the `humidifier-reservoir` gem directly into `humidifier`.
+
 ## [3.0.1] - 2019-05-08
 
 ### Changed
