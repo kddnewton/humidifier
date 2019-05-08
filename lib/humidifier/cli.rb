@@ -15,7 +15,7 @@ module Humidifier
       authorize
 
       stack_names_from(name).each do |stack_name|
-        directory = Directory.new(stack_name)
+        directory = Config::Directory.new(stack_name)
 
         puts "Creating a changeset for #{directory.stack_name}"
         directory.create_change_set
@@ -30,7 +30,7 @@ module Humidifier
       authorize
 
       stack_names_from(name).each do |stack_name|
-        directory = Directory.new(stack_name, prefix: options[:prefix])
+        directory = Config::Directory.new(stack_name, prefix: options[:prefix])
 
         puts "Deploying #{directory.stack_name}"
         directory.deploy(options[:wait], parameters_from(parameters))
@@ -40,7 +40,7 @@ module Humidifier
     desc 'display [stack] [?pattern]',
          'Display the CloudFormation JSON for a given stack'
     def display(name, pattern = nil)
-      puts Directory.new(name, pattern: pattern && /#{pattern}/i).to_cf
+      puts Config::Directory.new(name, pattern: pattern && /#{pattern}/i).to_cf
     end
 
     desc 'upload [?stack]', 'Upload one or all stacks to S3'
@@ -48,7 +48,7 @@ module Humidifier
       authorize
 
       stack_names_from(name).each do |stack_name|
-        directory = Directory.new(stack_name)
+        directory = Config::Directory.new(stack_name)
 
         puts "Uploading #{directory.stack_name}"
         directory.upload
@@ -60,14 +60,14 @@ module Humidifier
     def validate(name = nil)
       authorize
 
-      stack_names = stack_names_from(name)
       print 'Validating... '
 
-      if stack_names.all? { |stack_name| Directory.new(stack_name).valid? }
-        puts 'Valid.'
-      else
-        puts 'Invalid.'
-      end
+      valid =
+        stack_names_from(name).all? do |stack_name|
+          Config::Directory.new(stack_name).valid?
+        end
+
+      puts valid ? 'Valid.' : 'Invalid.'
     end
 
     no_commands do
