@@ -1,0 +1,10 @@
+AlphaUser1:
+  user_name: AlphaUser1
+  export: true
+
+AlphaUser2:
+  user_name: AlphaUser2
+  export: Arn
+
+AlphaUser3:
+  user_name: AlphaUser3
