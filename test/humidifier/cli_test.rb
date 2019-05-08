@@ -83,13 +83,12 @@ module Humidifier
 
     def test_authorize
       cli = CLI.new([], aws_profile: 'default')
-      old_credentials = Aws.config[:credentials]
 
       begin
         cli.authorize
         assert_kind_of Aws::SharedCredentials, Aws.config[:credentials]
       ensure
-        Aws.config[:credentials] = old_credentials
+        Aws.config.delete(:credentials)
       end
     end
 
