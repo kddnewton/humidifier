@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/localytics/humidifier.svg?branch=master)](https://travis-ci.org/localytics/humidifier)
 [![Gem Version](https://img.shields.io/gem/v/humidifier.svg?maxAge=3600)](https://rubygems.org/gems/humidifier)
 
-Humidifier is a ruby tool for managing AWS CloudFormation stacks. You can use it to build and manage stacks programmatically or you can use it as a command line tool to manage stacks through configuration files.
+Humidifier is a ruby tool for managing [AWS CloudFormation](https://aws.amazon.com/cloudformation/) stacks. You can use it to build and manage stacks programmatically or you can use it as a command line tool to manage stacks through configuration files.
 
 - [Installation](#installation)
 - [Getting started](#getting-started)
