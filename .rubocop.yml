@@ -8,6 +8,9 @@ AllCops:
   - 'vendor/**/*'
   - 'yard/**/*'
 
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
 Metrics/ClassLength:
   Enabled: false
 
@@ -19,6 +22,9 @@ Naming/RescuedExceptionsVariableName:
 
 Style/Documentation:
   Enabled: false
+
+Style/FormatString:
+  EnforcedStyle: percent
 
 Style/MutableConstant:
   Enabled: false
