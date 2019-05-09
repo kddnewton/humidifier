@@ -1,0 +1,5 @@
+PrivateNetworkAcl:
+  vpc: VPC
+
+PublicNetworkAcl:
+  vpc: VPC

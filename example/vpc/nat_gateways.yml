@@ -1,0 +1,11 @@
+PublicSubnet2aNAT:
+  eip: PublicSubnet2aNATEIP
+  subnet: PublicSubnet2a
+
+PublicSubnet2bNAT:
+  eip: PublicSubnet2bNATEIP
+  subnet: PublicSubnet2b
+
+PublicSubnet2cNAT:
+  eip: PublicSubnet2cNATEIP
+  subnet: PublicSubnet2c

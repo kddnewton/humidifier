@@ -1,0 +1,11 @@
+PublicRouteTable:
+  vpc: VPC
+
+PrivateRouteTable2a:
+  vpc: VPC
+
+PrivateRouteTable2b:
+  vpc: VPC
+
+PrivateRouteTable2c:
+  vpc: VPC

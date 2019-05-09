@@ -1,0 +1,3 @@
+TemplateBucket:
+  bucket_name: "[mycompany]-templates"
+  versioning: true

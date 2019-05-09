@@ -1,0 +1,35 @@
+PrivateSubnet2a:
+  vpc: VPC
+  cidr_block: 10.0.0.0/19
+  availability_zone: us-west-2a
+  export: true
+
+PublicSubnet2a:
+  vpc: VPC
+  cidr_block: 10.0.32.0/20
+  availability_zone: us-west-2a
+  export: true
+
+PrivateSubnet2b:
+  vpc: VPC
+  cidr_block: 10.0.64.0/19
+  availability_zone: us-west-2b
+  export: true
+
+PublicSubnet2b:
+  vpc: VPC
+  cidr_block: 10.0.96.0/20
+  availability_zone: us-west-2b
+  export: true
+
+PrivateSubnet2c:
+  vpc: VPC
+  cidr_block: 10.0.128.0/19
+  availability_zone: us-west-2c
+  export: true
+
+PublicSubnet2c:
+  vpc: VPC
+  cidr_block: 10.0.160.0/20
+  availability_zone: us-west-2c
+  export: true

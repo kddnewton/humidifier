@@ -1,0 +1,7 @@
+S3Endpoint:
+  route_tables:
+  - PrivateRouteTable2a
+  - PrivateRouteTable2b
+  - PrivateRouteTable2c
+  service: s3
+  vpc: VPC

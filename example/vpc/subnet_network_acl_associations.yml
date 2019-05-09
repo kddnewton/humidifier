@@ -1,0 +1,23 @@
+PrivateSubnet2aNetworkAcl:
+  subnet: PrivateSubnet2a
+  network_acl: PrivateNetworkAcl
+
+PublicSubnet2aNetworkAcl:
+  subnet: PublicSubnet2a
+  network_acl: PublicNetworkAcl
+
+PrivateSubnet2bNetworkAcl:
+  subnet: PrivateSubnet2b
+  network_acl: PrivateNetworkAcl
+
+PublicSubnet2bNetworkAcl:
+  subnet: PublicSubnet2b
+  network_acl: PublicNetworkAcl
+
+PrivateSubnet2cNetworkAcl:
+  subnet: PrivateSubnet2c
+  network_acl: PrivateNetworkAcl
+
+PublicSubnet2cNetworkAcl:
+  subnet: PublicSubnet2c
+  network_acl: PublicNetworkAcl

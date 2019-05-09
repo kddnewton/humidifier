@@ -1,0 +1,90 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+ENV['AWS_REGION'] ||= 'us-west-2'
+
+require 'bundler/inline'
+
+gemfile do
+  source 'https://rubygems.org'
+  gem 'humidifier'
+end
+
+class NameToTag < Humidifier::Config::Mapper
+  defaults do |logical_name|
+    { tags: [{ key: 'Name', value: logical_name }] }
+  end
+end
+
+Humidifier.configure do |config|
+  config.s3_bucket = '[mycompany]-templates'
+
+  config.map :buckets, to: 'S3::Bucket' do
+    attribute :versioning do |versioning|
+      status = versioning ? 'Enabled' : 'Disabled'
+      { versioning_configuration: { status: status } }
+    end
+  end
+
+  config.map :eips, to: 'EC2::EIP' do
+    defaults do |_|
+      {
+        depends_on: 'InternetGatewayAttachment',
+        domain: 'vpc'
+      }
+    end
+  end
+
+  config.map :nat_gateways, to: 'EC2::NatGateway' do
+    defaults do |logical_name|
+      {
+        depends_on: 'InternetGatewayAttachment',
+        tags: [{ key: 'Name', value: logical_name }]
+      }
+    end
+
+    attribute :eip do |eip_name|
+      { allocation_id: Humidifier.fn.get_att([eip_name, 'AllocationId']) }
+    end
+  end
+
+  config.map :network_acl_entries, to: 'EC2::NetworkAclEntry' do
+    defaults do |_|
+      {
+        cidr_block: '0.0.0.0/0',
+        egress: false,
+        protocol: 6,
+        rule_action: 'allow'
+      }
+    end
+
+    attribute :port do |port|
+      { port_range: { from: port, to: port } }
+    end
+  end
+
+  config.map :vpc_endpoints, to: 'EC2::VPCEndpoint' do
+    attribute :route_tables do |route_tables|
+      route_tables.map! { |route_table| Humidifier.ref(route_table) }
+      { route_table_ids: route_tables }
+    end
+
+    attribute :service do |service|
+      components = ['com.amazonaws.', Humidifier.ref('AWS::Region'), ".#{service}"]
+
+      { service_name: Humidifier.fn.join(['', components]) }
+    end
+  end
+
+  config.map :internet_gateways, to: 'EC2::InternetGateway', using: NameToTag
+  config.map :network_acls, to: 'EC2::NetworkAcl', using: NameToTag
+  config.map :route_tables, to: 'EC2::RouteTable', using: NameToTag
+  config.map :routes, to: 'EC2::Route'
+  config.map :subnet_network_acl_associations, to: 'EC2::SubnetNetworkAclAssociation'
+  config.map :subnet_route_table_associations, to: 'EC2::SubnetRouteTableAssociation'
+  config.map :subnets, to: 'EC2::Subnet', using: NameToTag
+  config.map :vpc_gateway_attachments, to: 'EC2::VPCGatewayAttachment'
+  config.map :vpcs, to: 'EC2::VPC', using: NameToTag
+end
+
+Humidifier::CLI.start(ARGV)

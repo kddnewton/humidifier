@@ -1,0 +1,29 @@
+###################################
+# Public route table associations #
+###################################
+PublicSubnet2aPublicRouteTable:
+  subnet: PublicSubnet2a
+  route_table: PublicRouteTable
+
+PublicSubnet2bPublicRouteTable:
+  subnet: PublicSubnet2b
+  route_table: PublicRouteTable
+
+PublicSubnet2cPublicRouteTable:
+  subnet: PublicSubnet2c
+  route_table: PublicRouteTable
+
+####################################
+# Private route table associations #
+####################################
+PrivateSubnet2aPrivateRouteTable:
+  subnet: PrivateSubnet2a
+  route_table: PrivateRouteTable2a
+
+PrivateSubnet2bPrivateRouteTable:
+  subnet: PrivateSubnet2b
+  route_table: PrivateRouteTable2b
+
+PrivateSubnet2cPrivateRouteTable:
+  subnet: PrivateSubnet2c
+  route_table: PrivateRouteTable2c

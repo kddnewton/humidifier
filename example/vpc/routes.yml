@@ -1,0 +1,19 @@
+PublicGatewayRoute:
+  destination_cidr_block: 0.0.0.0/0
+  gateway: InternetGateway
+  route_table: PublicRouteTable
+
+Private2aNATRoute:
+  destination_cidr_block: 0.0.0.0/0
+  nat_gateway: PublicSubnet2aNAT
+  route_table: PrivateRouteTable2a
+
+Private2bNATRoute:
+  destination_cidr_block: 0.0.0.0/0
+  nat_gateway: PublicSubnet2bNAT
+  route_table: PrivateRouteTable2b
+
+Private2cNATRoute:
+  destination_cidr_block: 0.0.0.0/0
+  nat_gateway: PublicSubnet2cNAT
+  route_table: PrivateRouteTable2c

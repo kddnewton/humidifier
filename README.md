@@ -144,7 +144,7 @@ end
 
 ## CLI
 
-`Humidifier` can also be used as a CLI for managing resources through configuration files. To get started, build a ruby script (for example `bin/humidifier`) that executes the `Humidifier::CLI` class, like so:
+`Humidifier` can also be used as a CLI for managing resources through configuration files. To get started, build a ruby script (for example `humidifier`) that executes the `Humidifier::CLI` class, like so:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -232,7 +232,7 @@ AdminUser:
 
 ### Using the CLI
 
-Now that you've configured your CLI, your resources, and your mappers, you can use the CLI to display, validate, and deploy your infrastructure to CloudFormation. Run your script without any arguments to get the help message and explanations for each command.
+Now that you've configured your CLI, your resources, and your mappers, you can use the CLI to display, validate, and deploy your infrastructure to CloudFormation. Run your script without any arguments to get the help message and explanations for each command. For a longer example on how to use this tool to manage configuration files, check out the [example directory](example).
 
 Each command has an `--aws-profile` (or `-p`) option for specifying which profile to authenticate against when querying AWS. You should ensure that this profile has the correct permissions for creating whatever resources are going to part of your stack. You can also rely on the `AWS_*` environment variables, or the EC2 instance profile if you're deploying from an instance. For more information, see the [AWS docs](http://docs.aws.amazon.com/sdkforruby/api/) under the "Configuration" section.
 
@@ -271,8 +271,8 @@ CloudFormation template parameters can be specified by having a special `paramet
 
 You can pass values to the CLI deploy command after the stack name on the command line as in:
 
-```sh
-bin/humidifier deploy foobar Param1=Foo Param2=Bar
+```bash
+humidifier deploy foobar Param1=Foo Param2=Bar
 ```
 
 Those parameters will get passed in as values when the stack is deployed.

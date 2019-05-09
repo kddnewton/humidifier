@@ -1,0 +1,75 @@
+######################
+# Public ACL entries #
+######################
+PublicNetworkAclEntryHTTP:
+  network_acl: PublicNetworkAcl
+  rule_number: 100
+  port: 80
+
+PublicNetworkAclEntryHTTPS:
+  network_acl: PublicNetworkAcl
+  rule_number: 200
+  port: 443
+
+PublicNetworkAclEntrySSHFromPrivate:
+  network_acl: PublicNetworkAcl
+  rule_number: 300
+  port: 22
+  cidr_block: 10.0.0.0/16
+
+PublicNetworkAclEntryNTP:
+  network_acl: PublicNetworkAcl
+  rule_number: 400
+  port: 123
+  protocol: 17
+
+PublicNetworkAclEntryTCPEphemeral:
+  network_acl: PublicNetworkAcl
+  rule_number: 500
+  port_range:
+    from: 1024
+    to: 65535
+
+PublicNetworkAclEntryUDPEphemeral:
+  network_acl: PublicNetworkAcl
+  rule_number: 510
+  port_range:
+    from: 1024
+    to: 65535
+  protocol: 17
+
+PublicNetworkAclEntryOutbound:
+  network_acl: PublicNetworkAcl
+  rule_number: 100
+  protocol: -1
+  egress: true
+
+#######################
+# Private ACL entries #
+#######################
+PrivateNetworkAclEntrySSH:
+  network_acl: PrivateNetworkAcl
+  rule_number: 100
+  port: 22
+  cidr_block: 10.0.0.0/16
+
+PrivateNetworkAclEntryTCPEphermal:
+  network_acl: PrivateNetworkAcl
+  rule_number: 200
+  port_range:
+    from: 1024
+    to: 65535
+
+PrivateNetworkAclEntryUDPEphermal:
+  network_acl: PrivateNetworkAcl
+  rule_number: 300
+  port_range:
+    from: 1024
+    to: 65535
+  protocol: 17
+
+PrivateNetworkAclEntryOutbound:
+  network_acl: PrivateNetworkAcl
+  rule_number: 100
+  protocol: -1
+  egress: true
