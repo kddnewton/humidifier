@@ -55,11 +55,11 @@ humidifier display v3.2.0
 
 - Using the `*_id` shorthand
 
-A lot of resources within AWS accept `*_id` properties which should be direct references to other resources. `humidifier` handles that for you if you pass whatever is in place of `*` as the key, with the logical resource name as the value. For example, looking at [network_acl_entries.yml](vpcs/network_acl_entries.yml), you'll notice that we're passing a `network_acl` property for each entry that is just the name of the associated Network ACL. In reality [NetworkAclEntry](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-acl-entry.html) resources accept a `network_acl_id` property. Internally, `humidifier` handles this by automatically converting those into `{ "Ref" => * }` objects in the JSON. You can verify by viewing the output from the `./humidifier display vpc` command.
+A lot of resources within AWS accept `*_id` properties which should be direct references to other resources. `humidifier` handles that for you if you pass whatever is in place of `*` as the key, with the logical resource name as the value. For example, looking at [network_acl_entries.yml](vpc/network_acl_entries.yml), you'll notice that we're passing a `network_acl` property for each entry that is just the name of the associated Network ACL. In reality [NetworkAclEntry](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-network-acl-entry.html) resources accept a `network_acl_id` property. Internally, `humidifier` handles this by automatically converting those into `{ "Ref" => * }` objects in the JSON. You can verify by viewing the output from the `./humidifier display vpc` command.
 
 - Referencing attributes of other resources
 
-Looking at [nat_gateways.yml](vpcs/nat_gateways.yml), you'll notice that we're passing an `eip` property for each NAT that is just the name of the associated EIP resource. In reality, [NatGateway](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html) resources accept an `allocation_id` property, so in the mapping for NATs in the [humidifier script](humidifier), we map that `eip` property to a valid `allocation_id` property like so:
+Looking at [nat_gateways.yml](vpc/nat_gateways.yml), you'll notice that we're passing an `eip` property for each NAT that is just the name of the associated EIP resource. In reality, [NatGateway](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html) resources accept an `allocation_id` property, so in the mapping for NATs in the [humidifier script](humidifier), we map that `eip` property to a valid `allocation_id` property like so:
 
 ```ruby
 Humidifier.configure do |config|
