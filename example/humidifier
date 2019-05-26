@@ -16,7 +16,7 @@ class NameToTag < Humidifier::Config::Mapper
   end
 end
 
-Humidifier.configure do |config|
+Humidifier.configure do |config| # rubocop:disable Metrics/BlockLength
   config.s3_bucket = '[mycompany]-templates'
 
   config.map :buckets, to: 'S3::Bucket' do
@@ -70,7 +70,11 @@ Humidifier.configure do |config|
     end
 
     attribute :service do |service|
-      components = ['com.amazonaws.', Humidifier.ref('AWS::Region'), ".#{service}"]
+      components = [
+        'com.amazonaws.',
+        Humidifier.ref('AWS::Region'),
+        ".#{service}"
+      ]
 
       { service_name: Humidifier.fn.join(['', components]) }
     end
@@ -80,8 +84,10 @@ Humidifier.configure do |config|
   config.map :network_acls, to: 'EC2::NetworkAcl', using: NameToTag
   config.map :route_tables, to: 'EC2::RouteTable', using: NameToTag
   config.map :routes, to: 'EC2::Route'
-  config.map :subnet_network_acl_associations, to: 'EC2::SubnetNetworkAclAssociation'
-  config.map :subnet_route_table_associations, to: 'EC2::SubnetRouteTableAssociation'
+  config.map :subnet_network_acl_associations,
+             to: 'EC2::SubnetNetworkAclAssociation'
+  config.map :subnet_route_table_associations,
+             to: 'EC2::SubnetRouteTableAssociation'
   config.map :subnets, to: 'EC2::Subnet', using: NameToTag
   config.map :vpc_gateway_attachments, to: 'EC2::VPCGatewayAttachment'
   config.map :vpcs, to: 'EC2::VPC', using: NameToTag
