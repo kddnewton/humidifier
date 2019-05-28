@@ -7,13 +7,13 @@ require 'humidifier/version'
 Gem::Specification.new do |spec|
   spec.name          = 'humidifier'
   spec.version       = Humidifier::VERSION
-  spec.authors       = ['Localytics']
-  spec.email         = ['oss@localytics.com']
+  spec.authors       = ['Kevin Deisz']
+  spec.email         = ['kevin.deisz@gmail.com']
 
   spec.summary       = 'CloudFormation made easy'
   spec.description   = 'Programmatically generate and manage AWS ' \
                        'CloudFormation templates, stacks, and change sets.'
-  spec.homepage      = 'https://github.com/localytics/humidifier'
+  spec.homepage      = 'https://github.com/kddeisz/humidifier'
   spec.license       = 'MIT'
 
   spec.files         = Dir['LICENSE', 'README.md', 'lib/**/*',
