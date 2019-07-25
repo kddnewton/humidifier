@@ -2,8 +2,10 @@ language: ruby
 rvm: 2.4.6
 cache: bundler
 branches:
-  only:
-  - master
+  only: master
+before_install:
+- gem update --system
+- gem install bundler
 script:
 - bundle exec rake
 - bundle exec rubocop --parallel
