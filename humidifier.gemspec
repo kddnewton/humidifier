@@ -21,8 +21,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.4'
 
-  spec.add_dependency 'aws-sdk-cloudformation', '~> 1.19'
-  spec.add_dependency 'aws-sdk-s3', '~> 1.36'
+  spec.add_dependency 'aws-sdk-cloudformation', '~> 1.25'
+  spec.add_dependency 'aws-sdk-s3', '~> 1.48'
   spec.add_dependency 'fast_underscore', '~> 0.3'
   spec.add_dependency 'thor', '~> 0.20'
   spec.add_dependency 'thor-hollaback', '~> 0.1'
@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest', '~> 5.11'
   spec.add_development_dependency 'nokogiri', '~> 1.10'
   spec.add_development_dependency 'rake', '~> 12.3'
-  spec.add_development_dependency 'rubocop', '~> 0.73'
+  spec.add_development_dependency 'rubocop', '~> 0.74'
   spec.add_development_dependency 'simplecov', '~> 0.17'
   spec.add_development_dependency 'yard', '~> 0.9'
 end
