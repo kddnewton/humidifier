@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased]
 
+## [4.0.2] - 2019-12-11
+
+- Bump to CFN spec 10.0.0.
+
 ## [4.0.1] - 2019-11-14
 
 ### Changed
