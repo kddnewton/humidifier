@@ -29,12 +29,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'aws-sdk-cloudformation', '~> 1.25'
   spec.add_dependency 'aws-sdk-s3', '~> 1.48'
   spec.add_dependency 'fast_underscore', '~> 0.3'
+  spec.add_dependency 'nokogiri', '~> 1.10'
   spec.add_dependency 'thor', '~> 1.0'
   spec.add_dependency 'thor-hollaback', '~> 0.2'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'minitest', '~> 5.13'
-  spec.add_development_dependency 'nokogiri', '~> 1.10'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rubocop', '~> 0.77'
   spec.add_development_dependency 'simplecov', '~> 0.17'

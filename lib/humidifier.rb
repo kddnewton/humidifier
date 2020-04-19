@@ -77,6 +77,7 @@ require 'humidifier/parameter'
 require 'humidifier/resource'
 require 'humidifier/serializer'
 require 'humidifier/stack'
+require 'humidifier/upgrade'
 require 'humidifier/version'
 
 require 'humidifier/config'

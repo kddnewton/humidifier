@@ -48,8 +48,16 @@ module Humidifier
 
     desc 'stacks', 'List the stacks known to Humidifier'
     def stacks
-      puts '🗒  Listing stacks'
+      puts '🗒 Listing stacks'
       puts Humidifier.config.stack_names.sort.map { |name| "- #{name}" }
+    end
+
+    desc 'upgrade', 'Download the latest CloudFormation resource specification'
+    def upgrade
+      print '💾 Downloading...'
+
+      version = Upgrade.perform
+      puts " upgraded to v#{version}"
     end
 
     desc 'upload [?stack]', 'Upload one or all stacks to S3'

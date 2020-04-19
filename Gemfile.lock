@@ -5,6 +5,7 @@ PATH
       aws-sdk-cloudformation (~> 1.25)
       aws-sdk-s3 (~> 1.48)
       fast_underscore (~> 0.3)
+      nokogiri (~> 1.10)
       thor (~> 1.0)
       thor-hollaback (~> 0.2)
 
@@ -73,7 +74,6 @@ DEPENDENCIES
   bundler (~> 2.0)
   humidifier!
   minitest (~> 5.13)
-  nokogiri (~> 1.10)
   rake (~> 13.0)
   rubocop (~> 0.77)
   simplecov (~> 0.17)
