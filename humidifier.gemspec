@@ -16,10 +16,15 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/kddeisz/humidifier'
   spec.license       = 'MIT'
 
-  spec.files         = Dir['LICENSE', 'README.md', 'lib/**/*',
-                           'CloudFormationResourceSpecification.json']
+  spec.files         = Dir.chdir(__dir__) do
+    `git ls-files -z`.split("\x0").reject do |f|
+      f.match(%r{^(bin|docs|example|test|yard)/})
+    end
+  end
+
+  spec.bindir        = 'exe'
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '>= 2.4'
 
   spec.add_dependency 'aws-sdk-cloudformation', '~> 1.25'
   spec.add_dependency 'aws-sdk-s3', '~> 1.48'
