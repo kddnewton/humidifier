@@ -2,11 +2,9 @@
 
 module Humidifier
   class Upgrade
+    PATH = -File.expand_path(File.join('..', '..', SPECIFICATION), __dir__)
     URL = 'https://docs.aws.amazon.com/AWSCloudFormation/latest' \
           '/UserGuide/cfn-resource-specification.html'
-
-    file = 'CloudFormationResourceSpecification.json'
-    PATH = File.expand_path(File.join('..', '..', file), __dir__)
 
     def perform
       require 'net/http'
