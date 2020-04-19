@@ -22,6 +22,9 @@ String.prepend(
 
 # container module for all gem classes
 module Humidifier
+  # The file name of the specification for consistency.
+  SPECIFICATION = 'CloudFormationResourceSpecification.json'
+
   # A parent class for all Humidifier errors for easier rescuing.
   class Error < StandardError; end
 
@@ -77,6 +80,7 @@ require 'humidifier/parameter'
 require 'humidifier/resource'
 require 'humidifier/serializer'
 require 'humidifier/stack'
+require 'humidifier/upgrade'
 require 'humidifier/version'
 
 require 'humidifier/config'

@@ -97,6 +97,12 @@ module Humidifier
       end
     end
 
+    def test_upgrade
+      stdout = Upgrade.stub(:perform, '13.0.0') { execute('upgrade') }
+
+      assert_includes stdout, 'v13.0.0'
+    end
+
     private
 
     def execute(command)

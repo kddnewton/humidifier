@@ -6,7 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased]
 
+## [4.1.0] - 2020-04-19
+
+### Added
+
+- You can now run `humidifier upgrade`, which will download the latest specs from AWS, so that you won't need to upgrade this gem in order to do that.
+- This gem will now ship with a default CLI that you can execute. If you execute that CLI and you have a custom one it will automatically switch to executing that one instead.
+
 ## [4.0.2] - 2019-12-11
+
+### Changed
 
 - Bump to CFN spec 10.0.0.
 

@@ -31,8 +31,9 @@ module Humidifier
       # loop through the specs and register each class
       def load
         parsed = parse_spec
-        types = PropertyTypes.new(parsed['PropertyTypes'])
+        return unless parsed
 
+        types = PropertyTypes.new(parsed['PropertyTypes'])
         parsed['ResourceTypes'].each do |key, spec|
           match = key.match(/\A(\w+)::(\w+)::(\w+)\z/)
           register(match[1], match[2], match[3], spec, types.search(key))
@@ -55,10 +56,10 @@ module Humidifier
       end
 
       def parse_spec
-        relative =
-          File.join('..', '..', 'CloudFormationResourceSpecification.json')
+        path = File.expand_path(File.join('..', '..', SPECIFICATION), __dir__)
+        return unless File.file?(path)
 
-        JSON.parse(File.read(File.expand_path(relative, __dir__)))
+        JSON.parse(File.read(path))
       end
 
       def register(top, group, resource, spec, substructs)
