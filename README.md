@@ -22,6 +22,7 @@ Humidifier is a ruby tool for managing [AWS CloudFormation](https://aws.amazon.c
     - [`deploy [?stack] [*parameters]`](#deploy-stack-parameters)
     - [`display [stack] [?pattern]`](#display-stack-pattern)
     - [`stacks`](#stacks)
+    - [`upgrade`](#upgrade)
     - [`upload [?stack]`](#upload-stack)
     - [`validate [?stack]`](#validate-stack)
   - [Parameters](#parameters)
@@ -258,6 +259,10 @@ Displays the specified stack in JSON format on the command line. If you optional
 #### `stacks`
 
 Displays the names of all of the stacks that `humidifier` is managing.
+
+#### `upgrade`
+
+Downloads the latest CloudFormation resource specification. Periodically AWS will update the file that `humidifier` is based on, in which case the attributes of the resources that were changed could change. This gem usually stays relatively in sync, but if you need to use the latest specs and this gem has not yet released a new version containing them, then you can run this command to download the latest specs onto your system.
 
 #### `upload [?stack]`
 
