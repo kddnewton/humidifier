@@ -1,6 +1,12 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# If there is a `bin/humidifier` file, then swap out execution of this default
+# CLI with the custom CLI instead.
+if File.file?(File.join('bin', 'humidifier'))
+  exec(File.join('bin', 'humidifier'))
+end
+
 require 'bundler/setup'
 
 $LOAD_PATH.unshift File.expand_path(File.join('..', 'lib'), __dir__)
