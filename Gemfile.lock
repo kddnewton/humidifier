@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    humidifier (4.0.2)
+    humidifier (4.1.0)
       aws-sdk-cloudformation (~> 1.25)
       aws-sdk-s3 (~> 1.48)
       fast_underscore (~> 0.3)
