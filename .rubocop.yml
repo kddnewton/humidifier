@@ -6,6 +6,9 @@ AllCops:
   - 'vendor/**/*'
   - 'yard/**/*'
 
+Layout/LineLength:
+  Max: 80
+
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 
