@@ -1,37 +1,8 @@
-AllCops:
-  DisplayCopNames: true
-  DisplayStyleGuide: true
-  TargetRubyVersion: 2.4
-  Exclude:
-  - 'vendor/**/*'
-  - 'yard/**/*'
-
-Layout/LineLength:
-  Max: 80
-
-Lint/AmbiguousBlockAssociation:
-  Enabled: false
+inherit_gem:
+  rb: rubocop.yml
 
 Metrics/ClassLength:
   Enabled: false
 
 Naming/MemoizedInstanceVariableName:
-  Enabled: false
-
-Naming/RescuedExceptionsVariableName:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/FormatString:
-  EnforcedStyle: percent
-
-Style/FormatStringToken:
-  Enabled: false
-
-Style/MutableConstant:
-  Enabled: false
-
-Style/PerlBackrefs:
   Enabled: false

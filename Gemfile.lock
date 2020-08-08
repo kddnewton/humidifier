@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/kddeisz/rb.git
+  revision: 5349d5d0536b096fc80f11d51df2cdf979894c00
+  specs:
+    rb (0.1.0)
+      rubocop (~> 0.89)
+      simplecov (~> 0.17)
+
 PATH
   remote: .
   specs:
@@ -47,7 +55,7 @@ GEM
     rake (13.0.1)
     regexp_parser (1.7.1)
     rexml (3.2.4)
-    rubocop (0.88.0)
+    rubocop (0.89.0)
       parallel (~> 1.10)
       parser (>= 2.7.1.1)
       rainbow (>= 2.2.2, < 4.0)
@@ -56,8 +64,8 @@ GEM
       rubocop-ast (>= 0.1.0, < 1.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (0.1.0)
-      parser (>= 2.7.0.1)
+    rubocop-ast (0.3.0)
+      parser (>= 2.7.1.4)
     ruby-progressbar (1.10.1)
     simplecov (0.18.5)
       docile (~> 1.1)
@@ -78,8 +86,7 @@ DEPENDENCIES
   humidifier!
   minitest (~> 5.13)
   rake (~> 13.0)
-  rubocop (~> 0.77)
-  simplecov (~> 0.17)
+  rb!
   yard (~> 0.9)
 
 BUNDLED WITH
