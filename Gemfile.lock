@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/kddeisz/rb.git
-  revision: 0dd922b7031b3274cdd1f0c8db1f26a147ef9e7a
-  specs:
-    rb (0.1.0)
-      rubocop (~> 0.89)
-      simplecov (~> 0.17)
-
 PATH
   remote: .
   specs:
@@ -22,11 +14,11 @@ GEM
   specs:
     ast (2.4.1)
     aws-eventstream (1.1.0)
-    aws-partitions (1.343.0)
+    aws-partitions (1.353.0)
     aws-sdk-cloudformation (1.41.0)
       aws-sdk-core (~> 3, >= 3.99.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-core (3.104.1)
+    aws-sdk-core (3.104.3)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
@@ -34,7 +26,7 @@ GEM
     aws-sdk-kms (1.36.0)
       aws-sdk-core (~> 3, >= 3.99.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.75.0)
+    aws-sdk-s3 (1.76.0)
       aws-sdk-core (~> 3, >= 3.104.1)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.1)
@@ -86,7 +78,8 @@ DEPENDENCIES
   humidifier!
   minitest (~> 5.13)
   rake (~> 13.0)
-  rb!
+  rubocop (~> 0.89)
+  simplecov (~> 0.17)
   yard (~> 0.9)
 
 BUNDLED WITH
