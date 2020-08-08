@@ -1,5 +1,5 @@
 inherit_gem:
-  rb: rubocop.yml
+  rb: config/rubocop.yml
 
 Metrics/ClassLength:
   Enabled: false

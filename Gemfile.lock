@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kddeisz/rb.git
-  revision: 5349d5d0536b096fc80f11d51df2cdf979894c00
+  revision: 0dd922b7031b3274cdd1f0c8db1f26a147ef9e7a
   specs:
     rb (0.1.0)
       rubocop (~> 0.89)
