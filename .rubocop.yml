@@ -32,5 +32,14 @@ Style/FormatString:
 Style/FormatStringToken:
   Enabled: false
 
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+
 Style/PerlBackrefs:
   Enabled: false
