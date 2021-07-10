@@ -7,8 +7,8 @@ require 'humidifier/version'
 Gem::Specification.new do |spec|
   spec.name          = 'humidifier'
   spec.version       = Humidifier::VERSION
-  spec.authors       = ['Kevin Deisz']
-  spec.email         = ['kevin.deisz@gmail.com']
+  spec.authors       = ['Kevin Newton']
+  spec.email         = ['kddnewton@gmail.com']
 
   spec.summary       = 'CloudFormation made easy'
   spec.description   = 'Programmatically generate and manage AWS ' \
