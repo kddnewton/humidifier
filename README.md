@@ -1,6 +1,6 @@
 # Humidifier
 
-[![Build Status](https://github.com/kddeisz/humidifier/workflows/Main/badge.svg)](https://github.com/kddeisz/humidifier/actions)
+[![Build Status](https://github.com/kddnewton/humidifier/workflows/Main/badge.svg)](https://github.com/kddnewton/humidifier/actions)
 [![Gem Version](https://img.shields.io/gem/v/humidifier.svg)](https://rubygems.org/gems/humidifier)
 
 Humidifier is a ruby tool for managing [AWS CloudFormation](https://aws.amazon.com/cloudformation/) stacks. You can use it to build and manage stacks programmatically or you can use it as a command line tool to manage stacks through configuration files.
@@ -191,7 +191,7 @@ AdminUser:
   - Administration
 ```
 
-The top-level keys are the logical resource names that will be displayed in the CloudFormation screen. They point to a map of key/value pairs that will be passed on to `humidifier`. Any `humidifier` (and therefore any CloudFormation) attribute may be specified. For more information on CloudFormation templates and which attributes may be specified, see both the [`humidifier` docs](http://kddeisz.github.io/humidifier) and the [CloudFormation docs](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-guide.html).
+The top-level keys are the logical resource names that will be displayed in the CloudFormation screen. They point to a map of key/value pairs that will be passed on to `humidifier`. Any `humidifier` (and therefore any CloudFormation) attribute may be specified. For more information on CloudFormation templates and which attributes may be specified, see both the [`humidifier` docs](http://kddnewton.github.io/humidifier) and the [CloudFormation docs](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-guide.html).
 
 ### Mappers
 
@@ -402,7 +402,7 @@ The specs pulled from the CFN docs is saved to `CloudFormationResourceSpecificat
 
 ### Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kddeisz/humidifier.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kddnewton/humidifier.
 
 ### License
 

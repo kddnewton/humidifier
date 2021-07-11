@@ -92,16 +92,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ### Changed
 - Update to CloudFormation specs v2.15.0
 
-[unreleased]: https://github.com/kddeisz/humidifier/compare/v4.1.0...HEAD
-[4.1.0]: https://github.com/kddeisz/humidifier/compare/v4.0.2...v4.1.0
-[4.0.2]: https://github.com/kddeisz/humidifier/compare/v4.0.1...v4.0.2
-[4.0.1]: https://github.com/kddeisz/humidifier/compare/v4.0.0...v4.0.1
-[4.0.0]: https://github.com/kddeisz/humidifier/compare/v3.5.0...v4.0.0
-[3.5.0]: https://github.com/kddeisz/humidifier/compare/v3.4.0...v3.5.0
-[3.4.0]: https://github.com/kddeisz/humidifier/compare/v3.3.0...v3.4.0
-[3.3.0]: https://github.com/kddeisz/humidifier/compare/v3.2.0...v3.3.0
-[3.2.0]: https://github.com/kddeisz/humidifier/compare/v3.1.0...v3.2.0
-[3.1.0]: https://github.com/kddeisz/humidifier/compare/v3.0.1...v3.1.0
-[3.0.1]: https://github.com/kddeisz/humidifier/compare/v3.0.0...v3.0.1
-[3.0.0]: https://github.com/kddeisz/humidifier/compare/v2.15.0...v3.0.0
-[2.15.0]: https://github.com/kddeisz/humidifier/compare/f05157...v2.15.0
+[unreleased]: https://github.com/kddnewton/humidifier/compare/v4.1.0...HEAD
+[4.1.0]: https://github.com/kddnewton/humidifier/compare/v4.0.2...v4.1.0
+[4.0.2]: https://github.com/kddnewton/humidifier/compare/v4.0.1...v4.0.2
+[4.0.1]: https://github.com/kddnewton/humidifier/compare/v4.0.0...v4.0.1
+[4.0.0]: https://github.com/kddnewton/humidifier/compare/v3.5.0...v4.0.0
+[3.5.0]: https://github.com/kddnewton/humidifier/compare/v3.4.0...v3.5.0
+[3.4.0]: https://github.com/kddnewton/humidifier/compare/v3.3.0...v3.4.0
+[3.3.0]: https://github.com/kddnewton/humidifier/compare/v3.2.0...v3.3.0
+[3.2.0]: https://github.com/kddnewton/humidifier/compare/v3.1.0...v3.2.0
+[3.1.0]: https://github.com/kddnewton/humidifier/compare/v3.0.1...v3.1.0
+[3.0.1]: https://github.com/kddnewton/humidifier/compare/v3.0.0...v3.0.1
+[3.0.0]: https://github.com/kddnewton/humidifier/compare/v2.15.0...v3.0.0
+[2.15.0]: https://github.com/kddnewton/humidifier/compare/f05157...v2.15.0

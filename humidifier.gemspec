@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'CloudFormation made easy'
   spec.description   = 'Programmatically generate and manage AWS ' \
                        'CloudFormation templates, stacks, and change sets.'
-  spec.homepage      = 'https://github.com/kddeisz/humidifier'
+  spec.homepage      = 'https://github.com/kddnewton/humidifier'
   spec.license       = 'MIT'
 
   spec.files         = Dir.chdir(__dir__) do
