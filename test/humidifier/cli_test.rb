@@ -68,10 +68,11 @@ module Humidifier
 
     def test_authorize
       cli = CLI.new([], aws_profile: 'default')
+      credentials = Object.new
 
       begin
-        cli.authorize
-        assert_kind_of Aws::SharedCredentials, Aws.config[:credentials]
+        Aws::SharedCredentials.stub(:new, credentials) { cli.authorize }
+        assert_equal credentials, Aws.config[:credentials]
       ensure
         Aws.config.delete(:credentials)
       end
