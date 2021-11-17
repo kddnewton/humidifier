@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased]
 
+## [4.1.1] - 2021-11-17
+
+### Changed
+
+- Require MFA for releasing.
+
 ## [4.1.0] - 2020-04-19
 
 ### Added
@@ -92,7 +98,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ### Changed
 - Update to CloudFormation specs v2.15.0
 
-[unreleased]: https://github.com/kddnewton/humidifier/compare/v4.1.0...HEAD
+[unreleased]: https://github.com/kddnewton/humidifier/compare/v4.1.1...HEAD
+[4.1.1]: https://github.com/kddnewton/humidifier/compare/v4.1.0...v4.1.1
 [4.1.0]: https://github.com/kddnewton/humidifier/compare/v4.0.2...v4.1.0
 [4.0.2]: https://github.com/kddnewton/humidifier/compare/v4.0.1...v4.0.2
 [4.0.1]: https://github.com/kddnewton/humidifier/compare/v4.0.0...v4.0.1
