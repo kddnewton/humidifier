@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 module Humidifier
   class ClientTest < Minitest::Test
@@ -14,18 +14,18 @@ module Humidifier
 
     def test_create
       Aws.config[:cloudformation] = {
-        stub_responses: { create_stack: { stack_id: 'test-id' } }
+        stub_responses: { create_stack: { stack_id: "test-id" } }
       }
 
       stack = build_stack
       stack.create
 
-      assert_equal 'test-id', stack.id
+      assert_equal "test-id", stack.id
     end
 
     def test_create_and_wait
       Aws.config[:cloudformation] = {
-        stub_responses: { create_stack: { stack_id: 'test-id' } }
+        stub_responses: { create_stack: { stack_id: "test-id" } }
       }
 
       build_stack.create_and_wait
@@ -41,7 +41,7 @@ module Humidifier
 
     def test_create_change_set_no_resources
       assert_raises Humidifier::Stack::NoResourcesError do
-        Stack.new(name: 'stack-name').create_change_set
+        Stack.new(name: "stack-name").create_change_set
       end
     end
 
@@ -71,18 +71,18 @@ module Humidifier
 
     def test_deploy_does_not_exists
       Aws.config[:cloudformation] = {
-        stub_responses: { create_stack: { stack_id: 'test-id' } }
+        stub_responses: { create_stack: { stack_id: "test-id" } }
       }
 
       stack = build_stack
       with_stack_status(false) { stack.deploy }
 
-      assert_equal 'test-id', stack.id
+      assert_equal "test-id", stack.id
     end
 
     def test_deploy_no_resources
       assert_raises Humidifier::Stack::NoResourcesError do
-        Stack.new(name: 'stack-name').deploy
+        Stack.new(name: "stack-name").deploy
       end
     end
 
@@ -104,7 +104,7 @@ module Humidifier
 
     def test_deploy_change_set_does_not_exist
       Aws.config[:cloudformation] = {
-        stub_responses: { create_stack: { stack_id: 'stack-id' } }
+        stub_responses: { create_stack: { stack_id: "stack-id" } }
       }
 
       with_stack_status(false) { build_stack.deploy_change_set }
@@ -132,7 +132,7 @@ module Humidifier
           build_stack.upload
         end
 
-      assert_includes error.message, 'stack-name'
+      assert_includes error.message, "stack-name"
     end
 
     def test_upload_with_config
@@ -140,14 +140,14 @@ module Humidifier
         stub_responses: { get_object: true, put_object: true }
       }
 
-      with_config s3_bucket: 'foobar' do
+      with_config s3_bucket: "foobar" do
         build_stack.upload
       end
     end
 
     def test_upload_no_resources
       assert_raises Humidifier::Stack::NoResourcesError do
-        Stack.new(name: 'stack-name').upload
+        Stack.new(name: "stack-name").upload
       end
     end
 
@@ -162,17 +162,17 @@ module Humidifier
     def test_valid_false
       error = Aws::CloudFormation::Errors::ValidationError
       Aws.config[:cloudformation] = {
-        stub_responses: { validate_template: error.new(nil, 'foobar') }
+        stub_responses: { validate_template: error.new(nil, "foobar") }
       }
 
       _stdout, stderr, = capture_io { refute build_stack.valid? }
-      assert stderr.start_with?('foobar')
+      assert stderr.start_with?("foobar")
     end
 
     def test_valid_bad_permissions
       error = Aws::CloudFormation::Errors::AccessDenied
       Aws.config[:cloudformation] = {
-        stub_responses: { validate_template: error.new(nil, 'foobar') }
+        stub_responses: { validate_template: error.new(nil, "foobar") }
       }
 
       assert_raises Error do
@@ -180,7 +180,7 @@ module Humidifier
       end
     end
 
-    def test_valid_upload_necessary # rubocop:disable Metrics/MethodLength
+    def test_valid_upload_necessary
       Aws.config.merge!(
         s3: {
           stub_responses: { get_object: true, put_object: true }
@@ -192,11 +192,11 @@ module Humidifier
 
       stack = build_stack
       stack.add(
-        'a' * Stack::MAX_TEMPLATE_BODY_SIZE,
-        stack.resources.delete('asg')
+        "a" * Stack::MAX_TEMPLATE_BODY_SIZE,
+        stack.resources.delete("asg")
       )
 
-      with_config s3_bucket: 'foobar' do
+      with_config s3_bucket: "foobar" do
         assert stack.valid?
       end
     end
@@ -204,8 +204,8 @@ module Humidifier
     def test_valid_stack_too_large
       stack = build_stack
       stack.add(
-        'a' * Stack::MAX_TEMPLATE_URL_SIZE,
-        stack.resources.delete('asg')
+        "a" * Stack::MAX_TEMPLATE_URL_SIZE,
+        stack.resources.delete("asg")
       )
 
       assert_raises Stack::TemplateTooLargeError do
@@ -216,9 +216,9 @@ module Humidifier
     private
 
     def build_stack
-      Stack.new(name: 'stack-name').tap do |stack|
+      Stack.new(name: "stack-name").tap do |stack|
         asg = AutoScaling::AutoScalingGroup
-        stack.add('asg', asg.new(min_size: '1', max_size: '20'))
+        stack.add("asg", asg.new(min_size: "1", max_size: "20"))
         stack.client = WaitingClient.new(stack.client)
       end
     end

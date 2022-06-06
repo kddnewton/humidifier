@@ -11,7 +11,7 @@ module Humidifier
 
     # Builds CFN syntax
     def to_cf
-      { 'Ref' => Serializer.dump(reference) }
+      { "Ref" => Serializer.dump(reference) }
     end
   end
 end

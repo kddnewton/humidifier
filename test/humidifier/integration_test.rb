@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
-# rubocop:disable Metrics/MethodLength
 module Humidifier
   class IntegrationTest < Minitest::Test
     def test_to_cf
-      resources = { 'Distribution' => distribution, 'SpotFleet' => spot_fleet }
-      stack = Stack.new(name: 'Test-Stack', resources: resources)
+      resources = { "Distribution" => distribution, "SpotFleet" => spot_fleet }
+      stack = Stack.new(name: "Test-Stack", resources: resources)
 
-      filepath = File.expand_path('integration_test.json', __dir__)
+      filepath = File.expand_path("integration_test.json", __dir__)
       expected = JSON.parse(File.read(filepath))
 
       assert_equal expected, JSON.parse(stack.to_cf)
@@ -23,35 +22,35 @@ module Humidifier
       CloudFront::Distribution.new(
         distribution_config: {
           origins: [{
-            domain_name: 'mybucket.s3.amazonaws.com',
-            id: 'myS3Origin',
+            domain_name: "mybucket.s3.amazonaws.com",
+            id: "myS3Origin",
             s3_origin_config: {
-              origin_access_identity: 'oai/cloudfront/E127EXAMPLE51Z'
+              origin_access_identity: "oai/cloudfront/E127EXAMPLE51Z"
             }
           }],
           enabled: true,
-          comment: 'Some comment',
-          default_root_object: 'index.html',
+          comment: "Some comment",
+          default_root_object: "index.html",
           logging: {
             include_cookies: false,
-            bucket: 'mylogs.s3.amazonaws.com',
-            prefix: 'myprefix'
+            bucket: "mylogs.s3.amazonaws.com",
+            prefix: "myprefix"
           },
           aliases: %w[mysite.example.com yoursite.example.com],
           default_cache_behavior: {
             allowed_methods: %w[DELETE GET HEAD OPTIONS PATCH POST PUT],
-            target_origin_id: 'myS3Origin',
+            target_origin_id: "myS3Origin",
             forwarded_values: {
               query_string: false,
-              cookies: { forward: 'none' }
+              cookies: { forward: "none" }
             },
             trusted_signers: %w[1234567890EX 1234567891EX],
-            viewer_protocol_policy: 'allow-all'
+            viewer_protocol_policy: "allow-all"
           },
-          price_class: 'PriceClass_200',
+          price_class: "PriceClass_200",
           restrictions: {
             geo_restriction: {
-              restriction_type: 'whitelist',
+              restriction_type: "whitelist",
               locations: %w[AQ CV]
             }
           },
@@ -62,13 +61,13 @@ module Humidifier
 
     def launch_specification
       {
-        instance_type: Humidifier.ref('InstanceType'),
+        instance_type: Humidifier.ref("InstanceType"),
         image_id: Humidifier.fn.find_in_map(
           [
-            'AWSRegionArch2AMI',
-            Humidifier.ref('AWS::Region'),
+            "AWSRegionArch2AMI",
+            Humidifier.ref("AWS::Region"),
             Humidifier.fn.find_in_map(
-              ['AWSInstanceType2Arch', Humidifier.ref('InstanceType'), 'Arch']
+              ["AWSInstanceType2Arch", Humidifier.ref("InstanceType"), "Arch"]
             )
           ]
         ),
@@ -81,13 +80,13 @@ module Humidifier
     def spot_fleet
       EC2::SpotFleet.new(
         spot_fleet_request_config_data: {
-          iam_fleet_role: Humidifier.ref('IAMFleetRole'),
-          spot_price: '1000',
-          target_capacity: Humidifier.ref('TargetCapacity'),
+          iam_fleet_role: Humidifier.ref("IAMFleetRole"),
+          spot_price: "1000",
+          target_capacity: Humidifier.ref("TargetCapacity"),
           launch_specifications: [
             launch_specification.merge(
               ebs_optimized: false,
-              subnet_id: Humidifier.ref('Subnet1')
+              subnet_id: Humidifier.ref("Subnet1")
             ),
             launch_specification.merge(
               ebs_optimized: true,
@@ -95,7 +94,7 @@ module Humidifier
               security_groups: [
                 { group_id: Humidifier.fn.get_att(%w[SG0 GroupId]) }
               ],
-              subnet_id: Humidifier.ref('Subnet0'),
+              subnet_id: Humidifier.ref("Subnet0"),
               iam_instance_profile: {
                 arn: Humidifier.fn.get_att(%w[RootInstanceProfile Arn])
               }
@@ -106,4 +105,3 @@ module Humidifier
     end
   end
 end
-# rubocop:enable Metrics/MethodLength

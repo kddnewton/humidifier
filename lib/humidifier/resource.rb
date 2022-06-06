@@ -45,8 +45,8 @@ module Humidifier
         end
 
       common_attributes.merge!(
-        'Type' => self.class.aws_name,
-        'Properties' => props_cf.to_h
+        "Type" => self.class.aws_name,
+        "Properties" => props_cf.to_h
       )
     end
 
@@ -114,7 +114,7 @@ module Humidifier
 
     def validate_property(property)
       unless self.class.prop?(property)
-        raise ArgumentError, 'Attempting to set invalid property for ' \
+        raise ArgumentError, "Attempting to set invalid property for " \
                              "#{self.class.name}: #{property}"
       end
 

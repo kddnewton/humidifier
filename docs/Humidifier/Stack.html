@@ -143,7 +143,7 @@
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>AWS_REGION</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>us-east-1</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+        <dd><pre class="code"><span class='const'>ENV</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AWS_REGION</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>us-east-1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></pre></dd>
       
         <dt id="ENUMERABLE_RESOURCES-constant" class="">ENUMERABLE_RESOURCES =
           <div class="docstring">
@@ -771,9 +771,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>rubocop:disable Metrics/AbcSize.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -1670,8 +1668,6 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>rubocop:disable Metrics/AbcSize</p>
-
 
   </div>
 </div>
@@ -1713,8 +1709,8 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/humidifier/stack.rb', line 187</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_upload'>upload</span> <span class='comment'># rubocop:disable Metrics/AbcSize
-</span>  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Stack/NoResourcesError.html" title="Humidifier::Stack::NoResourcesError (class)">NoResourcesError</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Stack/NoResourcesError.html#initialize-instance_method" title="Humidifier::Stack::NoResourcesError#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='symbol'>:upload</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_resources'>resources</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_upload'>upload</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Stack/NoResourcesError.html" title="Humidifier::Stack::NoResourcesError (class)">NoResourcesError</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Stack/NoResourcesError.html#initialize-instance_method" title="Humidifier::Stack::NoResourcesError#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='symbol'>:upload</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_resources'>resources</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
 
   <span class='id identifier rubyid_bucket'>bucket</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_config'><span class='object_link'><a href="../Humidifier.html#config-class_method" title="Humidifier.config (method)">config</a></span></span><span class='period'>.</span><span class='id identifier rubyid_s3_bucket'>s3_bucket</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Stack/UploadNotConfiguredError.html" title="Humidifier::Stack::UploadNotConfiguredError (class)">UploadNotConfiguredError</a></span></span><span class='comma'>,</span> <span class='id identifier rubyid_identifier'>identifier</span> <span class='kw'>unless</span> <span class='id identifier rubyid_bucket'>bucket</span>

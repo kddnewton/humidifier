@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 module Humidifier
   module Props
@@ -19,23 +19,23 @@ module Humidifier
 
       def test_with_subprop
         assert build.valid?([1, 2])
-        refute build.valid?([1, 'foo'])
+        refute build.valid?([1, "foo"])
       end
 
       def test_to_cf
-        assert_equal ['Test', [1, 2]], build.to_cf([1, 2])
-        assert_equal ['Test', [1, 2]], build.to_cf([1, 2])
+        assert_equal ["Test", [1, 2]], build.to_cf([1, 2])
+        assert_equal ["Test", [1, 2]], build.to_cf([1, 2])
       end
 
       def test_to_cf_ref
-        actual = build.to_cf(Humidifier.ref('Foo'))
-        assert_equal ['Test', { 'Ref' => 'Foo' }], actual
+        actual = build.to_cf(Humidifier.ref("Foo"))
+        assert_equal ["Test", { "Ref" => "Foo" }], actual
       end
 
       private
 
       def build
-        ListProp.new('Test', 'PrimitiveType' => 'Integer')
+        ListProp.new("Test", {}, IntegerProp.new("Test"))
       end
     end
   end

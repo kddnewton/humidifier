@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 module Humidifier
   module Props
@@ -13,14 +13,14 @@ module Humidifier
 
       def test_rejects_other_values
         refute build.valid?(Object.new)
-        refute build.valid?('{}')
+        refute build.valid?("{}")
         refute build.valid?(1)
       end
 
       private
 
       def build
-        JsonProp.new('Test')
+        JsonProp.new("Test")
       end
     end
   end

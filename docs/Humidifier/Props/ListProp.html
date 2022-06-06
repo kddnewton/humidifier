@@ -164,7 +164,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(key, spec = {}, substructs = {})  &#x21d2; ListProp </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(key, spec = {}, subprop = nil)  &#x21d2; ListProp </a>
     
 
     
@@ -183,6 +183,28 @@
     <span class="summary_desc"><div class='inline'>
 <p>A new instance of ListProp.</p>
 </div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pretty_print-instance_method" title="#pretty_print (instance method)">#<strong>pretty_print</strong>(q)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -251,7 +273,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(key, spec = {}, substructs = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Humidifier::Props::ListProp (class)">ListProp</a></span></tt> 
+    #<strong>initialize</strong>(key, spec = {}, subprop = nil)  &#x21d2; <tt><span class='object_link'><a href="" title="Humidifier::Props::ListProp (class)">ListProp</a></span></tt> 
   
 
   
@@ -274,17 +296,17 @@
       <pre class="lines">
 
 
-83
-84
-85
-86</pre>
+107
+108
+109
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 107</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_subprop'>subprop</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
-  <span class='ivar'>@subprop</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Props.html" title="Humidifier::Props (module)">Props</a></span></span><span class='period'>.</span><span class='id identifier rubyid_singular_from'><span class='object_link'><a href="../Props.html#singular_from-class_method" title="Humidifier::Props.singular_from (method)">singular_from</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span><span class='rparen'>)</span>
+  <span class='ivar'>@subprop</span> <span class='op'>=</span> <span class='id identifier rubyid_subprop'>subprop</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -324,12 +346,12 @@
       <pre class="lines">
 
 
-81
-82
-83</pre>
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 105</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_subprop'>subprop</span>
   <span class='ivar'>@subprop</span>
@@ -347,7 +369,53 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="to_cf-instance_method">
+  <h3 class="signature first" id="pretty_print-instance_method">
+  
+    #<strong>pretty_print</strong>(q)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 112</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_pretty_print'>pretty_print</span><span class='lparen'>(</span><span class='id identifier rubyid_q'>q</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_group'>group</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>=list</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_nest'>nest</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_breakable'>breakable</span>
+      <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_pp'>pp</span><span class='lparen'>(</span><span class='id identifier rubyid_subprop'>subprop</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_breakable'>breakable</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_cf-instance_method">
   
     #<strong>to_cf</strong>(list)  &#x21d2; <tt>Object</tt> 
   
@@ -361,19 +429,19 @@
       <pre class="lines">
 
 
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97</pre>
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 124</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span><span class='lparen'>(</span><span class='id identifier rubyid_list'>list</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cf_value'>cf_value</span> <span class='op'>=</span>
@@ -427,14 +495,14 @@
       <pre class="lines">
 
 
-99
-100
-101
-102
-103</pre>
+135
+136
+137
+138
+139</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 135</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_list'>list</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_list'>list</span><span class='rparen'>)</span>

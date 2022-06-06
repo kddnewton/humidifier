@@ -82,7 +82,7 @@ module Humidifier
         begin
           parameter_filepath =
             Humidifier.config.files_for(name).detect do |filepath|
-              File.basename(filepath, '.yml') == 'parameters'
+              File.basename(filepath, ".yml") == "parameters"
             end
 
           parameter_filepath ? parameters_from(parameter_filepath) : {}
@@ -94,7 +94,7 @@ module Humidifier
       return {} unless loaded
 
       loaded.each_with_object({}) do |(name, opts), params|
-        opts = opts.map { |key, value| [key.to_sym, value] }.to_h
+        opts = opts.to_h { |key, value| [key.to_sym, value] }
         params[name] = Parameter.new(opts)
       end
     end
@@ -109,7 +109,7 @@ module Humidifier
       loaded.each_with_object({}) do |(name, attributes), resources|
         next if pattern && name !~ pattern
 
-        attribute = attributes.delete('export')
+        attribute = attributes.delete("export")
         exports << Export.new(name, attribute) if attribute
 
         resources[name] = mapping.resource_for(name, attributes)
@@ -120,10 +120,10 @@ module Humidifier
       filepaths = Humidifier.config.files_for(name)
 
       filepaths.each_with_object({}) do |filepath, resources|
-        basename = File.basename(filepath, '.yml')
+        basename = File.basename(filepath, ".yml")
 
         # Explicitly skip past parameters so we can pull them out later
-        next if basename == 'parameters'
+        next if basename == "parameters"
 
         resources.merge!(parse(filepath, basename))
       end

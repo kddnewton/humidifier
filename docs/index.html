@@ -91,17 +91,19 @@
 </li><li>
 <p><a href="#using-the-cli">Using the CLI</a></p>
 <ul><li>
-<p><a href="#change-stack">change [?stack]</a></p>
+<p>[?stack]</code><a href="#change-stack"></a></p>
 </li><li>
-<p><a href="#deploy-stack-parameters">deploy [?stack] [*parameters]</a></p>
+<p>[?stack] [*parameters]</code><a href="#deploy-stack-parameters"></a></p>
 </li><li>
-<p><a href="#display-stack-pattern">display [stack] [?pattern]</a></p>
+<p>[stack] [?pattern]</code><a href="#display-stack-pattern"></a></p>
 </li><li>
-<p><a href="#stacks">stacks</a></p>
+<p>href="#stacks"></a></p>
 </li><li>
-<p><a href="#upload-stack">upload [?stack]</a></p>
+<p>href="#upgrade"></a></p>
 </li><li>
-<p><a href="#validate-stack">validate [?stack]</a></p>
+<p>[?stack]</code><a href="#upload-stack"></a></p>
+</li><li>
+<p>[?stack]</code><a href="#validate-stack"></a></p>
 </li></ul>
 </li><li>
 <p><a href="#parameters">Parameters</a></p>
@@ -128,7 +130,7 @@
 
 <h2 id="label-Installation">Installation</h2>
 
-<p>Add this line to your application&#39;s Gemfile:</p>
+<p>Add this line to your application’s Gemfile:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>humidifier</span><span class='tstring_end'>&#39;</span></span>
 </code></pre>
@@ -217,7 +219,7 @@
 
 <h3 id="label-Forcing+uploading">Forcing uploading</h3>
 
-<p>You can force a stack to upload its template to S3 regardless of the size of the template. This is a useful option if you&#39;re going to be deploying multiple copies of a template or if you want a backup. You can set this option on a per-stack basis:</p>
+<p>You can force a stack to upload its template to S3 regardless of the size of the template. This is a useful option if you’re going to be deploying multiple copies of a template or if you want a backup. You can set this option on a per-stack basis:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_stack'>stack</span><span class='period'>.</span><span class='id identifier rubyid_deploy'>deploy</span><span class='lparen'>(</span><span class='label'>force_upload:</span> <span class='kw'>true</span><span class='rparen'>)</span>
 </code></pre>
@@ -231,7 +233,7 @@
 
 <h2 id="label-CLI">CLI</h2>
 
-<p><code>Humidifier</code> can also be used as a CLI for managing resources through configuration files. For a step-by-step guide, read on, but if you&#39;d like to see a working example, check out the <a href="example">example directory</a>.</p>
+<p><code>Humidifier</code> can also be used as a CLI for managing resources through configuration files. For a step-by-step guide, read on, but if you’d like to see a working example, check out the <a href="example">example directory</a>.</p>
 
 <p>To get started, build a ruby script (for example <code>humidifier</code>) that executes the <code>Humidifier::CLI</code> class, like so:</p>
 
@@ -275,13 +277,13 @@ AdminUser:
   - Administration
 </code></pre>
 
-<p>The top-level keys are the logical resource names that will be displayed in the CloudFormation screen. They point to a map of key/value pairs that will be passed on to <code>humidifier</code>. Any <code>humidifier</code> (and therefore any CloudFormation) attribute may be specified. For more information on CloudFormation templates and which attributes may be specified, see both the <a href="http://kddnewton.github.io/humidifier">humidifier docs</a> and the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-guide.html">CloudFormation docs</a>.</p>
+<p>The top-level keys are the logical resource names that will be displayed in the CloudFormation screen. They point to a map of key/value pairs that will be passed on to <code>humidifier</code>. Any <code>humidifier</code> (and therefore any CloudFormation) attribute may be specified. For more information on CloudFormation templates and which attributes may be specified, see both the docs[http://kddnewton.github.io/humidifier] and the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-guide.html">CloudFormation docs</a>.</p>
 
 <h3 id="label-Mappers">Mappers</h3>
 
-<p>Oftentimes, specifying these attributes can become repetitive, e.g., each user should automatically receive the same “path” attribute. Other times, you may want custom logic to execute depending on which AWS environment you&#39;re running in. Finally, you may want to reference resources in the same or other stacks.</p>
+<p>Oftentimes, specifying these attributes can become repetitive, e.g., each user should automatically receive the same “path” attribute. Other times, you may want custom logic to execute depending on which AWS environment you’re running in. Finally, you may want to reference resources in the same or other stacks.</p>
 
-<p><code>Humidifier</code>&#39;s solution for this is to allow customized “mapper” classes to take the user-provided attributes and transform them into the attributes that CloudFormation expects. Consider the following example for mapping a user:</p>
+<p><code>Humidifier</code>‘s solution for this is to allow customized “mapper” classes to take the user-provided attributes and transform them into the attributes that CloudFormation expects. Consider the following example for mapping a user:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>UserMapper</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Humidifier/Config.html" title="Humidifier::Config (class)">Config</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Humidifier/Config/Mapper.html" title="Humidifier::Config::Mapper (class)">Mapper</a></span></span>
   <span class='const'>GROUPS</span> <span class='op'>=</span> <span class='lbrace'>{</span>
@@ -317,9 +319,9 @@ AdminUser:
 
 <h3 id="label-Using+the+CLI">Using the CLI</h3>
 
-<p>Now that you&#39;ve configured your CLI, your resources, and your mappers, you can use the CLI to display, validate, and deploy your infrastructure to CloudFormation. Run your script without any arguments to get the help message and explanations for each command.</p>
+<p>Now that you’ve configured your CLI, your resources, and your mappers, you can use the CLI to display, validate, and deploy your infrastructure to CloudFormation. Run your script without any arguments to get the help message and explanations for each command.</p>
 
-<p>Each command has an <code>--aws-profile</code> (or <code>-p</code>) option for specifying which profile to authenticate against when querying AWS. You should ensure that this profile has the correct permissions for creating whatever resources are going to part of your stack. You can also rely on the <code>AWS_*</code> environment variables, or the EC2 instance profile if you&#39;re deploying from an instance. For more information, see the <a href="http://docs.aws.amazon.com/sdkforruby/api/">AWS docs</a> under the “Configuration” section.</p>
+<p>Each command has an <code>--aws-profile</code> (or <code>-p</code>) option for specifying which profile to authenticate against when querying AWS. You should ensure that this profile has the correct permissions for creating whatever resources are going to part of your stack. You can also rely on the <code>AWS_*</code> environment variables, or the EC2 instance profile if you’re deploying from an instance. For more information, see the <a href="http://docs.aws.amazon.com/sdkforruby/api/">AWS docs</a> under the “Configuration” section.</p>
 
 <p>Below are the list of commands and some of their options.</p>
 
@@ -331,7 +333,7 @@ AdminUser:
 
 <p>Creates or updates (depending on if the stack already exists) one or all stacks in the repo.</p>
 
-<p>The <code>deploy</code> command also allows a <code>--prefix</code> command line argument that will override the default prefix (if one is configured) for the stack that is being deployed. This is especially useful when you&#39;re deploying multiple copies of the same stack (for instance, multiple autoscaling groups) that have different purposes or semantically mean newer versions of resources.</p>
+<p>The <code>deploy</code> command also allows a <code>--prefix</code> command line argument that will override the default prefix (if one is configured) for the stack that is being deployed. This is especially useful when you’re deploying multiple copies of the same stack (for instance, multiple autoscaling groups) that have different purposes or semantically mean newer versions of resources.</p>
 
 <h4 id="label-display+-5Bstack-5D+-5B-3Fpattern-5D"><code>display [stack] [?pattern]</code></h4>
 
@@ -340,6 +342,10 @@ AdminUser:
 <h4 id="label-stacks"><code>stacks</code></h4>
 
 <p>Displays the names of all of the stacks that <code>humidifier</code> is managing.</p>
+
+<h4 id="label-upgrade"><code>upgrade</code></h4>
+
+<p>Downloads the latest CloudFormation resource specification. Periodically AWS will update the file that <code>humidifier</code> is based on, in which case the attributes of the resources that were changed could change. This gem usually stays relatively in sync, but if you need to use the latest specs and this gem has not yet released a new version containing them, then you can run this command to download the latest specs onto your system.</p>
 
 <h4 id="label-upload+-5B-3Fstack-5D"><code>upload [?stack]</code></h4>
 
@@ -372,7 +378,7 @@ AdminUser:
 
 <h4 id="label-Anonymous+mappers">Anonymous mappers</h4>
 
-<p>A lot of the time, mappers that you create will not be overly complicated, especially if you&#39;re using automatic id properties. So, the <code>config.map</code> method optionally takes a block, and allows you to specify the mapper inline. This is recommended for mappers that aren&#39;t too complicated as to warrant their own class (for instance, for testing purposes). An example of this using the <code>UserMapper</code> from above is below:</p>
+<p>A lot of the time, mappers that you create will not be overly complicated, especially if you’re using automatic id properties. So, the <code>config.map</code> method optionally takes a block, and allows you to specify the mapper inline. This is recommended for mappers that aren’t too complicated as to warrant their own class (for instance, for testing purposes). An example of this using the <code>UserMapper</code> from above is below:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="Humidifier.html" title="Humidifier (module)">Humidifier</a></span></span><span class='period'>.</span><span class='id identifier rubyid_configure'><span class='object_link'><a href="Humidifier.html#configure-class_method" title="Humidifier.configure (method)">configure</a></span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_config'>config</span><span class='op'>|</span>
   <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='symbol'>:users</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>IAM::User</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
@@ -395,7 +401,7 @@ AdminUser:
 
 <h4 id="label-Cross-stack+references">Cross-stack references</h4>
 
-<p>AWS allows cross-stack references through the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html">intrinsic Fn::ImportValue function</a>. You can take advantage of this with <code>humidifier</code> by using the <code>export: true</code> option on resources in your stacks. For instance, if in one stack you have a subnet that you need to reference in another, you could (<code>stacks/vpc/subnets.yml</code>):</p>
+<p>AWS allows cross-stack references through the <code>Fn::ImportValue</code> function[http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html]. You can take advantage of this with <code>humidifier</code> by using the <code>export: true</code> option on resources in your stacks. For instance, if in one stack you have a subnet that you need to reference in another, you could (<code>stacks/vpc/subnets.yml</code>):</p>
 
 <pre class="code ruby"><code class="ruby">ProductionPrivateSubnet2a:
   vpc: ProductionVPC

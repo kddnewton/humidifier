@@ -164,7 +164,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(key, spec = {}, substructs = {})  &#x21d2; StructureProp </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(key, spec = {}, subprops = {})  &#x21d2; StructureProp </a>
     
 
     
@@ -183,6 +183,28 @@
     <span class="summary_desc"><div class='inline'>
 <p>A new instance of StructureProp.</p>
 </div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pretty_print-instance_method" title="#pretty_print (instance method)">#<strong>pretty_print</strong>(q)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -251,7 +273,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(key, spec = {}, substructs = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Humidifier::Props::StructureProp (class)">StructureProp</a></span></tt> 
+    #<strong>initialize</strong>(key, spec = {}, subprops = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Humidifier::Props::StructureProp (class)">StructureProp</a></span></tt> 
   
 
   
@@ -274,17 +296,17 @@
       <pre class="lines">
 
 
-137
-138
-139
-140</pre>
+185
+186
+187
+188</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 185</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_substructs'>substructs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_subprops'>subprops</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='rparen'>)</span>
-  <span class='ivar'>@subprops</span> <span class='op'>=</span> <span class='id identifier rubyid_subprops_from'>subprops_from</span><span class='lparen'>(</span><span class='id identifier rubyid_substructs'>substructs</span><span class='comma'>,</span> <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ItemType</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_spec'>spec</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Type</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@subprops</span> <span class='op'>=</span> <span class='id identifier rubyid_subprops'>subprops</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -324,12 +346,12 @@
       <pre class="lines">
 
 
-135
-136
-137</pre>
+183
+184
+185</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 135</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 183</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_subprops'>subprops</span>
   <span class='ivar'>@subprops</span>
@@ -347,7 +369,53 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="to_cf-instance_method">
+  <h3 class="signature first" id="pretty_print-instance_method">
+  
+    #<strong>pretty_print</strong>(q)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 190</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_pretty_print'>pretty_print</span><span class='lparen'>(</span><span class='id identifier rubyid_q'>q</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_group'>group</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>=structure</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_nest'>nest</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_breakable'>breakable</span>
+      <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_seplist'>seplist</span><span class='lparen'>(</span><span class='id identifier rubyid_subprops'>subprops</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_subprop'>subprop</span><span class='op'>|</span> <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_pp'>pp</span><span class='lparen'>(</span><span class='id identifier rubyid_subprop'>subprop</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_breakable'>breakable</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_q'>q</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_cf-instance_method">
   
     #<strong>to_cf</strong>(struct)  &#x21d2; <tt>Object</tt> 
   
@@ -361,30 +429,30 @@
       <pre class="lines">
 
 
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153</pre>
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 142</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 202</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_cf'>to_cf</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cf_value'>cf_value</span> <span class='op'>=</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:to_cf</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_to_cf'>to_cf</span>
     <span class='kw'>else</span>
-      <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_subkey'>subkey</span><span class='comma'>,</span> <span class='id identifier rubyid_subvalue'>subvalue</span><span class='op'>|</span>
+      <span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_subkey'>subkey</span><span class='comma'>,</span> <span class='id identifier rubyid_subvalue'>subvalue</span><span class='op'>|</span>
         <span class='id identifier rubyid_subprops'>subprops</span><span class='lbracket'>[</span><span class='id identifier rubyid_subkey'>subkey</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_cf'>to_cf</span><span class='lparen'>(</span><span class='id identifier rubyid_subvalue'>subvalue</span><span class='rparen'>)</span>
-      <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>
+      <span class='kw'>end</span>
     <span class='kw'>end</span>
 
   <span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_cf_value'>cf_value</span><span class='rbracket'>]</span>
@@ -431,12 +499,12 @@
       <pre class="lines">
 
 
-155
-156
-157</pre>
+215
+216
+217</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 155</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/props.rb', line 215</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_valid_struct?'>valid_struct?</span><span class='lparen'>(</span><span class='id identifier rubyid_struct'>struct</span><span class='rparen'>)</span><span class='rparen'>)</span>

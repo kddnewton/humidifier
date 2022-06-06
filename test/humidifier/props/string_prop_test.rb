@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 module Humidifier
   module Props
     class StringPropTest < Minitest::Test
       def test_valid?
-        assert build.valid?('value')
+        assert build.valid?("value")
         assert build.valid?(Humidifier.ref(Object.new))
         assert build.valid?(Humidifier.fn.base64(Object.new))
       end
@@ -21,7 +21,7 @@ module Humidifier
       private
 
       def build
-        StringProp.new('Test')
+        StringProp.new("Test")
       end
     end
   end

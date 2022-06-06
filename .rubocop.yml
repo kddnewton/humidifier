@@ -1,6 +1,8 @@
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
+  NewCops: enable
+  SuggestExtensions: false
   TargetRubyVersion: 2.7
   Exclude:
   - '{tmp,vendor,yard}/**/*'
@@ -14,10 +16,19 @@ Layout/LineLength:
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 
-Metrics/ClassLength:
+Lint/DuplicateBranch:
+  Enabled: false
+
+Lint/EmptyBlock:
+  Enabled: false
+
+Metrics:
   Enabled: false
 
 Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Naming/MethodParameterName:
   Enabled: false
 
 Naming/RescuedExceptionsVariableName:
@@ -43,3 +54,6 @@ Style/OptionalBooleanParameter:
 
 Style/PerlBackrefs:
   Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes

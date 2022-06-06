@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'bundler/setup'
-require 'humidifier'
+require "bundler/setup"
+require "humidifier"
 
-if ENV['TEST']
-  security_group = Humidifier::EC2::SecurityGroup.new(group_description: 'Test')
-  resources = { 'SecurityGroup' => security_group }
+if ENV["TEST"]
+  security_group = Humidifier::EC2::SecurityGroup.new(group_description: "Test")
+  resources = { "SecurityGroup" => security_group }
 
-  @stack = Humidifier::Stack.new(name: 'Test-Stack', resources: resources)
+  @stack = Humidifier::Stack.new(name: "Test-Stack", resources: resources)
 end
 
-require 'irb'
+require "irb"
 IRB.start

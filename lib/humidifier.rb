@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require 'date'
-require 'json'
-require 'pathname'
-require 'yaml'
+require "date"
+require "json"
+require "pathname"
+require "yaml"
 
-require 'aws-sdk-cloudformation'
-require 'aws-sdk-s3'
-require 'fast_underscore'
-require 'thor'
-require 'thor/hollaback'
+require "aws-sdk-cloudformation"
+require "aws-sdk-s3"
+require "fast_underscore"
+require "thor"
+require "thor/hollaback"
 
 # Hook into the string extension and ensure it works for certain AWS acronyms
 String.prepend(
@@ -23,7 +23,7 @@ String.prepend(
 # container module for all gem classes
 module Humidifier
   # The file name of the specification for consistency.
-  SPECIFICATION = 'CloudFormationResourceSpecification.json'
+  SPECIFICATION = "CloudFormationResourceSpecification.json"
 
   # A parent class for all Humidifier errors for easier rescuing.
   class Error < StandardError; end
@@ -61,30 +61,30 @@ module Humidifier
 
     # a frozen hash of the given names mapped to their underscored version
     def underscore(names)
-      names.map { |name| [name, name.underscore.to_sym] }.to_h.freeze
+      names.to_h { |name| [name, name.underscore.to_sym] }.freeze
     end
   end
 end
 
-require 'humidifier/fn'
-require 'humidifier/ref'
-require 'humidifier/props'
+require "humidifier/fn"
+require "humidifier/ref"
+require "humidifier/props"
 
-require 'humidifier/cli'
-require 'humidifier/condition'
-require 'humidifier/directory'
-require 'humidifier/loader'
-require 'humidifier/mapping'
-require 'humidifier/output'
-require 'humidifier/parameter'
-require 'humidifier/resource'
-require 'humidifier/serializer'
-require 'humidifier/stack'
-require 'humidifier/upgrade'
-require 'humidifier/version'
+require "humidifier/cli"
+require "humidifier/condition"
+require "humidifier/directory"
+require "humidifier/loader"
+require "humidifier/mapping"
+require "humidifier/output"
+require "humidifier/parameter"
+require "humidifier/resource"
+require "humidifier/serializer"
+require "humidifier/stack"
+require "humidifier/upgrade"
+require "humidifier/version"
 
-require 'humidifier/config'
-require 'humidifier/config/mapper'
-require 'humidifier/config/mapping'
+require "humidifier/config"
+require "humidifier/config/mapper"
+require "humidifier/config/mapping"
 
 Humidifier::Loader.load

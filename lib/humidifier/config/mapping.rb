@@ -10,7 +10,7 @@ module Humidifier
         raise Error, "Invalid resource: #{opts[:to].inspect}" if @clazz.nil?
 
         if opts[:using] && block_given?
-          raise Error, 'Cannot specify :using and provide an anonymous mapper'
+          raise Error, "Cannot specify :using and provide an anonymous mapper"
         end
 
         @mapper = mapper_from(opts, &block)
@@ -33,7 +33,7 @@ module Humidifier
       end
 
       def normalized(name)
-        name.start_with?('AWS') ? name : "AWS::#{name}"
+        name.start_with?("AWS") ? name : "AWS::#{name}"
       end
     end
   end

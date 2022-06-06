@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 module Humidifier
   module Props
@@ -19,31 +19,24 @@ module Humidifier
       end
 
       def test_subprop
-        assert build.valid?(beta: 'gamma')
+        assert build.valid?(beta: "gamma")
         refute build.valid?(beta: 1)
       end
 
       def test_to_cf
-        actual = build.to_cf(beta: 'gamma')
-        assert_equal ['Alpha', { 'Beta' => 'gamma' }], actual
+        actual = build.to_cf(beta: "gamma")
+        assert_equal ["Alpha", { "Beta" => "gamma" }], actual
       end
 
       def test_to_cf_ref
-        actual = build.to_cf(Humidifier.ref('Foo'))
-        assert_equal ['Alpha', { 'Ref' => 'Foo' }], actual
+        actual = build.to_cf(Humidifier.ref("Foo"))
+        assert_equal ["Alpha", { "Ref" => "Foo" }], actual
       end
 
       private
 
       def build
-        substructs = {
-          'Sub' => {
-            'Properties' => { 'Beta' => { 'PrimitiveType' => 'String' } }
-          }
-        }
-
-        config = { 'Type' => 'Sub' }
-        StructureProp.new('Alpha', config, substructs)
+        StructureProp.new("Alpha", {}, { "beta" => StringProp.new("Beta") })
       end
     end
   end

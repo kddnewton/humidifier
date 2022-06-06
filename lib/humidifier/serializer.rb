@@ -5,9 +5,9 @@ module Humidifier
   class Serializer
     class << self
       # dumps the given object out to CFN syntax recursively
-      def dump(node) # rubocop:disable Metrics/CyclomaticComplexity
+      def dump(node)
         case node
-        when Hash    then node.map { |key, value| [key, dump(value)] }.to_h
+        when Hash    then node.to_h { |key, value| [key, dump(value)] }
         when Array   then node.map { |value| dump(value) }
         when Ref, Fn then dump(node.to_cf)
         when Date    then node.iso8601

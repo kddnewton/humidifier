@@ -11,9 +11,9 @@ module Humidifier
     end
 
     def to_cf
-      { 'Value' => Serializer.dump(value) }.tap do |cf|
-        cf['Description'] = description if description
-        cf['Export'] = { 'Name' => export_name } if export_name
+      { "Value" => Serializer.dump(value) }.tap do |cf|
+        cf["Description"] = description if description
+        cf["Export"] = { "Name" => export_name } if export_name
       end
     end
   end
