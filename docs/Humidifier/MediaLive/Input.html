@@ -200,6 +200,54 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#input_devices-instance_method" title="#input_devices (instance method)">#<strong>input_devices</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>returns the InputDevices property.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#input_devices=-instance_method" title="#input_devices= (instance method)">#<strong>input_devices=</strong>(value)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>sets the InputDevices property (List).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#input_security_groups-instance_method" title="#input_security_groups (instance method)">#<strong>input_security_groups</strong>  &#x21d2; Object </a>
     
 
@@ -700,6 +748,88 @@
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="input_devices-instance_method">
+  
+    #<strong>input_devices</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns the InputDevices property</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 20</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_input_devices'>input_devices</span>
+  <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>input_devices</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="input_devices=-instance_method">
+  
+    #<strong>input_devices=</strong>(value)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>sets the InputDevices property (List)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_input_devices='>input_devices=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>input_devices</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="input_security_groups-instance_method">
   
     #<strong>input_security_groups</strong>  &#x21d2; <tt>Object</tt> 
@@ -725,12 +855,12 @@
       <pre class="lines">
 
 
-20
-21
-22</pre>
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_input_security_groups'>input_security_groups</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>input_security_groups</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -766,12 +896,12 @@
       <pre class="lines">
 
 
-25
-26
-27</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_input_security_groups='>input_security_groups=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>input_security_groups</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -807,12 +937,12 @@
       <pre class="lines">
 
 
-30
-31
-32</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_media_connect_flows'>media_connect_flows</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>media_connect_flows</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -848,12 +978,12 @@
       <pre class="lines">
 
 
-35
-36
-37</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_media_connect_flows='>media_connect_flows=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>media_connect_flows</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -889,12 +1019,12 @@
       <pre class="lines">
 
 
-40
-41
-42</pre>
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -930,12 +1060,12 @@
       <pre class="lines">
 
 
-45
-46
-47</pre>
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name='>name=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -971,12 +1101,12 @@
       <pre class="lines">
 
 
-50
-51
-52</pre>
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_role_arn'>role_arn</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>role_arn</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1012,12 +1142,12 @@
       <pre class="lines">
 
 
-55
-56
-57</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_role_arn='>role_arn=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>role_arn</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1053,12 +1183,12 @@
       <pre class="lines">
 
 
-60
-61
-62</pre>
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sources'>sources</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>sources</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1094,12 +1224,12 @@
       <pre class="lines">
 
 
-65
-66
-67</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sources='>sources=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>sources</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1135,12 +1265,12 @@
       <pre class="lines">
 
 
-70
-71
-72</pre>
+80
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tags'>tags</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tags</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1176,12 +1306,12 @@
       <pre class="lines">
 
 
-75
-76
-77</pre>
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tags='>tags=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tags</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1217,12 +1347,12 @@
       <pre class="lines">
 
 
-80
-81
-82</pre>
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>type</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1258,12 +1388,12 @@
       <pre class="lines">
 
 
-85
-86
-87</pre>
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type='>type=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>type</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -1299,12 +1429,12 @@
       <pre class="lines">
 
 
-90
-91
-92</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_vpc'>vpc</span>
   <span class='id identifier rubyid_properties'>properties</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vpc</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -1340,12 +1470,12 @@
       <pre class="lines">
 
 
-95
-96
-97</pre>
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/humidifier/magic.rb', line 105</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_vpc='>vpc=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_update_property'>update_property</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vpc</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
