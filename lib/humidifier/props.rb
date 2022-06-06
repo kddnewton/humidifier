@@ -55,35 +55,71 @@ module Humidifier
 
     class BooleanProp < Prop
       allow_type TrueClass, FalseClass
+
+      # def pretty_print(q)
+      #   q.text("(#{name}=boolean)")
+      # end
     end
 
     class DoubleProp < Prop
       allow_type Integer, Float
+
+      # def pretty_print(q)
+      #   q.text("(#{name}=double)")
+      # end
     end
 
     class IntegerProp < Prop
       allow_type Integer
+
+      # def pretty_print(q)
+      #   q.text("(#{name}=integer)")
+      # end
     end
 
     class JsonProp < Prop
       allow_type Hash
+
+      # def pretty_print(q)
+      #   q.text("(#{name}=json)")
+      # end
     end
 
     class StringProp < Prop
       allow_type String
+
+      # def pretty_print(q)
+      #   q.text("(#{name}=string)")
+      # end
     end
 
     class TimestampProp < Prop
       allow_type Time, Date
+
+      # def pretty_print(q)
+      #   q.text("(#{name}=timestamp)")
+      # end
     end
 
     class ListProp < Prop
       attr_reader :subprop
 
-      def initialize(key, spec = {}, substructs = {})
+      def initialize(key, spec = {}, subprop = nil)
         super(key, spec)
-        @subprop = Props.singular_from(key, spec, substructs)
+        @subprop = subprop
       end
+
+      # def pretty_print(q)
+      #   q.group do
+      #     q.text("(#{name}=list")
+      #     q.nest(2) do
+      #       q.breakable
+      #       q.pp(subprop)
+      #     end
+      #     q.breakable("")
+      #     q.text(")")
+      #   end
+      # end
 
       def to_cf(list)
         cf_value =
@@ -106,10 +142,22 @@ module Humidifier
     class MapProp < Prop
       attr_reader :subprop
 
-      def initialize(key, spec = {}, substructs = {})
+      def initialize(key, spec = {}, subprop = nil)
         super(key, spec)
-        @subprop = Props.singular_from(key, spec, substructs)
+        @subprop = subprop
       end
+
+      # def pretty_print(q)
+      #   q.group do
+      #     q.text("(#{name}=map")
+      #     q.nest(2) do
+      #       q.breakable
+      #       q.pp(subprop)
+      #     end
+      #     q.breakable("")
+      #     q.text(")")
+      #   end
+      # end
 
       def to_cf(map)
         cf_value =
@@ -134,10 +182,22 @@ module Humidifier
     class StructureProp < Prop
       attr_reader :subprops
 
-      def initialize(key, spec = {}, substructs = {})
+      def initialize(key, spec = {}, subprops = {})
         super(key, spec)
-        @subprops = subprops_from(substructs, spec['ItemType'] || spec['Type'])
+        @subprops = subprops
       end
+
+      # def pretty_print(q)
+      #   q.group do
+      #     q.text("(#{name}=structure")
+      #     q.nest(2) do
+      #       q.breakable
+      #       q.seplist(subprops.values) { |subprop| q.pp(subprop) }
+      #     end
+      #     q.breakable("")
+      #     q.text(")")
+      #   end
+      # end
 
       def to_cf(struct)
         cf_value =
@@ -158,47 +218,9 @@ module Humidifier
 
       private
 
-      def subprops_from(substructs, type)
-        subprop_names = substructs.fetch(type, {}).fetch('Properties', {})
-
-        subprop_names.each_with_object({}) do |(key, config), subprops|
-          subprops[key.underscore] =
-            if config['ItemType'] == type
-              self
-            else
-              Props.from(key, config, substructs)
-            end
-        end
-      end
-
       def valid_struct?(struct)
         struct.all? do |key, value|
           subprops.key?(key.to_s) && subprops[key.to_s].valid?(value)
-        end
-      end
-    end
-
-    class << self
-      # builds the appropriate prop object from the given spec line
-      def from(key, spec, substructs = {})
-        case spec['Type']
-        when 'List' then ListProp.new(key, spec, substructs)
-        when 'Map'  then MapProp.new(key, spec, substructs)
-        else             singular_from(key, spec, substructs)
-        end
-      end
-
-      # builds a prop that is not a List or Map type
-      # PrimitiveType is one of Boolean, Double, Integer, Json, String, or
-      # Timestamp
-      def singular_from(key, spec, substructs)
-        primitive = spec['PrimitiveItemType'] || spec['PrimitiveType']
-
-        if primitive && !%w[List Map].include?(primitive)
-          primitive = 'Integer' if primitive == 'Long'
-          const_get(:"#{primitive}Prop").new(key, spec)
-        else
-          StructureProp.new(key, spec, substructs)
         end
       end
     end

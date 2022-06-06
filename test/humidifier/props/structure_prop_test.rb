@@ -36,14 +36,7 @@ module Humidifier
       private
 
       def build
-        substructs = {
-          'Sub' => {
-            'Properties' => { 'Beta' => { 'PrimitiveType' => 'String' } }
-          }
-        }
-
-        config = { 'Type' => 'Sub' }
-        StructureProp.new('Alpha', config, substructs)
+        StructureProp.new('Alpha', {}, { 'beta' => StringProp.new('Beta') })
       end
     end
   end

@@ -35,7 +35,7 @@ module Humidifier
       private
 
       def build
-        ListProp.new('Test', 'PrimitiveType' => 'Integer')
+        ListProp.new('Test', {}, IntegerProp.new('Test'))
       end
     end
   end

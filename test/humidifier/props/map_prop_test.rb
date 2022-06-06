@@ -36,7 +36,7 @@ module Humidifier
       private
 
       def build
-        MapProp.new('Test', 'PrimitiveType' => 'Integer')
+        MapProp.new('Test', {}, IntegerProp.new('Test'))
       end
     end
   end
