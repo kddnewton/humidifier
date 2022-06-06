@@ -14,7 +14,7 @@ GEM
   specs:
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.592.0)
+    aws-partitions (1.596.0)
     aws-sdk-cloudformation (1.69.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
@@ -23,7 +23,7 @@ GEM
       aws-partitions (~> 1, >= 1.525.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1, >= 1.6.1)
-    aws-sdk-kms (1.56.0)
+    aws-sdk-kms (1.57.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-s3 (1.114.0)
@@ -38,6 +38,8 @@ GEM
     jmespath (1.6.1)
     minitest (5.15.0)
     nokogiri (1.13.6-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
     parallel (1.22.1)
     parser (3.1.2.0)
@@ -64,7 +66,7 @@ GEM
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
-    simplecov_json_formatter (0.1.3)
+    simplecov_json_formatter (0.1.4)
     thor (1.2.1)
     thor-hollaback (0.2.1)
       hollaback (~> 0.1)
@@ -75,7 +77,8 @@ GEM
       webrick (~> 1.7.0)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bundler (~> 2.0)
@@ -87,4 +90,4 @@ DEPENDENCIES
   yard (~> 0.9)
 
 BUNDLED WITH
-   2.2.3
+   2.3.6
