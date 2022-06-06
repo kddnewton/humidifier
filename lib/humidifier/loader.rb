@@ -12,7 +12,9 @@ module Humidifier
 
         # Set an initial value for each property types so that we can handle
         # cycles in the specification
-        @property_types = specification["PropertyTypes"].to_h { |name, _| [name, {}] }
+        @property_types = specification["PropertyTypes"].to_h do |name, _|
+          [name, {}]
+        end
       end
 
       def compile
@@ -21,7 +23,8 @@ module Humidifier
         property_types.each do |property_type_name, property_type|
           prefix = property_type_name.split(".", 2).first
 
-          specification["PropertyTypes"].fetch(property_type_name).fetch("Properties") { {} }.each do |property_name, property|
+          subspec = specification["PropertyTypes"].fetch(property_type_name)
+          subspec.fetch("Properties") { {} }.each do |property_name, property|
             property = build_property(prefix, property_name, property)
             property_type[property.name] = property if property
           end
@@ -29,18 +32,18 @@ module Humidifier
 
         # Loop through every resource type in the specification and define a
         # class for each one dynamically.
-        specification["ResourceTypes"].each do |resource_type_name, resource_type|
-          _top, group, resource = resource_type_name.split("::")
+        specification["ResourceTypes"].each do |aws_name, resource_type|
+          _top, group, resource = aws_name.split("::")
 
           properties = {}
           resource_type["Properties"].each do |property_name, property|
-            property = build_property(resource_type_name, property_name, property)
+            property = build_property(aws_name, property_name, property)
             properties[property.name] = property if property
           end
 
           resource_class =
             Class.new(Resource) do
-              self.aws_name = resource_type_name
+              self.aws_name = aws_name
               self.props = properties
             end
 
@@ -51,7 +54,7 @@ module Humidifier
               Humidifier.const_set(group, Module.new)
             end
 
-          Humidifier.registry[resource_type_name] =
+          Humidifier.registry[aws_name] =
             group_module.const_set(resource, resource_class)
         end
 
@@ -94,17 +97,19 @@ module Humidifier
           Props::ListProp.new(
             name,
             spec,
-            Props::StructureProp.new(name, spec, property_type(prefix, item_type))
+            Props::StructureProp.new(name, spec,
+                                     property_type(prefix, item_type))
           )
         in { Type: "Map", ItemType: item_type }
           Props::MapProp.new(
             name,
             spec,
-            Props::StructureProp.new(name, spec, property_type(prefix, item_type))
+            Props::StructureProp.new(name, spec,
+                                     property_type(prefix, item_type))
           )
         in { Type: type }
           Props::StructureProp.new(name, spec, property_type(prefix, type))
-        else
+        else # rubocop:disable Layout/IndentationWidth
           # It's possible to hit this clause if the specification has a property
           # that is not currently supported by CloudFormation. In this case,
           # we're not going to create a property at all for it.

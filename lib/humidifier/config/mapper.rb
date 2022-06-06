@@ -83,7 +83,7 @@ module Humidifier
         end
       end
 
-      def mapped_from(clazz, key, value) # rubocop:disable Metrics/MethodLength
+      def mapped_from(clazz, key, value)
         if self.class.attribute_methods.include?(key.to_sym)
           # The given attribute name has been defined using the `::attribute`
           # DSL method, so send the given value to that method and return the

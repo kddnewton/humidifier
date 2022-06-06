@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'simplecov'
+require "simplecov"
 SimpleCov.start
 
-$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
-require 'humidifier'
-require 'minitest/autorun'
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+require "humidifier"
+require "minitest/autorun"
 
 module Minitest
   class Test
@@ -42,7 +42,7 @@ class FoobarMapper < Humidifier::Config::Mapper
 end
 
 class FoobarResource < Humidifier::Resource
-  self.aws_name = 'AWS::Foo::Bar'
+  self.aws_name = "AWS::Foo::Bar"
   self.props =
     %w[foo bar baz zaz_id].each_with_object({}) do |name, props|
       props[name] = Humidifier::Props::StringProp.new(name)
@@ -50,8 +50,8 @@ class FoobarResource < Humidifier::Resource
 end
 
 Humidifier.configure do |config|
-  config.stack_path = File.expand_path('stacks', __dir__)
-  config.stack_prefix = 'humidifier-'
+  config.stack_path = File.expand_path("stacks", __dir__)
+  config.stack_prefix = "humidifier-"
 
-  config.map :users, to: 'AWS::IAM::User'
+  config.map :users, to: "AWS::IAM::User"
 end

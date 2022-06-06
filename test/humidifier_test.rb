@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class HumidifierTest < Minitest::Test
   def test_config
@@ -25,8 +25,8 @@ class HumidifierTest < Minitest::Test
   end
 
   def test_brackets
-    Humidifier.stub(:registry, foo: 'bar') do
-      assert_equal 'bar', Humidifier[:foo]
+    Humidifier.stub(:registry, foo: "bar") do
+      assert_equal "bar", Humidifier[:foo]
     end
   end
 
@@ -36,7 +36,7 @@ class HumidifierTest < Minitest::Test
 
   def test_underscore
     response = Humidifier.underscore(%w[TestA TestB])
-    assert_equal ({ 'TestA' => :test_a, 'TestB' => :test_b }), response
+    assert_equal ({ "TestA" => :test_a, "TestB" => :test_b }), response
     assert response.frozen?
   end
 end

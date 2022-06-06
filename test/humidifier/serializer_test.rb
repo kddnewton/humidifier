@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 module Humidifier
   class SerializerTest < Minitest::Test
@@ -17,13 +17,13 @@ module Humidifier
     def test_ref
       value = Object.new
       ref = Humidifier.ref(value)
-      assert_equal ({ 'Ref' => value }), dump(ref)
+      assert_equal ({ "Ref" => value }), dump(ref)
     end
 
     def test_fn
       value = Object.new
       fn = Humidifier.fn.base64(value)
-      assert_equal ({ 'Fn::Base64' => value }), dump(fn)
+      assert_equal ({ "Fn::Base64" => value }), dump(fn)
     end
 
     def test_date
@@ -45,11 +45,11 @@ module Humidifier
       reference1 = Object.new
       reference2 = Object.new
 
-      value = [{ 'Container' => Humidifier.ref(reference1) },
+      value = [{ "Container" => Humidifier.ref(reference1) },
                Humidifier.fn.base64(Humidifier.ref(reference2))]
 
-      expected = [{ 'Container' => { 'Ref' => reference1 } },
-                  { 'Fn::Base64' => { 'Ref' => reference2 } }]
+      expected = [{ "Container" => { "Ref" => reference1 } },
+                  { "Fn::Base64" => { "Ref" => reference2 } }]
 
       assert_equal expected, dump(value)
     end

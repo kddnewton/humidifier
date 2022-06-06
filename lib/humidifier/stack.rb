@@ -14,8 +14,8 @@ module Humidifier
         super(
           "Cannot use a template > #{MAX_TEMPLATE_URL_SIZE} bytes " \
           "(currently #{bytesize} bytes), consider using nested stacks " \
-          '(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide' \
-          '/aws-properties-stack.html)'
+          "(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide" \
+          "/aws-properties-stack.html)"
         )
       end
     end
@@ -37,7 +37,7 @@ module Humidifier
     end
 
     # The AWS region, can be set through the environment, defaults to us-east-1
-    AWS_REGION = ENV['AWS_REGION'] || 'us-east-1'
+    AWS_REGION = ENV.fetch("AWS_REGION", "us-east-1")
 
     # Lists of objects linked to the stack
     ENUMERABLE_RESOURCES =
@@ -184,7 +184,7 @@ module Humidifier
       perform_and_wait(:update, opts)
     end
 
-    def upload # rubocop:disable Metrics/AbcSize
+    def upload
       raise NoResourcesError.new(self, :upload) unless resources.any?
 
       bucket = Humidifier.config.s3_bucket
@@ -231,9 +231,9 @@ module Humidifier
         next if resources.empty?
 
         list[name] =
-          resources.map do |resource_name, resource|
+          resources.to_h do |resource_name, resource|
             [resource_name, resource.to_cf]
-          end.to_h
+          end
       end
     end
 

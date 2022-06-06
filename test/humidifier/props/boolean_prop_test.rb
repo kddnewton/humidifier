@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 module Humidifier
   module Props
@@ -23,7 +23,7 @@ module Humidifier
       private
 
       def build
-        BooleanProp.new('Test')
+        BooleanProp.new("Test")
       end
     end
   end

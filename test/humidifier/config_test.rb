@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 module Humidifier
   class ConfigTest < Minitest::Test
@@ -8,7 +8,7 @@ module Humidifier
       config = Config.new
 
       assert_raises Error do
-        config.stack_path = 'foobar'
+        config.stack_path = "foobar"
       end
     end
   end

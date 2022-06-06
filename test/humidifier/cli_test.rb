@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 module Humidifier
   class CLITest < Minitest::Test
@@ -14,60 +14,60 @@ module Humidifier
       end
 
     def test_change
-      Directory.stub(:new, DirectoryDouble.new('alpha')) do
-        assert_includes execute('change'), 'Creating a changeset for alpha'
+      Directory.stub(:new, DirectoryDouble.new("alpha")) do
+        assert_includes execute("change"), "Creating a changeset for alpha"
       end
     end
 
     def test_deploy
-      Directory.stub(:new, DirectoryDouble.new('alpha')) do
-        stdout = execute('deploy alpha ParameterOne=OneOne ParameterTwo=TwoTwo')
+      Directory.stub(:new, DirectoryDouble.new("alpha")) do
+        stdout = execute("deploy alpha ParameterOne=OneOne ParameterTwo=TwoTwo")
 
-        assert_includes stdout, 'Deploying alpha'
+        assert_includes stdout, "Deploying alpha"
       end
     end
 
     def test_display
-      parsed = parse_display(execute('display alpha'))
+      parsed = parse_display(execute("display alpha"))
 
       assert_kind_of Hash, parsed
-      assert_equal RESOURCE_NAMES, parsed['Resources'].keys
+      assert_equal RESOURCE_NAMES, parsed["Resources"].keys
     end
 
     def test_display_with_pattern
-      parsed = parse_display(execute('display alpha User1'))
+      parsed = parse_display(execute("display alpha User1"))
 
       assert_kind_of Hash, parsed
-      assert_equal %w[AlphaUser1], parsed['Resources'].keys
+      assert_equal %w[AlphaUser1], parsed["Resources"].keys
     end
 
     def test_stacks
-      stdout = execute('stacks')
+      stdout = execute("stacks")
 
-      assert_includes stdout, 'alpha'
-      assert_includes stdout, 'beta'
+      assert_includes stdout, "alpha"
+      assert_includes stdout, "beta"
     end
 
     def test_upload
-      Directory.stub(:new, DirectoryDouble.new('alpha')) do
-        assert_includes execute('upload'), 'Uploading alpha'
+      Directory.stub(:new, DirectoryDouble.new("alpha")) do
+        assert_includes execute("upload"), "Uploading alpha"
       end
     end
 
     def test_validate
-      Directory.stub(:new, DirectoryDouble.new('alpha', true)) do
-        assert_includes execute('validate alpha'), 'Validating... Valid'
+      Directory.stub(:new, DirectoryDouble.new("alpha", true)) do
+        assert_includes execute("validate alpha"), "Validating... Valid"
       end
     end
 
     def test_validate_invalid
-      Directory.stub(:new, DirectoryDouble.new('alpha', false)) do
-        assert_includes execute('validate alpha'), 'Validating... Invalid.'
+      Directory.stub(:new, DirectoryDouble.new("alpha", false)) do
+        assert_includes execute("validate alpha"), "Validating... Invalid."
       end
     end
 
     def test_authorize
-      cli = CLI.new([], aws_profile: 'default')
+      cli = CLI.new([], aws_profile: "default")
       credentials = Object.new
 
       begin
@@ -92,16 +92,16 @@ module Humidifier
       cli = CLI.new([])
 
       cli.stub(:exit, nil) do
-        stdout, = capture_io { cli.safe_execute { raise Error, 'foobar' } }
+        stdout, = capture_io { cli.safe_execute { raise Error, "foobar" } }
 
-        assert_includes stdout, 'foobar'
+        assert_includes stdout, "foobar"
       end
     end
 
     def test_upgrade
-      stdout = Upgrade.stub(:perform, '13.0.0') { execute('upgrade') }
+      stdout = Upgrade.stub(:perform, "13.0.0") { execute("upgrade") }
 
-      assert_includes stdout, 'v13.0.0'
+      assert_includes stdout, "v13.0.0"
     end
 
     private
@@ -114,8 +114,8 @@ module Humidifier
     def parse_display(stdout)
       lines = stdout.split("\n")
 
-      first = lines.index { |line| line.chomp == '{' }
-      last = lines.rindex { |line| line.chomp == '}' }
+      first = lines.index { |line| line.chomp == "{" }
+      last = lines.rindex { |line| line.chomp == "}" }
 
       JSON.parse(lines[first..last].join)
     end

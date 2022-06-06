@@ -15,12 +15,12 @@ module Humidifier
         instance_variable_set(:"@#{property}", opts[property])
       end
 
-      @type = opts.fetch(:type, 'String')
+      @type = opts.fetch(:type, "String")
     end
 
     # CFN stack syntax
     def to_cf
-      { 'Type' => type }.tap do |cf|
+      { "Type" => type }.tap do |cf|
         PROPERTIES.each do |name, prop|
           value = public_send(prop)
           cf[name] = Serializer.dump(value) if value

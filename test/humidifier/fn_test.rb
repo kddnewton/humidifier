@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 module Humidifier
   class FnTest < Minitest::Test
@@ -14,8 +14,8 @@ module Humidifier
     end
 
     def test_serializes_refs_correctly
-      expected = { 'Fn::GetAZs' => { 'Ref' => 'Foobar' } }
-      fn = Humidifier.fn.get_azs(Humidifier.ref('Foobar'))
+      expected = { "Fn::GetAZs" => { "Ref" => "Foobar" } }
+      fn = Humidifier.fn.get_azs(Humidifier.ref("Foobar"))
 
       assert_equal expected, fn.to_cf
     end

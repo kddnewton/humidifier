@@ -18,12 +18,12 @@ module Humidifier
 
       # the link to the AWS docs
       def documentation
-        spec['Documentation']
+        spec["Documentation"]
       end
 
       # true if this property is required by the resource
       def required?
-        spec['Required']
+        spec["Required"]
       end
 
       # CFN stack syntax
@@ -34,7 +34,7 @@ module Humidifier
       # the type of update that occurs when this property is updated on its
       # associated resource
       def update_type
-        spec['UpdateType']
+        spec["UpdateType"]
       end
 
       def valid?(value)
@@ -56,49 +56,49 @@ module Humidifier
     class BooleanProp < Prop
       allow_type TrueClass, FalseClass
 
-      # def pretty_print(q)
-      #   q.text("(#{name}=boolean)")
-      # end
+      def pretty_print(q)
+        q.text("(#{name}=boolean)")
+      end
     end
 
     class DoubleProp < Prop
       allow_type Integer, Float
 
-      # def pretty_print(q)
-      #   q.text("(#{name}=double)")
-      # end
+      def pretty_print(q)
+        q.text("(#{name}=double)")
+      end
     end
 
     class IntegerProp < Prop
       allow_type Integer
 
-      # def pretty_print(q)
-      #   q.text("(#{name}=integer)")
-      # end
+      def pretty_print(q)
+        q.text("(#{name}=integer)")
+      end
     end
 
     class JsonProp < Prop
       allow_type Hash
 
-      # def pretty_print(q)
-      #   q.text("(#{name}=json)")
-      # end
+      def pretty_print(q)
+        q.text("(#{name}=json)")
+      end
     end
 
     class StringProp < Prop
       allow_type String
 
-      # def pretty_print(q)
-      #   q.text("(#{name}=string)")
-      # end
+      def pretty_print(q)
+        q.text("(#{name}=string)")
+      end
     end
 
     class TimestampProp < Prop
       allow_type Time, Date
 
-      # def pretty_print(q)
-      #   q.text("(#{name}=timestamp)")
-      # end
+      def pretty_print(q)
+        q.text("(#{name}=timestamp)")
+      end
     end
 
     class ListProp < Prop
@@ -109,17 +109,17 @@ module Humidifier
         @subprop = subprop
       end
 
-      # def pretty_print(q)
-      #   q.group do
-      #     q.text("(#{name}=list")
-      #     q.nest(2) do
-      #       q.breakable
-      #       q.pp(subprop)
-      #     end
-      #     q.breakable("")
-      #     q.text(")")
-      #   end
-      # end
+      def pretty_print(q)
+        q.group do
+          q.text("(#{name}=list")
+          q.nest(2) do
+            q.breakable
+            q.pp(subprop)
+          end
+          q.breakable("")
+          q.text(")")
+        end
+      end
 
       def to_cf(list)
         cf_value =
@@ -147,26 +147,26 @@ module Humidifier
         @subprop = subprop
       end
 
-      # def pretty_print(q)
-      #   q.group do
-      #     q.text("(#{name}=map")
-      #     q.nest(2) do
-      #       q.breakable
-      #       q.pp(subprop)
-      #     end
-      #     q.breakable("")
-      #     q.text(")")
-      #   end
-      # end
+      def pretty_print(q)
+        q.group do
+          q.text("(#{name}=map")
+          q.nest(2) do
+            q.breakable
+            q.pp(subprop)
+          end
+          q.breakable("")
+          q.text(")")
+        end
+      end
 
       def to_cf(map)
         cf_value =
           if map.respond_to?(:to_cf)
             map.to_cf
           else
-            map.map do |subkey, subvalue|
+            map.to_h do |subkey, subvalue|
               [subkey, subprop.to_cf(subvalue).last]
-            end.to_h
+            end
           end
 
         [key, cf_value]
@@ -187,26 +187,26 @@ module Humidifier
         @subprops = subprops
       end
 
-      # def pretty_print(q)
-      #   q.group do
-      #     q.text("(#{name}=structure")
-      #     q.nest(2) do
-      #       q.breakable
-      #       q.seplist(subprops.values) { |subprop| q.pp(subprop) }
-      #     end
-      #     q.breakable("")
-      #     q.text(")")
-      #   end
-      # end
+      def pretty_print(q)
+        q.group do
+          q.text("(#{name}=structure")
+          q.nest(2) do
+            q.breakable
+            q.seplist(subprops.values) { |subprop| q.pp(subprop) }
+          end
+          q.breakable("")
+          q.text(")")
+        end
+      end
 
       def to_cf(struct)
         cf_value =
           if struct.respond_to?(:to_cf)
             struct.to_cf
           else
-            struct.map do |subkey, subvalue|
+            struct.to_h do |subkey, subvalue|
               subprops[subkey.to_s].to_cf(subvalue)
-            end.to_h
+            end
           end
 
         [key, cf_value]

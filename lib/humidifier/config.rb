@@ -26,7 +26,7 @@ module Humidifier
 
     def initialize
       @mappings = {}
-      @stack_path = '.'
+      @stack_path = "."
     end
 
     def files_for(name)
