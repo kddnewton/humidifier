@@ -25,6 +25,7 @@ Humidifier is a ruby tool for managing [AWS CloudFormation](https://aws.amazon.c
     - [`upgrade`](#upgrade)
     - [`upload [?stack]`](#upload-stack)
     - [`validate [?stack]`](#validate-stack)
+    - [`version`](#version)
   - [Parameters](#parameters)
   - [Shortcuts](#shortcuts)
     - [Automatic id properties](#automatic-id-properties)
@@ -271,6 +272,10 @@ Upload one or all stacks in the repo to S3 for reference later. Note that this m
 #### `validate [?stack]`
 
 Validate that one or all stacks in the repo are properly configured and using values that CloudFormation understands.
+
+#### `version`
+
+Output the version of `Humidifier` as well as the version of the CloudFormation resource specification that you are using.
 
 ### Parameters
 

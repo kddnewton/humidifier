@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    humidifier (4.1.1)
+    humidifier (4.2.0)
       aws-sdk-cloudformation (~> 1.25)
       aws-sdk-s3 (~> 1.48)
       fast_underscore (~> 0.3)
@@ -36,10 +36,8 @@ GEM
     fast_underscore (0.3.3)
     hollaback (0.1.1)
     jmespath (1.6.1)
-    mini_portile2 (2.8.0)
     minitest (5.15.0)
-    nokogiri (1.13.6)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.13.6-x86_64-darwin)
       racc (~> 1.4)
     parallel (1.22.1)
     parser (3.1.2.0)

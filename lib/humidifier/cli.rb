@@ -87,6 +87,14 @@ module Humidifier
       puts valid ? "Valid." : "Invalid."
     end
 
+    desc "version", "Display the version of Humidifier"
+    def version
+      filepath = File.expand_path("../../#{SPECIFICATION}", __dir__)
+      version = JSON.parse(File.read(filepath))["ResourceSpecificationVersion"]
+
+      puts "📦 CloudFormation specification v#{version}"
+    end
+
     no_commands do
       def authorize
         return unless options[:aws_profile]
