@@ -36,7 +36,7 @@ GEM
     fast_underscore (0.3.3)
     hollaback (0.1.1)
     jmespath (1.6.1)
-    minitest (5.15.0)
+    minitest (5.16.0)
     nokogiri (1.13.6-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.6-x86_64-linux)
