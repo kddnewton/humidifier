@@ -25,7 +25,7 @@ class HumidifierTest < Minitest::Test
   end
 
   def test_brackets
-    Humidifier.stub(:registry, foo: "bar") do
+    Humidifier.stub(:registry, { foo: "bar" }) do
       assert_equal "bar", Humidifier[:foo]
     end
   end
