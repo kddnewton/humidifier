@@ -109,7 +109,7 @@ module Humidifier
           )
         in { Type: type }
           Props::StructureProp.new(name, spec, property_type(prefix, type))
-        else # rubocop:disable Layout/IndentationWidth
+        else
           # It's possible to hit this clause if the specification has a property
           # that is not currently supported by CloudFormation. In this case,
           # we're not going to create a property at all for it.
