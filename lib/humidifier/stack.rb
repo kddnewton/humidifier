@@ -13,9 +13,9 @@ module Humidifier
       def initialize(bytesize)
         super(
           "Cannot use a template > #{MAX_TEMPLATE_URL_SIZE} bytes " \
-          "(currently #{bytesize} bytes), consider using nested stacks " \
-          "(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide" \
-          "/aws-properties-stack.html)"
+            "(currently #{bytesize} bytes), consider using nested stacks " \
+            "(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide" \
+            "/aws-properties-stack.html)"
         )
       end
     end
@@ -113,8 +113,10 @@ module Humidifier
       resources = static_resources.merge!(enumerable_resources)
 
       case serializer
-      when :json then JSON.pretty_generate(resources)
-      when :yaml then YAML.dump(resources)
+      when :json
+        JSON.pretty_generate(resources)
+      when :yaml
+        YAML.dump(resources)
       end
     end
 
@@ -135,7 +137,7 @@ module Humidifier
 
       params = {
         stack_name: identifier,
-        change_set_name: "changeset-#{Time.now.strftime('%Y-%m-%d-%H-%M-%S')}"
+        change_set_name: "changeset-#{Time.now.strftime("%Y-%m-%d-%H-%M-%S")}"
       }
       params.merge!(template_for(opts)).merge!(opts)
 
@@ -230,10 +232,9 @@ module Humidifier
         resources = public_send(prop)
         next if resources.empty?
 
-        list[name] =
-          resources.to_h do |resource_name, resource|
-            [resource_name, resource.to_cf]
-          end
+        list[name] = resources.to_h do |resource_name, resource|
+          [resource_name, resource.to_cf]
+        end
       end
     end
 
@@ -257,10 +258,8 @@ module Humidifier
 
     def template_for(opts)
       @template ||=
-        if opts.delete(:force_upload) ||
-           Humidifier.config.force_upload ||
-           bytesize > MAX_TEMPLATE_BODY_SIZE
-
+        if opts.delete(:force_upload) || Humidifier.config.force_upload ||
+             bytesize > MAX_TEMPLATE_BODY_SIZE
           { template_url: upload }
         else
           { template_body: to_cf }

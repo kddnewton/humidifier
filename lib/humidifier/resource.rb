@@ -6,8 +6,14 @@ module Humidifier
     # Attributes that are available to every stack
     COMMON_ATTRIBUTES =
       Humidifier.underscore(
-        %w[Condition CreationPolicy DeletionPolicy DependsOn Metadata
-           UpdatePolicy]
+        %w[
+          Condition
+          CreationPolicy
+          DeletionPolicy
+          DependsOn
+          Metadata
+          UpdatePolicy
+        ]
       )
 
     attr_accessor :properties, *COMMON_ATTRIBUTES.values
@@ -40,9 +46,7 @@ module Humidifier
     # CFN stack syntax
     def to_cf
       props_cf =
-        properties.map do |key, value|
-          self.class.props[key].to_cf(value)
-        end
+        properties.map { |key, value| self.class.props[key].to_cf(value) }
 
       common_attributes.merge!(
         "Type" => self.class.aws_name,
@@ -52,9 +56,7 @@ module Humidifier
 
     # Update a set of properties defined by the given properties hash
     def update(properties)
-      properties.each do |property, value|
-        update_property(property, value)
-      end
+      properties.each { |property, value| update_property(property, value) }
     end
 
     # Update the attributes of the resource defined by COMMON_ATTRIBUTES
@@ -81,16 +83,12 @@ module Humidifier
 
       # @private builds a cached method for a property reader
       def build_property_reader(name)
-        define_method(name) do
-          properties[name.to_s]
-        end
+        define_method(name) { properties[name.to_s] }
       end
 
       # @private builds a cached method for a property writer
       def build_property_writer(name)
-        define_method(name) do |value|
-          update_property(name.to_s[0..-2], value)
-        end
+        define_method(name) { |value| update_property(name.to_s[0..-2], value) }
       end
 
       # true if this resource has the given property
@@ -114,8 +112,9 @@ module Humidifier
 
     def validate_property(property)
       unless self.class.prop?(property)
-        raise ArgumentError, "Attempting to set invalid property for " \
-                             "#{self.class.name}: #{property}"
+        raise ArgumentError,
+              "Attempting to set invalid property for " \
+                "#{self.class.name}: #{property}"
       end
 
       property

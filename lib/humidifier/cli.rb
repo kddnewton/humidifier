@@ -4,8 +4,9 @@ module Humidifier
   # A CLI for running commands to manipulate the stacks that Humidifier knows
   # about.
   class CLI < Thor
-    class_option :aws_profile, desc: "The AWS profile to authenticate with",
-                               aliases: ["-p"]
+    class_option :aws_profile,
+                 desc: "The AWS profile to authenticate with",
+                 aliases: ["-p"]
 
     class_option :debug, desc: "Sets up debug mode", aliases: ["-d"]
     class_around :safe_execute
@@ -23,8 +24,10 @@ module Humidifier
     end
 
     desc "deploy [?stack] [*parameters]", "Update one or all stacks"
-    option :wait, desc: "Wait for the stack to create/update",
-                  type: :boolean, default: false
+    option :wait,
+           desc: "Wait for the stack to create/update",
+           type: :boolean,
+           default: false
     option :prefix, desc: "The prefix to use for the stack"
     def deploy(name = nil, *parameters)
       authorize
@@ -99,8 +102,9 @@ module Humidifier
       def authorize
         return unless options[:aws_profile]
 
-        Aws.config[:credentials] =
-          Aws::SharedCredentials.new(profile_name: options[:aws_profile])
+        Aws.config[:credentials] = Aws::SharedCredentials.new(
+          profile_name: options[:aws_profile]
+        )
       end
 
       def parameters_from(opts)

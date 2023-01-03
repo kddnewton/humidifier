@@ -6,7 +6,7 @@ module Humidifier
 
     def initialize(opts = {})
       @description = opts[:description]
-      @value       = opts[:value]
+      @value = opts[:value]
       @export_name = opts[:export_name]
     end
 

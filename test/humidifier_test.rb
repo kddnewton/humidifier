@@ -8,9 +8,7 @@ class HumidifierTest < Minitest::Test
   end
 
   def test_configure
-    Humidifier.configure do |config|
-      assert_kind_of Humidifier::Config, config
-    end
+    Humidifier.configure { |config| assert_kind_of Humidifier::Config, config }
   end
 
   def test_fn

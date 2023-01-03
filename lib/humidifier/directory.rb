@@ -21,10 +21,10 @@ module Humidifier
     attr_reader :name, :pattern, :prefix, :exports, :stack_name
 
     def initialize(name, pattern: nil, prefix: nil)
-      @name       = name
-      @pattern    = pattern
-      @prefix     = prefix
-      @exports    = []
+      @name = name
+      @pattern = pattern
+      @prefix = prefix
+      @exports = []
       @stack_name = "#{prefix || Humidifier.config.stack_prefix}#{name}"
     end
 
@@ -72,8 +72,10 @@ module Humidifier
 
     def outputs
       exports.each_with_object({}) do |export, exported|
-        exported[export.name] =
-          Output.new(value: export.value, export_name: export.name)
+        exported[export.name] = Output.new(
+          value: export.value,
+          export_name: export.name
+        )
       end
     end
 
@@ -81,9 +83,12 @@ module Humidifier
       @parameters ||=
         begin
           parameter_filepath =
-            Humidifier.config.files_for(name).detect do |filepath|
-              File.basename(filepath, ".yml") == "parameters"
-            end
+            Humidifier
+              .config
+              .files_for(name)
+              .detect do |filepath|
+                File.basename(filepath, ".yml") == "parameters"
+              end
 
           parameter_filepath ? parameters_from(parameter_filepath) : {}
         end

@@ -6,32 +6,33 @@ version = Humidifier::VERSION
 repository = "https://github.com/kddnewton/humidifier"
 
 Gem::Specification.new do |spec|
-  spec.name          = "humidifier"
-  spec.version       = version
-  spec.authors       = ["Kevin Newton"]
-  spec.email         = ["kddnewton@gmail.com"]
+  spec.name = "humidifier"
+  spec.version = version
+  spec.authors = ["Kevin Newton"]
+  spec.email = ["kddnewton@gmail.com"]
 
-  spec.summary       = "CloudFormation made easy"
-  spec.description   = "Programmatically generate and manage AWS " \
-                       "CloudFormation templates, stacks, and change sets."
-  spec.homepage      = repository
-  spec.license       = "MIT"
+  spec.summary = "CloudFormation made easy"
+  spec.description =
+    "Programmatically generate and manage AWS " \
+      "CloudFormation templates, stacks, and change sets."
+  spec.homepage = repository
+  spec.license = "MIT"
 
-  spec.metadata      = {
+  spec.metadata = {
     "bug_tracker_uri" => "#{repository}/issues",
     "changelog_uri" => "#{repository}/blob/v#{version}/CHANGELOG.md",
     "source_code_uri" => repository,
     "rubygems_mfa_required" => "true"
   }
 
-  spec.files = Dir.chdir(__dir__) do
-    `git ls-files -z`.split("\x0").reject do |f|
-      f.match(%r{^(bin|docs|example|test|yard)/})
+  spec.files =
+    Dir.chdir(__dir__) do
+      `git ls-files -z`.split("\x0")
+        .reject { |f| f.match(%r{^(bin|docs|example|test|yard)/}) }
     end
-  end
 
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.bindir = "exe"
+  spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
   spec.add_dependency "aws-sdk-cloudformation", "~> 1.25"
@@ -46,5 +47,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rubocop", "~> 1.24"
   spec.add_development_dependency "simplecov", "~> 0.17"
+  spec.add_development_dependency "syntax_tree"
   spec.add_development_dependency "yard", "~> 0.9"
 end

@@ -1,3 +1,6 @@
+inherit_gem:
+  syntax_tree: config/rubocop.yml
+
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true

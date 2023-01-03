@@ -21,13 +21,15 @@ module Humidifier
     def distribution
       CloudFront::Distribution.new(
         distribution_config: {
-          origins: [{
-            domain_name: "mybucket.s3.amazonaws.com",
-            id: "myS3Origin",
-            s3_origin_config: {
-              origin_access_identity: "oai/cloudfront/E127EXAMPLE51Z"
+          origins: [
+            {
+              domain_name: "mybucket.s3.amazonaws.com",
+              id: "myS3Origin",
+              s3_origin_config: {
+                origin_access_identity: "oai/cloudfront/E127EXAMPLE51Z"
+              }
             }
-          }],
+          ],
           enabled: true,
           comment: "Some comment",
           default_root_object: "index.html",
@@ -42,7 +44,9 @@ module Humidifier
             target_origin_id: "myS3Origin",
             forwarded_values: {
               query_string: false,
-              cookies: { forward: "none" }
+              cookies: {
+                forward: "none"
+              }
             },
             trusted_signers: %w[1234567890EX 1234567891EX],
             viewer_protocol_policy: "allow-all"
@@ -54,7 +58,9 @@ module Humidifier
               locations: %w[AQ CV]
             }
           },
-          viewer_certificate: { cloud_front_default_certificate: true }
+          viewer_certificate: {
+            cloud_front_default_certificate: true
+          }
         }
       )
     end
@@ -62,15 +68,16 @@ module Humidifier
     def launch_specification
       {
         instance_type: Humidifier.ref("InstanceType"),
-        image_id: Humidifier.fn.find_in_map(
-          [
-            "AWSRegionArch2AMI",
-            Humidifier.ref("AWS::Region"),
-            Humidifier.fn.find_in_map(
-              ["AWSInstanceType2Arch", Humidifier.ref("InstanceType"), "Arch"]
-            )
-          ]
-        ),
+        image_id:
+          Humidifier.fn.find_in_map(
+            [
+              "AWSRegionArch2AMI",
+              Humidifier.ref("AWS::Region"),
+              Humidifier.fn.find_in_map(
+                ["AWSInstanceType2Arch", Humidifier.ref("InstanceType"), "Arch"]
+              )
+            ]
+          ),
         weighted_capacity: 8
       }
     end
@@ -90,7 +97,9 @@ module Humidifier
             ),
             launch_specification.merge(
               ebs_optimized: true,
-              monitoring: { enabled: true },
+              monitoring: {
+                enabled: true
+              },
               security_groups: [
                 { group_id: Humidifier.fn.get_att(%w[SG0 GroupId]) }
               ],

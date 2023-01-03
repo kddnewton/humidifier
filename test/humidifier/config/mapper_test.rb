@@ -14,7 +14,9 @@ module Humidifier
         assert_kind_of FoobarResource, resource
 
         expected = {
-          "foo" => "Foo", "bar" => "bar_value", "baz" => "baz_value"
+          "foo" => "Foo",
+          "bar" => "bar_value",
+          "baz" => "baz_value"
         }
 
         assert_equal expected, resource.to_cf["Properties"]

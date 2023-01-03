@@ -12,9 +12,8 @@ module Humidifier
 
         # Set an initial value for each property types so that we can handle
         # cycles in the specification
-        @property_types = specification["PropertyTypes"].to_h do |name, _|
-          [name, {}]
-        end
+        @property_types =
+          specification["PropertyTypes"].to_h { |name, _| [name, {}] }
       end
 
       def compile
@@ -24,10 +23,12 @@ module Humidifier
           prefix = property_type_name.split(".", 2).first
 
           subspec = specification["PropertyTypes"].fetch(property_type_name)
-          subspec.fetch("Properties") { {} }.each do |property_name, property|
-            property = build_property(prefix, property_name, property)
-            property_type[property.name] = property if property
-          end
+          subspec
+            .fetch("Properties") { {} }
+            .each do |property_name, property|
+              property = build_property(prefix, property_name, property)
+              property_type[property.name] = property if property
+            end
         end
 
         # Loop through every resource type in the specification and define a
@@ -54,8 +55,10 @@ module Humidifier
               Humidifier.const_set(group, Module.new)
             end
 
-          Humidifier.registry[aws_name] =
-            group_module.const_set(resource, resource_class)
+          Humidifier.registry[aws_name] = group_module.const_set(
+            resource,
+            resource_class
+          )
         end
 
         Humidifier.registry.freeze
@@ -82,7 +85,7 @@ module Humidifier
 
       def build_property(prefix, name, spec)
         case spec.transform_keys(&:to_sym)
-        in { PrimitiveType: type }
+        in PrimitiveType: type
           build_primitive(type, name, spec)
         in { Type: "List", PrimitiveItemType: type }
           Props::ListProp.new(name, spec, build_primitive(type, name, spec))
@@ -97,17 +100,23 @@ module Humidifier
           Props::ListProp.new(
             name,
             spec,
-            Props::StructureProp.new(name, spec,
-                                     property_type(prefix, item_type))
+            Props::StructureProp.new(
+              name,
+              spec,
+              property_type(prefix, item_type)
+            )
           )
         in { Type: "Map", ItemType: item_type }
           Props::MapProp.new(
             name,
             spec,
-            Props::StructureProp.new(name, spec,
-                                     property_type(prefix, item_type))
+            Props::StructureProp.new(
+              name,
+              spec,
+              property_type(prefix, item_type)
+            )
           )
-        in { Type: type }
+        in Type: type
           Props::StructureProp.new(name, spec, property_type(prefix, type))
         else
           # It's possible to hit this clause if the specification has a property
@@ -117,9 +126,7 @@ module Humidifier
       end
 
       def property_type(prefix, type)
-        property_types.fetch("#{prefix}.#{type}") do
-          property_types.fetch(type)
-        end
+        property_types.fetch("#{prefix}.#{type}") { property_types.fetch(type) }
       end
     end
 

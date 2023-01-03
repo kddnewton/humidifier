@@ -9,9 +9,7 @@ module Humidifier
       stack = Stack.new
 
       assert_match(/1\z/, stack.identifier)
-      Stack::STATIC_RESOURCES.each_value do |prop|
-        assert_nil stack.send(prop)
-      end
+      Stack::STATIC_RESOURCES.each_value { |prop| assert_nil stack.send(prop) }
       Stack::ENUMERABLE_RESOURCES.each_value do |prop|
         assert_equal ({}), stack.send(prop)
       end

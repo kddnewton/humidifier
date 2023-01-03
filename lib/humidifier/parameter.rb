@@ -4,8 +4,18 @@ module Humidifier
   class Parameter
     PROPERTIES =
       Humidifier.underscore(
-        %w[AllowedPattern AllowedValues ConstraintDescription Default
-           Description MaxLength MaxValue MinLength MinValue NoEcho]
+        %w[
+          AllowedPattern
+          AllowedValues
+          ConstraintDescription
+          Default
+          Description
+          MaxLength
+          MaxValue
+          MinLength
+          MinValue
+          NoEcho
+        ]
       )
 
     attr_reader :type, *PROPERTIES.values

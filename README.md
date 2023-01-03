@@ -42,7 +42,7 @@ Humidifier is a ruby tool for managing [AWS CloudFormation](https://aws.amazon.c
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'humidifier'
+gem "humidifier"
 ```
 
 And then execute:

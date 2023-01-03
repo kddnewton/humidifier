@@ -3,8 +3,9 @@
 module Humidifier
   class Upgrade
     PATH = -File.expand_path(File.join("..", "..", SPECIFICATION), __dir__)
-    URL = "https://docs.aws.amazon.com/AWSCloudFormation/latest" \
-          "/UserGuide/cfn-resource-specification.html"
+    URL =
+      "https://docs.aws.amazon.com/AWSCloudFormation/latest" \
+        "/UserGuide/cfn-resource-specification.html"
 
     def perform
       require "net/http"
@@ -28,12 +29,15 @@ module Humidifier
     end
 
     def uri
-      Nokogiri::HTML(page).css("table tr").detect do |tr|
-        name = tr.at_css("td:first-child p")
-        next if !name || name.text.strip != "US East (N. Virginia)"
+      Nokogiri
+        .HTML(page)
+        .css("table tr")
+        .detect do |tr|
+          name = tr.at_css("td:first-child p")
+          next if !name || name.text.strip != "US East (N. Virginia)"
 
-        break URI.parse(tr.at_css("td:nth-child(3) p a").attr("href"))
-      end
+          break URI.parse(tr.at_css("td:nth-child(3) p a").attr("href"))
+        end
     end
   end
 end

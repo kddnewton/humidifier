@@ -18,20 +18,29 @@ module Humidifier
     def test_deploy
       Aws.config[:cloudformation] = {
         stub_responses: {
-          create_stack: { stack_id: "test-id" },
+          create_stack: {
+            stack_id: "test-id"
+          },
           validate_template: true
         }
       }
 
-      with_stack_status(false) do
-        Directory.new("alpha").deploy
-      end
+      with_stack_status(false) { Directory.new("alpha").deploy }
     end
 
     def test_upload
       Aws.config.merge!(
-        s3: { stub_responses: { get_object: true, put_object: true } },
-        cloudformation: { stub_responses: { validate_template: true } }
+        s3: {
+          stub_responses: {
+            get_object: true,
+            put_object: true
+          }
+        },
+        cloudformation: {
+          stub_responses: {
+            validate_template: true
+          }
+        }
       )
 
       with_config s3_bucket: "foobar" do

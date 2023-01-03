@@ -6,11 +6,14 @@ module Humidifier
   class CLITest < Minitest::Test
     DirectoryDouble =
       Struct.new(:stack_name, :valid?) do
-        def create_change_set; end
+        def create_change_set
+        end
 
-        def deploy(*); end
+        def deploy(*)
+        end
 
-        def upload; end
+        def upload
+        end
       end
 
     def test_change

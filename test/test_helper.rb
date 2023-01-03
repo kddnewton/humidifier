@@ -32,9 +32,7 @@ end
 RESOURCE_NAMES = %w[AlphaUser1 AlphaUser2 AlphaUser3].freeze
 
 class FoobarMapper < Humidifier::Config::Mapper
-  defaults do |logical_name|
-    { foo: logical_name }
-  end
+  defaults { |logical_name| { foo: logical_name } }
 
   attribute :bar do |bar|
     { bar: bar }

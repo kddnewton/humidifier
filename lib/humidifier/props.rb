@@ -11,7 +11,7 @@ module Humidifier
       attr_reader :key, :name, :spec
 
       def initialize(key, spec = {})
-        @key  = key
+        @key = key
         @name = key.underscore
         @spec = spec
       end

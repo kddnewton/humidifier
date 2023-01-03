@@ -26,7 +26,8 @@ module Humidifier
   SPECIFICATION = "CloudFormationResourceSpecification.json"
 
   # A parent class for all Humidifier errors for easier rescuing.
-  class Error < StandardError; end
+  class Error < StandardError
+  end
 
   class << self
     # the configuration instance

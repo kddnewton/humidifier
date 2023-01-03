@@ -42,7 +42,10 @@ module Humidifier
       resource = build
       expected = {
         "Type" => "AWS::Resource",
-        "Properties" => { "One" => "one", "Two" => 2 }
+        "Properties" => {
+          "One" => "one",
+          "Two" => 2
+        }
       }
 
       assert_equal expected, resource.to_cf

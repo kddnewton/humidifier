@@ -45,11 +45,15 @@ module Humidifier
       reference1 = Object.new
       reference2 = Object.new
 
-      value = [{ "Container" => Humidifier.ref(reference1) },
-               Humidifier.fn.base64(Humidifier.ref(reference2))]
+      value = [
+        { "Container" => Humidifier.ref(reference1) },
+        Humidifier.fn.base64(Humidifier.ref(reference2))
+      ]
 
-      expected = [{ "Container" => { "Ref" => reference1 } },
-                  { "Fn::Base64" => { "Ref" => reference2 } }]
+      expected = [
+        { "Container" => { "Ref" => reference1 } },
+        { "Fn::Base64" => { "Ref" => reference2 } }
+      ]
 
       assert_equal expected, dump(value)
     end

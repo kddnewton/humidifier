@@ -7,8 +7,24 @@ module Humidifier
     #   /AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html
     FUNCTIONS =
       Humidifier.underscore(
-        %w[And Base64 Cidr Equals FindInMap GetAtt GetAZs If ImportValue Join
-           Not Or Select Split Sub Transform]
+        %w[
+          And
+          Base64
+          Cidr
+          Equals
+          FindInMap
+          GetAtt
+          GetAZs
+          If
+          ImportValue
+          Join
+          Not
+          Or
+          Select
+          Split
+          Sub
+          Transform
+        ]
       )
 
     attr_reader :name, :value
