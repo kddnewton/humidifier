@@ -10,6 +10,9 @@ AllCops:
   Exclude:
   - '{tmp,vendor,yard}/**/*'
 
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+
 Gemspec/RequiredRubyVersion:
   Enabled: false
 
