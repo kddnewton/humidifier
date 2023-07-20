@@ -14,8 +14,8 @@ GEM
   specs:
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.786.0)
-    aws-sdk-cloudformation (1.85.0)
+    aws-partitions (1.790.0)
+    aws-sdk-cloudformation (1.86.0)
       aws-sdk-core (~> 3, >= 3.177.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-core (3.178.0)
