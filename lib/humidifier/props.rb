@@ -133,7 +133,7 @@ module Humidifier
       end
 
       def valid?(list)
-        return true if super(list)
+        return true if super
 
         list.is_a?(Enumerable) && list.all? { |value| subprop.valid?(value) }
       end
@@ -173,7 +173,7 @@ module Humidifier
       end
 
       def valid?(map)
-        return true if super(map)
+        return true if super
 
         map.is_a?(Hash) && map.values.all? { |value| subprop.valid?(value) }
       end
@@ -213,7 +213,7 @@ module Humidifier
       end
 
       def valid?(struct)
-        super(struct) || (struct.is_a?(Hash) && valid_struct?(struct))
+        super || (struct.is_a?(Hash) && valid_struct?(struct))
       end
 
       private
