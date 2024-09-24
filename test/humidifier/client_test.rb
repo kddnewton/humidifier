@@ -238,6 +238,8 @@ module Humidifier
     private
 
     def build_stack
+      Aws::S3.const_get(:Client) # temporary fix for aws-sdk-s3 1.165.0
+
       Stack
         .new(name: "stack-name")
         .tap do |stack|
