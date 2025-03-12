@@ -38,7 +38,7 @@ GEM
     fast_underscore (0.3.4)
     hollaback (0.1.1)
     jmespath (1.6.2)
-    json (2.10.1)
+    json (2.10.2)
     language_server-protocol (3.17.0.4)
     lint_roller (1.1.0)
     minitest (5.25.4)
