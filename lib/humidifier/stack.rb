@@ -29,8 +29,8 @@ module Humidifier
           setting up the s3 config on the top-level Humidifier object like so:
 
               Humidifier.configure do |config|
-                config.s3_bucket = 'my.s3.bucket'
-                config.s3_prefix = 'my-prefix/' # optional
+                config.s3_bucket = "my.s3.bucket"
+                config.s3_prefix = "my-prefix/" # optional
               end
         MSG
       end
@@ -129,7 +129,8 @@ module Humidifier
     end
 
     def create_and_wait(opts = {})
-      perform_and_wait(:create, opts)
+      max_wait = opts.delete(:max_wait)
+      create(opts).tap { wait_until(:stack_create_complete, max_wait) }
     end
 
     def create_change_set(opts = {})
@@ -150,7 +151,8 @@ module Humidifier
     end
 
     def delete_and_wait(opts = {})
-      perform_and_wait(:delete, opts)
+      max_wait = opts.delete(:max_wait)
+      delete(opts).tap { wait_until(:stack_delete_complete, max_wait) }
     end
 
     def deploy(opts = {})
@@ -160,7 +162,13 @@ module Humidifier
     end
 
     def deploy_and_wait(opts = {})
-      perform_and_wait(exists? ? :update : :create, opts)
+      max_wait = opts.delete(:max_wait)
+
+      if exists?
+        update(opts).tap { wait_until(:stack_update_complete, max_wait) }
+      else
+        create(opts).tap { wait_until(:stack_create_complete, max_wait) }
+      end
     end
 
     def deploy_change_set(opts = {})
@@ -183,7 +191,8 @@ module Humidifier
     end
 
     def update_and_wait(opts = {})
-      perform_and_wait(:update, opts)
+      max_wait = opts.delete(:max_wait)
+      update(opts).tap { wait_until(:stack_update_complete, max_wait) }
     end
 
     def upload
@@ -238,17 +247,6 @@ module Humidifier
       end
     end
 
-    def perform_and_wait(method, opts)
-      public_send(method, opts).tap do
-        signal = :"stack_#{method}_complete"
-
-        client.wait_until(signal, stack_name: identifier) do |waiter|
-          waiter.max_attempts = (opts.delete(:max_wait) || MAX_WAIT) / 5
-          waiter.delay = 5
-        end
-      end
-    end
-
     def static_resources
       STATIC_RESOURCES.each_with_object({}) do |(name, prop), list|
         resource = public_send(prop)
@@ -272,6 +270,13 @@ module Humidifier
       warn(error.message)
       warn(error.backtrace)
       false
+    end
+
+    def wait_until(signal, max_wait)
+      client.wait_until(signal, stack_name: identifier) do |waiter|
+        waiter.max_attempts = (max_wait || MAX_WAIT) / 5
+        waiter.delay = 5
+      end
     end
   end
 end

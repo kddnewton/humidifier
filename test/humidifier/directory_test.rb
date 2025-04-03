@@ -7,8 +7,8 @@ module Humidifier
     def test_create_change_set
       Aws.config[:cloudformation] = {
         stub_responses: {
-          create_change_set: true,
-          validate_template: true
+          create_change_set: [{}],
+          validate_template: [{}]
         }
       }
 
@@ -18,34 +18,32 @@ module Humidifier
     def test_deploy
       Aws.config[:cloudformation] = {
         stub_responses: {
-          create_stack: {
-            stack_id: "test-id"
-          },
-          validate_template: true
+          describe_stacks: [
+            Aws::CloudFormation::Errors::ValidationError.new(nil, "validation")
+          ],
+          create_stack: [{}],
+          validate_template: [{}]
         }
       }
 
-      with_stack_status(false) { Directory.new("alpha").deploy }
+      Directory.new("alpha").deploy
     end
 
     def test_upload
-      Aws.config.merge!(
-        s3: {
-          stub_responses: {
-            get_object: true,
-            put_object: true
-          }
-        },
-        cloudformation: {
-          stub_responses: {
-            validate_template: true
-          }
+      Aws.config[:s3] = {
+        stub_responses: {
+          get_object: [{}],
+          put_object: [{}]
         }
-      )
+      }
 
-      with_config s3_bucket: "foobar" do
-        Directory.new("alpha").upload
-      end
+      Aws.config[:cloudformation] = {
+        stub_responses: {
+          validate_template: [{}]
+        }
+      }
+
+      with_config(s3_bucket: "foobar") { Directory.new("alpha").upload }
     end
 
     def test_exports
