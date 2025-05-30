@@ -34,7 +34,7 @@ GEM
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.11.0)
       aws-eventstream (~> 1, >= 1.0.2)
-    base64 (0.2.0)
+    base64 (0.3.0)
     docile (1.4.1)
     fast_underscore (0.3.4)
     hollaback (0.1.1)
