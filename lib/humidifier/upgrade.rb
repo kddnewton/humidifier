@@ -5,7 +5,7 @@ module Humidifier
     PATH = -File.expand_path(File.join("..", "..", SPECIFICATION), __dir__)
     URL =
       "https://docs.aws.amazon.com/AWSCloudFormation/latest" \
-        "/UserGuide/cfn-resource-specification.html"
+        "/TemplateReference/cfn-resource-specification.html"
 
     def perform
       require "net/http"
