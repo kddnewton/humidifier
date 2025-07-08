@@ -145,7 +145,7 @@ module Humidifier
       try_valid { client.create_change_set(params) }
     end
 
-    def delete(opts = {})
+    def delete(opts = {}) # rubocop:disable Naming/PredicateMethod
       client.delete_stack({ stack_name: identifier }.merge!(opts))
       true
     end
